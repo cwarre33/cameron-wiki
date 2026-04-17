@@ -1,0 +1,593 @@
+{
+  "nodes": [
+    {
+      "id": "decision_arc_agi_adapters_vs_litellm",
+      "label": "ADR: Custom Provider Adapters vs. LiteLLM",
+      "file_type": "document",
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-04-17",
+      "author": "Cameron Warren",
+      "contributor": null
+    },
+    {
+      "id": "decision_wiki_retention_policy",
+      "label": "ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages",
+      "file_type": "document",
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-04-17",
+      "author": "Cameron Warren",
+      "contributor": null
+    },
+    {
+      "id": "benchmark_arc_agi",
+      "label": "ARC-AGI Benchmark",
+      "file_type": "document",
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-04-17",
+      "author": "Cameron Warren",
+      "contributor": null
+    },
+    {
+      "id": "technique_llm_review_pass_before_rotation",
+      "label": "LLM Review Pass Before Rotation",
+      "file_type": "document",
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-04-17",
+      "author": "Cameron Warren",
+      "contributor": null
+    },
+    {
+      "id": "concept_provider_adapter_pattern",
+      "label": "Provider Adapter Pattern (ProviderAdapter interface)",
+      "file_type": "document",
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": "2026-04-17",
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tool_litellm",
+      "label": "LiteLLM",
+      "file_type": "document",
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_retention_rotation",
+      "label": "Retain Outcomes / Rotate Reasoning Principle",
+      "file_type": "document",
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_speculative_page_pruning",
+      "label": "Speculative Page Pruning (90-day staleness threshold)",
+      "file_type": "document",
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_agentic_memory_compression",
+      "label": "Agentic Memory Compression via Distillation",
+      "file_type": "document",
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_francois_chollet",
+      "label": "François Chollet (ARC-AGI creator)",
+      "file_type": "document",
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_memorization_resistance",
+      "label": "Memorization-Resistant Benchmarking",
+      "file_type": "document",
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_autotrader_retention",
+      "label": "AutoTrader Decisions-Log Retention (decisions.jsonl / outcomes.jsonl)",
+      "file_type": "document",
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_quarterly_lint",
+      "label": "Quarterly Lint Pass (/lint workflow)",
+      "file_type": "document",
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_weekly_review_pass",
+      "label": "Weekly Review Pass (AutoTrader weekly_review.py)",
+      "file_type": "document",
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "concept_memgpt_tiered_memory",
+      "label": "MemGPT / Letta Tiered Memory",
+      "file_type": "document",
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "raw_arc_agi_benchmarking_readme",
+      "label": "raw/repos/arc-agi-benchmarking-readme.md",
+      "file_type": "document",
+      "source_file": "raw/repos/arc-agi-benchmarking-readme.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wiki_kaggle_arc_agi_benchmarking",
+      "label": "wiki/kaggle/arc-agi-benchmarking.md",
+      "file_type": "document",
+      "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wiki_architectures_provider_adapter_pattern",
+      "label": "wiki/architectures/provider-adapter-pattern.md",
+      "file_type": "document",
+      "source_file": "wiki/architectures/provider-adapter-pattern.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wiki_decisions_autotrader_decisions_log_retention",
+      "label": "wiki/decisions/autotrader-decisions-log-retention.md",
+      "file_type": "document",
+      "source_file": "wiki/decisions/autotrader-decisions-log-retention.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wiki_open_questions_agentic_memory_retention",
+      "label": "wiki/open-questions/agentic-memory-retention-strategies.md",
+      "file_type": "document",
+      "source_file": "wiki/open-questions/agentic-memory-retention-strategies.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "wiki_architectures_agentic_trading_system",
+      "label": "wiki/architectures/agentic-trading-system.md",
+      "file_type": "document",
+      "source_file": "wiki/architectures/agentic-trading-system.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "raw_arc_agi_benchmarking_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "wiki_kaggle_arc_agi_benchmarking",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "wiki_architectures_provider_adapter_pattern",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "concept_provider_adapter_pattern",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "tool_litellm",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "benchmark_arc_agi",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "benchmark_arc_agi",
+      "target": "raw_arc_agi_benchmarking_readme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "benchmark_arc_agi",
+      "target": "wiki_kaggle_arc_agi_benchmarking",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "benchmark_arc_agi",
+      "target": "concept_francois_chollet",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "benchmark_arc_agi",
+      "target": "concept_memorization_resistance",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "wiki_decisions_autotrader_decisions_log_retention",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "technique_llm_review_pass_before_rotation",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "wiki_open_questions_agentic_memory_retention",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "concept_retention_rotation",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "concept_speculative_page_pruning",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "concept_quarterly_lint",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "concept_autotrader_retention",
+      "target": "concept_retention_rotation",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "wiki_decisions_autotrader_decisions_log_retention",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "decision_wiki_retention_policy",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "wiki_architectures_agentic_trading_system",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "wiki_open_questions_agentic_memory_retention",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "concept_agentic_memory_compression",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "concept_weekly_review_pass",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "technique_llm_review_pass_before_rotation",
+      "target": "concept_memgpt_tiered_memory",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "concept_memgpt_tiered_memory",
+      "target": "concept_agentic_memory_compression",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "concept_speculative_page_pruning",
+      "target": "concept_weekly_review_pass",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "decision_wiki_retention_policy",
+      "target": "concept_agentic_memory_compression",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "concept_memorization_resistance",
+      "target": "concept_retention_rotation",
+      "relation": "semantically_similar_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.25,
+      "source_file": "wiki/benchmarks/arc-agi.md",
+      "source_location": null,
+      "weight": 0.25
+    },
+    {
+      "source": "decision_arc_agi_adapters_vs_litellm",
+      "target": "concept_provider_adapter_pattern",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "concept_quarterly_lint",
+      "target": "concept_speculative_page_pruning",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "concept_quarterly_lint",
+      "target": "technique_llm_review_pass_before_rotation",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/wiki-retention-policy.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "hyperedge_retention_system",
+      "label": "Retention & Rotation System: wiki policy + LLM review technique + AutoTrader retention pattern form a unified memory management framework",
+      "nodes": [
+        "decision_wiki_retention_policy",
+        "technique_llm_review_pass_before_rotation",
+        "wiki_decisions_autotrader_decisions_log_retention",
+        "concept_quarterly_lint"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "wiki/decisions/wiki-retention-policy.md"
+    },
+    {
+      "id": "hyperedge_arc_agi_evaluation_stack",
+      "label": "ARC-AGI Evaluation Stack: benchmark definition + benchmarking harness + provider adapter decision collectively realize Cameron's evaluation capability",
+      "nodes": [
+        "benchmark_arc_agi",
+        "decision_arc_agi_adapters_vs_litellm",
+        "wiki_kaggle_arc_agi_benchmarking",
+        "concept_provider_adapter_pattern"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.88,
+      "source_file": "wiki/benchmarks/arc-agi.md"
+    },
+    {
+      "id": "hyperedge_agentic_memory_cluster",
+      "label": "Agentic Memory Cluster: LLM review pass technique + MemGPT tiered memory + wiki retention policy all participate in the broader problem of bounded, high-signal agent memory",
+      "nodes": [
+        "technique_llm_review_pass_before_rotation",
+        "concept_memgpt_tiered_memory",
+        "concept_agentic_memory_compression",
+        "wiki_open_questions_agentic_memory_retention"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.82,
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md"
+    }
+  ],
+  "input_tokens": 3200,
+  "output_tokens": 1800
+}

@@ -37,19 +37,20 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 2
-- Wiki pages: 14
-- Last ingest: 2026-04-17 (Karpathy LLM Wiki gist)
+- Sources ingested: 4
+- Wiki pages: 19
+- Last ingest: 2026-04-17 (ARC-AGI Benchmarking Harness)
 - Last lint: never
 
 ## Strongest areas (so far)
 
 - **Visual search systems** — SofaScope CLIP+FAISS pipeline fully documented with ADRs, technique pages, interview prep
 - **Knowledge management methodology** — LLM Wiki pattern, RAG comparison, Cameron-specific setup
+- **LLM evaluation infrastructure** — ARC-AGI harness with async concurrency, provider adapter pattern, cost tracking
+- **Algorithmic trading** — AutoTrader RSI+LLM strategy, Alpaca integration, agentic feedback loop
 
 ## Known gaps
 
 - FLS production systems (CRR, SellSmart, transcript pipeline) — deferred, will be ingested when docs are properly gathered
-- Kaggle competitions — queued for ingest #3
-- Trading concepts — queued for ingest #4
-- All of: labs, benchmarks, datasets, integrations, architectures — empty, will populate through remaining ingests
+- Labs, datasets, people — mostly empty; will populate through future ingests
+- ARC-AGI actual scores — harness is documented, but benchmark results not yet recorded

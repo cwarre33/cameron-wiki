@@ -4,7 +4,7 @@ type: interview-note
 status: active
 visibility: public
 sources: [raw/repos/sofascope-ai-powered-product-match-finder.md]
-related: [wiki/production-systems/sofascope.md, wiki/techniques/clip-faiss-visual-search.md, wiki/techniques/persistent-model-loading.md, wiki/decisions/sofascope-metadata-vs-embeddings.md, wiki/decisions/sofascope-persistent-service-stdin-stdout.md]
+related: [wiki/production-systems/sofascope.md, wiki/techniques/clip-faiss-visual-search.md, wiki/techniques/persistent-model-loading.md, wiki/decisions/sofascope-metadata-vs-embeddings.md, wiki/decisions/sofascope-persistent-service-stdin-stdout.md, wiki/benchmarks/arc-agi.md, wiki/kaggle/arc-agi-benchmarking.md]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: high

@@ -1,0 +1,1 @@
+{"nodes": [{"id": "decision_sofascope_stdin_stdout", "label": "ADR: Persistent Service stdin/stdout vs. HTTP", "file_type": "document", "source_file": "wiki/decisions/sofascope-persistent-service-stdin-stdout.md", "source_location": null, "source_url": null, "captured_at": null, "author": "Cameron Warren", "contributor": null}], "edges": [], "hyperedges": []}

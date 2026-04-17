@@ -17,6 +17,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Agentic Trading System](architectures/agentic-trading-system.md) | Containerized scheduled LLM agent with persistent JSONL feedback loop; Docker + cron + Gradio | 2026-04-17 |
+| [Provider Adapter Pattern](architectures/provider-adapter-pattern.md) | Strategy pattern for multi-provider LLM clients; swap models via config, not code | 2026-04-17 |
 
 ## Techniques
 *CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, etc.*
@@ -26,6 +27,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Full pipeline: Base64→CLIP→FAISS→results; IndexFlatIP+L2 norm=cosine similarity | 2026-04-17 |
 | [Persistent Model Loading Pattern](techniques/persistent-model-loading.md) | Load ML models once at startup; never per-request. Patterns: subprocess, FastAPI, gunicorn preload | 2026-04-17 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Route queries to optimal engine by modality; metadata for structured text, embeddings for images | 2026-04-17 |
+| [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | Distill durable lessons from time-bounded logs before purging; completes the agentic self-improvement loop | 2026-04-17 |
 
 ## Integrations
 *Zendesk API, NetSuite/SuiteQL, AWS, MiCollab, Groq, Copilot Studio.*
@@ -51,7 +53,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 
 | Page | Summary | Updated |
 |------|---------|---------|
-| *(none yet)* | | |
+| [ARC-AGI](benchmarks/arc-agi.md) | Chollet's anti-contamination reasoning benchmark; novel visual grid tasks; ARC-AGI-1 + ARC-AGI-2 | 2026-04-17 |
 
 ## Datasets
 
@@ -81,7 +83,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 
 | Page | Summary | Competition | Updated |
 |------|---------|-------------|---------|
-| *(none yet)* | | | |
+| [ARC-AGI Benchmarking Harness](kaggle/arc-agi-benchmarking.md) | Async multi-provider LLM test harness for ARC-AGI-1 and ARC-AGI-2; provider adapter pattern + cost tracking | ARC Prize | 2026-04-17 |
 
 ## Trading
 
@@ -99,6 +101,8 @@ Master catalog of all wiki pages. Updated on every ingest.
 | [Persistent Service: stdin/stdout vs. HTTP](decisions/sofascope-persistent-service-stdin-stdout.md) | SofaScope: subprocess IPC chosen over HTTP for single-caller pilot simplicity | 2026-04-17 |
 | [Open Model vs. Frontier for Trading Sentiment](decisions/autotrader-open-model-vs-frontier.md) | AutoTrader: Llama 3.3 70B 10× cheaper than GPT-4o; task complexity fits open model | 2026-04-17 |
 | [90-Day Rotating Retention for Decisions Log](decisions/autotrader-decisions-log-retention.md) | AutoTrader: recency bias intentional; rotate reasoning context, keep outcomes indefinitely | 2026-04-17 |
+| [Custom Adapters vs. LiteLLM](decisions/arc-agi-adapters-vs-litellm.md) | ARC-AGI harness: custom adapters chosen for full control over request/response; LiteLLM tradeoffs documented | 2026-04-17 |
+| [Wiki Retention Policy](decisions/wiki-retention-policy.md) | Retain ADRs + outcomes forever; prune speculative pages after 90-day staleness + no inbound links; LLM review pass before deletion | 2026-04-17 |
 
 ## Interview Prep
 

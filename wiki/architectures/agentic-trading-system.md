@@ -4,7 +4,7 @@ type: architecture
 status: active
 visibility: public
 sources: [raw/repos/autotrader-readme.md]
-related: [wiki/trading/autotrader.md, wiki/trading/rsi-llm-signal-strategy.md, wiki/integrations/alpaca-api.md, wiki/decisions/autotrader-open-model-vs-frontier.md, wiki/decisions/autotrader-decisions-log-retention.md]
+related: [wiki/trading/autotrader.md, wiki/trading/rsi-llm-signal-strategy.md, wiki/integrations/alpaca-api.md, wiki/decisions/autotrader-open-model-vs-frontier.md, wiki/decisions/autotrader-decisions-log-retention.md, wiki/architectures/provider-adapter-pattern.md, wiki/techniques/llm-review-pass-before-rotation.md]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: high
@@ -68,7 +68,7 @@ Scan → Decision → Log → (future) LLM review pass
                     Updated watchlist.json / thresholds
 ```
 
-The loop is partially implemented — logging infrastructure exists, but the automated LLM review pass that *acts* on the logs is a future enhancement. Currently: logs are available for manual analysis.
+The loop is partially implemented — logging infrastructure exists, but the automated LLM review pass that *acts* on the logs is a future enhancement. Currently: logs are available for manual analysis. See [[wiki/techniques/llm-review-pass-before-rotation.md]] for the implementation pattern and a code sketch.
 
 ## Deployment checklist
 

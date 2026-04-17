@@ -4,7 +4,7 @@ type: decision
 status: active
 visibility: public
 sources: [raw/repos/autotrader-readme.md]
-related: [wiki/trading/autotrader.md, wiki/trading/rsi-llm-signal-strategy.md]
+related: [wiki/trading/autotrader.md, wiki/trading/rsi-llm-signal-strategy.md, wiki/open-questions/agentic-memory-retention-strategies.md, wiki/techniques/llm-review-pass-before-rotation.md, wiki/decisions/wiki-retention-policy.md]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: medium
