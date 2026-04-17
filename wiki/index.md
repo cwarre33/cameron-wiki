@@ -27,6 +27,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Full pipeline: Base64→CLIP→FAISS→results; IndexFlatIP+L2 norm=cosine similarity | 2026-04-17 |
 | [Persistent Model Loading Pattern](techniques/persistent-model-loading.md) | Load ML models once at startup; never per-request. Patterns: subprocess, FastAPI, gunicorn preload | 2026-04-17 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Route queries to optimal engine by modality; metadata for structured text, embeddings for images | 2026-04-17 |
+| [MBR Decoding](techniques/mbr-decoding.md) | Minimum Bayes Risk: sample N candidates, pick consensus; beats beam search on low-resource NLP | 2026-04-17 |
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | Distill durable lessons from time-bounded logs before purging; completes the agentic self-improvement loop | 2026-04-17 |
 
 ## Integrations
@@ -48,6 +49,7 @@ Master catalog of all wiki pages. Updated on every ingest.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [CLIP](models/clip.md) | OpenAI vision-language model; clip-vit-large-patch14 (768-dim); zero-shot visual similarity | 2026-04-17 |
+| [ByT5](models/byt5.md) | Google byte-level T5; no tokenizer; native rare-script coverage; used for Akkadian translation | 2026-04-17 |
 
 ## Benchmarks
 
@@ -84,6 +86,12 @@ Master catalog of all wiki pages. Updated on every ingest.
 | Page | Summary | Competition | Updated |
 |------|---------|-------------|---------|
 | [ARC-AGI Benchmarking Harness](kaggle/arc-agi-benchmarking.md) | Async multi-provider LLM test harness for ARC-AGI-1 and ARC-AGI-2; provider adapter pattern + cost tracking | ARC Prize | 2026-04-17 |
+| [ARC Prize 2025](kaggle/arc-prize-2025.md) | $1M competition; Cameron ran LLM inference loops via harness; grand prize unclaimed | ARC Prize 2025 | 2026-04-17 |
+| [Deep Past: Akkadian Translation](kaggle/deep-past-akkadian-translation.md) | ByT5 + MBR pipeline; score 34.7; found + documented data leakage → first place | Deep Past ($50k) | 2026-04-17 |
+| [Motion-S: Text-to-Sign](kaggle/motion-s-text-to-sign.md) | Rank 25; TF-IDF + kNN retrieval; 2% below #1; competition still active | Motion-S (Kudos) | 2026-04-17 |
+| [Stanford RNA 3D Folding](kaggle/stanford-rna-3d-folding.md) | Pseudo-labeling + multi-GPU embeddings; studied top-1 solution; bioinformatics generalist entry | Stanford RNA ($75k) | 2026-04-17 |
+| [UrbanFloodBench](kaggle/urban-flood-modelling.md) | Rank 117; geospatial flood prediction; exploratory entry | Urban Flood ($7k) | 2026-04-17 |
+| [Hull Tactical Market Prediction](kaggle/hull-tactical-market-prediction.md) | ACTIVE ($100k, deadline 2026-06-16); quant finance; connects to AutoTrader work | Hull Tactical | 2026-04-17 |
 
 ## Trading
 

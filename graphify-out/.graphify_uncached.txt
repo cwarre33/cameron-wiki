@@ -1,9 +1,0 @@
-wiki/log.md
-wiki/index.md
-wiki/kaggle/arc-agi-benchmarking.md
-wiki/architectures/agentic-trading-system.md
-wiki/architectures/provider-adapter-pattern.md
-wiki/decisions/arc-agi-adapters-vs-litellm.md
-wiki/decisions/wiki-retention-policy.md
-wiki/benchmarks/arc-agi.md
-wiki/techniques/llm-review-pass-before-rotation.md

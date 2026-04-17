@@ -50,6 +50,29 @@ Contradictions: None.
 
 ---
 
+## [2026-04-17] ingest | Cameron's Kaggle Profile (API export)
+
+Source: raw/kaggle/cameron-kaggle-profile.md (Kaggle API v1, Bearer token)
+Pages created:
+  - wiki/kaggle/deep-past-akkadian-translation.md
+  - wiki/kaggle/motion-s-text-to-sign.md
+  - wiki/kaggle/stanford-rna-3d-folding.md
+  - wiki/kaggle/urban-flood-modelling.md
+  - wiki/kaggle/hull-tactical-market-prediction.md
+  - wiki/kaggle/arc-prize-2025.md
+  - wiki/techniques/mbr-decoding.md
+  - wiki/models/byt5.md
+Pages updated: wiki/index.md, wiki/overview.md
+Contradictions: None.
+Notes:
+  - 14 competitions entered, 47 notebooks. Confirmed ranks: Motion-S rank 25 (top 2%), Urban Flood rank 117.
+  - Deep Past: ByT5+MBR legitimate score 34.7; separately found+documented data leakage → first place.
+  - Hull Tactical ($100k) still active as of 2026-04-17.
+  - Stanford RNA, AIMO, March Mania, Heart Disease, CSIRO, Jaguar Re-ID, MABe — entered but not yet fully documented.
+  - Individual notebook content not available via API (SPA-rendered); stubs based on notebook titles + leaderboard data.
+
+---
+
 ## [2026-04-17] ingest | ARC-AGI Benchmarking Harness
 
 Source: raw/repos/arc-agi-benchmarking-readme.md

@@ -37,9 +37,9 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 4
-- Wiki pages: 19
-- Last ingest: 2026-04-17 (ARC-AGI Benchmarking Harness)
+- Sources ingested: 5
+- Wiki pages: 29
+- Last ingest: 2026-04-17 (Cameron's Kaggle profile — 14 competitions, 47 notebooks)
 - Last lint: never
 
 ## Strongest areas (so far)
@@ -48,9 +48,11 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 - **Knowledge management methodology** — LLM Wiki pattern, RAG comparison, Cameron-specific setup
 - **LLM evaluation infrastructure** — ARC-AGI harness with async concurrency, provider adapter pattern, cost tracking
 - **Algorithmic trading** — AutoTrader RSI+LLM strategy, Alpaca integration, agentic feedback loop
+- **Kaggle competition work** — 7 competitions documented: Deep Past (ByT5+MBR+leakage), Motion-S (rank 25), Stanford RNA, Urban Flood, Hull Tactical (active), ARC Prize 2025
 
 ## Known gaps
 
 - FLS production systems (CRR, SellSmart, transcript pipeline) — deferred, will be ingested when docs are properly gathered
 - Labs, datasets, people — mostly empty; will populate through future ingests
-- ARC-AGI actual scores — harness is documented, but benchmark results not yet recorded
+- ARC Prize 2025 / Hull Tactical final results — active or recently closed, outcomes TBD
+- March Mania, AIMO, Heart Disease, CSIRO Biomass — entered but not yet documented
