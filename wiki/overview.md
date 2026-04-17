@@ -37,10 +37,10 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 4
-- Wiki pages: 19
-- Last ingest: 2026-04-17 (ARC-AGI Benchmarking Harness)
-- Last lint: never
+- Sources ingested: 5
+- Wiki pages: 27
+- Last maintenance: 2026-04-17 21:29 UTC
+
 
 ## Strongest areas (so far)
 
