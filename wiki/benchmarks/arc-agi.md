@@ -30,7 +30,7 @@ Most LLM benchmarks (MMLU, HumanEval) are vulnerable to data contamination — m
 | Version | Notes |
 |---------|-------|
 | ARC-AGI-1 | Original 2019 corpus; frontier models now score ~75–85% |
-| ARC-AGI-2 | Harder variant (2024/2025); current frontier models score much lower |
+| ARC-AGI-2 | Harder variant (2024/2025); current frontier models score much lower. Core benchmark for [[wiki/kaggle/arc-prize-2025.md]]. |
 
 Same task format for both — swap `--data_dir` in Cameron's harness.
 

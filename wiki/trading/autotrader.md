@@ -94,3 +94,9 @@ This creates a feedback record for future analysis or LLM-driven strategy review
 ## Alpaca integration
 
 See [[wiki/integrations/alpaca-api.md]] for API patterns, auth, and paper vs. live account handling.
+
+## Related work
+
+- [[wiki/trading/rsi-llm-signal-strategy.md]] — the dual-signal logic
+- [[wiki/kaggle/hull-tactical-market-prediction.md]] — Cameron's active Kaggle entry in quant finance ($100k prize)
+- [[wiki/integrations/alpaca-api.md]] — broker implementation detail

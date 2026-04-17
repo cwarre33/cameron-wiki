@@ -9,6 +9,7 @@ on:
     paths:
       - 'wiki/**'
       - 'raw/**'
+      - '.github/scripts/**'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
 
 jobs:
@@ -28,6 +29,16 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install graphifyy networkx graspologic
+
+      - name: Set up graphify python path
+        run: |
+          mkdir -p graphify-out
+          echo "$(which python)" > graphify-out/.graphify_python
+
       - name: Run wiki maintenance script
         run: python .github/scripts/maintain.py
 
@@ -35,10 +46,10 @@ jobs:
         run: |
           git config user.name "wiki-bot"
           git config user.email "wiki-bot@users.noreply.github.com"
-          git add wiki/overview.md wiki/log.md
+          git add wiki/overview.md wiki/log.md wiki/index.md graphify-out/ .graph/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore(wiki): daily maintenance — stats update [skip ci]"
+            git commit -m "chore(wiki): maintenance — stats, index, and graph update [skip ci]"
             git push
           fi

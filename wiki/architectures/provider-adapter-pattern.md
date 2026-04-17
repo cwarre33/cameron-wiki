@@ -46,7 +46,7 @@ Model selection is config-driven via `models.yml` — the runner instantiates th
 - **Rate limiting and retry logic live in the runner**, not the adapters — clean separation of concerns
 - **Pricing stays with the model config**, not the adapter — cost tracking doesn't couple to provider logic
 
-## Tradeoffs vs. unified SDKs (LiteLLM)
+## Tradeoffs vs. unified SDKs ([[wiki/tools/litellm.md|LiteLLM]])
 
 See [[wiki/decisions/arc-agi-adapters-vs-litellm.md]] for the full ADR. Short version: custom adapters give full control at the cost of more boilerplate; unified SDKs reduce boilerplate at the cost of abstraction leakage.
 

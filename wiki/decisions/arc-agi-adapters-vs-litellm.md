@@ -18,7 +18,7 @@ tags: [adr, arc-agi, litellm, multi-provider, abstraction, strategy-pattern]
 The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches:
 
 1. **Custom adapter per provider** — implement `ProviderAdapter` interface for each
-2. **LiteLLM** — unified SDK that wraps 100+ providers behind one interface
+2. **[[wiki/tools/litellm.md|LiteLLM]]** — unified SDK that wraps 100+ providers behind one interface
 
 ## Decision
 

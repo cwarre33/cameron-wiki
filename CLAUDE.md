@@ -140,7 +140,7 @@ When Cameron says "portfolio extract [page]":
 - **NEVER batch-write pages Cameron hasn't seen the structure of**
 - If uncertain about a claim, mark it speculative with ⚠️
 - If a source contradicts an existing page, flag it explicitly
-- `wiki/index.md` must be updated on every ingest — no exceptions
+- `wiki/index.md` is automatically regenerated — do not edit manually
 - `wiki/log.md` is append-only — never edit or delete past entries
 
 ## MCP tools available
@@ -200,4 +200,6 @@ This vault is Obsidian-compatible out of the box. `[[wikilinks]]` render nativel
 TABLE status, visibility, updated FROM "wiki/decisions" SORT updated DESC
 TABLE status FROM "wiki/production-systems" WHERE status = "active"
 LIST FROM "wiki" WHERE type = "open-question"
+```
+= "open-question"
 ```

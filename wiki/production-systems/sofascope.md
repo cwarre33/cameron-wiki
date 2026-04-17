@@ -20,7 +20,7 @@ Live pilot at Furnitureland South (FLS). Dual-modality search over a **200,000-p
 - **Frontend:** Next.js + Tailwind CSS
 - **Text search:** Python `DirectMetadataSearcher` — custom field-weighted scoring, LRU cache
 - **Image search:** CLIP (`clip-vit-large-patch14`, 768-dim) + FAISS (`IndexFlatIP`) — persistent Python service
-- **Routing:** `RealSearchEngine` TypeScript class — auto-routes text vs. image queries with fallback
+- **Routing:** `RealSearchEngine` TypeScript class — auto-routes text vs. image queries with fallback. See [[wiki/techniques/hybrid-search-routing.md]].
 
 ## Performance (production, GPU-accelerated)
 

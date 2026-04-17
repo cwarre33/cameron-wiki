@@ -72,7 +72,7 @@ Accepting Base64-encoded images eliminates file I/O overhead. The service receiv
 
 - **200k products at 768 dims:** ~600MB index in memory — viable with 8GB+ RAM
 - **Exact search:** `IndexFlatIP` does exhaustive exact search. For catalogs >1M, consider `IndexIVFFlat` (approximate, faster) or `IndexHNSW` (graph-based ANN)
-- **GPU acceleration:** 3–5× CLIP encoding speedup with CUDA; FAISS also has GPU support (`faiss-gpu`)
+- **GPU acceleration:** 3–5× CLIP encoding speedup with CUDA; [[wiki/tools/faiss.md|FAISS]] also has GPU support (`faiss-gpu`)
 - **Model lifecycle:** See [[wiki/techniques/persistent-model-loading.md]] — the single most impactful optimization
 
 ## Implemented in

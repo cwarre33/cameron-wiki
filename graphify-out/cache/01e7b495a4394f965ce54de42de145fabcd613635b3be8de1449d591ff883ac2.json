@@ -1,1 +1,1 @@
-{"nodes": [{"id": "model_clip", "label": "CLIP Model", "file_type": "document", "source_file": "wiki/models/clip.md", "source_location": null, "source_url": null, "captured_at": null, "author": "Cameron Warren", "contributor": null}], "edges": [], "hyperedges": []}
+{"nodes": [{"id": "model_clip", "label": "CLIP \u2014 Contrastive Language-Image Pretraining", "file_type": "document", "source_file": "wiki/models/clip.md"}], "edges": [], "hyperedges": []}

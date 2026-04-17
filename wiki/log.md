@@ -127,3 +127,270 @@ Notes:
   this wiki's own speculative page lifecycle — formalized as wiki-retention-policy ADR.
   (4) LLM review pass before rotation is the missing half of AutoTrader's self-improvement loop —
   documented as reusable technique.
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 21:29 UTC
+Wiki pages: 27 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 2
+  methodology: 2
+  models: 1
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 4
+  tools: 1
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+  [2026-04-17] techniques/llm-review-pass-before-rotation.md
+
+Orphan pages (3 — no inbound wikilinks):
+  kaggle/deep-past-akkadian-translation.md
+  techniques/hybrid-search-routing.md
+  tools/faiss.md
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:12 UTC
+Wiki pages: 34 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 1
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+  [2026-04-17] techniques/mbr-decoding.md
+
+Orphan pages (7 — no inbound wikilinks):
+  kaggle/arc-prize-2025.md
+  kaggle/hull-tactical-market-prediction.md
+  kaggle/motion-s-text-to-sign.md
+  kaggle/stanford-rna-3d-folding.md
+  kaggle/urban-flood-modelling.md
+  techniques/hybrid-search-routing.md
+  tools/faiss.md
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:16 UTC
+Wiki pages: 34 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 1
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+  [2026-04-17] techniques/mbr-decoding.md
+
+Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:18 UTC
+Wiki pages: 35 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:20 UTC
+Wiki pages: 35 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:28 UTC
+Wiki pages: 35 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:29 UTC
+Wiki pages: 35 | Raw sources: 5
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:30 UTC
+Wiki pages: 35 | Raw sources: 5
+Graph Fragmentation: 0.403
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages: none
