@@ -100,7 +100,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "cameron-wiki readme",
       "id": "readme_cameron_wiki"
     },
@@ -719,7 +719,7 @@
       "label": "Wiki Index \u2014 Master Catalog",
       "file_type": "document",
       "source_file": "wiki/index.md",
-      "community": 6,
+      "community": 7,
       "norm_label": "wiki index \u2014 master catalog",
       "id": "wiki_index"
     },
@@ -727,7 +727,7 @@
       "label": "Activity Log \u2014 Append-Only Ingest History",
       "file_type": "document",
       "source_file": "wiki/log.md",
-      "community": 6,
+      "community": 7,
       "norm_label": "activity log \u2014 append-only ingest history",
       "id": "wiki_log"
     },
@@ -743,7 +743,7 @@
       "label": "SofaScope \u2014 AI-Powered Furniture Visual Search",
       "file_type": "document",
       "source_file": "wiki/production-systems/sofascope.md",
-      "community": 7,
+      "community": 6,
       "norm_label": "sofascope \u2014 ai-powered furniture visual search",
       "id": "prod_sofascope"
     },
@@ -767,7 +767,7 @@
       "label": "CLIP + FAISS Visual Search Pipeline",
       "file_type": "document",
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
-      "community": 7,
+      "community": 6,
       "norm_label": "clip + faiss visual search pipeline",
       "id": "tech_clip_faiss"
     },
@@ -799,7 +799,7 @@
       "label": "Persistent Model Loading Pattern",
       "file_type": "document",
       "source_file": "wiki/techniques/persistent-model-loading.md",
-      "community": 7,
+      "community": 6,
       "norm_label": "persistent model loading pattern",
       "id": "tech_persistent_model"
     },

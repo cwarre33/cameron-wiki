@@ -394,3 +394,39 @@ Recently updated (last 7 days):
   [2026-04-17] techniques/persistent-model-loading.md
 
 Orphan pages: none
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:33 UTC
+Wiki pages: 35 | Raw sources: 5
+Graph Fragmentation: 0.403
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 6
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages (3 — no inbound wikilinks):
+  kaggle/motion-s-text-to-sign.md
+  kaggle/stanford-rna-3d-folding.md
+  kaggle/urban-flood-modelling.md

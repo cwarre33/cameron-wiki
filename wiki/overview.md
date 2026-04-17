@@ -38,9 +38,9 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 ## Current knowledge state
 
 - Sources ingested: 5
-- Wiki pages: 29
-- Last ingest: 2026-04-17 (Cameron's Kaggle profile — 14 competitions, 47 notebooks)
-- Last lint: never
+- Wiki pages: 35
+- Last maintenance: 2026-04-17 23:33 UTC
+
 
 ## Strongest areas (so far)
 
