@@ -1,0 +1,44 @@
+name: Wiki Maintenance
+
+on:
+  schedule:
+    # Runs daily at 6:00 AM UTC (2 AM EST)
+    - cron: '0 6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'raw/**'
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  maintain:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run wiki maintenance script
+        run: python .github/scripts/maintain.py
+
+      - name: Commit and push if changes exist
+        run: |
+          git config user.name "wiki-bot"
+          git config user.email "wiki-bot@users.noreply.github.com"
+          git add wiki/overview.md wiki/log.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(wiki): daily maintenance — stats update [skip ci]"
+            git push
+          fi
