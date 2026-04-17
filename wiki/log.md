@@ -430,3 +430,60 @@ Orphan pages (3 — no inbound wikilinks):
   kaggle/motion-s-text-to-sign.md
   kaggle/stanford-rna-3d-folding.md
   kaggle/urban-flood-modelling.md
+
+---
+## [2026-04-17] maintenance | Automated daily check
+
+Run: 2026-04-17 23:44 UTC
+Wiki pages: 36 | Raw sources: 5
+
+Broken Links (🔴 CRITICAL):
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  overview.md: [[wiki/index.md]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 7
+  integrations: 1
+  interview-prep: 1
+  kaggle: 7
+  methodology: 2
+  models: 2
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 2
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+  [2026-04-17] tools/litellm.md
+  [2026-04-17] tools/faiss.md
+  [2026-04-17] techniques/persistent-model-loading.md
+
+Orphan pages (4):
+  decisions/consensus-based-memory-distillation.md
+  kaggle/motion-s-text-to-sign.md
+  kaggle/stanford-rna-3d-folding.md
+  kaggle/urban-flood-modelling.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'

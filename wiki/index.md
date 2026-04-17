@@ -101,11 +101,12 @@ Master catalog of all wiki pages. Updated automatically.
 | [RSI + LLM Sentiment — Dual-Signal Trading Strategy](trading/rsi-llm-signal-strategy.md) | Hybrid strategy combining a backward-looking momentum indicator (RSI) with a forward-looking LLM news sentiment signal. Both must agree before a tr... | 2026-04-17 |
 
 ## Decisions (ADRs)
-*Why Cameron chose approach X over Y. Interview-ready architectural reasoning.*
+*Why Cameron chose approach X over Y.*
 
 | Page | Summary | Updated |
 |------|---------|---------|
 | ["ADR: 90-Day Rotating Retention for Trading Decisions Log"](decisions/autotrader-decisions-log-retention.md) | Rotate `logs/decisions.jsonl` on a 90-day window. Keep `logs/outcomes.jsonl` and `logs/daily_review.jsonl` indefinitely. | 2026-04-17 |
+| ["ADR: Consensus-Based Memory Distillation"](decisions/consensus-based-memory-distillation.md) | Current agentic systems (e.g., wiki/trading/autotrader.md|AutoTrader) rely on a single-pass wiki/techniques/llm-review-pass-before-rotation.md|LLM ... | 2026-04-17 |
 | ["ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI Harness"](decisions/arc-agi-adapters-vs-litellm.md) | The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches: | 2026-04-17 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
