@@ -92,15 +92,15 @@ Nodes (5): Deep Past: Akkadian Translation, Motion-S: Text-to-Sign Motion Genera
 
 ### Community 4 - "Community 4"
 Cohesion: 0.5
-Nodes (4): Provider Adapter Pattern (Multi-LLM), ADR: Custom Provider Adapters vs. LiteLLM, Rationale for Custom Adapters, LiteLLM
+Nodes (4): ADR: 90-Day Rotating Retention for Trading Decisions Log, ADR: Wiki Retention Policy, Hull Tactical — Market Prediction, AutoTrader — Autonomous Paper Trading Bot
 
 ### Community 5 - "Community 5"
 Cohesion: 0.5
-Nodes (4): ADR: 90-Day Rotating Retention for Trading Decisions Log, ADR: Wiki Retention Policy, Hull Tactical — Market Prediction, AutoTrader — Autonomous Paper Trading Bot
+Nodes (4): Provider Adapter Pattern (Multi-LLM), ADR: Custom Provider Adapters vs. LiteLLM, Rationale for Custom Adapters, LiteLLM
 
 ### Community 6 - "Community 6"
 Cohesion: 0.67
-Nodes (3): cameron-wiki README, Wiki Index — Master Catalog, Activity Log — Append-Only Ingest History
+Nodes (3): Consensus-Based Memory Distillation, LLM Review Pass, MBR Decoding
 
 ### Community 7 - "Community 7"
 Cohesion: 1.0
@@ -108,7 +108,7 @@ Nodes (3): SofaScope — AI-Powered Furniture Visual Search, CLIP + FAISS Visual
 
 ### Community 8 - "Community 8"
 Cohesion: 0.67
-Nodes (3): Consensus-Based Memory Distillation, LLM Review Pass, MBR Decoding
+Nodes (3): cameron-wiki README, Wiki Index — Master Catalog, Activity Log — Append-Only Ingest History
 
 ### Community 9 - "Community 9"
 Cohesion: 1.0
@@ -243,11 +243,11 @@ Nodes (1): ARC-AGI Benchmarking Harness
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Agentic Trading System Architecture` connect `Community 0` to `Community 2`, `Community 5`?**
+- **Why does `Agentic Trading System Architecture` connect `Community 0` to `Community 2`, `Community 4`?**
   _High betweenness centrality (0.080) - this node is a cross-community bridge._
 - **Why does `ARC-AGI Benchmarking Harness` connect `Community 2` to `Community 0`?**
   _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **Why does `AutoTrader — Autonomous Paper Trading Bot` connect `Community 5` to `Community 0`?**
+- **Why does `AutoTrader — Autonomous Paper Trading Bot` connect `Community 4` to `Community 0`?**
   _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `FAISS Vector Search Tool`, `Config-Driven Model Selection (models.yml)`, `Tenacity Exponential Backoff` to the rest of the system?**
   _42 weakly-connected nodes found - possible documentation gaps or missing edges._
