@@ -149,3 +149,55 @@ When Cameron says "portfolio extract [page]":
 - **brave-search** — search for papers, repos, blog posts (requires BRAVE_API_KEY)
 - **memory** — track entities and relationships in knowledge graph across sessions
 - **github** — fetch repo contents, READMEs, issues
+
+## graphify skill
+
+`/graphify` is available as a Claude Code skill (github.com/safishamsi/graphify).
+
+**What it does:** Reads files in this repo, builds a persistent knowledge graph, returns structural relationships. 71.5× fewer tokens per query vs. reading raw files directly. Multimodal — handles markdown, PDFs, code, images, screenshots, audio/video (Whisper transcription). Honest about found vs. guessed relationships.
+
+**Graph output lives in:** `.graph/` — committed to git, synced across machines. Other machines pull and immediately have the graph; no need to re-run from scratch.
+
+**When to use graphify vs. wiki:**
+
+| Use graphify when... | Use wiki when... |
+|---------------------|-----------------|
+| Exploring what's in `raw/` | Answering a specific question |
+| Finding structural patterns across sources | Looking up a compiled synthesis |
+| Discovering unexpected connections in source material | Citing a decision or technique |
+| Session starts cold and wiki/index.md hasn't been read yet | Writing new wiki pages |
+
+**Workflow: graphify → wiki:**
+1. Run `/graphify` on `raw/` to surface structure and connections
+2. Use graph output to identify which wiki pages need creating/updating
+3. Write wiki pages with richer cross-references informed by the graph
+4. The graph and wiki together are more powerful than either alone
+
+**Installation (per machine):**
+```bash
+# In the cameron-wiki directory:
+npx add-skill safishamsi/graphify
+```
+Then use `/graphify` in any Claude Code session opened from this directory.
+
+## Obsidian integration
+
+This vault is Obsidian-compatible out of the box. `[[wikilinks]]` render natively; graph view visualizes the full knowledge topology.
+
+**Per-machine setup:**
+1. Clone repo: `git clone https://github.com/cwarre33/cameron-wiki`
+2. Open folder as Obsidian vault
+3. Install community plugins: **Obsidian Git** (auto-sync), **Dataview** (frontmatter queries)
+4. Obsidian Git: set auto-pull on startup, auto-commit+push interval
+
+**Recommended Obsidian settings:**
+- Attachment folder: `raw/assets/` (for Web Clipper downloads)
+- New file location: `wiki/` (so new notes land in the right layer)
+- Template folder: none (wiki pages are Claude-generated, not templated)
+
+**Dataview query examples:**
+```dataview
+TABLE status, visibility, updated FROM "wiki/decisions" SORT updated DESC
+TABLE status FROM "wiki/production-systems" WHERE status = "active"
+LIST FROM "wiki" WHERE type = "open-question"
+```

@@ -15,6 +15,15 @@ raw/fls-work/
 .env.local
 *.env
 
+# Obsidian — commit shared settings, ignore machine-specific state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/obsidian-git/data.json
+
+# graphify — commit the graph (source of truth across machines), ignore build cache
+.graph/cache/
+.graph/*.tmp
+
 # OS
 .DS_Store
 Thumbs.db
