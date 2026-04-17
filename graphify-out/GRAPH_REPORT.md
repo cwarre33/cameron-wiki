@@ -99,12 +99,12 @@ Cohesion: 0.5
 Nodes (4): ADR: 90-Day Rotating Retention for Trading Decisions Log, ADR: Wiki Retention Policy, Hull Tactical — Market Prediction, AutoTrader — Autonomous Paper Trading Bot
 
 ### Community 6 - "Community 6"
-Cohesion: 0.67
-Nodes (3): cameron-wiki README, Wiki Index — Master Catalog, Activity Log — Append-Only Ingest History
-
-### Community 7 - "Community 7"
 Cohesion: 1.0
 Nodes (3): SofaScope — AI-Powered Furniture Visual Search, CLIP + FAISS Visual Search Pipeline, Persistent Model Loading Pattern
+
+### Community 7 - "Community 7"
+Cohesion: 0.67
+Nodes (3): cameron-wiki README, Wiki Index — Master Catalog, Activity Log — Append-Only Ingest History
 
 ### Community 8 - "Community 8"
 Cohesion: 0.67
