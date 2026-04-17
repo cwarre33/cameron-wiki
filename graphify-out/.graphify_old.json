@@ -113,7 +113,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 9,
+      "community": 8,
       "norm_label": "faiss vector search tool",
       "id": "tool_faiss"
     },
@@ -204,7 +204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 9,
       "norm_label": "abstract reasoning (anti-memorization benchmark)",
       "id": "concept_abstract_reasoning"
     },
@@ -217,7 +217,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 10,
       "norm_label": "wiki/kaggle/arc-agi-benchmarking.md",
       "id": "wiki_kaggle_arc_agi_benchmarking"
     },
@@ -230,7 +230,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 12,
+      "community": 11,
       "norm_label": "llm wiki vs. rag comparison",
       "id": "comparison_llm_wiki_vs_rag"
     },
@@ -243,7 +243,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 13,
+      "community": 12,
       "norm_label": "the llm wiki pattern",
       "id": "method_llm_wiki_pattern"
     },
@@ -256,7 +256,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 14,
+      "community": 13,
       "norm_label": "cameron's wiki setup",
       "id": "method_cameron_wiki_setup"
     },
@@ -386,7 +386,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 15,
+      "community": 14,
       "norm_label": "clip model",
       "id": "model_clip"
     },
@@ -464,7 +464,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 16,
+      "community": 15,
       "norm_label": "adr: metadata scoring vs. embeddings for text search",
       "id": "decision_sofascope_metadata_vs_embeddings"
     },
@@ -477,7 +477,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 17,
+      "community": 16,
       "norm_label": "adr: persistent service stdin/stdout vs. http",
       "id": "decision_sofascope_stdin_stdout"
     },
@@ -542,7 +542,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "system design \u2014 visual search at scale",
       "id": "interview_visual_search_system_design"
     },
@@ -555,7 +555,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 19,
+      "community": 18,
       "norm_label": "andrej karpathy",
       "id": "person_andrej_karpathy"
     },
@@ -581,7 +581,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 20,
+      "community": 19,
       "norm_label": "hybrid search routing (text + image)",
       "id": "technique_hybrid_search_routing"
     },
@@ -659,7 +659,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 21,
+      "community": 20,
       "norm_label": "persistent model loading pattern",
       "id": "technique_persistent_model_loading"
     },
@@ -698,7 +698,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 21,
       "norm_label": "sofascope readme (raw)",
       "id": "raw_sofascope_readme"
     },
@@ -711,7 +711,7 @@
       "captured_at": null,
       "author": "Andrej Karpathy",
       "contributor": null,
-      "community": 23,
+      "community": 22,
       "norm_label": "karpathy llm wiki gist (raw)",
       "id": "raw_karpathy_llm_wiki"
     },
@@ -735,7 +735,7 @@
       "label": "Cameron's Second Brain \u2014 Overview",
       "file_type": "document",
       "source_file": "wiki/overview.md",
-      "community": 24,
+      "community": 23,
       "norm_label": "cameron's second brain \u2014 overview",
       "id": "wiki_overview"
     },
@@ -751,7 +751,7 @@
       "label": "Agentic Trading System Architecture",
       "file_type": "document",
       "source_file": "wiki/architectures/agentic-trading-system.md",
-      "community": 25,
+      "community": 24,
       "norm_label": "agentic trading system architecture",
       "id": "arch_agentic_trading"
     },
@@ -759,7 +759,7 @@
       "label": "Provider Adapter Pattern (Multi-LLM)",
       "file_type": "document",
       "source_file": "wiki/architectures/provider-adapter-pattern.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "provider adapter pattern (multi-llm)",
       "id": "arch_provider_adapter"
     },
@@ -775,7 +775,7 @@
       "label": "Hybrid Search Routing (Text + Image)",
       "file_type": "document",
       "source_file": "wiki/techniques/hybrid-search-routing.md",
-      "community": 26,
+      "community": 25,
       "norm_label": "hybrid search routing (text + image)",
       "id": "tech_hybrid_routing"
     },
@@ -815,7 +815,7 @@
       "label": "ARC-AGI Benchmark",
       "file_type": "document",
       "source_file": "wiki/benchmarks/arc-agi.md",
-      "community": 27,
+      "community": 26,
       "norm_label": "arc-agi benchmark",
       "id": "benchmark_arc_agi"
     },
@@ -823,7 +823,7 @@
       "label": "LiteLLM",
       "file_type": "document",
       "source_file": "wiki/tools/litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "litellm",
       "id": "tool_litellm"
     },
@@ -847,7 +847,7 @@
       "label": "ARC Prize 2025",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-prize-2025.md",
-      "community": 28,
+      "community": 27,
       "norm_label": "arc prize 2025",
       "id": "kaggle_arc_prize_2025"
     },
@@ -855,7 +855,7 @@
       "label": "ARC-AGI Benchmarking Harness",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
-      "community": 29,
+      "community": 28,
       "norm_label": "arc-agi benchmarking harness",
       "id": "kaggle_arc_agi_harness"
     },
@@ -863,7 +863,7 @@
       "label": "Hull Tactical \u2014 Market Prediction",
       "file_type": "document",
       "source_file": "wiki/kaggle/hull-tactical-market-prediction.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "hull tactical \u2014 market prediction",
       "id": "kaggle_hull_tactical"
     },
@@ -871,7 +871,7 @@
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
       "file_type": "document",
       "source_file": "wiki/trading/autotrader.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "autotrader \u2014 autonomous paper trading bot",
       "id": "trading_autotrader"
     },
@@ -879,7 +879,7 @@
       "label": "ADR: 90-Day Rotating Retention for Trading Decisions Log",
       "file_type": "document",
       "source_file": "wiki/decisions/autotrader-decisions-log-retention.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "adr: 90-day rotating retention for trading decisions log",
       "id": "decision_autotrader_retention"
     },
@@ -887,7 +887,7 @@
       "label": "ADR: Custom Provider Adapters vs. LiteLLM",
       "file_type": "document",
       "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "adr: custom provider adapters vs. litellm",
       "id": "decision_arc_agi_adapters"
     },
@@ -895,7 +895,7 @@
       "label": "ADR: Wiki Retention Policy",
       "file_type": "document",
       "source_file": "wiki/decisions/wiki-retention-policy.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "adr: wiki retention policy",
       "id": "decision_wiki_retention"
     },
@@ -903,33 +903,9 @@
       "label": "Rationale for Custom Adapters",
       "file_type": "document",
       "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "rationale for custom adapters",
       "id": "rationale_arc_agi_adapters"
-    },
-    {
-      "label": "Consensus-Based Memory Distillation",
-      "file_type": "document",
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "id": "consensus_based_memory_distillation",
-      "community": 8,
-      "norm_label": "consensus-based memory distillation"
-    },
-    {
-      "label": "MBR Decoding",
-      "file_type": "document",
-      "source_file": "wiki/techniques/mbr-decoding.md",
-      "id": "mbr_decoding",
-      "community": 8,
-      "norm_label": "mbr decoding"
-    },
-    {
-      "label": "LLM Review Pass",
-      "file_type": "document",
-      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
-      "id": "llm_review_pass",
-      "community": 8,
-      "norm_label": "llm review pass"
     }
   ],
   "links": [
@@ -1612,24 +1588,6 @@
       "_tgt": "rationale_arc_agi_adapters",
       "source": "decision_arc_agi_adapters",
       "target": "rationale_arc_agi_adapters"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "_src": "consensus_based_memory_distillation",
-      "_tgt": "mbr_decoding",
-      "source": "consensus_based_memory_distillation",
-      "target": "mbr_decoding"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "_src": "consensus_based_memory_distillation",
-      "_tgt": "llm_review_pass",
-      "source": "consensus_based_memory_distillation",
-      "target": "llm_review_pass"
     }
   ],
   "hyperedges": [

@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "consensus_based_memory_distillation",
+      "label": "Consensus-Based Memory Distillation",
+      "file_type": "document",
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md"
+    },
+    {
+      "id": "mbr_decoding",
+      "label": "MBR Decoding",
+      "file_type": "document",
+      "source_file": "wiki/techniques/mbr-decoding.md"
+    },
+    {
+      "id": "llm_review_pass",
+      "label": "LLM Review Pass",
+      "file_type": "document",
+      "source_file": "wiki/techniques/llm-review-pass-before-rotation.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "consensus_based_memory_distillation",
+      "target": "mbr_decoding",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "consensus_based_memory_distillation",
+      "target": "llm_review_pass",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

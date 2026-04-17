@@ -78,5 +78,3 @@ Every wiki page has a `visibility` field:
 - `public` — safe for GitHub, portfolio, resume
 - `private` — personal notes, not sensitive
 - `fls-internal` — contains FLS proprietary details; sanitize before any publication
-
-Run `portfolio extract [page]` to get a sanitized, publishable version of any page.

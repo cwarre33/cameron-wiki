@@ -1,10 +1,10 @@
 # Graph Report - .  (2026-04-17)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- Corpus is ~23,507 words - fits in a single context window. You may not need a graph.
 
 ## Summary
-- 72 nodes · 59 edges · 29 communities detected
+- 75 nodes · 61 edges · 30 communities detected
 - Extraction: 80% EXTRACTED · 20% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
@@ -38,6 +38,7 @@
 - [[_COMMUNITY_Community 26|Community 26]]
 - [[_COMMUNITY_Community 27|Community 27]]
 - [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Agentic Trading System Architecture` - 13 edges
@@ -91,11 +92,11 @@ Nodes (5): Deep Past: Akkadian Translation, Motion-S: Text-to-Sign Motion Genera
 
 ### Community 4 - "Community 4"
 Cohesion: 0.5
-Nodes (4): ADR: 90-Day Rotating Retention for Trading Decisions Log, ADR: Wiki Retention Policy, Hull Tactical — Market Prediction, AutoTrader — Autonomous Paper Trading Bot
+Nodes (4): Provider Adapter Pattern (Multi-LLM), ADR: Custom Provider Adapters vs. LiteLLM, Rationale for Custom Adapters, LiteLLM
 
 ### Community 5 - "Community 5"
 Cohesion: 0.5
-Nodes (4): Provider Adapter Pattern (Multi-LLM), ADR: Custom Provider Adapters vs. LiteLLM, Rationale for Custom Adapters, LiteLLM
+Nodes (4): ADR: 90-Day Rotating Retention for Trading Decisions Log, ADR: Wiki Retention Policy, Hull Tactical — Market Prediction, AutoTrader — Autonomous Paper Trading Bot
 
 ### Community 6 - "Community 6"
 Cohesion: 0.67
@@ -106,143 +107,147 @@ Cohesion: 1.0
 Nodes (3): SofaScope — AI-Powered Furniture Visual Search, CLIP + FAISS Visual Search Pipeline, Persistent Model Loading Pattern
 
 ### Community 8 - "Community 8"
-Cohesion: 1.0
-Nodes (1): FAISS Vector Search Tool
+Cohesion: 0.67
+Nodes (3): Consensus-Based Memory Distillation, LLM Review Pass, MBR Decoding
 
 ### Community 9 - "Community 9"
 Cohesion: 1.0
-Nodes (1): Abstract Reasoning (anti-memorization benchmark)
+Nodes (1): FAISS Vector Search Tool
 
 ### Community 10 - "Community 10"
 Cohesion: 1.0
-Nodes (1): wiki/kaggle/arc-agi-benchmarking.md
+Nodes (1): Abstract Reasoning (anti-memorization benchmark)
 
 ### Community 11 - "Community 11"
 Cohesion: 1.0
-Nodes (1): LLM Wiki vs. RAG Comparison
+Nodes (1): wiki/kaggle/arc-agi-benchmarking.md
 
 ### Community 12 - "Community 12"
 Cohesion: 1.0
-Nodes (1): The LLM Wiki Pattern
+Nodes (1): LLM Wiki vs. RAG Comparison
 
 ### Community 13 - "Community 13"
 Cohesion: 1.0
-Nodes (1): Cameron's Wiki Setup
+Nodes (1): The LLM Wiki Pattern
 
 ### Community 14 - "Community 14"
 Cohesion: 1.0
-Nodes (1): CLIP Model
+Nodes (1): Cameron's Wiki Setup
 
 ### Community 15 - "Community 15"
 Cohesion: 1.0
-Nodes (1): ADR: Metadata Scoring vs. Embeddings for Text Search
+Nodes (1): CLIP Model
 
 ### Community 16 - "Community 16"
 Cohesion: 1.0
-Nodes (1): ADR: Persistent Service stdin/stdout vs. HTTP
+Nodes (1): ADR: Metadata Scoring vs. Embeddings for Text Search
 
 ### Community 17 - "Community 17"
 Cohesion: 1.0
-Nodes (1): System Design — Visual Search at Scale
+Nodes (1): ADR: Persistent Service stdin/stdout vs. HTTP
 
 ### Community 18 - "Community 18"
 Cohesion: 1.0
-Nodes (1): Andrej Karpathy
+Nodes (1): System Design — Visual Search at Scale
 
 ### Community 19 - "Community 19"
 Cohesion: 1.0
-Nodes (1): Hybrid Search Routing (Text + Image)
+Nodes (1): Andrej Karpathy
 
 ### Community 20 - "Community 20"
 Cohesion: 1.0
-Nodes (1): Persistent Model Loading Pattern
+Nodes (1): Hybrid Search Routing (Text + Image)
 
 ### Community 21 - "Community 21"
 Cohesion: 1.0
-Nodes (1): SofaScope README (raw)
+Nodes (1): Persistent Model Loading Pattern
 
 ### Community 22 - "Community 22"
 Cohesion: 1.0
-Nodes (1): Karpathy LLM Wiki Gist (raw)
+Nodes (1): SofaScope README (raw)
 
 ### Community 23 - "Community 23"
 Cohesion: 1.0
-Nodes (1): Cameron's Second Brain — Overview
+Nodes (1): Karpathy LLM Wiki Gist (raw)
 
 ### Community 24 - "Community 24"
 Cohesion: 1.0
-Nodes (1): Agentic Trading System Architecture
+Nodes (1): Cameron's Second Brain — Overview
 
 ### Community 25 - "Community 25"
 Cohesion: 1.0
-Nodes (1): Hybrid Search Routing (Text + Image)
+Nodes (1): Agentic Trading System Architecture
 
 ### Community 26 - "Community 26"
 Cohesion: 1.0
-Nodes (1): ARC-AGI Benchmark
+Nodes (1): Hybrid Search Routing (Text + Image)
 
 ### Community 27 - "Community 27"
 Cohesion: 1.0
-Nodes (1): ARC Prize 2025
+Nodes (1): ARC-AGI Benchmark
 
 ### Community 28 - "Community 28"
+Cohesion: 1.0
+Nodes (1): ARC Prize 2025
+
+### Community 29 - "Community 29"
 Cohesion: 1.0
 Nodes (1): ARC-AGI Benchmarking Harness
 
 ## Knowledge Gaps
-- **40 isolated node(s):** `FAISS Vector Search Tool`, `Config-Driven Model Selection (models.yml)`, `Tenacity Exponential Backoff`, `Abstract Reasoning (anti-memorization benchmark)`, `wiki/kaggle/arc-agi-benchmarking.md` (+35 more)
+- **42 isolated node(s):** `FAISS Vector Search Tool`, `Config-Driven Model Selection (models.yml)`, `Tenacity Exponential Backoff`, `Abstract Reasoning (anti-memorization benchmark)`, `wiki/kaggle/arc-agi-benchmarking.md` (+37 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Community 8`** (1 nodes): `FAISS Vector Search Tool`
+- **Thin community `Community 9`** (1 nodes): `FAISS Vector Search Tool`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 9`** (1 nodes): `Abstract Reasoning (anti-memorization benchmark)`
+- **Thin community `Community 10`** (1 nodes): `Abstract Reasoning (anti-memorization benchmark)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 10`** (1 nodes): `wiki/kaggle/arc-agi-benchmarking.md`
+- **Thin community `Community 11`** (1 nodes): `wiki/kaggle/arc-agi-benchmarking.md`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 11`** (1 nodes): `LLM Wiki vs. RAG Comparison`
+- **Thin community `Community 12`** (1 nodes): `LLM Wiki vs. RAG Comparison`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 12`** (1 nodes): `The LLM Wiki Pattern`
+- **Thin community `Community 13`** (1 nodes): `The LLM Wiki Pattern`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 13`** (1 nodes): `Cameron's Wiki Setup`
+- **Thin community `Community 14`** (1 nodes): `Cameron's Wiki Setup`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 14`** (1 nodes): `CLIP Model`
+- **Thin community `Community 15`** (1 nodes): `CLIP Model`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 15`** (1 nodes): `ADR: Metadata Scoring vs. Embeddings for Text Search`
+- **Thin community `Community 16`** (1 nodes): `ADR: Metadata Scoring vs. Embeddings for Text Search`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 16`** (1 nodes): `ADR: Persistent Service stdin/stdout vs. HTTP`
+- **Thin community `Community 17`** (1 nodes): `ADR: Persistent Service stdin/stdout vs. HTTP`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 17`** (1 nodes): `System Design — Visual Search at Scale`
+- **Thin community `Community 18`** (1 nodes): `System Design — Visual Search at Scale`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 18`** (1 nodes): `Andrej Karpathy`
+- **Thin community `Community 19`** (1 nodes): `Andrej Karpathy`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 19`** (1 nodes): `Hybrid Search Routing (Text + Image)`
+- **Thin community `Community 20`** (1 nodes): `Hybrid Search Routing (Text + Image)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 20`** (1 nodes): `Persistent Model Loading Pattern`
+- **Thin community `Community 21`** (1 nodes): `Persistent Model Loading Pattern`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 21`** (1 nodes): `SofaScope README (raw)`
+- **Thin community `Community 22`** (1 nodes): `SofaScope README (raw)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 22`** (1 nodes): `Karpathy LLM Wiki Gist (raw)`
+- **Thin community `Community 23`** (1 nodes): `Karpathy LLM Wiki Gist (raw)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 23`** (1 nodes): `Cameron's Second Brain — Overview`
+- **Thin community `Community 24`** (1 nodes): `Cameron's Second Brain — Overview`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 24`** (1 nodes): `Agentic Trading System Architecture`
+- **Thin community `Community 25`** (1 nodes): `Agentic Trading System Architecture`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 25`** (1 nodes): `Hybrid Search Routing (Text + Image)`
+- **Thin community `Community 26`** (1 nodes): `Hybrid Search Routing (Text + Image)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 26`** (1 nodes): `ARC-AGI Benchmark`
+- **Thin community `Community 27`** (1 nodes): `ARC-AGI Benchmark`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 27`** (1 nodes): `ARC Prize 2025`
+- **Thin community `Community 28`** (1 nodes): `ARC Prize 2025`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Community 28`** (1 nodes): `ARC-AGI Benchmarking Harness`
+- **Thin community `Community 29`** (1 nodes): `ARC-AGI Benchmarking Harness`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Agentic Trading System Architecture` connect `Community 0` to `Community 2`, `Community 4`?**
-  _High betweenness centrality (0.087) - this node is a cross-community bridge._
+- **Why does `Agentic Trading System Architecture` connect `Community 0` to `Community 2`, `Community 5`?**
+  _High betweenness centrality (0.080) - this node is a cross-community bridge._
 - **Why does `ARC-AGI Benchmarking Harness` connect `Community 2` to `Community 0`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Why does `AutoTrader — Autonomous Paper Trading Bot` connect `Community 4` to `Community 0`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+- **Why does `AutoTrader — Autonomous Paper Trading Bot` connect `Community 5` to `Community 0`?**
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `FAISS Vector Search Tool`, `Config-Driven Model Selection (models.yml)`, `Tenacity Exponential Backoff` to the rest of the system?**
-  _40 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _42 weakly-connected nodes found - possible documentation gaps or missing edges._

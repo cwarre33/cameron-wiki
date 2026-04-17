@@ -119,19 +119,6 @@ When Cameron says "lint":
 
 Output a structured report with severity levels (🔴 critical / 🟡 moderate / 🔵 low).
 
-## Portfolio extraction workflow
-
-When Cameron says "portfolio extract [page]":
-
-1. Read the target wiki page
-2. Identify all `visibility: fls-internal` or `visibility: private` content
-3. Produce a sanitized version that:
-   - Replaces company-specific metrics with relative terms ("reduced latency by 97%") unless Cameron confirms they're public
-   - Frames the work as a portfolio item or resume bullet
-   - Preserves technical depth and decisions
-   - Flags anything that needs legal/HR review before publishing with ⚠️ REVIEW BEFORE PUBLISH
-4. Output as ready-to-use markdown (not saved — Cameron reviews first)
-
 ## Hard rules
 
 - **NEVER modify files in `raw/` after initial creation**
