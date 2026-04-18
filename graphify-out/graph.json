@@ -115,7 +115,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 13,
+      "community": 12,
       "norm_label": "faiss vector search tool",
       "id": "tool_faiss"
     },
@@ -128,7 +128,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "arc-agi benchmarking harness",
       "id": "kaggle_arc_agi_benchmarking"
     },
@@ -141,7 +141,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "async batch runner (asyncio fan-out)",
       "id": "concept_async_batch_runner"
     },
@@ -154,7 +154,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "config-driven model selection (models.yml)",
       "id": "concept_config_driven_model_selection"
     },
@@ -167,7 +167,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "cost tracking at model level",
       "id": "concept_cost_tracking"
     },
@@ -180,7 +180,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "tenacity exponential backoff",
       "id": "concept_tenacity_backoff"
     },
@@ -193,7 +193,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "per-provider rate limiting (config-driven)",
       "id": "concept_per_provider_rate_limiting"
     },
@@ -206,7 +206,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 14,
+      "community": 13,
       "norm_label": "abstract reasoning (anti-memorization benchmark)",
       "id": "concept_abstract_reasoning"
     },
@@ -219,7 +219,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 14,
       "norm_label": "wiki/kaggle/arc-agi-benchmarking.md",
       "id": "wiki_kaggle_arc_agi_benchmarking"
     },
@@ -232,7 +232,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 16,
+      "community": 15,
       "norm_label": "llm wiki vs. rag comparison",
       "id": "comparison_llm_wiki_vs_rag"
     },
@@ -245,7 +245,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 17,
+      "community": 16,
       "norm_label": "the llm wiki pattern",
       "id": "method_llm_wiki_pattern"
     },
@@ -258,7 +258,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 18,
+      "community": 17,
       "norm_label": "cameron's wiki setup",
       "id": "method_cameron_wiki_setup"
     },
@@ -284,7 +284,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "wiki/open-questions/agentic-memory-retention-strategies.md",
       "id": "wiki_open_questions_agentic_memory_retention"
     },
@@ -375,7 +375,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "wiki/architectures/agentic-trading-system.md",
       "id": "wiki_architectures_agentic_trading_system"
     },
@@ -388,7 +388,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 19,
+      "community": 18,
       "norm_label": "clip model",
       "id": "model_clip"
     },
@@ -401,7 +401,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "adr: wiki retention policy",
       "id": "decision_wiki_retention_policy"
     },
@@ -414,7 +414,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "retain outcomes / rotate reasoning principle",
       "id": "concept_retention_rotation"
     },
@@ -427,7 +427,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "speculative page pruning (90-day staleness threshold)",
       "id": "concept_speculative_page_pruning"
     },
@@ -440,7 +440,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "autotrader decisions-log retention (decisions.jsonl / outcomes.jsonl)",
       "id": "concept_autotrader_retention"
     },
@@ -453,7 +453,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "quarterly lint pass (/lint workflow)",
       "id": "concept_quarterly_lint"
     },
@@ -466,7 +466,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 20,
+      "community": 19,
       "norm_label": "adr: metadata scoring vs. embeddings for text search",
       "id": "decision_sofascope_metadata_vs_embeddings"
     },
@@ -479,7 +479,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 21,
+      "community": 20,
       "norm_label": "adr: persistent service stdin/stdout vs. http",
       "id": "decision_sofascope_stdin_stdout"
     },
@@ -505,7 +505,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "wiki/decisions/autotrader-decisions-log-retention.md",
       "id": "wiki_decisions_autotrader_decisions_log_retention"
     },
@@ -544,7 +544,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 22,
+      "community": 21,
       "norm_label": "system design \u2014 visual search at scale",
       "id": "interview_visual_search_system_design"
     },
@@ -557,7 +557,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "andrej karpathy",
       "id": "person_andrej_karpathy"
     },
@@ -583,7 +583,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 23,
+      "community": 22,
       "norm_label": "hybrid search routing (text + image)",
       "id": "technique_hybrid_search_routing"
     },
@@ -609,7 +609,7 @@
       "captured_at": "2026-04-17",
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "llm review pass before rotation",
       "id": "technique_llm_review_pass_before_rotation"
     },
@@ -622,7 +622,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "agentic memory compression via distillation",
       "id": "concept_agentic_memory_compression"
     },
@@ -635,7 +635,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "weekly review pass (autotrader weekly_review.py)",
       "id": "concept_weekly_review_pass"
     },
@@ -648,7 +648,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 4,
       "norm_label": "memgpt / letta tiered memory",
       "id": "concept_memgpt_tiered_memory"
     },
@@ -661,7 +661,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 24,
+      "community": 23,
       "norm_label": "persistent model loading pattern",
       "id": "technique_persistent_model_loading"
     },
@@ -687,7 +687,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "arc-agi benchmarking readme (raw)",
       "id": "raw_arc_agi_benchmarking_readme"
     },
@@ -700,7 +700,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 24,
       "norm_label": "sofascope readme (raw)",
       "id": "raw_sofascope_readme"
     },
@@ -713,7 +713,7 @@
       "captured_at": null,
       "author": "Andrej Karpathy",
       "contributor": null,
-      "community": 26,
+      "community": 25,
       "norm_label": "karpathy llm wiki gist (raw)",
       "id": "raw_karpathy_llm_wiki"
     },
@@ -737,7 +737,7 @@
       "label": "Cameron's Second Brain \u2014 Overview",
       "file_type": "document",
       "source_file": "wiki/overview.md",
-      "community": 27,
+      "community": 26,
       "norm_label": "cameron's second brain \u2014 overview",
       "id": "wiki_overview"
     },
@@ -745,7 +745,7 @@
       "label": "SofaScope \u2014 AI-Powered Furniture Visual Search",
       "file_type": "document",
       "source_file": "wiki/production-systems/sofascope.md",
-      "community": 10,
+      "community": 9,
       "norm_label": "sofascope \u2014 ai-powered furniture visual search",
       "id": "prod_sofascope"
     },
@@ -753,7 +753,7 @@
       "label": "Agentic Trading System Architecture",
       "file_type": "document",
       "source_file": "wiki/architectures/agentic-trading-system.md",
-      "community": 28,
+      "community": 27,
       "norm_label": "agentic trading system architecture",
       "id": "arch_agentic_trading"
     },
@@ -769,7 +769,7 @@
       "label": "CLIP + FAISS Visual Search Pipeline",
       "file_type": "document",
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
-      "community": 10,
+      "community": 9,
       "norm_label": "clip + faiss visual search pipeline",
       "id": "tech_clip_faiss"
     },
@@ -777,7 +777,7 @@
       "label": "Hybrid Search Routing (Text + Image)",
       "file_type": "document",
       "source_file": "wiki/techniques/hybrid-search-routing.md",
-      "community": 29,
+      "community": 28,
       "norm_label": "hybrid search routing (text + image)",
       "id": "tech_hybrid_routing"
     },
@@ -801,7 +801,7 @@
       "label": "Persistent Model Loading Pattern",
       "file_type": "document",
       "source_file": "wiki/techniques/persistent-model-loading.md",
-      "community": 10,
+      "community": 9,
       "norm_label": "persistent model loading pattern",
       "id": "tech_persistent_model"
     },
@@ -817,7 +817,7 @@
       "label": "ARC-AGI Benchmark",
       "file_type": "document",
       "source_file": "wiki/benchmarks/arc-agi.md",
-      "community": 30,
+      "community": 29,
       "norm_label": "arc-agi benchmark",
       "id": "benchmark_arc_agi"
     },
@@ -849,7 +849,7 @@
       "label": "ARC Prize 2025",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-prize-2025.md",
-      "community": 31,
+      "community": 30,
       "norm_label": "arc prize 2025",
       "id": "kaggle_arc_prize_2025"
     },
@@ -857,7 +857,7 @@
       "label": "ARC-AGI Benchmarking Harness",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
-      "community": 32,
+      "community": 31,
       "norm_label": "arc-agi benchmarking harness",
       "id": "kaggle_arc_agi_harness"
     },
@@ -913,7 +913,7 @@
       "label": "Consensus-Based Memory Distillation",
       "file_type": "document",
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "community": 12,
+      "community": 10,
       "norm_label": "consensus-based memory distillation",
       "id": "consensus_based_memory_distillation"
     },
@@ -921,7 +921,7 @@
       "label": "MBR Decoding",
       "file_type": "document",
       "source_file": "wiki/techniques/mbr-decoding.md",
-      "community": 12,
+      "community": 10,
       "norm_label": "mbr decoding",
       "id": "mbr_decoding"
     },
@@ -929,7 +929,7 @@
       "label": "LLM Review Pass",
       "file_type": "document",
       "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
-      "community": 12,
+      "community": 10,
       "norm_label": "llm review pass",
       "id": "llm_review_pass"
     },
@@ -955,7 +955,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "claude.md \u2014 wiki schema & workflows",
       "id": "doc_claudemd"
     },
@@ -968,7 +968,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "wiki/overview.md \u2014 high-level synthesis",
       "id": "doc_overview"
     },
@@ -981,7 +981,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "wiki/log.md \u2014 append-only activity log",
       "id": "doc_log"
     },
@@ -1007,7 +1007,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "adr: consensus-based memory distillation",
       "id": "doc_consensus_memory_adr"
     },
@@ -1020,7 +1020,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 1,
       "norm_label": "ai mathematical olympiad \u2014 progress prize 3",
       "id": "doc_aimo_prize_3"
     },
@@ -1033,7 +1033,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "llm wiki pattern (karpathy)",
       "id": "concept_llm_wiki_pattern"
     },
@@ -1046,7 +1046,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "retrieval-augmented generation (rag)",
       "id": "concept_rag"
     },
@@ -1059,7 +1059,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "mbr decoding (minimum bayes risk)",
       "id": "concept_mbr_decoding"
     },
@@ -1072,7 +1072,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "llm review pass before rotation",
       "id": "concept_llm_review_pass"
     },
@@ -1085,7 +1085,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "provider adapter pattern (multi-llm)",
       "id": "concept_provider_adapter_pattern"
     },
@@ -1098,7 +1098,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "open question \u2014 agentic memory retention strategies",
       "id": "concept_agentic_memory_retention"
     },
@@ -1111,7 +1111,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "autotrader \u2014 autonomous paper trading bot",
       "id": "concept_autotrader"
     },
@@ -1124,7 +1124,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "deep past \u2014 akkadian translation (kaggle)",
       "id": "concept_deep_past"
     },
@@ -1137,7 +1137,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 1,
       "norm_label": "arc-agi benchmark",
       "id": "concept_arc_agi"
     },
@@ -1150,7 +1150,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "sofascope \u2014 ai-powered furniture visual search",
       "id": "concept_sofascope"
     },
@@ -1163,7 +1163,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "graphify \u2014 knowledge graph skill",
       "id": "concept_graphify"
     },
@@ -1176,7 +1176,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "obsidian integration",
       "id": "concept_obsidian"
     },
@@ -1189,7 +1189,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "adr: 90-day rotating retention for trading decisions log",
       "id": "concept_adr_log_retention"
     },
@@ -1202,7 +1202,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "adr: custom provider adapters vs. litellm for arc-agi",
       "id": "concept_arc_agi_adapters_adr"
     },
@@ -1215,7 +1215,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 1,
       "norm_label": "mathematical olympiad / imo-level reasoning",
       "id": "concept_aimo_math_reasoning"
     },
@@ -1228,7 +1228,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 1,
       "norm_label": "chain-of-thought reasoning (o1-style)",
       "id": "concept_chain_of_thought"
     },
@@ -1241,7 +1241,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "agentic drift (hallucination compounding in memory)",
       "id": "concept_agentic_drift"
     },
@@ -1254,7 +1254,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)",
       "id": "rationale_consensus_anti_hallucination"
     },
@@ -1267,7 +1267,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 1,
       "norm_label": "rationale: compiling > re-deriving (llm wiki vs rag)",
       "id": "rationale_compounding_knowledge_vs_rag"
     },
@@ -1280,7 +1280,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "adr: wiki retention policy \u2014 archive vs. prune speculative pages",
       "id": "concept_wiki_retention_policy"
     },
@@ -1293,7 +1293,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "house prices \u2014 advanced regression techniques",
       "id": "kaggle_house_prices_regression"
     },
@@ -1345,7 +1345,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "predicting heart disease \u2014 playground series s6e2",
       "id": "kaggle_playground_s6e2_heart_disease"
     },
@@ -1397,7 +1397,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "tensorflow decision forests (tfdf)",
       "id": "technique_tfdf"
     },
@@ -1410,7 +1410,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "xgboost",
       "id": "technique_xgboost"
     },
@@ -1423,7 +1423,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "gradient boosting ensemble (xgboost + catboost + realmlp)",
       "id": "technique_gradient_boosting_ensemble"
     },
@@ -1436,7 +1436,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "shap (shapley additive explanations)",
       "id": "technique_shap_analysis"
     },
@@ -1527,7 +1527,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 5,
       "norm_label": "tabular ml (kaggle)",
       "id": "concept_tabular_ml"
     },
