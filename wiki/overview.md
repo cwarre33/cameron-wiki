@@ -4,7 +4,7 @@ type: methodology
 status: active
 visibility: public
 sources: []
-related: [[wiki/index.md]], [[wiki/methodology/llm-wiki-pattern.md]]
+related: [[index]], [[methodology/llm-wiki-pattern.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: high
@@ -13,7 +13,7 @@ tags: [meta, overview, second-brain]
 
 # Cameron's Second Brain — Overview
 
-*This page is a high-level synthesis of everything in the wiki. Updated as knowledge accumulates.*
+*This page is a high-level synthesis of everything in the wiki. Updated as knowledge accumulates. See the [[index|Master Catalog]] for a full list of pages.*
 
 ## Who this is for
 

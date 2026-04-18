@@ -50,3 +50,8 @@ npm-debug.log*
 .idea/
 *.swp
 *.swo
+
+# graphify temp files
+graphify-out/.graphify_*.json
+graphify-out/.graphify_*.txt
+graphify-out/.graphify_python
