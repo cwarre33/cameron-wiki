@@ -1,51 +1,53 @@
 ---
 title: LiteLLM
 type: tool
-status: stable
+status: active
 visibility: public
-sources: [https://github.com/BerriAI/litellm]
+sources: [raw/repos/arc-agi-benchmarking-readme.md]
 related: [[wiki/decisions/arc-agi-adapters-vs-litellm.md]], [[wiki/architectures/provider-adapter-pattern.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: high
-tags: [tool, llm, sdk, abstraction, proxy, python]
+tags: [tool, llm, sdk, multi-provider, openai-format, abstraction]
 ---
 
 # LiteLLM
 
-**LiteLLM** is a Python library that provides a unified interface for calling 100+ LLM APIs (OpenAI, Anthropic, Gemini, HuggingFace, etc.) using the OpenAI completion/embedding format.
+A Python library that provides a **unified interface for 100+ LLM providers** (OpenAI, Anthropic, Gemini, Azure, Bedrock, HuggingFace, etc.) using the OpenAI `chat/completions` format.
 
-## Key Features
+## Key features
 
-- **Standardized Input/Output**: Call any provider using `completion(model="gpt-3.5-turbo", messages=...)`.
-- **Authentication Handling**: Manages API keys and environment variables across providers.
-- **Cost Tracking**: Built-in support for calculating token usage and cost per request.
-- **Streaming Support**: Unified streaming interface for all supported models.
-- **Proxy Server**: Optional proxy to provide a centralized endpoint for team-wide LLM access.
+- **Unified SDK** — call any model with the same `completion()` function
+- **OpenAI-compatible output** — returns standard OpenAI-style response objects regardless of the provider
+- **Streaming support** — consistent streaming interface across all models
+- **Retry & fallback logic** — built-in support for model fallbacks and exponential backoff
+- **Cost tracking** — automatic token counting and cost calculation per provider
+- **LiteLLM Proxy** — a server that acts as an OpenAI-compatible gateway to any model
 
-## Usage in Cameron's Projects
+## Usage pattern
 
-LiteLLM is frequently considered when building multi-provider systems, though it is sometimes passed over in favor of the [[wiki/architectures/provider-adapter-pattern.md|Provider Adapter Pattern]] for specific reasons.
+```python
+from litellm import completion
 
-### ARC-AGI Benchmarking
-In the [[wiki/kaggle/arc-agi-benchmarking.md|ARC-AGI project]], LiteLLM was evaluated but ultimately **not used**. 
+# OpenAI
+response = completion(model="gpt-4o", messages=[{"role": "user", "content": "hello"}])
 
-**Reasons for rejection:**
-- **Control**: Need for precise control over request shapes and provider-specific parameters (e.g., temperature ranges, system prompt handling).
-- **Transparency**: Benchmarking requires visibility into the raw response to debug parsing errors; LiteLLM's abstraction layer can occasionally mask these.
-- **Dependencies**: Preference for native SDKs to minimize the dependency tree for the runner harness.
+# Anthropic
+response = completion(model="claude-3-5-sonnet", messages=[{"role": "user", "content": "hello"}])
 
-See the full decision log: [[wiki/decisions/arc-agi-adapters-vs-litellm.md|ADR: Custom Provider Adapters vs. LiteLLM]].
+# Gemini
+response = completion(model="gemini/gemini-pro", messages=[{"role": "user", "content": "hello"}])
+```
 
-## Comparison: LiteLLM vs. Custom Adapters
+## Role in Cameron's Wiki
 
-| Feature | LiteLLM | Custom Adapters |
-|---------|---------|-----------------|
-| **Boilerplate** | Low (Unified call) | High (One class per provider) |
-| **Control** | Mediated by abstraction | Full access to native SDK |
-| **Maintenance** | Handled by LiteLLM maintainers | Manual updates for SDK changes |
-| **Debugging** | Indirect (Check LiteLLM issues) | Direct (Check provider SDK/docs) |
+LiteLLM is the primary **architectural alternative** to the custom [[wiki/architectures/provider-adapter-pattern.md]] used in the ARC-AGI benchmarking harness.
 
-## Related
-- [[wiki/architectures/provider-adapter-pattern.md]]
-- [[wiki/decisions/arc-agi-adapters-vs-litellm.md]]
+While LiteLLM reduces boilerplate and handles the complexity of multiple provider SDKs, Cameron chose **custom adapters** for the ARC-AGI project to maintain absolute control over request construction and response parsing, which is critical for benchmarking accuracy.
+
+See [[wiki/decisions/arc-agi-adapters-vs-litellm.md]] for the detailed decision rationale.
+
+## Resources
+
+- [LiteLLM Documentation](https://docs.litellm.ai/)
+- [GitHub Repository](https://github.com/BerriAI/litellm)
