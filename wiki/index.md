@@ -49,7 +49,7 @@ Master catalog of all wiki pages. Updated automatically.
 |------|---------|---------|
 | [ByT5 (Byte-Level T5)](models/byt5.md) | Google Research, 2021. A T5 variant that operates directly on raw UTF-8 bytes — no tokenizer, no vocabulary, no BPE. Every byte is a token. | 2026-04-17 |
 | [CLIP — Contrastive Language-Image Pretraining](models/clip.md) | OpenAI's vision-language model trained to align image and text embeddings in a shared space via contrastive learning. Enables zero-shot visual simi... | 2026-04-17 |
-| [Llama 3.3 70B](models/llama-3-3-70b.md) | Meta open-weights LLM; Cameron uses via Groq for AutoTrader sentiment; 10× cheaper than GPT-4o | 2026-04-17 |
+| [Llama 3.3 70B](models/llama-3-3-70b.md) | Meta's open-weights instruction-tuned LLM. Released late 2024. 70B parameters — large enough for strong reasoning and instruction following, small ... | 2026-04-17 |
 
 ## Benchmarks
 
@@ -70,7 +70,6 @@ Master catalog of all wiki pages. Updated automatically.
 | [FAISS — Facebook AI Similarity Search](tools/faiss.md) | Meta's library for efficient similarity search and clustering of dense vectors. Core infrastructure for any embedding-based retrieval system. | 2026-04-17 |
 | [Groq — LLM Inference API](tools/groq.md) | Groq provides ultra-low-latency inference for open-source LLMs via custom LPU (Language Processing Unit) hardware. Primary value proposition: signi... | 2026-04-17 |
 | [LiteLLM](tools/litellm.md) | LiteLLM is a Python library that provides a unified interface for calling 100+ LLM APIs (OpenAI, Anthropic, Gemini, HuggingFace, etc.) using the Op... | 2026-04-17 |
-| [Groq](tools/groq.md) | Ultra-low-latency LLM inference via LPU hardware; Cameron uses for AutoTrader's 15-min sentiment scan | 2026-04-17 |
 
 ## Labs
 
@@ -88,7 +87,6 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Competition | Updated |
 |------|---------|-------------|---------|
-| [Portfolio Overview](kaggle/portfolio-overview.md) | All 14 competitions, confirmed results, domain coverage, techniques used | — | 2026-04-17 |
 | ["Deep Past: Akkadian Translation"](kaggle/deep-past-akkadian-translation.md) | Competition: Deep Past Initiative — Translate Akkadian to English | "Deep Past: Akkadian Translation" | 2026-04-17 |
 | ["Motion-S: Text-to-Sign Motion Generation"](kaggle/motion-s-text-to-sign.md) | Competition: Motion-S: Hierarchical Text-to-Motion Generation for Sign Language (Signvrse) | "Motion-S: Text-to-Sign Motion Generation" | 2026-04-17 |
 | [AI Mathematical Olympiad — Progress Prize 3](kaggle/aimo-progress-prize-3.md) | Competition: AI Mathematical Olympiad - Progress Prize 3 | AI Mathematical Olympiad — Progress Prize 3 | 2026-04-17 |
