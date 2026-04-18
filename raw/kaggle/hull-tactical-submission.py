@@ -9,28 +9,21 @@ Model: LightGBM regressor trained on full train.csv
 Features: D1-D9 (binary regime flags) + M1-M18 (macro/momentum factors)
 Target: forward_returns
 
-To submit:
-1. Upload hull_dm_model.txt as a Kaggle dataset
-2. Paste this notebook into a Kaggle notebook
-3. Point MODEL_PATH to your dataset path
-4. Run as "Submit to Competition"
-
-Local test:
-    python hull-tactical-submission.py
-    (Uses train.csv split for offline validation)
+To submit: see review/SETUP.md
 """
 
 import json
+import pathlib
 import numpy as np
 import pandas as pd
 import lightgbm as lgb
 import kaggle_evaluation.core.relay as relay
 
-# ── Config ──────────────────────────────────────────────────────────────────
+# ── Config ───────────────────────────────────────────────────────────────────
 
 MODEL_PATH = '/kaggle/input/hull-tactical-model/hull_dm_model.txt'
+LOG_PATH = pathlib.Path('/kaggle/working/predictions.jsonl')
 
-# Median imputation values from train.csv (embedded to avoid train data leakage)
 MEDIANS = {
     "D1": 0.0, "D2": 0.0, "D3": 0.0, "D4": 1.0, "D5": 0.0,
     "D6": 0.0, "D7": 0.0, "D8": 0.0, "D9": 0.0,
@@ -45,54 +38,53 @@ MEDIANS = {
 FEATURE_COLS = sorted(MEDIANS.keys())
 MEDIANS_SERIES = pd.Series(MEDIANS)
 
-# ── Model loading ────────────────────────────────────────────────────────────
+# ── Model + state ─────────────────────────────────────────────────────────────
 
 model = lgb.Booster(model_file=MODEL_PATH)
-
-# Running sum of lagged returns for online signal enrichment
-_recent_outcomes = []
+_recent_outcomes: list[float] = []
 _MAX_RECENT = 20
 
-# ── Prediction function ──────────────────────────────────────────────────────
+# ── Prediction function ───────────────────────────────────────────────────────
 
 def predict(features: pd.DataFrame) -> float:
-    """
-    Called once per day by the Kaggle evaluation gateway.
-
-    features: DataFrame with one row — all competition feature columns plus
-              lagged_forward_returns, lagged_risk_free_rate,
-              lagged_market_forward_excess_returns on test days.
-
-    Returns: float — predicted forward_return for this day.
-    """
-    # Extract D + M features, fill any NaN with train medians
     row = features[FEATURE_COLS].fillna(MEDIANS_SERIES)
 
-    # Append lagged outcome signal if available
+    lag = None
     if 'lagged_forward_returns' in features.columns:
-        lag = features['lagged_forward_returns'].iloc[0]
-        if pd.notna(lag):
+        raw_lag = features['lagged_forward_returns'].iloc[0]
+        if pd.notna(raw_lag):
+            lag = float(raw_lag)
             _recent_outcomes.append(lag)
             if len(_recent_outcomes) > _MAX_RECENT:
                 _recent_outcomes.pop(0)
 
     pred = float(model.predict(row)[0])
+    attenuated = False
 
-    # Attenuate prediction if recent outcomes strongly contradict the signal
-    # (simple online confidence adjustment — scales prediction toward zero when
-    # recent realized returns disagree with recent predictions)
     if len(_recent_outcomes) >= 5:
         recent_mean = np.mean(_recent_outcomes[-5:])
         if np.sign(recent_mean) != np.sign(pred) and abs(recent_mean) > 0.003:
-            pred *= 0.5  # half-confidence when recent regime contradicts
+            pred *= 0.5
+            attenuated = True
+
+    # Write structured log for weekly LLM review
+    log_entry = {
+        'date_id': int(features['date_id'].iloc[0]),
+        'D': {c: int(row[c].iloc[0]) for c in FEATURE_COLS if c.startswith('D')},
+        'M_top4': {c: round(float(row[c].iloc[0]), 4) for c in ['M4', 'M3', 'M1', 'M8']},
+        'pred': round(pred, 6),
+        'lagged_return': round(lag, 6) if lag is not None else None,
+        'attenuated': attenuated,
+    }
+    with LOG_PATH.open('a') as f:
+        f.write(json.dumps(log_entry) + '\n')
 
     return pred
 
 
-# ── gRPC server ──────────────────────────────────────────────────────────────
+# ── gRPC server ───────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
-    # On Kaggle: gateway calls predict() via gRPC. Start the server and block.
     server = relay.define_server(predict)
     server.start()
     server.wait_for_termination()

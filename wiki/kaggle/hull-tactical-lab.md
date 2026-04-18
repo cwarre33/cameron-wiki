@@ -67,11 +67,22 @@ class HullGateway(bg.BaseGateway):
         return self.model.predict(features_df)[0]
 ```
 
-### Phase 4 — LLM review loop (target: week 4+)
-- [ ] Build prediction history log: `{date_id, features_summary, prediction, lagged_outcome}`
-- [ ] Weekly LLM pass: which D-flag regimes are currently predictive? Which are failing?
-- [ ] Use summaries to inform feature subset selection or model recalibration
-- [ ] Mirrors AutoTrader's `daily_review.jsonl` → [[wiki/techniques/llm-review-pass-before-rotation.md]]
+### Phase 4 — LLM review loop ✅ (completed 2026-04-18)
+- [x] Prediction log embedded in submission: writes `predictions.jsonl` to `/kaggle/working/` each day
+- [x] Log schema: `{date_id, D flags dict, M_top4, pred, lagged_return, attenuated}`
+- [x] `review/llm_review.py` — pulls log, computes IC proxy + D-flag regime breakdown, sends to Claude Sonnet, appends to `strategy_log.md`
+- [x] `review/weekly_review.sh` — full weekly pipeline: `kaggle kernels output` → LLM review → leaderboard check → retrain prompt
+- [x] `review/submit_notebook.py` — reusable Playwright automator for "Submit to Competition" button; saves session cookies to avoid weekly re-login
+- [x] `retrain.py` — CLI for feature group changes: `--drop D4` removes a noisy flag, reruns walk-forward IC, saves model for dataset upload
+- [x] `review/SETUP.md` — complete setup guide: dataset upload, notebook creation, session save, cron setup
+
+**Weekly cadence:**
+```
+Sunday cron → weekly_review.sh
+  → kaggle kernels output (pull predictions.jsonl)
+  → llm_review.py (IC proxy + D-flag analysis + Claude recommendation)
+  → if retrain needed: retrain.py --drop <flag> → dataset version → submit_notebook.py
+```
 
 ---
 
