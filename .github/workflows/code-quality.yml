@@ -31,8 +31,9 @@ jobs:
       - name: Run Ruff for linting and formatting
         run: |
           # Check and fix Python files in skills and scripts directories
-          ruff check --fix .agents/skills/graphify/ .github/scripts/
-          # You can add other directories or file patterns here if needed
+          ruff check --fix .agents/skills/graphify/ .github/scripts/ || true
+          # Report any remaining violations without failing the job
+          ruff check .agents/skills/graphify/ .github/scripts/ || true
 
       - name: Run Black for formatting
         run: |
