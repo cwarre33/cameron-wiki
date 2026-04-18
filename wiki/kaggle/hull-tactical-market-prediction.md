@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md, raw/kaggle/hull-tactical-base-gateway.py, raw/kaggle/hull-tactical-relay.py, raw/kaggle/hull-tactical-data-schema.txt]
-related: [[wiki/trading/autotrader.md]], [[wiki/trading/rsi-llm-signal-strategy.md]], [[wiki/integrations/alpaca-api.md]], [[wiki/decisions/hull-tactical-strategy.md]], [[wiki/benchmarks/arc-agi.md]]
+related: [[wiki/trading/autotrader.md]], [[wiki/trading/rsi-llm-signal-strategy.md]], [[wiki/integrations/alpaca-api.md]], [[wiki/decisions/hull-tactical-strategy.md]], [[wiki/kaggle/hull-tactical-lab.md]], [[wiki/benchmarks/arc-agi.md]]
 created: 2026-04-17
 updated: 2026-04-18
 confidence: high

@@ -97,6 +97,7 @@ Master catalog of all wiki pages. Updated automatically.
 | [Google Tunix Hackathon](kaggle/google-tunix-hackathon.md) | Competition: Google Tunix Hack - Train a model to show its work | Google Tunix Hackathon | 2026-04-17 |
 | [House Prices — Advanced Regression Techniques](kaggle/house-prices-regression.md) | Competition: House Prices - Advanced Regression Techniques | House Prices — Advanced Regression Techniques | 2026-04-17 |
 | [Hull Tactical — Market Prediction](kaggle/hull-tactical-market-prediction.md) | gRPC interactive evaluation API. 94 anonymized features (D=binary regime flags, E/M/S/V=continuous context). AutoTrader signal architecture maps directly. | Hull Tactical — Market Prediction | 2026-04-18 |
+| [Hull Tactical — Competition Lab](kaggle/hull-tactical-lab.md) | Active implementation workbench: 4-phase plan from walk-forward baseline → feature ablation → gRPC server → LLM review loop. Deadline 2026-06-16. | Hull Tactical — Market Prediction | 2026-04-18 |
 | [Jaguar Re-Identification Challenge](kaggle/jaguar-re-identification.md) | Competition: Jaguar Re-Identification Challenge | Jaguar Re-Identification Challenge | 2026-04-17 |
 | [MABe — Social Action Recognition in Mice](kaggle/mabe-mouse-behavior.md) | Competition: MABe Challenge - Social Action Recognition in Mice | MABe — Social Action Recognition in Mice | 2026-04-17 |
 | [March Machine Learning Mania 2026](kaggle/march-machine-learning-mania-2026.md) | Competition: March Machine Learning Mania 2026 | March Machine Learning Mania 2026 | 2026-04-17 |
