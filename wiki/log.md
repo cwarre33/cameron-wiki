@@ -5,6 +5,22 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-04-18] ingest | Hull Tactical competition data — Kaggle API pull
+
+Source: raw/kaggle/hull-tactical-base-gateway.py, raw/kaggle/hull-tactical-relay.py, raw/kaggle/hull-tactical-data-schema.txt
+Pages created: wiki/decisions/hull-tactical-strategy.md
+Pages updated: wiki/kaggle/hull-tactical-market-prediction.md (confidence: low → high), wiki/index.md
+Contradictions: none
+Key findings:
+  - Competition uses gRPC interactive evaluation API (not static CSV submission)
+  - 94 anonymized features: D1–D9 (binary 0/1 regime flags) + E/I/M/P/S/V (continuous)
+  - D features are structurally identical to AutoTrader's RSI threshold gate
+  - Test set reveals lagged_forward_returns (yesterday's outcome) — enables online adaptation
+  - 9,049 training days; test starts at date_id=8980
+  - Early rows (date_id 0–~200): only D features are non-NaN (warm-up period)
+
+---
+
 ## [2026-04-17] lint | First full lint pass + remediation
 
 Issues found: 0 critical / 4 moderate / 4 low

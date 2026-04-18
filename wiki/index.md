@@ -96,7 +96,7 @@ Master catalog of all wiki pages. Updated automatically.
 | [Cameron's Kaggle Portfolio — Overview](kaggle/portfolio-overview.md) | 14 competitions entered across NLP, bioinformatics, CV, mathematical reasoning, quantitative finance, sports analytics, and wildlife ID. Total priz... | Cameron's Kaggle Portfolio — Overview | 2026-04-17 |
 | [Google Tunix Hackathon](kaggle/google-tunix-hackathon.md) | Competition: Google Tunix Hack - Train a model to show its work | Google Tunix Hackathon | 2026-04-17 |
 | [House Prices — Advanced Regression Techniques](kaggle/house-prices-regression.md) | Competition: House Prices - Advanced Regression Techniques | House Prices — Advanced Regression Techniques | 2026-04-17 |
-| [Hull Tactical — Market Prediction](kaggle/hull-tactical-market-prediction.md) | Competition: Hull Tactical - Market Prediction | Hull Tactical — Market Prediction | 2026-04-17 |
+| [Hull Tactical — Market Prediction](kaggle/hull-tactical-market-prediction.md) | gRPC interactive evaluation API. 94 anonymized features (D=binary regime flags, E/M/S/V=continuous context). AutoTrader signal architecture maps directly. | Hull Tactical — Market Prediction | 2026-04-18 |
 | [Jaguar Re-Identification Challenge](kaggle/jaguar-re-identification.md) | Competition: Jaguar Re-Identification Challenge | Jaguar Re-Identification Challenge | 2026-04-17 |
 | [MABe — Social Action Recognition in Mice](kaggle/mabe-mouse-behavior.md) | Competition: MABe Challenge - Social Action Recognition in Mice | MABe — Social Action Recognition in Mice | 2026-04-17 |
 | [March Machine Learning Mania 2026](kaggle/march-machine-learning-mania-2026.md) | Competition: March Machine Learning Mania 2026 | March Machine Learning Mania 2026 | 2026-04-17 |
@@ -123,6 +123,7 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
+| ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Use AutoTrader's dual-gate signal architecture as the conceptual frame for Hull Tactical's anonymized features; train LightGBM with walk-forward CV. | 2026-04-18 |
 
 ## Interview Prep
 
