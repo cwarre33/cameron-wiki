@@ -2,8 +2,8 @@ name: Wiki Maintenance
 
 on:
   schedule:
-    # Runs daily at 6:00 AM UTC (2 AM EST)
-    - cron: '0 6 * * *'
+    # Runs every 4 hours
+    - cron: '0 */4 * * *'
   push:
     branches: [main]
     paths:
@@ -44,12 +44,13 @@ jobs:
 
       - name: Commit and push if changes exist
         run: |
-          git config user.name "wiki-bot"
-          git config user.email "wiki-bot@users.noreply.github.com"
+          git config user.name "Cameron Warren"
+          git config user.email "cwarren@example.com" # Placeholder email, update if needed
           git add wiki/overview.md wiki/log.md wiki/index.md graphify-out/ .graph/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore(wiki): maintenance — stats, index, and graph update [skip ci]"
+            git commit -m "chore(wiki): automated maintenance run [skip ci]"
             git push
           fi
+

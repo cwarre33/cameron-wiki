@@ -1,0 +1,53 @@
+name: Code Quality and Formatting
+
+on:
+  schedule:
+    # Runs every 4 hours
+    - cron: '0 */4 * * *'
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install linters and formatters
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff black
+
+      - name: Run Ruff for linting and formatting
+        run: |
+          # Check and fix Python files in skills and scripts directories
+          ruff check --fix .agents/skills/graphify/ .github/scripts/
+          # You can add other directories or file patterns here if needed
+
+      - name: Run Black for formatting
+        run: |
+          # Format Python files
+          black .agents/skills/graphify/ .github/scripts/
+          # You can add other directories or file patterns here if needed
+
+      - name: Commit and push if changes exist
+        run: |
+          git config user.name "Cameron Warren"
+          git config user.email "cwarre33@alumni.uncc.edu"
+          git add .agents/skills/graphify/ .github/scripts/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(code-quality): automated linting and formatting [skip ci]"
+            git push
+          fi
