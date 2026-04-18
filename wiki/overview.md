@@ -38,8 +38,8 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 ## Current knowledge state
 
 - Sources ingested: 5
-- Wiki pages: 47
-- Last maintenance: 2026-04-18 13:20 UTC
+- Wiki pages: 48
+- Last maintenance: 2026-04-18 13:30 UTC
 
 
 ## Strongest areas (so far)

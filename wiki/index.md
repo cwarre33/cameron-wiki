@@ -120,11 +120,11 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: 90-Day Rotating Retention for Trading Decisions Log"](decisions/autotrader-decisions-log-retention.md) | Rotate `logs/decisions.jsonl` on a 90-day window. Keep `logs/outcomes.jsonl` and `logs/daily_review.jsonl` indefinitely. | 2026-04-17 |
 | ["ADR: Consensus-Based Memory Distillation"](decisions/consensus-based-memory-distillation.md) | Current agentic systems (e.g., wiki/trading/autotrader.md|AutoTrader) rely on a single-pass wiki/techniques/llm-review-pass-before-rotation.md|LLM ... | 2026-04-17 |
 | ["ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI Harness"](decisions/arc-agi-adapters-vs-litellm.md) | The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches: | 2026-04-17 |
+| ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Treat the AutoTrader dual-gate signal architecture as the conceptual frame for interpreting Hull Tactical's anonymized features, then train a gradi... | 2026-04-18 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
-| ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Use AutoTrader's dual-gate signal architecture as the conceptual frame for Hull Tactical's anonymized features; train LightGBM with walk-forward CV. | 2026-04-18 |
 
 ## Interview Prep
 

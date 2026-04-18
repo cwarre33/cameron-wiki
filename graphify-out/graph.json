@@ -110,9 +110,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "doc_readme",
       "community": 6,
-      "norm_label": "readme \u2014 cameron-wiki"
+      "norm_label": "readme \u2014 cameron-wiki",
+      "id": "doc_readme"
     },
     {
       "label": "CLAUDE.md \u2014 Wiki Schema & Workflows",
@@ -123,9 +123,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "doc_claudemd",
       "community": 6,
-      "norm_label": "claude.md \u2014 wiki schema & workflows"
+      "norm_label": "claude.md \u2014 wiki schema & workflows",
+      "id": "doc_claudemd"
     },
     {
       "label": "Graphify \u2014 Knowledge Graph Skill",
@@ -136,9 +136,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_graphify",
       "community": 6,
-      "norm_label": "graphify \u2014 knowledge graph skill"
+      "norm_label": "graphify \u2014 knowledge graph skill",
+      "id": "concept_graphify"
     },
     {
       "label": "Obsidian Integration",
@@ -149,17 +149,17 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_obsidian",
       "community": 6,
-      "norm_label": "obsidian integration"
+      "norm_label": "obsidian integration",
+      "id": "concept_obsidian"
     },
     {
       "label": "LiteLLM",
       "file_type": "document",
       "source_file": "wiki/tools/litellm.md",
-      "id": "tool_litellm",
       "community": 9,
-      "norm_label": "litellm"
+      "norm_label": "litellm",
+      "id": "tool_litellm"
     },
     {
       "label": "FAISS Vector Search Tool",
@@ -170,17 +170,17 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "tool_faiss",
       "community": 10,
-      "norm_label": "faiss vector search tool"
+      "norm_label": "faiss vector search tool",
+      "id": "tool_faiss"
     },
     {
       "label": "ARC Prize 2025",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-prize-2025.md",
-      "id": "kaggle_arc_prize_2025",
       "community": 11,
-      "norm_label": "arc prize 2025"
+      "norm_label": "arc prize 2025",
+      "id": "kaggle_arc_prize_2025"
     },
     {
       "label": "Jaguar Re-Identification Challenge",
@@ -191,9 +191,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_jaguar_reidentification",
       "community": 7,
-      "norm_label": "jaguar re-identification challenge"
+      "norm_label": "jaguar re-identification challenge",
+      "id": "kaggle_jaguar_reidentification"
     },
     {
       "label": "Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)",
@@ -204,9 +204,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "technique_metric_learning",
       "community": 7,
-      "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)"
+      "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)",
+      "id": "technique_metric_learning"
     },
     {
       "label": "CLIP+FAISS Embedding Retrieval",
@@ -217,9 +217,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "technique_clip_faiss",
       "community": 7,
-      "norm_label": "clip+faiss embedding retrieval"
+      "norm_label": "clip+faiss embedding retrieval",
+      "id": "technique_clip_faiss"
     },
     {
       "label": "Deep Past \u2014 Akkadian Translation (Kaggle)",
@@ -230,25 +230,25 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_deep_past",
-      "community": 3,
-      "norm_label": "deep past \u2014 akkadian translation (kaggle)"
+      "community": 4,
+      "norm_label": "deep past \u2014 akkadian translation (kaggle)",
+      "id": "concept_deep_past"
     },
     {
       "label": "Hull Tactical \u2014 Market Prediction",
       "file_type": "document",
       "source_file": "wiki/kaggle/hull-tactical-market-prediction.md",
-      "id": "kaggle_hull_tactical",
       "community": 12,
-      "norm_label": "hull tactical \u2014 market prediction"
+      "norm_label": "hull tactical \u2014 market prediction",
+      "id": "kaggle_hull_tactical"
     },
     {
       "label": "ARC-AGI Benchmarking Harness",
       "file_type": "document",
       "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
-      "id": "kaggle_arc_agi_harness",
       "community": 13,
-      "norm_label": "arc-agi benchmarking harness"
+      "norm_label": "arc-agi benchmarking harness",
+      "id": "kaggle_arc_agi_harness"
     },
     {
       "label": "Retrieval-Augmented Generation (RAG)",
@@ -259,9 +259,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_rag",
       "community": 14,
-      "norm_label": "retrieval-augmented generation (rag)"
+      "norm_label": "retrieval-augmented generation (rag)",
+      "id": "concept_rag"
     },
     {
       "label": "LLM Wiki Pattern (Karpathy)",
@@ -272,9 +272,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_llm_wiki_pattern",
       "community": 6,
-      "norm_label": "llm wiki pattern (karpathy)"
+      "norm_label": "llm wiki pattern (karpathy)",
+      "id": "concept_llm_wiki_pattern"
     },
     {
       "label": "Cameron's Wiki Setup",
@@ -285,9 +285,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "method_cameron_wiki_setup",
       "community": 15,
-      "norm_label": "cameron's wiki setup"
+      "norm_label": "cameron's wiki setup",
+      "id": "method_cameron_wiki_setup"
     },
     {
       "label": "Open Question \u2014 Agentic Memory Retention Strategies",
@@ -298,17 +298,17 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_agentic_memory_retention",
-      "community": 3,
-      "norm_label": "open question \u2014 agentic memory retention strategies"
+      "community": 4,
+      "norm_label": "open question \u2014 agentic memory retention strategies",
+      "id": "concept_agentic_memory_retention"
     },
     {
       "label": "Agentic Trading System Architecture",
       "file_type": "document",
       "source_file": "wiki/architectures/agentic-trading-system.md",
-      "id": "arch_agentic_trading",
       "community": 16,
-      "norm_label": "agentic trading system architecture"
+      "norm_label": "agentic trading system architecture",
+      "id": "arch_agentic_trading"
     },
     {
       "label": "Provider Adapter Pattern (Multi-LLM)",
@@ -319,25 +319,25 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_provider_adapter_pattern",
-      "community": 3,
-      "norm_label": "provider adapter pattern (multi-llm)"
+      "community": 4,
+      "norm_label": "provider adapter pattern (multi-llm)",
+      "id": "concept_provider_adapter_pattern"
     },
     {
       "label": "CLIP \u2014 Contrastive Language-Image Pretraining",
       "file_type": "document",
       "source_file": "wiki/models/clip.md",
-      "id": "model_clip",
       "community": 17,
-      "norm_label": "clip \u2014 contrastive language-image pretraining"
+      "norm_label": "clip \u2014 contrastive language-image pretraining",
+      "id": "model_clip"
     },
     {
       "label": "ByT5 (Byte-Level T5)",
       "file_type": "document",
       "source_file": "wiki/models/byt5.md",
-      "id": "model_byt5",
       "community": 18,
-      "norm_label": "byt5 (byte-level t5)"
+      "norm_label": "byt5 (byte-level t5)",
+      "id": "model_byt5"
     },
     {
       "label": "ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI",
@@ -348,9 +348,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_arc_agi_adapters_adr",
-      "community": 3,
-      "norm_label": "adr: custom provider adapters vs. litellm for arc-agi"
+      "community": 4,
+      "norm_label": "adr: custom provider adapters vs. litellm for arc-agi",
+      "id": "concept_arc_agi_adapters_adr"
     },
     {
       "label": "ADR: Wiki Retention Policy \u2014 Archive vs. Prune Speculative Pages",
@@ -361,9 +361,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_wiki_retention_policy",
       "community": 19,
-      "norm_label": "adr: wiki retention policy \u2014 archive vs. prune speculative pages"
+      "norm_label": "adr: wiki retention policy \u2014 archive vs. prune speculative pages",
+      "id": "concept_wiki_retention_policy"
     },
     {
       "label": "ADR: Metadata Scoring vs. Embeddings for Text Search",
@@ -374,9 +374,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "decision_sofascope_metadata_vs_embeddings",
       "community": 20,
-      "norm_label": "adr: metadata scoring vs. embeddings for text search"
+      "norm_label": "adr: metadata scoring vs. embeddings for text search",
+      "id": "decision_sofascope_metadata_vs_embeddings"
     },
     {
       "label": "ADR: Consensus-Based Memory Distillation",
@@ -387,9 +387,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "doc_consensus_memory_adr",
-      "community": 3,
-      "norm_label": "adr: consensus-based memory distillation"
+      "community": 4,
+      "norm_label": "adr: consensus-based memory distillation",
+      "id": "doc_consensus_memory_adr"
     },
     {
       "label": "Agentic Drift (hallucination compounding in memory)",
@@ -400,9 +400,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_agentic_drift",
-      "community": 3,
-      "norm_label": "agentic drift (hallucination compounding in memory)"
+      "community": 4,
+      "norm_label": "agentic drift (hallucination compounding in memory)",
+      "id": "concept_agentic_drift"
     },
     {
       "label": "Rationale: Anti-Hallucination via Consensus (Consensus Memory ADR)",
@@ -413,9 +413,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "rationale_consensus_anti_hallucination",
-      "community": 3,
-      "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)"
+      "community": 4,
+      "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)",
+      "id": "rationale_consensus_anti_hallucination"
     },
     {
       "label": "ADR: Persistent Service stdin/stdout vs. HTTP",
@@ -426,9 +426,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "decision_sofascope_stdin_stdout",
       "community": 21,
-      "norm_label": "adr: persistent service stdin/stdout vs. http"
+      "norm_label": "adr: persistent service stdin/stdout vs. http",
+      "id": "decision_sofascope_stdin_stdout"
     },
     {
       "label": "ADR: 90-Day Rotating Retention for Trading Decisions Log",
@@ -439,9 +439,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_adr_log_retention",
       "community": 22,
-      "norm_label": "adr: 90-day rotating retention for trading decisions log"
+      "norm_label": "adr: 90-day rotating retention for trading decisions log",
+      "id": "concept_adr_log_retention"
     },
     {
       "label": "ADR: Open Model vs. Frontier for Trading Sentiment",
@@ -452,9 +452,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "decision_autotrader_open_model_vs_frontier",
       "community": 23,
-      "norm_label": "adr: open model vs. frontier for trading sentiment"
+      "norm_label": "adr: open model vs. frontier for trading sentiment",
+      "id": "decision_autotrader_open_model_vs_frontier"
     },
     {
       "label": "Alpaca API Integration",
@@ -465,9 +465,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "integration_alpaca_api",
       "community": 24,
-      "norm_label": "alpaca api integration"
+      "norm_label": "alpaca api integration",
+      "id": "integration_alpaca_api"
     },
     {
       "label": "System Design \u2014 Visual Search at Scale",
@@ -478,9 +478,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "interview_visual_search_system_design",
       "community": 25,
-      "norm_label": "system design \u2014 visual search at scale"
+      "norm_label": "system design \u2014 visual search at scale",
+      "id": "interview_visual_search_system_design"
     },
     {
       "label": "SofaScope \u2014 AI-Powered Furniture Visual Search",
@@ -491,9 +491,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_sofascope",
       "community": 26,
-      "norm_label": "sofascope \u2014 ai-powered furniture visual search"
+      "norm_label": "sofascope \u2014 ai-powered furniture visual search",
+      "id": "concept_sofascope"
     },
     {
       "label": "SofaScope Production System",
@@ -504,9 +504,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "production_sofascope",
       "community": 7,
-      "norm_label": "sofascope production system"
+      "norm_label": "sofascope production system",
+      "id": "production_sofascope"
     },
     {
       "label": "ARC-AGI Benchmark",
@@ -517,9 +517,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_arc_agi",
       "community": 27,
-      "norm_label": "arc-agi benchmark"
+      "norm_label": "arc-agi benchmark",
+      "id": "concept_arc_agi"
     },
     {
       "label": "Andrej Karpathy",
@@ -530,9 +530,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "person_andrej_karpathy",
       "community": 28,
-      "norm_label": "andrej karpathy"
+      "norm_label": "andrej karpathy",
+      "id": "person_andrej_karpathy"
     },
     {
       "label": "RSI + LLM Signal Strategy",
@@ -543,9 +543,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "trading_rsi_llm_signal_strategy",
       "community": 29,
-      "norm_label": "rsi + llm signal strategy"
+      "norm_label": "rsi + llm signal strategy",
+      "id": "trading_rsi_llm_signal_strategy"
     },
     {
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
@@ -556,17 +556,17 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_autotrader",
-      "community": 3,
-      "norm_label": "autotrader \u2014 autonomous paper trading bot"
+      "community": 4,
+      "norm_label": "autotrader \u2014 autonomous paper trading bot",
+      "id": "concept_autotrader"
     },
     {
       "label": "Hybrid Search Routing (Text + Image)",
       "file_type": "document",
       "source_file": "wiki/techniques/hybrid-search-routing.md",
-      "id": "tech_hybrid_routing",
       "community": 30,
-      "norm_label": "hybrid search routing (text + image)"
+      "norm_label": "hybrid search routing (text + image)",
+      "id": "tech_hybrid_routing"
     },
     {
       "label": "LLM Review Pass Before Rotation",
@@ -577,17 +577,17 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_llm_review_pass",
-      "community": 3,
-      "norm_label": "llm review pass before rotation"
+      "community": 4,
+      "norm_label": "llm review pass before rotation",
+      "id": "concept_llm_review_pass"
     },
     {
       "label": "Persistent Model Loading Pattern",
       "file_type": "document",
       "source_file": "wiki/techniques/persistent-model-loading.md",
-      "id": "tech_persistent_model",
       "community": 8,
-      "norm_label": "persistent model loading pattern"
+      "norm_label": "persistent model loading pattern",
+      "id": "tech_persistent_model"
     },
     {
       "label": "MBR Decoding (Minimum Bayes Risk)",
@@ -598,17 +598,17 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_mbr_decoding",
-      "community": 3,
-      "norm_label": "mbr decoding (minimum bayes risk)"
+      "community": 4,
+      "norm_label": "mbr decoding (minimum bayes risk)",
+      "id": "concept_mbr_decoding"
     },
     {
       "label": "CLIP + FAISS Visual Search Pipeline",
       "file_type": "document",
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
-      "id": "tech_clip_faiss",
       "community": 8,
-      "norm_label": "clip + faiss visual search pipeline"
+      "norm_label": "clip + faiss visual search pipeline",
+      "id": "tech_clip_faiss"
     },
     {
       "label": "AutoTrader README (raw)",
@@ -619,9 +619,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "raw_autotrader_readme",
       "community": 31,
-      "norm_label": "autotrader readme (raw)"
+      "norm_label": "autotrader readme (raw)",
+      "id": "raw_autotrader_readme"
     },
     {
       "label": "ARC-AGI Benchmarking README (raw)",
@@ -632,9 +632,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "raw_arc_agi_benchmarking_readme",
       "community": 32,
-      "norm_label": "arc-agi benchmarking readme (raw)"
+      "norm_label": "arc-agi benchmarking readme (raw)",
+      "id": "raw_arc_agi_benchmarking_readme"
     },
     {
       "label": "SofaScope README (raw)",
@@ -645,9 +645,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "raw_sofascope_readme",
       "community": 33,
-      "norm_label": "sofascope readme (raw)"
+      "norm_label": "sofascope readme (raw)",
+      "id": "raw_sofascope_readme"
     },
     {
       "label": "Karpathy LLM Wiki Gist (raw)",
@@ -658,9 +658,9 @@
       "captured_at": null,
       "author": "Andrej Karpathy",
       "contributor": null,
-      "id": "raw_karpathy_llm_wiki",
       "community": 34,
-      "norm_label": "karpathy llm wiki gist (raw)"
+      "norm_label": "karpathy llm wiki gist (raw)",
+      "id": "raw_karpathy_llm_wiki"
     },
     {
       "label": "Cameron Kaggle Profile (raw source)",
@@ -671,9 +671,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "source_cameron_kaggle_profile",
       "community": 7,
-      "norm_label": "cameron kaggle profile (raw source)"
+      "norm_label": "cameron kaggle profile (raw source)",
+      "id": "source_cameron_kaggle_profile"
     },
     {
       "label": "Cameron's Second Brain \u2014 Overview",
@@ -684,9 +684,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_cameron_wiki",
-      "community": 5,
-      "norm_label": "cameron's second brain \u2014 overview"
+      "community": 1,
+      "norm_label": "cameron's second brain \u2014 overview",
+      "id": "overview_cameron_wiki"
     },
     {
       "label": "Second Brain Knowledge System",
@@ -697,9 +697,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_second_brain",
-      "community": 5,
-      "norm_label": "second brain knowledge system"
+      "community": 1,
+      "norm_label": "second brain knowledge system",
+      "id": "overview_second_brain"
     },
     {
       "label": "SofaScope Visual Search System",
@@ -710,9 +710,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_sofascope_system",
-      "community": 5,
-      "norm_label": "sofascope visual search system"
+      "community": 1,
+      "norm_label": "sofascope visual search system",
+      "id": "overview_sofascope_system"
     },
     {
       "label": "ARC-AGI Async LLM Test Harness",
@@ -723,9 +723,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_arc_agi_harness",
-      "community": 5,
-      "norm_label": "arc-agi async llm test harness"
+      "community": 1,
+      "norm_label": "arc-agi async llm test harness",
+      "id": "overview_arc_agi_harness"
     },
     {
       "label": "AutoTrader RSI+LLM Strategy",
@@ -736,9 +736,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_autotrader_system",
-      "community": 5,
-      "norm_label": "autotrader rsi+llm strategy"
+      "community": 1,
+      "norm_label": "autotrader rsi+llm strategy",
+      "id": "overview_autotrader_system"
     },
     {
       "label": "Kaggle Competition Portfolio (14 competitions)",
@@ -749,9 +749,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "overview_kaggle_portfolio",
-      "community": 5,
-      "norm_label": "kaggle competition portfolio (14 competitions)"
+      "community": 1,
+      "norm_label": "kaggle competition portfolio (14 competitions)",
+      "id": "overview_kaggle_portfolio"
     },
     {
       "label": "Wiki Activity Log \u2014 Append-Only",
@@ -762,9 +762,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_wiki_activity",
-      "community": 1,
-      "norm_label": "wiki activity log \u2014 append-only"
+      "community": 2,
+      "norm_label": "wiki activity log \u2014 append-only",
+      "id": "log_wiki_activity"
     },
     {
       "label": "Ingest: SofaScope AI-Powered Furniture Visual Search",
@@ -775,9 +775,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_ingest_sofascope",
-      "community": 1,
-      "norm_label": "ingest: sofascope ai-powered furniture visual search"
+      "community": 2,
+      "norm_label": "ingest: sofascope ai-powered furniture visual search",
+      "id": "log_ingest_sofascope"
     },
     {
       "label": "Ingest: Karpathy LLM Wiki Gist",
@@ -788,9 +788,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_ingest_karpathy",
-      "community": 1,
-      "norm_label": "ingest: karpathy llm wiki gist"
+      "community": 2,
+      "norm_label": "ingest: karpathy llm wiki gist",
+      "id": "log_ingest_karpathy"
     },
     {
       "label": "Ingest: Cameron's Kaggle Profile \u2014 14 Competitions",
@@ -801,9 +801,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_ingest_kaggle",
       "community": 0,
-      "norm_label": "ingest: cameron's kaggle profile \u2014 14 competitions"
+      "norm_label": "ingest: cameron's kaggle profile \u2014 14 competitions",
+      "id": "log_ingest_kaggle"
     },
     {
       "label": "Ingest: ARC-AGI Benchmarking Harness",
@@ -814,9 +814,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_ingest_arc_agi",
-      "community": 1,
-      "norm_label": "ingest: arc-agi benchmarking harness"
+      "community": 2,
+      "norm_label": "ingest: arc-agi benchmarking harness",
+      "id": "log_ingest_arc_agi"
     },
     {
       "label": "Ingest: AutoTrader Autonomous Paper Trading Bot",
@@ -827,9 +827,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_ingest_autotrader",
-      "community": 1,
-      "norm_label": "ingest: autotrader autonomous paper trading bot"
+      "community": 2,
+      "norm_label": "ingest: autotrader autonomous paper trading bot",
+      "id": "log_ingest_autotrader"
     },
     {
       "label": "Lint Pass: First Full Lint + Remediation",
@@ -840,9 +840,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "log_lint_pass",
-      "community": 1,
-      "norm_label": "lint pass: first full lint + remediation"
+      "community": 2,
+      "norm_label": "lint pass: first full lint + remediation",
+      "id": "log_lint_pass"
     },
     {
       "label": "Wiki Index \u2014 Master Catalog",
@@ -853,9 +853,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_master_catalog",
-      "community": 2,
-      "norm_label": "wiki index \u2014 master catalog"
+      "community": 0,
+      "norm_label": "wiki index \u2014 master catalog",
+      "id": "index_master_catalog"
     },
     {
       "label": "SofaScope Production System Page",
@@ -866,9 +866,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_sofascope_page",
-      "community": 2,
-      "norm_label": "sofascope production system page"
+      "community": 0,
+      "norm_label": "sofascope production system page",
+      "id": "index_sofascope_page"
     },
     {
       "label": "AutoTrader Trading Bot Page",
@@ -879,9 +879,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_autotrader_page",
-      "community": 2,
-      "norm_label": "autotrader trading bot page"
+      "community": 0,
+      "norm_label": "autotrader trading bot page",
+      "id": "index_autotrader_page"
     },
     {
       "label": "ARC-AGI Benchmark Page",
@@ -892,9 +892,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_arc_agi_benchmark_page",
-      "community": 2,
-      "norm_label": "arc-agi benchmark page"
+      "community": 0,
+      "norm_label": "arc-agi benchmark page",
+      "id": "index_arc_agi_benchmark_page"
     },
     {
       "label": "LLM Wiki Pattern (Karpathy) Page",
@@ -905,9 +905,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_llm_wiki_pattern_page",
-      "community": 2,
-      "norm_label": "llm wiki pattern (karpathy) page"
+      "community": 0,
+      "norm_label": "llm wiki pattern (karpathy) page",
+      "id": "index_llm_wiki_pattern_page"
     },
     {
       "label": "Kaggle Portfolio Overview Page",
@@ -918,9 +918,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "index_kaggle_portfolio_page",
-      "community": 2,
-      "norm_label": "kaggle portfolio overview page"
+      "community": 0,
+      "norm_label": "kaggle portfolio overview page",
+      "id": "index_kaggle_portfolio_page"
     },
     {
       "label": "Groq \u2014 LLM Inference API",
@@ -931,9 +931,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "groq_tool",
       "community": 1,
-      "norm_label": "groq \u2014 llm inference api"
+      "norm_label": "groq \u2014 llm inference api",
+      "id": "groq_tool"
     },
     {
       "label": "Groq LPU (Language Processing Unit) Hardware",
@@ -944,9 +944,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "groq_lpu_hardware",
       "community": 1,
-      "norm_label": "groq lpu (language processing unit) hardware"
+      "norm_label": "groq lpu (language processing unit) hardware",
+      "id": "groq_lpu_hardware"
     },
     {
       "label": "Groq Usage in AutoTrader 15-Min Sentiment Loop",
@@ -957,9 +957,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "groq_autotrader_use",
       "community": 1,
-      "norm_label": "groq usage in autotrader 15-min sentiment loop"
+      "norm_label": "groq usage in autotrader 15-min sentiment loop",
+      "id": "groq_autotrader_use"
     },
     {
       "label": "Groq OpenAI-Compatible Chat Completions Endpoint",
@@ -970,9 +970,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "groq_openai_compat",
       "community": 1,
-      "norm_label": "groq openai-compatible chat completions endpoint"
+      "norm_label": "groq openai-compatible chat completions endpoint",
+      "id": "groq_openai_compat"
     },
     {
       "label": "Groq Ultra-Low Latency Token Generation",
@@ -983,9 +983,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "groq_latency_prop",
       "community": 1,
-      "norm_label": "groq ultra-low latency token generation"
+      "norm_label": "groq ultra-low latency token generation",
+      "id": "groq_latency_prop"
     },
     {
       "label": "Llama 3.3 70B \u2014 Meta Open-Weights LLM",
@@ -996,9 +996,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "llama_3_3_70b",
-      "community": 1,
-      "norm_label": "llama 3.3 70b \u2014 meta open-weights llm"
+      "community": 2,
+      "norm_label": "llama 3.3 70b \u2014 meta open-weights llm",
+      "id": "llama_3_3_70b"
     },
     {
       "label": "Llama 3.3 70B Sentiment Classification for AutoTrader",
@@ -1009,9 +1009,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "llama_sentiment_use",
-      "community": 1,
-      "norm_label": "llama 3.3 70b sentiment classification for autotrader"
+      "community": 2,
+      "norm_label": "llama 3.3 70b sentiment classification for autotrader",
+      "id": "llama_sentiment_use"
     },
     {
       "label": "Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader",
@@ -1022,9 +1022,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "llama_cost_rationale",
-      "community": 1,
-      "norm_label": "rationale: llama 70b ~10x cheaper than gpt-4o for autotrader"
+      "community": 2,
+      "norm_label": "rationale: llama 70b ~10x cheaper than gpt-4o for autotrader",
+      "id": "llama_cost_rationale"
     },
     {
       "label": "Llama 3.3 70B 128K Context Window",
@@ -1035,9 +1035,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "llama_128k_context",
-      "community": 1,
-      "norm_label": "llama 3.3 70b 128k context window"
+      "community": 2,
+      "norm_label": "llama 3.3 70b 128k context window",
+      "id": "llama_128k_context"
     },
     {
       "label": "Llama Model Family (1B/3B/8B/70B/405B)",
@@ -1048,9 +1048,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "llama_model_family",
-      "community": 1,
-      "norm_label": "llama model family (1b/3b/8b/70b/405b)"
+      "community": 2,
+      "norm_label": "llama model family (1b/3b/8b/70b/405b)",
+      "id": "llama_model_family"
     },
     {
       "label": "Cameron's Kaggle Portfolio Overview \u2014 14 Competitions",
@@ -1061,9 +1061,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_portfolio_overview",
       "community": 0,
-      "norm_label": "cameron's kaggle portfolio overview \u2014 14 competitions"
+      "norm_label": "cameron's kaggle portfolio overview \u2014 14 competitions",
+      "id": "kaggle_portfolio_overview"
     },
     {
       "label": "Motion-S: Text-to-Sign Motion Generation (Rank 25)",
@@ -1074,9 +1074,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_motion_s",
       "community": 0,
-      "norm_label": "motion-s: text-to-sign motion generation (rank 25)"
+      "norm_label": "motion-s: text-to-sign motion generation (rank 25)",
+      "id": "kaggle_motion_s"
     },
     {
       "label": "UrbanFloodBench \u2014 Flood Modelling (Rank 117)",
@@ -1087,9 +1087,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_urban_flood",
       "community": 0,
-      "norm_label": "urbanfloodbench \u2014 flood modelling (rank 117)"
+      "norm_label": "urbanfloodbench \u2014 flood modelling (rank 117)",
+      "id": "kaggle_urban_flood"
     },
     {
       "label": "House Prices \u2014 Advanced Regression Techniques (Rank ~19)",
@@ -1100,9 +1100,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_house_prices",
-      "community": 2,
-      "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)"
+      "community": 5,
+      "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)",
+      "id": "kaggle_house_prices"
     },
     {
       "label": "MABe \u2014 Social Action Recognition in Mice",
@@ -1113,9 +1113,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_mabe",
       "community": 0,
-      "norm_label": "mabe \u2014 social action recognition in mice"
+      "norm_label": "mabe \u2014 social action recognition in mice",
+      "id": "kaggle_mabe"
     },
     {
       "label": "Stanford RNA 3D Folding (Part 2)",
@@ -1126,9 +1126,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_stanford_rna",
       "community": 0,
-      "norm_label": "stanford rna 3d folding (part 2)"
+      "norm_label": "stanford rna 3d folding (part 2)",
+      "id": "kaggle_stanford_rna"
     },
     {
       "label": "CSIRO \u2014 Image2Biomass Prediction",
@@ -1139,9 +1139,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_csiro",
       "community": 0,
-      "norm_label": "csiro \u2014 image2biomass prediction"
+      "norm_label": "csiro \u2014 image2biomass prediction",
+      "id": "kaggle_csiro"
     },
     {
       "label": "Predicting Heart Disease \u2014 Playground S6E2",
@@ -1152,9 +1152,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_heart_disease",
-      "community": 2,
-      "norm_label": "predicting heart disease \u2014 playground s6e2"
+      "community": 5,
+      "norm_label": "predicting heart disease \u2014 playground s6e2",
+      "id": "kaggle_heart_disease"
     },
     {
       "label": "AI Mathematical Olympiad \u2014 Progress Prize 3 ($2.2M)",
@@ -1165,9 +1165,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_aimo",
       "community": 0,
-      "norm_label": "ai mathematical olympiad \u2014 progress prize 3 ($2.2m)"
+      "norm_label": "ai mathematical olympiad \u2014 progress prize 3 ($2.2m)",
+      "id": "kaggle_aimo"
     },
     {
       "label": "Google Tunix Hackathon \u2014 Train a Model to Show Its Work",
@@ -1178,9 +1178,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_google_tunix",
       "community": 0,
-      "norm_label": "google tunix hackathon \u2014 train a model to show its work"
+      "norm_label": "google tunix hackathon \u2014 train a model to show its work",
+      "id": "kaggle_google_tunix"
     },
     {
       "label": "March Machine Learning Mania 2026",
@@ -1191,9 +1191,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "kaggle_march_mania",
-      "community": 2,
-      "norm_label": "march machine learning mania 2026"
+      "community": 5,
+      "norm_label": "march machine learning mania 2026",
+      "id": "kaggle_march_mania"
     },
     {
       "label": "Graphify Graph Report",
@@ -1204,9 +1204,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_report",
-      "community": 4,
-      "norm_label": "graphify graph report"
+      "community": 3,
+      "norm_label": "graphify graph report",
+      "id": "graph_report"
     },
     {
       "label": "Community: Kaggle Portfolio",
@@ -1217,9 +1217,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_community_kaggle",
-      "community": 4,
-      "norm_label": "community: kaggle portfolio"
+      "community": 3,
+      "norm_label": "community: kaggle portfolio",
+      "id": "graph_community_kaggle"
     },
     {
       "label": "Community: AutoTrader Infrastructure",
@@ -1230,9 +1230,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_community_autotrader",
-      "community": 4,
-      "norm_label": "community: autotrader infrastructure"
+      "community": 3,
+      "norm_label": "community: autotrader infrastructure",
+      "id": "graph_community_autotrader"
     },
     {
       "label": "Community: Language & NLP Kaggle",
@@ -1243,9 +1243,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_community_language_nlp",
-      "community": 4,
-      "norm_label": "community: language & nlp kaggle"
+      "community": 3,
+      "norm_label": "community: language & nlp kaggle",
+      "id": "graph_community_language_nlp"
     },
     {
       "label": "Community: Wiki Core",
@@ -1256,9 +1256,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_community_wiki_core",
-      "community": 4,
-      "norm_label": "community: wiki core"
+      "community": 3,
+      "norm_label": "community: wiki core",
+      "id": "graph_community_wiki_core"
     },
     {
       "label": "TF-IDF + kNN Retrieval (Motion-S approach)",
@@ -1269,9 +1269,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_tfidf_knn",
       "community": 0,
-      "norm_label": "tf-idf + knn retrieval (motion-s approach)"
+      "norm_label": "tf-idf + knn retrieval (motion-s approach)",
+      "id": "technique_tfidf_knn"
     },
     {
       "label": "Pseudo-Labeling (Semi-Supervised, Stanford RNA)",
@@ -1282,9 +1282,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_pseudo_labeling",
       "community": 0,
-      "norm_label": "pseudo-labeling (semi-supervised, stanford rna)"
+      "norm_label": "pseudo-labeling (semi-supervised, stanford rna)",
+      "id": "technique_pseudo_labeling"
     },
     {
       "label": "Multi-GPU Embedding Separation",
@@ -1295,9 +1295,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_multigpu_embeddings",
       "community": 0,
-      "norm_label": "multi-gpu embedding separation"
+      "norm_label": "multi-gpu embedding separation",
+      "id": "technique_multigpu_embeddings"
     },
     {
       "label": "TensorFlow Decision Forests (TFDF)",
@@ -1308,9 +1308,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_tfdf",
-      "community": 2,
-      "norm_label": "tensorflow decision forests (tfdf)"
+      "community": 5,
+      "norm_label": "tensorflow decision forests (tfdf)",
+      "id": "technique_tfdf"
     },
     {
       "label": "RealMLP + CatBoost + XGBoost Ensemble",
@@ -1321,9 +1321,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_realmlp_catboost_xgb",
-      "community": 2,
-      "norm_label": "realmlp + catboost + xgboost ensemble"
+      "community": 5,
+      "norm_label": "realmlp + catboost + xgboost ensemble",
+      "id": "technique_realmlp_catboost_xgb"
     },
     {
       "label": "SHAP Analysis for Feature Importance",
@@ -1334,9 +1334,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_shap_analysis",
-      "community": 2,
-      "norm_label": "shap analysis for feature importance"
+      "community": 5,
+      "norm_label": "shap analysis for feature importance",
+      "id": "technique_shap_analysis"
     },
     {
       "label": "Chain-of-Thought / Show Your Work (Tunix)",
@@ -1347,9 +1347,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_chain_of_thought",
       "community": 0,
-      "norm_label": "chain-of-thought / show your work (tunix)"
+      "norm_label": "chain-of-thought / show your work (tunix)",
+      "id": "technique_chain_of_thought"
     },
     {
       "label": "Rationale: Retrieval vs Generation Trade-off (Motion-S insight)",
@@ -1360,9 +1360,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "technique_retrieval_vs_generation",
       "community": 0,
-      "norm_label": "rationale: retrieval vs generation trade-off (motion-s insight)"
+      "norm_label": "rationale: retrieval vs generation trade-off (motion-s insight)",
+      "id": "technique_retrieval_vs_generation"
     },
     {
       "label": "Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)",
@@ -1373,9 +1373,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_flood_geospatial",
       "community": 0,
-      "norm_label": "geospatial flood modelling (dem, sar, physics-informed ml)"
+      "norm_label": "geospatial flood modelling (dem, sar, physics-informed ml)",
+      "id": "concept_flood_geospatial"
     },
     {
       "label": "RNA 3D Structure Prediction (Structural Biology)",
@@ -1386,9 +1386,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_rna_folding",
       "community": 0,
-      "norm_label": "rna 3d structure prediction (structural biology)"
+      "norm_label": "rna 3d structure prediction (structural biology)",
+      "id": "concept_rna_folding"
     },
     {
       "label": "Social Action Recognition in Mice (Behavioral Ethology)",
@@ -1399,9 +1399,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_mouse_behavior",
       "community": 0,
-      "norm_label": "social action recognition in mice (behavioral ethology)"
+      "norm_label": "social action recognition in mice (behavioral ethology)",
+      "id": "concept_mouse_behavior"
     },
     {
       "label": "Above-Ground Biomass Prediction from Satellite Imagery",
@@ -1412,9 +1412,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_biomass_prediction",
       "community": 0,
-      "norm_label": "above-ground biomass prediction from satellite imagery"
+      "norm_label": "above-ground biomass prediction from satellite imagery",
+      "id": "concept_biomass_prediction"
     },
     {
       "label": "IMO-Level Mathematical Reasoning (AIMO)",
@@ -1425,9 +1425,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_math_olympiad_reasoning",
       "community": 0,
-      "norm_label": "imo-level mathematical reasoning (aimo)"
+      "norm_label": "imo-level mathematical reasoning (aimo)",
+      "id": "concept_math_olympiad_reasoning"
     },
     {
       "label": "NCAA Bracket Prediction (March Mania)",
@@ -1438,9 +1438,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_bracket_prediction",
-      "community": 2,
-      "norm_label": "ncaa bracket prediction (march mania)"
+      "community": 5,
+      "norm_label": "ncaa bracket prediction (march mania)",
+      "id": "concept_bracket_prediction"
     },
     {
       "label": "Log Loss and Calibration in Probabilistic Prediction",
@@ -1451,9 +1451,9 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "id": "concept_log_loss_calibration",
-      "community": 2,
-      "norm_label": "log loss and calibration in probabilistic prediction"
+      "community": 5,
+      "norm_label": "log loss and calibration in probabilistic prediction",
+      "id": "concept_log_loss_calibration"
     },
     {
       "label": "God Node: wiki/index.md (14 edges \u2014 most connected)",
@@ -1464,9 +1464,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_god_node_index",
-      "community": 4,
-      "norm_label": "god node: wiki/index.md (14 edges \u2014 most connected)"
+      "community": 3,
+      "norm_label": "god node: wiki/index.md (14 edges \u2014 most connected)",
+      "id": "graph_god_node_index"
     },
     {
       "label": "God Node: Agentic Trading System Architecture (13 edges)",
@@ -1477,9 +1477,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_god_node_agentic_trading",
-      "community": 4,
-      "norm_label": "god node: agentic trading system architecture (13 edges)"
+      "community": 3,
+      "norm_label": "god node: agentic trading system architecture (13 edges)",
+      "id": "graph_god_node_agentic_trading"
     },
     {
       "label": "Hyperedge: Tabular ML Kaggle Cluster (House Prices + Heart Disease)",
@@ -1490,9 +1490,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_hyperedge_tabular",
-      "community": 4,
-      "norm_label": "hyperedge: tabular ml kaggle cluster (house prices + heart disease)"
+      "community": 3,
+      "norm_label": "hyperedge: tabular ml kaggle cluster (house prices + heart disease)",
+      "id": "graph_hyperedge_tabular"
     },
     {
       "label": "Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT)",
@@ -1503,9 +1503,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_hyperedge_frontier_reasoning",
-      "community": 4,
-      "norm_label": "hyperedge: frontier reasoning benchmarks (aimo + arc-agi + cot)"
+      "community": 3,
+      "norm_label": "hyperedge: frontier reasoning benchmarks (aimo + arc-agi + cot)",
+      "id": "graph_hyperedge_frontier_reasoning"
     },
     {
       "label": "Graph Fragmentation Metric (0.400 \u2014 53 isolated nodes)",
@@ -1516,9 +1516,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "graph_fragmentation",
-      "community": 4,
-      "norm_label": "graph fragmentation metric (0.400 \u2014 53 isolated nodes)"
+      "community": 3,
+      "norm_label": "graph fragmentation metric (0.400 \u2014 53 isolated nodes)",
+      "id": "graph_fragmentation"
     }
   ],
   "links": [
@@ -1589,8 +1589,8 @@
       "source_file": "CLAUDE.md",
       "source_location": "Both are visualization/navigation layers over the wiki vault",
       "weight": 0.7,
-      "_src": "concept_obsidian",
-      "_tgt": "concept_graphify",
+      "_src": "concept_graphify",
+      "_tgt": "concept_obsidian",
       "source": "concept_graphify",
       "target": "concept_obsidian"
     },
@@ -1661,8 +1661,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: [[wiki/kaggle/deep-past-akkadian-translation.md|Deep Past]]",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_deep_past",
+      "_src": "concept_deep_past",
+      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_deep_past",
       "target": "doc_consensus_memory_adr"
     },
@@ -1673,8 +1673,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: Deep Past used MBR Decoding for translation consensus",
       "weight": 1.0,
-      "_src": "concept_mbr_decoding",
-      "_tgt": "concept_deep_past",
+      "_src": "concept_deep_past",
+      "_tgt": "concept_mbr_decoding",
       "source": "concept_deep_past",
       "target": "concept_mbr_decoding"
     },
@@ -1685,8 +1685,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_agentic_memory_retention",
+      "_src": "concept_agentic_memory_retention",
+      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_agentic_memory_retention",
       "target": "doc_consensus_memory_adr"
     },
@@ -1697,8 +1697,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Agentic drift is the core risk addressed in memory retention open-question",
       "weight": 0.85,
-      "_src": "concept_agentic_drift",
-      "_tgt": "concept_agentic_memory_retention",
+      "_src": "concept_agentic_memory_retention",
+      "_tgt": "concept_agentic_drift",
       "source": "concept_agentic_memory_retention",
       "target": "concept_agentic_drift"
     },
@@ -1709,8 +1709,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale: [[wiki/architectures/provider-adapter-pattern.md|Provider Adapter Pattern]]",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_provider_adapter_pattern",
+      "_src": "concept_provider_adapter_pattern",
+      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_provider_adapter_pattern",
       "target": "doc_consensus_memory_adr"
     },
@@ -1721,8 +1721,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale: Provider Adapter enables cross-examination of models",
       "weight": 1.0,
-      "_src": "rationale_consensus_anti_hallucination",
-      "_tgt": "concept_provider_adapter_pattern",
+      "_src": "concept_provider_adapter_pattern",
+      "_tgt": "rationale_consensus_anti_hallucination",
       "source": "concept_provider_adapter_pattern",
       "target": "rationale_consensus_anti_hallucination"
     },
@@ -1733,8 +1733,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "frontmatter related: [[wiki/decisions/arc-agi-adapters-vs-litellm.md]]",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_arc_agi_adapters_adr",
+      "_src": "concept_arc_agi_adapters_adr",
+      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_arc_agi_adapters_adr",
       "target": "doc_consensus_memory_adr"
     },
@@ -1745,8 +1745,8 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Decision: MBR selection used for consensus memory distillation",
       "weight": 1.0,
-      "_src": "concept_mbr_decoding",
-      "_tgt": "doc_consensus_memory_adr",
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_mbr_decoding",
       "source": "doc_consensus_memory_adr",
       "target": "concept_mbr_decoding"
     },
@@ -1827,8 +1827,8 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
-      "_src": "tech_clip_faiss",
-      "_tgt": "tech_persistent_model",
+      "_src": "tech_persistent_model",
+      "_tgt": "tech_clip_faiss",
       "source": "tech_persistent_model",
       "target": "tech_clip_faiss"
     },
@@ -1899,8 +1899,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Title and intro",
       "weight": 1.0,
-      "_src": "overview_second_brain",
-      "_tgt": "overview_cameron_wiki",
+      "_src": "overview_cameron_wiki",
+      "_tgt": "overview_second_brain",
       "source": "overview_cameron_wiki",
       "target": "overview_second_brain"
     },
@@ -1911,8 +1911,8 @@
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
       "source_location": "Image embedding cluster note",
       "weight": 0.65,
-      "_src": "kaggle_csiro",
-      "_tgt": "overview_sofascope_system",
+      "_src": "overview_sofascope_system",
+      "_tgt": "kaggle_csiro",
       "source": "overview_sofascope_system",
       "target": "kaggle_csiro"
     },
@@ -1923,8 +1923,8 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "related field",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "overview_autotrader_system",
+      "_src": "overview_autotrader_system",
+      "_tgt": "groq_tool",
       "source": "overview_autotrader_system",
       "target": "groq_tool"
     },
@@ -2427,8 +2427,8 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "related field + Why this model Speed via Groq",
       "weight": 1.0,
-      "_src": "llama_3_3_70b",
-      "_tgt": "groq_tool",
+      "_src": "groq_tool",
+      "_tgt": "llama_3_3_70b",
       "source": "groq_tool",
       "target": "llama_3_3_70b"
     },
@@ -2439,8 +2439,8 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "_src": "groq_latency_prop",
-      "_tgt": "groq_lpu_hardware",
+      "_src": "groq_lpu_hardware",
+      "_tgt": "groq_latency_prop",
       "source": "groq_lpu_hardware",
       "target": "groq_latency_prop"
     },
@@ -2463,8 +2463,8 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Why this model section",
       "weight": 1.0,
-      "_src": "llama_cost_rationale",
-      "_tgt": "llama_3_3_70b",
+      "_src": "llama_3_3_70b",
+      "_tgt": "llama_cost_rationale",
       "source": "llama_3_3_70b",
       "target": "llama_cost_rationale"
     },
@@ -2643,8 +2643,8 @@
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
       "source_location": "Related competitions \u2014 Motion/behavior cluster",
       "weight": 1.0,
-      "_src": "kaggle_mabe",
-      "_tgt": "kaggle_motion_s",
+      "_src": "kaggle_motion_s",
+      "_tgt": "kaggle_mabe",
       "source": "kaggle_motion_s",
       "target": "kaggle_mabe"
     },
@@ -2667,8 +2667,8 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
       "weight": 1.0,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "kaggle_urban_flood",
+      "_src": "kaggle_urban_flood",
+      "_tgt": "kaggle_stanford_rna",
       "source": "kaggle_urban_flood",
       "target": "kaggle_stanford_rna"
     },
@@ -2715,8 +2715,8 @@
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
       "source_location": "Related competitions \u2014 Tabular ML cluster",
       "weight": 1.0,
-      "_src": "kaggle_heart_disease",
-      "_tgt": "kaggle_house_prices",
+      "_src": "kaggle_house_prices",
+      "_tgt": "kaggle_heart_disease",
       "source": "kaggle_house_prices",
       "target": "kaggle_heart_disease"
     },
@@ -2727,8 +2727,8 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "Related competitions \u2014 Tabular/prediction cluster",
       "weight": 1.0,
-      "_src": "kaggle_march_mania",
-      "_tgt": "kaggle_house_prices",
+      "_src": "kaggle_house_prices",
+      "_tgt": "kaggle_march_mania",
       "source": "kaggle_house_prices",
       "target": "kaggle_march_mania"
     },
@@ -2799,8 +2799,8 @@
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
       "source_location": null,
       "weight": 0.65,
-      "_src": "kaggle_aimo",
-      "_tgt": "kaggle_stanford_rna",
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "kaggle_aimo",
       "source": "kaggle_stanford_rna",
       "target": "kaggle_aimo"
     },
@@ -2847,8 +2847,8 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "Related competitions \u2014 Tabular/prediction cluster",
       "weight": 1.0,
-      "_src": "kaggle_march_mania",
-      "_tgt": "kaggle_heart_disease",
+      "_src": "kaggle_heart_disease",
+      "_tgt": "kaggle_march_mania",
       "source": "kaggle_heart_disease",
       "target": "kaggle_march_mania"
     },
@@ -2883,8 +2883,8 @@
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
       "source_location": "Related competitions",
       "weight": 1.0,
-      "_src": "kaggle_google_tunix",
-      "_tgt": "kaggle_aimo",
+      "_src": "kaggle_aimo",
+      "_tgt": "kaggle_google_tunix",
       "source": "kaggle_aimo",
       "target": "kaggle_google_tunix"
     },
@@ -3063,8 +3063,8 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": null,
       "weight": 0.7,
-      "_src": "concept_log_loss_calibration",
-      "_tgt": "technique_realmlp_catboost_xgb",
+      "_src": "technique_realmlp_catboost_xgb",
+      "_tgt": "concept_log_loss_calibration",
       "source": "technique_realmlp_catboost_xgb",
       "target": "concept_log_loss_calibration"
     }
