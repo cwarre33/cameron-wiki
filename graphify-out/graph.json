@@ -1,7 +1,107 @@
 {
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "hyperedge_llm_wiki_system",
+        "label": "LLM Wiki System: index + log + overview form the maintenance backbone of the wiki",
+        "nodes": [
+          "doc_index",
+          "doc_log",
+          "doc_overview",
+          "concept_llm_wiki_pattern",
+          "doc_claudemd"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.92,
+        "source_file": "CLAUDE.md"
+      },
+      {
+        "id": "hyperedge_cv_wildlife_embedding_cluster",
+        "label": "Computer vision wildlife competitions cluster \u2014 Jaguar Re-ID and MABe both involve animal visual recognition with embedding/contrastive methods",
+        "nodes": [
+          "kaggle_jaguar_reidentification",
+          "kaggle_mabe_mouse_behavior",
+          "technique_metric_learning",
+          "technique_clip_faiss",
+          "concept_computer_vision_kaggle"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.75,
+        "source_file": "wiki/kaggle/jaguar-re-identification.md"
+      },
+      {
+        "id": "hyperedge_consensus_memory_cluster",
+        "label": "Consensus-Based Memory Distillation: MBR + LLM Review + Provider Adapters applied to agentic memory",
+        "nodes": [
+          "doc_consensus_memory_adr",
+          "concept_mbr_decoding",
+          "concept_llm_review_pass",
+          "concept_provider_adapter_pattern",
+          "concept_autotrader",
+          "concept_agentic_memory_retention"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "wiki/decisions/consensus-based-memory-distillation.md"
+      },
+      {
+        "id": "scientific_ml_cluster",
+        "label": "Scientific/Environmental ML Kaggle Cluster \u2014 Stanford RNA, Urban Flood, CSIRO Biomass",
+        "nodes": [
+          "kaggle_stanford_rna",
+          "kaggle_urban_flood",
+          "kaggle_csiro",
+          "technique_pseudo_labeling",
+          "concept_rna_folding",
+          "concept_flood_geospatial",
+          "concept_biomass_prediction"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.88,
+        "source_file": "wiki/kaggle/stanford-rna-3d-folding.md"
+      },
+      {
+        "id": "tabular_ml_cluster",
+        "label": "Tabular ML Kaggle Cluster \u2014 House Prices + Heart Disease + March Mania use gradient boosting on structured data",
+        "nodes": [
+          "kaggle_house_prices",
+          "kaggle_heart_disease",
+          "kaggle_march_mania",
+          "technique_tfdf",
+          "technique_realmlp_catboost_xgb",
+          "concept_log_loss_calibration"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "graphify-out/GRAPH_REPORT.md"
+      },
+      {
+        "id": "groq_autotrader_llama_loop",
+        "label": "Groq + Llama 3.3 70B form the sentiment inference backbone of AutoTrader's 15-min scan loop",
+        "nodes": [
+          "groq_tool",
+          "llama_3_3_70b",
+          "groq_autotrader_use",
+          "llama_sentiment_use",
+          "llama_cost_rationale",
+          "groq_latency_prop"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "wiki/tools/groq.md"
+      }
+    ]
+  },
   "nodes": [
     {
-      "id": "doc_readme",
       "label": "README \u2014 cameron-wiki",
       "file_type": "document",
       "source_file": "README.md",
@@ -9,10 +109,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "doc_readme",
+      "community": 6,
+      "norm_label": "readme \u2014 cameron-wiki"
     },
     {
-      "id": "doc_claudemd",
       "label": "CLAUDE.md \u2014 Wiki Schema & Workflows",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -20,10 +122,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "doc_claudemd",
+      "community": 6,
+      "norm_label": "claude.md \u2014 wiki schema & workflows"
     },
     {
-      "id": "concept_graphify",
       "label": "Graphify \u2014 Knowledge Graph Skill",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -31,10 +135,12 @@
       "source_url": "https://github.com/safishamsi/graphify",
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_graphify",
+      "community": 6,
+      "norm_label": "graphify \u2014 knowledge graph skill"
     },
     {
-      "id": "concept_obsidian",
       "label": "Obsidian Integration",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -42,16 +148,20 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_obsidian",
+      "community": 6,
+      "norm_label": "obsidian integration"
     },
     {
-      "id": "tool_litellm",
       "label": "LiteLLM",
       "file_type": "document",
-      "source_file": "wiki/tools/litellm.md"
+      "source_file": "wiki/tools/litellm.md",
+      "id": "tool_litellm",
+      "community": 9,
+      "norm_label": "litellm"
     },
     {
-      "id": "tool_faiss",
       "label": "FAISS Vector Search Tool",
       "file_type": "document",
       "source_file": "wiki/tools/faiss.md",
@@ -59,16 +169,20 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "tool_faiss",
+      "community": 10,
+      "norm_label": "faiss vector search tool"
     },
     {
-      "id": "kaggle_arc_prize_2025",
       "label": "ARC Prize 2025",
       "file_type": "document",
-      "source_file": "wiki/kaggle/arc-prize-2025.md"
+      "source_file": "wiki/kaggle/arc-prize-2025.md",
+      "id": "kaggle_arc_prize_2025",
+      "community": 11,
+      "norm_label": "arc prize 2025"
     },
     {
-      "id": "kaggle_jaguar_reidentification",
       "label": "Jaguar Re-Identification Challenge",
       "file_type": "document",
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
@@ -76,10 +190,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_jaguar_reidentification",
+      "community": 7,
+      "norm_label": "jaguar re-identification challenge"
     },
     {
-      "id": "technique_metric_learning",
       "label": "Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)",
       "file_type": "document",
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
@@ -87,10 +203,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "technique_metric_learning",
+      "community": 7,
+      "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)"
     },
     {
-      "id": "technique_clip_faiss",
       "label": "CLIP+FAISS Embedding Retrieval",
       "file_type": "document",
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
@@ -98,10 +216,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "technique_clip_faiss",
+      "community": 7,
+      "norm_label": "clip+faiss embedding retrieval"
     },
     {
-      "id": "concept_deep_past",
       "label": "Deep Past \u2014 Akkadian Translation (Kaggle)",
       "file_type": "document",
       "source_file": "wiki/kaggle/deep-past-akkadian-translation.md",
@@ -109,22 +229,28 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_deep_past",
+      "community": 3,
+      "norm_label": "deep past \u2014 akkadian translation (kaggle)"
     },
     {
-      "id": "kaggle_hull_tactical",
       "label": "Hull Tactical \u2014 Market Prediction",
       "file_type": "document",
-      "source_file": "wiki/kaggle/hull-tactical-market-prediction.md"
+      "source_file": "wiki/kaggle/hull-tactical-market-prediction.md",
+      "id": "kaggle_hull_tactical",
+      "community": 12,
+      "norm_label": "hull tactical \u2014 market prediction"
     },
     {
-      "id": "kaggle_arc_agi_harness",
       "label": "ARC-AGI Benchmarking Harness",
       "file_type": "document",
-      "source_file": "wiki/kaggle/arc-agi-benchmarking.md"
+      "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
+      "id": "kaggle_arc_agi_harness",
+      "community": 13,
+      "norm_label": "arc-agi benchmarking harness"
     },
     {
-      "id": "concept_rag",
       "label": "Retrieval-Augmented Generation (RAG)",
       "file_type": "document",
       "source_file": "wiki/comparisons/llm-wiki-vs-rag.md",
@@ -132,10 +258,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_rag",
+      "community": 14,
+      "norm_label": "retrieval-augmented generation (rag)"
     },
     {
-      "id": "concept_llm_wiki_pattern",
       "label": "LLM Wiki Pattern (Karpathy)",
       "file_type": "document",
       "source_file": "wiki/methodology/llm-wiki-pattern.md",
@@ -143,10 +271,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_llm_wiki_pattern",
+      "community": 6,
+      "norm_label": "llm wiki pattern (karpathy)"
     },
     {
-      "id": "method_cameron_wiki_setup",
       "label": "Cameron's Wiki Setup",
       "file_type": "document",
       "source_file": "wiki/methodology/cameron-wiki-setup.md",
@@ -154,10 +284,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "method_cameron_wiki_setup",
+      "community": 15,
+      "norm_label": "cameron's wiki setup"
     },
     {
-      "id": "concept_agentic_memory_retention",
       "label": "Open Question \u2014 Agentic Memory Retention Strategies",
       "file_type": "document",
       "source_file": "wiki/open-questions/agentic-memory-retention-strategies.md",
@@ -165,16 +297,20 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_agentic_memory_retention",
+      "community": 3,
+      "norm_label": "open question \u2014 agentic memory retention strategies"
     },
     {
-      "id": "arch_agentic_trading",
       "label": "Agentic Trading System Architecture",
       "file_type": "document",
-      "source_file": "wiki/architectures/agentic-trading-system.md"
+      "source_file": "wiki/architectures/agentic-trading-system.md",
+      "id": "arch_agentic_trading",
+      "community": 16,
+      "norm_label": "agentic trading system architecture"
     },
     {
-      "id": "concept_provider_adapter_pattern",
       "label": "Provider Adapter Pattern (Multi-LLM)",
       "file_type": "document",
       "source_file": "wiki/architectures/provider-adapter-pattern.md",
@@ -182,22 +318,28 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_provider_adapter_pattern",
+      "community": 3,
+      "norm_label": "provider adapter pattern (multi-llm)"
     },
     {
-      "id": "model_clip",
       "label": "CLIP \u2014 Contrastive Language-Image Pretraining",
       "file_type": "document",
-      "source_file": "wiki/models/clip.md"
+      "source_file": "wiki/models/clip.md",
+      "id": "model_clip",
+      "community": 17,
+      "norm_label": "clip \u2014 contrastive language-image pretraining"
     },
     {
-      "id": "model_byt5",
       "label": "ByT5 (Byte-Level T5)",
       "file_type": "document",
-      "source_file": "wiki/models/byt5.md"
+      "source_file": "wiki/models/byt5.md",
+      "id": "model_byt5",
+      "community": 18,
+      "norm_label": "byt5 (byte-level t5)"
     },
     {
-      "id": "concept_arc_agi_adapters_adr",
       "label": "ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI",
       "file_type": "document",
       "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
@@ -205,10 +347,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_arc_agi_adapters_adr",
+      "community": 3,
+      "norm_label": "adr: custom provider adapters vs. litellm for arc-agi"
     },
     {
-      "id": "concept_wiki_retention_policy",
       "label": "ADR: Wiki Retention Policy \u2014 Archive vs. Prune Speculative Pages",
       "file_type": "document",
       "source_file": "wiki/decisions/wiki-retention-policy.md",
@@ -216,10 +360,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_wiki_retention_policy",
+      "community": 19,
+      "norm_label": "adr: wiki retention policy \u2014 archive vs. prune speculative pages"
     },
     {
-      "id": "decision_sofascope_metadata_vs_embeddings",
       "label": "ADR: Metadata Scoring vs. Embeddings for Text Search",
       "file_type": "document",
       "source_file": "wiki/decisions/sofascope-metadata-vs-embeddings.md",
@@ -227,10 +373,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "decision_sofascope_metadata_vs_embeddings",
+      "community": 20,
+      "norm_label": "adr: metadata scoring vs. embeddings for text search"
     },
     {
-      "id": "doc_consensus_memory_adr",
       "label": "ADR: Consensus-Based Memory Distillation",
       "file_type": "document",
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
@@ -238,10 +386,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "doc_consensus_memory_adr",
+      "community": 3,
+      "norm_label": "adr: consensus-based memory distillation"
     },
     {
-      "id": "concept_agentic_drift",
       "label": "Agentic Drift (hallucination compounding in memory)",
       "file_type": "document",
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
@@ -249,10 +399,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_agentic_drift",
+      "community": 3,
+      "norm_label": "agentic drift (hallucination compounding in memory)"
     },
     {
-      "id": "rationale_consensus_anti_hallucination",
       "label": "Rationale: Anti-Hallucination via Consensus (Consensus Memory ADR)",
       "file_type": "document",
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
@@ -260,10 +412,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "rationale_consensus_anti_hallucination",
+      "community": 3,
+      "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)"
     },
     {
-      "id": "decision_sofascope_stdin_stdout",
       "label": "ADR: Persistent Service stdin/stdout vs. HTTP",
       "file_type": "document",
       "source_file": "wiki/decisions/sofascope-persistent-service-stdin-stdout.md",
@@ -271,10 +425,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "decision_sofascope_stdin_stdout",
+      "community": 21,
+      "norm_label": "adr: persistent service stdin/stdout vs. http"
     },
     {
-      "id": "concept_adr_log_retention",
       "label": "ADR: 90-Day Rotating Retention for Trading Decisions Log",
       "file_type": "document",
       "source_file": "wiki/decisions/autotrader-decisions-log-retention.md",
@@ -282,10 +438,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_adr_log_retention",
+      "community": 22,
+      "norm_label": "adr: 90-day rotating retention for trading decisions log"
     },
     {
-      "id": "decision_autotrader_open_model_vs_frontier",
       "label": "ADR: Open Model vs. Frontier for Trading Sentiment",
       "file_type": "document",
       "source_file": "wiki/decisions/autotrader-open-model-vs-frontier.md",
@@ -293,10 +451,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "decision_autotrader_open_model_vs_frontier",
+      "community": 23,
+      "norm_label": "adr: open model vs. frontier for trading sentiment"
     },
     {
-      "id": "integration_alpaca_api",
       "label": "Alpaca API Integration",
       "file_type": "document",
       "source_file": "wiki/integrations/alpaca-api.md",
@@ -304,10 +464,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "integration_alpaca_api",
+      "community": 24,
+      "norm_label": "alpaca api integration"
     },
     {
-      "id": "interview_visual_search_system_design",
       "label": "System Design \u2014 Visual Search at Scale",
       "file_type": "document",
       "source_file": "wiki/interview-prep/system-design-visual-search.md",
@@ -315,10 +477,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "interview_visual_search_system_design",
+      "community": 25,
+      "norm_label": "system design \u2014 visual search at scale"
     },
     {
-      "id": "concept_sofascope",
       "label": "SofaScope \u2014 AI-Powered Furniture Visual Search",
       "file_type": "document",
       "source_file": "wiki/production-systems/sofascope.md",
@@ -326,10 +490,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_sofascope",
+      "community": 26,
+      "norm_label": "sofascope \u2014 ai-powered furniture visual search"
     },
     {
-      "id": "production_sofascope",
       "label": "SofaScope Production System",
       "file_type": "document",
       "source_file": "wiki/production-systems/sofascope.md",
@@ -337,10 +503,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "production_sofascope",
+      "community": 7,
+      "norm_label": "sofascope production system"
     },
     {
-      "id": "concept_arc_agi",
       "label": "ARC-AGI Benchmark",
       "file_type": "document",
       "source_file": "wiki/benchmarks/arc-agi.md",
@@ -348,10 +516,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_arc_agi",
+      "community": 27,
+      "norm_label": "arc-agi benchmark"
     },
     {
-      "id": "person_andrej_karpathy",
       "label": "Andrej Karpathy",
       "file_type": "document",
       "source_file": "wiki/people/andrej-karpathy.md",
@@ -359,10 +529,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "person_andrej_karpathy",
+      "community": 28,
+      "norm_label": "andrej karpathy"
     },
     {
-      "id": "trading_rsi_llm_signal_strategy",
       "label": "RSI + LLM Signal Strategy",
       "file_type": "document",
       "source_file": "wiki/trading/rsi-llm-signal-strategy.md",
@@ -370,10 +542,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "trading_rsi_llm_signal_strategy",
+      "community": 29,
+      "norm_label": "rsi + llm signal strategy"
     },
     {
-      "id": "concept_autotrader",
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
       "file_type": "document",
       "source_file": "wiki/trading/autotrader.md",
@@ -381,16 +555,20 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_autotrader",
+      "community": 3,
+      "norm_label": "autotrader \u2014 autonomous paper trading bot"
     },
     {
-      "id": "tech_hybrid_routing",
       "label": "Hybrid Search Routing (Text + Image)",
       "file_type": "document",
-      "source_file": "wiki/techniques/hybrid-search-routing.md"
+      "source_file": "wiki/techniques/hybrid-search-routing.md",
+      "id": "tech_hybrid_routing",
+      "community": 30,
+      "norm_label": "hybrid search routing (text + image)"
     },
     {
-      "id": "concept_llm_review_pass",
       "label": "LLM Review Pass Before Rotation",
       "file_type": "document",
       "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
@@ -398,16 +576,20 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_llm_review_pass",
+      "community": 3,
+      "norm_label": "llm review pass before rotation"
     },
     {
-      "id": "tech_persistent_model",
       "label": "Persistent Model Loading Pattern",
       "file_type": "document",
-      "source_file": "wiki/techniques/persistent-model-loading.md"
+      "source_file": "wiki/techniques/persistent-model-loading.md",
+      "id": "tech_persistent_model",
+      "community": 8,
+      "norm_label": "persistent model loading pattern"
     },
     {
-      "id": "concept_mbr_decoding",
       "label": "MBR Decoding (Minimum Bayes Risk)",
       "file_type": "document",
       "source_file": "wiki/techniques/mbr-decoding.md",
@@ -415,16 +597,20 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "concept_mbr_decoding",
+      "community": 3,
+      "norm_label": "mbr decoding (minimum bayes risk)"
     },
     {
-      "id": "tech_clip_faiss",
       "label": "CLIP + FAISS Visual Search Pipeline",
       "file_type": "document",
-      "source_file": "wiki/techniques/clip-faiss-visual-search.md"
+      "source_file": "wiki/techniques/clip-faiss-visual-search.md",
+      "id": "tech_clip_faiss",
+      "community": 8,
+      "norm_label": "clip + faiss visual search pipeline"
     },
     {
-      "id": "raw_autotrader_readme",
       "label": "AutoTrader README (raw)",
       "file_type": "document",
       "source_file": "raw/repos/autotrader-readme.md",
@@ -432,10 +618,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "raw_autotrader_readme",
+      "community": 31,
+      "norm_label": "autotrader readme (raw)"
     },
     {
-      "id": "raw_arc_agi_benchmarking_readme",
       "label": "ARC-AGI Benchmarking README (raw)",
       "file_type": "document",
       "source_file": "raw/repos/arc-agi-benchmarking-readme.md",
@@ -443,10 +631,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "raw_arc_agi_benchmarking_readme",
+      "community": 32,
+      "norm_label": "arc-agi benchmarking readme (raw)"
     },
     {
-      "id": "raw_sofascope_readme",
       "label": "SofaScope README (raw)",
       "file_type": "document",
       "source_file": "raw/repos/sofascope-ai-powered-product-match-finder.md",
@@ -454,10 +644,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "raw_sofascope_readme",
+      "community": 33,
+      "norm_label": "sofascope readme (raw)"
     },
     {
-      "id": "raw_karpathy_llm_wiki",
       "label": "Karpathy LLM Wiki Gist (raw)",
       "file_type": "document",
       "source_file": "raw/repos/karpathy-llm-wiki-gist.md",
@@ -465,10 +657,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Andrej Karpathy",
-      "contributor": null
+      "contributor": null,
+      "id": "raw_karpathy_llm_wiki",
+      "community": 34,
+      "norm_label": "karpathy llm wiki gist (raw)"
     },
     {
-      "id": "source_cameron_kaggle_profile",
       "label": "Cameron Kaggle Profile (raw source)",
       "file_type": "document",
       "source_file": "raw/kaggle/cameron-kaggle-profile.md",
@@ -476,10 +670,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "source_cameron_kaggle_profile",
+      "community": 7,
+      "norm_label": "cameron kaggle profile (raw source)"
     },
     {
-      "id": "overview_cameron_wiki",
       "label": "Cameron's Second Brain \u2014 Overview",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -487,10 +683,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_cameron_wiki",
+      "community": 5,
+      "norm_label": "cameron's second brain \u2014 overview"
     },
     {
-      "id": "overview_second_brain",
       "label": "Second Brain Knowledge System",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -498,10 +696,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_second_brain",
+      "community": 5,
+      "norm_label": "second brain knowledge system"
     },
     {
-      "id": "overview_sofascope_system",
       "label": "SofaScope Visual Search System",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -509,10 +709,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_sofascope_system",
+      "community": 5,
+      "norm_label": "sofascope visual search system"
     },
     {
-      "id": "overview_arc_agi_harness",
       "label": "ARC-AGI Async LLM Test Harness",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -520,10 +722,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_arc_agi_harness",
+      "community": 5,
+      "norm_label": "arc-agi async llm test harness"
     },
     {
-      "id": "overview_autotrader_system",
       "label": "AutoTrader RSI+LLM Strategy",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -531,10 +735,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_autotrader_system",
+      "community": 5,
+      "norm_label": "autotrader rsi+llm strategy"
     },
     {
-      "id": "overview_kaggle_portfolio",
       "label": "Kaggle Competition Portfolio (14 competitions)",
       "file_type": "document",
       "source_file": "wiki/overview.md",
@@ -542,10 +748,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "overview_kaggle_portfolio",
+      "community": 5,
+      "norm_label": "kaggle competition portfolio (14 competitions)"
     },
     {
-      "id": "log_wiki_activity",
       "label": "Wiki Activity Log \u2014 Append-Only",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -553,10 +761,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_wiki_activity",
+      "community": 1,
+      "norm_label": "wiki activity log \u2014 append-only"
     },
     {
-      "id": "log_ingest_sofascope",
       "label": "Ingest: SofaScope AI-Powered Furniture Visual Search",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -564,10 +774,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_ingest_sofascope",
+      "community": 1,
+      "norm_label": "ingest: sofascope ai-powered furniture visual search"
     },
     {
-      "id": "log_ingest_karpathy",
       "label": "Ingest: Karpathy LLM Wiki Gist",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -575,10 +787,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_ingest_karpathy",
+      "community": 1,
+      "norm_label": "ingest: karpathy llm wiki gist"
     },
     {
-      "id": "log_ingest_kaggle",
       "label": "Ingest: Cameron's Kaggle Profile \u2014 14 Competitions",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -586,10 +800,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_ingest_kaggle",
+      "community": 0,
+      "norm_label": "ingest: cameron's kaggle profile \u2014 14 competitions"
     },
     {
-      "id": "log_ingest_arc_agi",
       "label": "Ingest: ARC-AGI Benchmarking Harness",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -597,10 +813,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_ingest_arc_agi",
+      "community": 1,
+      "norm_label": "ingest: arc-agi benchmarking harness"
     },
     {
-      "id": "log_ingest_autotrader",
       "label": "Ingest: AutoTrader Autonomous Paper Trading Bot",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -608,10 +826,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_ingest_autotrader",
+      "community": 1,
+      "norm_label": "ingest: autotrader autonomous paper trading bot"
     },
     {
-      "id": "log_lint_pass",
       "label": "Lint Pass: First Full Lint + Remediation",
       "file_type": "document",
       "source_file": "wiki/log.md",
@@ -619,10 +839,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "log_lint_pass",
+      "community": 1,
+      "norm_label": "lint pass: first full lint + remediation"
     },
     {
-      "id": "index_master_catalog",
       "label": "Wiki Index \u2014 Master Catalog",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -630,10 +852,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_master_catalog",
+      "community": 2,
+      "norm_label": "wiki index \u2014 master catalog"
     },
     {
-      "id": "index_sofascope_page",
       "label": "SofaScope Production System Page",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -641,10 +865,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_sofascope_page",
+      "community": 2,
+      "norm_label": "sofascope production system page"
     },
     {
-      "id": "index_autotrader_page",
       "label": "AutoTrader Trading Bot Page",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -652,10 +878,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_autotrader_page",
+      "community": 2,
+      "norm_label": "autotrader trading bot page"
     },
     {
-      "id": "index_arc_agi_benchmark_page",
       "label": "ARC-AGI Benchmark Page",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -663,10 +891,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_arc_agi_benchmark_page",
+      "community": 2,
+      "norm_label": "arc-agi benchmark page"
     },
     {
-      "id": "index_llm_wiki_pattern_page",
       "label": "LLM Wiki Pattern (Karpathy) Page",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -674,10 +904,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_llm_wiki_pattern_page",
+      "community": 2,
+      "norm_label": "llm wiki pattern (karpathy) page"
     },
     {
-      "id": "index_kaggle_portfolio_page",
       "label": "Kaggle Portfolio Overview Page",
       "file_type": "document",
       "source_file": "wiki/index.md",
@@ -685,10 +917,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "index_kaggle_portfolio_page",
+      "community": 2,
+      "norm_label": "kaggle portfolio overview page"
     },
     {
-      "id": "groq_tool",
       "label": "Groq \u2014 LLM Inference API",
       "file_type": "document",
       "source_file": "wiki/tools/groq.md",
@@ -696,10 +930,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "groq_tool",
+      "community": 1,
+      "norm_label": "groq \u2014 llm inference api"
     },
     {
-      "id": "groq_lpu_hardware",
       "label": "Groq LPU (Language Processing Unit) Hardware",
       "file_type": "document",
       "source_file": "wiki/tools/groq.md",
@@ -707,10 +943,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "groq_lpu_hardware",
+      "community": 1,
+      "norm_label": "groq lpu (language processing unit) hardware"
     },
     {
-      "id": "groq_autotrader_use",
       "label": "Groq Usage in AutoTrader 15-Min Sentiment Loop",
       "file_type": "document",
       "source_file": "wiki/tools/groq.md",
@@ -718,10 +956,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "groq_autotrader_use",
+      "community": 1,
+      "norm_label": "groq usage in autotrader 15-min sentiment loop"
     },
     {
-      "id": "groq_openai_compat",
       "label": "Groq OpenAI-Compatible Chat Completions Endpoint",
       "file_type": "document",
       "source_file": "wiki/tools/groq.md",
@@ -729,10 +969,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "groq_openai_compat",
+      "community": 1,
+      "norm_label": "groq openai-compatible chat completions endpoint"
     },
     {
-      "id": "groq_latency_prop",
       "label": "Groq Ultra-Low Latency Token Generation",
       "file_type": "document",
       "source_file": "wiki/tools/groq.md",
@@ -740,10 +982,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "groq_latency_prop",
+      "community": 1,
+      "norm_label": "groq ultra-low latency token generation"
     },
     {
-      "id": "llama_3_3_70b",
       "label": "Llama 3.3 70B \u2014 Meta Open-Weights LLM",
       "file_type": "document",
       "source_file": "wiki/models/llama-3-3-70b.md",
@@ -751,10 +995,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "llama_3_3_70b",
+      "community": 1,
+      "norm_label": "llama 3.3 70b \u2014 meta open-weights llm"
     },
     {
-      "id": "llama_sentiment_use",
       "label": "Llama 3.3 70B Sentiment Classification for AutoTrader",
       "file_type": "document",
       "source_file": "wiki/models/llama-3-3-70b.md",
@@ -762,10 +1008,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "llama_sentiment_use",
+      "community": 1,
+      "norm_label": "llama 3.3 70b sentiment classification for autotrader"
     },
     {
-      "id": "llama_cost_rationale",
       "label": "Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader",
       "file_type": "document",
       "source_file": "wiki/models/llama-3-3-70b.md",
@@ -773,10 +1021,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "llama_cost_rationale",
+      "community": 1,
+      "norm_label": "rationale: llama 70b ~10x cheaper than gpt-4o for autotrader"
     },
     {
-      "id": "llama_128k_context",
       "label": "Llama 3.3 70B 128K Context Window",
       "file_type": "document",
       "source_file": "wiki/models/llama-3-3-70b.md",
@@ -784,10 +1034,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "llama_128k_context",
+      "community": 1,
+      "norm_label": "llama 3.3 70b 128k context window"
     },
     {
-      "id": "llama_model_family",
       "label": "Llama Model Family (1B/3B/8B/70B/405B)",
       "file_type": "document",
       "source_file": "wiki/models/llama-3-3-70b.md",
@@ -795,10 +1047,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "llama_model_family",
+      "community": 1,
+      "norm_label": "llama model family (1b/3b/8b/70b/405b)"
     },
     {
-      "id": "kaggle_portfolio_overview",
       "label": "Cameron's Kaggle Portfolio Overview \u2014 14 Competitions",
       "file_type": "document",
       "source_file": "wiki/kaggle/portfolio-overview.md",
@@ -806,10 +1060,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_portfolio_overview",
+      "community": 0,
+      "norm_label": "cameron's kaggle portfolio overview \u2014 14 competitions"
     },
     {
-      "id": "kaggle_motion_s",
       "label": "Motion-S: Text-to-Sign Motion Generation (Rank 25)",
       "file_type": "document",
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
@@ -817,10 +1073,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_motion_s",
+      "community": 0,
+      "norm_label": "motion-s: text-to-sign motion generation (rank 25)"
     },
     {
-      "id": "kaggle_urban_flood",
       "label": "UrbanFloodBench \u2014 Flood Modelling (Rank 117)",
       "file_type": "document",
       "source_file": "wiki/kaggle/urban-flood-modelling.md",
@@ -828,10 +1086,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_urban_flood",
+      "community": 0,
+      "norm_label": "urbanfloodbench \u2014 flood modelling (rank 117)"
     },
     {
-      "id": "kaggle_house_prices",
       "label": "House Prices \u2014 Advanced Regression Techniques (Rank ~19)",
       "file_type": "document",
       "source_file": "wiki/kaggle/house-prices-regression.md",
@@ -839,10 +1099,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_house_prices",
+      "community": 2,
+      "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)"
     },
     {
-      "id": "kaggle_mabe",
       "label": "MABe \u2014 Social Action Recognition in Mice",
       "file_type": "document",
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
@@ -850,10 +1112,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_mabe",
+      "community": 0,
+      "norm_label": "mabe \u2014 social action recognition in mice"
     },
     {
-      "id": "kaggle_stanford_rna",
       "label": "Stanford RNA 3D Folding (Part 2)",
       "file_type": "document",
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
@@ -861,10 +1125,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_stanford_rna",
+      "community": 0,
+      "norm_label": "stanford rna 3d folding (part 2)"
     },
     {
-      "id": "kaggle_csiro",
       "label": "CSIRO \u2014 Image2Biomass Prediction",
       "file_type": "document",
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
@@ -872,10 +1138,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_csiro",
+      "community": 0,
+      "norm_label": "csiro \u2014 image2biomass prediction"
     },
     {
-      "id": "kaggle_heart_disease",
       "label": "Predicting Heart Disease \u2014 Playground S6E2",
       "file_type": "document",
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
@@ -883,10 +1151,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_heart_disease",
+      "community": 2,
+      "norm_label": "predicting heart disease \u2014 playground s6e2"
     },
     {
-      "id": "kaggle_aimo",
       "label": "AI Mathematical Olympiad \u2014 Progress Prize 3 ($2.2M)",
       "file_type": "document",
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
@@ -894,10 +1164,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_aimo",
+      "community": 0,
+      "norm_label": "ai mathematical olympiad \u2014 progress prize 3 ($2.2m)"
     },
     {
-      "id": "kaggle_google_tunix",
       "label": "Google Tunix Hackathon \u2014 Train a Model to Show Its Work",
       "file_type": "document",
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
@@ -905,10 +1177,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_google_tunix",
+      "community": 0,
+      "norm_label": "google tunix hackathon \u2014 train a model to show its work"
     },
     {
-      "id": "kaggle_march_mania",
       "label": "March Machine Learning Mania 2026",
       "file_type": "document",
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
@@ -916,10 +1190,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "kaggle_march_mania",
+      "community": 2,
+      "norm_label": "march machine learning mania 2026"
     },
     {
-      "id": "graph_report",
       "label": "Graphify Graph Report",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -927,10 +1203,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_report",
+      "community": 4,
+      "norm_label": "graphify graph report"
     },
     {
-      "id": "graph_community_kaggle",
       "label": "Community: Kaggle Portfolio",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -938,10 +1216,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_community_kaggle",
+      "community": 4,
+      "norm_label": "community: kaggle portfolio"
     },
     {
-      "id": "graph_community_autotrader",
       "label": "Community: AutoTrader Infrastructure",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -949,10 +1229,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_community_autotrader",
+      "community": 4,
+      "norm_label": "community: autotrader infrastructure"
     },
     {
-      "id": "graph_community_language_nlp",
       "label": "Community: Language & NLP Kaggle",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -960,10 +1242,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_community_language_nlp",
+      "community": 4,
+      "norm_label": "community: language & nlp kaggle"
     },
     {
-      "id": "graph_community_wiki_core",
       "label": "Community: Wiki Core",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -971,10 +1255,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_community_wiki_core",
+      "community": 4,
+      "norm_label": "community: wiki core"
     },
     {
-      "id": "technique_tfidf_knn",
       "label": "TF-IDF + kNN Retrieval (Motion-S approach)",
       "file_type": "document",
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
@@ -982,10 +1268,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_tfidf_knn",
+      "community": 0,
+      "norm_label": "tf-idf + knn retrieval (motion-s approach)"
     },
     {
-      "id": "technique_pseudo_labeling",
       "label": "Pseudo-Labeling (Semi-Supervised, Stanford RNA)",
       "file_type": "document",
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
@@ -993,10 +1281,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_pseudo_labeling",
+      "community": 0,
+      "norm_label": "pseudo-labeling (semi-supervised, stanford rna)"
     },
     {
-      "id": "technique_multigpu_embeddings",
       "label": "Multi-GPU Embedding Separation",
       "file_type": "document",
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
@@ -1004,10 +1294,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_multigpu_embeddings",
+      "community": 0,
+      "norm_label": "multi-gpu embedding separation"
     },
     {
-      "id": "technique_tfdf",
       "label": "TensorFlow Decision Forests (TFDF)",
       "file_type": "document",
       "source_file": "wiki/kaggle/house-prices-regression.md",
@@ -1015,10 +1307,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_tfdf",
+      "community": 2,
+      "norm_label": "tensorflow decision forests (tfdf)"
     },
     {
-      "id": "technique_realmlp_catboost_xgb",
       "label": "RealMLP + CatBoost + XGBoost Ensemble",
       "file_type": "document",
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
@@ -1026,10 +1320,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_realmlp_catboost_xgb",
+      "community": 2,
+      "norm_label": "realmlp + catboost + xgboost ensemble"
     },
     {
-      "id": "technique_shap_analysis",
       "label": "SHAP Analysis for Feature Importance",
       "file_type": "document",
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
@@ -1037,10 +1333,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_shap_analysis",
+      "community": 2,
+      "norm_label": "shap analysis for feature importance"
     },
     {
-      "id": "technique_chain_of_thought",
       "label": "Chain-of-Thought / Show Your Work (Tunix)",
       "file_type": "document",
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
@@ -1048,10 +1346,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_chain_of_thought",
+      "community": 0,
+      "norm_label": "chain-of-thought / show your work (tunix)"
     },
     {
-      "id": "technique_retrieval_vs_generation",
       "label": "Rationale: Retrieval vs Generation Trade-off (Motion-S insight)",
       "file_type": "document",
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
@@ -1059,10 +1359,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "technique_retrieval_vs_generation",
+      "community": 0,
+      "norm_label": "rationale: retrieval vs generation trade-off (motion-s insight)"
     },
     {
-      "id": "concept_flood_geospatial",
       "label": "Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)",
       "file_type": "document",
       "source_file": "wiki/kaggle/urban-flood-modelling.md",
@@ -1070,10 +1372,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_flood_geospatial",
+      "community": 0,
+      "norm_label": "geospatial flood modelling (dem, sar, physics-informed ml)"
     },
     {
-      "id": "concept_rna_folding",
       "label": "RNA 3D Structure Prediction (Structural Biology)",
       "file_type": "document",
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
@@ -1081,10 +1385,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_rna_folding",
+      "community": 0,
+      "norm_label": "rna 3d structure prediction (structural biology)"
     },
     {
-      "id": "concept_mouse_behavior",
       "label": "Social Action Recognition in Mice (Behavioral Ethology)",
       "file_type": "document",
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
@@ -1092,10 +1398,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_mouse_behavior",
+      "community": 0,
+      "norm_label": "social action recognition in mice (behavioral ethology)"
     },
     {
-      "id": "concept_biomass_prediction",
       "label": "Above-Ground Biomass Prediction from Satellite Imagery",
       "file_type": "document",
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
@@ -1103,10 +1411,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_biomass_prediction",
+      "community": 0,
+      "norm_label": "above-ground biomass prediction from satellite imagery"
     },
     {
-      "id": "concept_math_olympiad_reasoning",
       "label": "IMO-Level Mathematical Reasoning (AIMO)",
       "file_type": "document",
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
@@ -1114,10 +1424,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_math_olympiad_reasoning",
+      "community": 0,
+      "norm_label": "imo-level mathematical reasoning (aimo)"
     },
     {
-      "id": "concept_bracket_prediction",
       "label": "NCAA Bracket Prediction (March Mania)",
       "file_type": "document",
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
@@ -1125,10 +1437,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_bracket_prediction",
+      "community": 2,
+      "norm_label": "ncaa bracket prediction (march mania)"
     },
     {
-      "id": "concept_log_loss_calibration",
       "label": "Log Loss and Calibration in Probabilistic Prediction",
       "file_type": "document",
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
@@ -1136,10 +1450,12 @@
       "source_url": null,
       "captured_at": null,
       "author": "Cameron Warren",
-      "contributor": null
+      "contributor": null,
+      "id": "concept_log_loss_calibration",
+      "community": 2,
+      "norm_label": "log loss and calibration in probabilistic prediction"
     },
     {
-      "id": "graph_god_node_index",
       "label": "God Node: wiki/index.md (14 edges \u2014 most connected)",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -1147,10 +1463,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_god_node_index",
+      "community": 4,
+      "norm_label": "god node: wiki/index.md (14 edges \u2014 most connected)"
     },
     {
-      "id": "graph_god_node_agentic_trading",
       "label": "God Node: Agentic Trading System Architecture (13 edges)",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -1158,10 +1476,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_god_node_agentic_trading",
+      "community": 4,
+      "norm_label": "god node: agentic trading system architecture (13 edges)"
     },
     {
-      "id": "graph_hyperedge_tabular",
       "label": "Hyperedge: Tabular ML Kaggle Cluster (House Prices + Heart Disease)",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -1169,10 +1489,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_hyperedge_tabular",
+      "community": 4,
+      "norm_label": "hyperedge: tabular ml kaggle cluster (house prices + heart disease)"
     },
     {
-      "id": "graph_hyperedge_frontier_reasoning",
       "label": "Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT)",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -1180,10 +1502,12 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_hyperedge_frontier_reasoning",
+      "community": 4,
+      "norm_label": "hyperedge: frontier reasoning benchmarks (aimo + arc-agi + cot)"
     },
     {
-      "id": "graph_fragmentation",
       "label": "Graph Fragmentation Metric (0.400 \u2014 53 isolated nodes)",
       "file_type": "document",
       "source_file": "graphify-out/GRAPH_REPORT.md",
@@ -1191,1435 +1515,1558 @@
       "source_url": null,
       "captured_at": null,
       "author": null,
-      "contributor": null
+      "contributor": null,
+      "id": "graph_fragmentation",
+      "community": 4,
+      "norm_label": "graph fragmentation metric (0.400 \u2014 53 isolated nodes)"
     }
   ],
-  "edges": [
+  "links": [
     {
-      "source": "doc_readme",
-      "target": "doc_claudemd",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "CLAUDE.md reference",
-      "weight": 1.0
-    },
-    {
+      "weight": 1.0,
+      "_src": "doc_readme",
+      "_tgt": "doc_claudemd",
       "source": "doc_readme",
-      "target": "doc_index",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "Structure section",
-      "weight": 1.0
+      "target": "doc_claudemd"
     },
     {
-      "source": "doc_readme",
-      "target": "doc_log",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "Structure section",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_readme",
-      "target": "doc_overview",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "Structure section",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_claudemd",
-      "target": "concept_llm_wiki_pattern",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
       "source_location": "graphify section: 'graphify \u2192 wiki' workflow",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "doc_claudemd",
+      "_tgt": "concept_llm_wiki_pattern",
+      "source": "doc_claudemd",
+      "target": "concept_llm_wiki_pattern"
     },
     {
-      "source": "doc_claudemd",
-      "target": "concept_graphify",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
       "source_location": "graphify skill section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "doc_claudemd",
+      "_tgt": "concept_graphify",
+      "source": "doc_claudemd",
+      "target": "concept_graphify"
     },
     {
-      "source": "doc_claudemd",
-      "target": "concept_obsidian",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
       "source_location": "Obsidian integration section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "doc_claudemd",
+      "_tgt": "concept_obsidian",
+      "source": "doc_claudemd",
+      "target": "concept_obsidian"
     },
     {
-      "source": "concept_graphify",
-      "target": "concept_llm_wiki_pattern",
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
       "confidence_score": 0.75,
       "source_file": "CLAUDE.md",
       "source_location": "graphify section: 'graph and wiki together are more powerful than either alone'",
-      "weight": 0.75
+      "weight": 0.75,
+      "_src": "concept_graphify",
+      "_tgt": "concept_llm_wiki_pattern",
+      "source": "concept_graphify",
+      "target": "concept_llm_wiki_pattern"
     },
     {
-      "source": "concept_obsidian",
-      "target": "concept_graphify",
       "relation": "conceptually_related_to",
       "confidence": "INFERRED",
       "confidence_score": 0.7,
       "source_file": "CLAUDE.md",
       "source_location": "Both are visualization/navigation layers over the wiki vault",
-      "weight": 0.7
+      "weight": 0.7,
+      "_src": "concept_obsidian",
+      "_tgt": "concept_graphify",
+      "source": "concept_graphify",
+      "target": "concept_obsidian"
     },
     {
-      "source": "kaggle_jaguar_reidentification",
-      "target": "source_cameron_kaggle_profile",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "frontmatter sources",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "kaggle_jaguar_reidentification",
+      "_tgt": "source_cameron_kaggle_profile",
+      "source": "kaggle_jaguar_reidentification",
+      "target": "source_cameron_kaggle_profile"
     },
     {
-      "source": "kaggle_jaguar_reidentification",
-      "target": "technique_metric_learning",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "kaggle_jaguar_reidentification",
+      "_tgt": "technique_metric_learning",
+      "source": "kaggle_jaguar_reidentification",
+      "target": "technique_metric_learning"
     },
     {
-      "source": "kaggle_jaguar_reidentification",
-      "target": "technique_clip_faiss",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 CLIP-style vision encoders as backbone",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "kaggle_jaguar_reidentification",
+      "_tgt": "technique_clip_faiss",
+      "source": "kaggle_jaguar_reidentification",
+      "target": "technique_clip_faiss"
     },
     {
-      "source": "kaggle_jaguar_reidentification",
-      "target": "production_sofascope",
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 explicit wikilink to sofascope.md",
-      "weight": 1.0
-    },
-    {
+      "weight": 1.0,
+      "_src": "kaggle_jaguar_reidentification",
+      "_tgt": "production_sofascope",
       "source": "kaggle_jaguar_reidentification",
-      "target": "concept_computer_vision_kaggle",
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "wiki/kaggle/jaguar-re-identification.md",
-      "source_location": "tags: computer-vision",
-      "weight": 0.9
+      "target": "production_sofascope"
     },
     {
-      "source": "technique_clip_faiss",
-      "target": "production_sofascope",
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 explicit wikilink citing CLIP+FAISS work in SofaScope",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "technique_clip_faiss",
+      "_tgt": "production_sofascope",
+      "source": "technique_clip_faiss",
+      "target": "production_sofascope"
     },
     {
-      "source": "kaggle_jaguar_reidentification",
-      "target": "kaggle_csiro_image2biomass",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.72,
-      "source_file": "wiki/kaggle/jaguar-re-identification.md",
-      "source_location": "Both are computer vision competitions using CNN/pretrained backbone architectures",
-      "weight": 0.72
-    },
-    {
-      "source": "kaggle_hull_tactical",
-      "target": "trading_autotrader",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "wiki/kaggle/hull-tactical-market-prediction.md"
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_mbr_decoding",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "frontmatter related + Related section",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_llm_review_pass",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "frontmatter related + Context + Related section",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_arc_agi_adapters_adr",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "frontmatter related: [[wiki/decisions/arc-agi-adapters-vs-litellm.md]]",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_autotrader",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Context: [[wiki/trading/autotrader.md|AutoTrader]]",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_deep_past",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: [[wiki/kaggle/deep-past-akkadian-translation.md|Deep Past]]",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_deep_past",
+      "source": "concept_deep_past",
+      "target": "doc_consensus_memory_adr"
     },
     {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_provider_adapter_pattern",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Rationale: [[wiki/architectures/provider-adapter-pattern.md|Provider Adapter Pattern]]",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_agentic_memory_retention",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_agentic_drift",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Context section: 'Agentic Drift' introduced as concept",
-      "weight": 1.0
-    },
-    {
-      "source": "doc_consensus_memory_adr",
-      "target": "rationale_consensus_anti_hallucination",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Rationale section",
-      "weight": 1.0
-    },
-    {
-      "source": "rationale_consensus_anti_hallucination",
-      "target": "concept_mbr_decoding",
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Rationale: MBR selection = anti-hallucination mechanism",
-      "weight": 1.0
-    },
-    {
-      "source": "rationale_consensus_anti_hallucination",
-      "target": "concept_provider_adapter_pattern",
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Rationale: Provider Adapter enables cross-examination of models",
-      "weight": 1.0
-    },
-    {
-      "source": "concept_mbr_decoding",
-      "target": "concept_deep_past",
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: Deep Past used MBR Decoding for translation consensus",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "concept_mbr_decoding",
+      "_tgt": "concept_deep_past",
+      "source": "concept_deep_past",
+      "target": "concept_mbr_decoding"
     },
     {
-      "source": "concept_mbr_decoding",
-      "target": "doc_consensus_memory_adr",
-      "relation": "conceptually_related_to",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Decision: MBR selection used for consensus memory distillation",
-      "weight": 1.0
+      "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_agentic_memory_retention",
+      "source": "concept_agentic_memory_retention",
+      "target": "doc_consensus_memory_adr"
     },
     {
-      "source": "concept_agentic_drift",
-      "target": "concept_llm_review_pass",
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Context: single-pass LLM review is the vulnerability enabling agentic drift",
-      "weight": 0.85
-    },
-    {
-      "source": "concept_agentic_drift",
-      "target": "concept_agentic_memory_retention",
       "relation": "conceptually_related_to",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Agentic drift is the core risk addressed in memory retention open-question",
-      "weight": 0.85
+      "weight": 0.85,
+      "_src": "concept_agentic_drift",
+      "_tgt": "concept_agentic_memory_retention",
+      "source": "concept_agentic_memory_retention",
+      "target": "concept_agentic_drift"
     },
     {
-      "source": "tech_clip_faiss",
-      "target": "tech_persistent_model",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/techniques/clip-faiss-visual-search.md"
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Rationale: [[wiki/architectures/provider-adapter-pattern.md|Provider Adapter Pattern]]",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_provider_adapter_pattern",
+      "source": "concept_provider_adapter_pattern",
+      "target": "doc_consensus_memory_adr"
     },
     {
-      "source": "overview_cameron_wiki",
-      "target": "overview_sofascope_system",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Rationale: Provider Adapter enables cross-examination of models",
+      "weight": 1.0,
+      "_src": "rationale_consensus_anti_hallucination",
+      "_tgt": "concept_provider_adapter_pattern",
+      "source": "concept_provider_adapter_pattern",
+      "target": "rationale_consensus_anti_hallucination"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "frontmatter related: [[wiki/decisions/arc-agi-adapters-vs-litellm.md]]",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_arc_agi_adapters_adr",
+      "source": "concept_arc_agi_adapters_adr",
+      "target": "doc_consensus_memory_adr"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Decision: MBR selection used for consensus memory distillation",
+      "weight": 1.0,
+      "_src": "concept_mbr_decoding",
+      "_tgt": "doc_consensus_memory_adr",
+      "source": "doc_consensus_memory_adr",
+      "target": "concept_mbr_decoding"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "frontmatter related + Context + Related section",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_llm_review_pass",
+      "source": "doc_consensus_memory_adr",
+      "target": "concept_llm_review_pass"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Context: [[wiki/trading/autotrader.md|AutoTrader]]",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_autotrader",
+      "source": "doc_consensus_memory_adr",
+      "target": "concept_autotrader"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Context section: 'Agentic Drift' introduced as concept",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "concept_agentic_drift",
+      "source": "doc_consensus_memory_adr",
+      "target": "concept_agentic_drift"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Rationale section",
+      "weight": 1.0,
+      "_src": "doc_consensus_memory_adr",
+      "_tgt": "rationale_consensus_anti_hallucination",
+      "source": "doc_consensus_memory_adr",
+      "target": "rationale_consensus_anti_hallucination"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Context: single-pass LLM review is the vulnerability enabling agentic drift",
+      "weight": 0.85,
+      "_src": "concept_agentic_drift",
+      "_tgt": "concept_llm_review_pass",
+      "source": "concept_agentic_drift",
+      "target": "concept_llm_review_pass"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Rationale: MBR selection = anti-hallucination mechanism",
+      "weight": 1.0,
+      "_src": "rationale_consensus_anti_hallucination",
+      "_tgt": "concept_mbr_decoding",
+      "source": "rationale_consensus_anti_hallucination",
+      "target": "concept_mbr_decoding"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/techniques/clip-faiss-visual-search.md",
+      "_src": "tech_clip_faiss",
+      "_tgt": "tech_persistent_model",
+      "source": "tech_persistent_model",
+      "target": "tech_clip_faiss"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_cameron_wiki",
+      "_tgt": "overview_sofascope_system",
+      "source": "overview_cameron_wiki",
+      "target": "overview_sofascope_system"
     },
     {
-      "source": "overview_cameron_wiki",
-      "target": "overview_arc_agi_harness",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_cameron_wiki",
+      "_tgt": "overview_arc_agi_harness",
+      "source": "overview_cameron_wiki",
+      "target": "overview_arc_agi_harness"
     },
     {
-      "source": "overview_cameron_wiki",
-      "target": "overview_autotrader_system",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_cameron_wiki",
+      "_tgt": "overview_autotrader_system",
+      "source": "overview_cameron_wiki",
+      "target": "overview_autotrader_system"
     },
     {
-      "source": "overview_cameron_wiki",
-      "target": "overview_kaggle_portfolio",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_cameron_wiki",
+      "_tgt": "overview_kaggle_portfolio",
+      "source": "overview_cameron_wiki",
+      "target": "overview_kaggle_portfolio"
     },
     {
-      "source": "overview_cameron_wiki",
-      "target": "index_master_catalog",
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "related field",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_cameron_wiki",
+      "_tgt": "index_master_catalog",
+      "source": "overview_cameron_wiki",
+      "target": "index_master_catalog"
     },
     {
-      "source": "log_wiki_activity",
-      "target": "log_ingest_sofascope",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 ingest entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_wiki_activity",
-      "target": "log_ingest_karpathy",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 ingest entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_wiki_activity",
-      "target": "log_ingest_kaggle",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 ingest entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_wiki_activity",
-      "target": "log_ingest_arc_agi",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 ingest entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_wiki_activity",
-      "target": "log_ingest_autotrader",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 ingest entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_wiki_activity",
-      "target": "log_lint_pass",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "2026-04-17 lint entry",
-      "weight": 1.0
-    },
-    {
-      "source": "log_lint_pass",
-      "target": "groq_tool",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in lint",
-      "weight": 1.0
-    },
-    {
-      "source": "log_lint_pass",
-      "target": "llama_3_3_70b",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in lint",
-      "weight": 1.0
-    },
-    {
-      "source": "log_lint_pass",
-      "target": "kaggle_portfolio_overview",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in lint",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_motion_s",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_urban_flood",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_stanford_rna",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_mabe",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_house_prices",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_aimo",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_google_tunix",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_march_mania",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_csiro",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_heart_disease",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "index_sofascope_page",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Production Systems section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "index_autotrader_page",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Trading section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "index_arc_agi_benchmark_page",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Benchmarks section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "index_llm_wiki_pattern_page",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Methodology section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "index_kaggle_portfolio_page",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "groq_tool",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Tools section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "llama_3_3_70b",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Models section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_portfolio_overview",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_motion_s",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_urban_flood",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_house_prices",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_mabe",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_stanford_rna",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_csiro",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_heart_disease",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_aimo",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_google_tunix",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "index_master_catalog",
-      "target": "kaggle_march_mania",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "groq_lpu_hardware",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "groq_autotrader_use",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Where used section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "groq_openai_compat",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "groq_latency_prop",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "llama_3_3_70b",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Why Cameron uses it section",
-      "weight": 1.0
-    },
-    {
-      "source": "groq_tool",
-      "target": "overview_autotrader_system",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "related field",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_3_3_70b",
-      "target": "llama_sentiment_use",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Why this model section",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_3_3_70b",
-      "target": "llama_cost_rationale",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Why this model \u2014 Cost point",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_3_3_70b",
-      "target": "llama_128k_context",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Key capabilities section",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_3_3_70b",
-      "target": "llama_model_family",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Model family context section",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_3_3_70b",
-      "target": "groq_tool",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "related field + Why this model Speed via Groq",
-      "weight": 1.0
-    },
-    {
-      "source": "llama_cost_rationale",
-      "target": "llama_3_3_70b",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Why this model section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_motion_s",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "Confirmed Results table",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_urban_flood",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "Confirmed Results table",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_house_prices",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "Confirmed Results table",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_mabe",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_stanford_rna",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_csiro",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_heart_disease",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_aimo",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_google_tunix",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_march_mania",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_motion_s",
-      "target": "technique_tfidf_knn",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Cameron's approach section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_motion_s",
-      "target": "technique_retrieval_vs_generation",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Key insight section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_motion_s",
-      "target": "kaggle_mabe",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Related competitions \u2014 Motion/behavior cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_motion_s",
-      "target": "kaggle_google_tunix",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Related competitions",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_stanford_rna",
-      "target": "technique_pseudo_labeling",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Techniques explored section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_stanford_rna",
-      "target": "technique_multigpu_embeddings",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Techniques explored section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_stanford_rna",
-      "target": "concept_rna_folding",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Domain notes section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_stanford_rna",
-      "target": "kaggle_csiro",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_stanford_rna",
-      "target": "kaggle_urban_flood",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_urban_flood",
-      "target": "concept_flood_geospatial",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/urban-flood-modelling.md",
-      "source_location": "Domain context section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_urban_flood",
-      "target": "kaggle_csiro",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/urban-flood-modelling.md",
-      "source_location": "Related competitions",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_house_prices",
-      "target": "technique_tfdf",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/house-prices-regression.md",
-      "source_location": "Cameron's approach section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_house_prices",
-      "target": "kaggle_heart_disease",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/house-prices-regression.md",
-      "source_location": "Related competitions \u2014 Tabular ML cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_house_prices",
-      "target": "kaggle_march_mania",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/house-prices-regression.md",
-      "source_location": "Related competitions",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_mabe",
-      "target": "concept_mouse_behavior",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
-      "source_location": "What it is section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_mabe",
-      "target": "kaggle_motion_s",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
-      "source_location": "Related competitions \u2014 Motion/behavior cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_csiro",
-      "target": "concept_biomass_prediction",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/csiro-image2biomass.md",
-      "source_location": "What it is section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_heart_disease",
-      "target": "technique_realmlp_catboost_xgb",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
-      "source_location": "Cameron's notebooks \u2014 realmlp-cat-xgb notebook",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_heart_disease",
-      "target": "technique_shap_analysis",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
-      "source_location": "Approach highlights section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_heart_disease",
-      "target": "kaggle_house_prices",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
-      "source_location": "Related competitions \u2014 Tabular ML cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_heart_disease",
-      "target": "kaggle_march_mania",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
-      "source_location": "Related competitions",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_aimo",
-      "target": "concept_math_olympiad_reasoning",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": "What it is section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_aimo",
-      "target": "technique_chain_of_thought",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": "Context \u2014 top teams used extended chain-of-thought",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_aimo",
-      "target": "kaggle_google_tunix",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": "Related competitions \u2014 Reasoning cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_google_tunix",
-      "target": "technique_chain_of_thought",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/google-tunix-hackathon.md",
-      "source_location": "What it is section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_google_tunix",
-      "target": "kaggle_aimo",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/google-tunix-hackathon.md",
-      "source_location": "Related competitions",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_march_mania",
-      "target": "concept_bracket_prediction",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": "What it is section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_march_mania",
-      "target": "concept_log_loss_calibration",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": "Context section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_march_mania",
-      "target": "kaggle_heart_disease",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_march_mania",
-      "target": "kaggle_house_prices",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_community_kaggle",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Communities section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_community_autotrader",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Communities section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_community_language_nlp",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Communities section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_community_wiki_core",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Communities section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_god_node_index",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "God Nodes section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_god_node_agentic_trading",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "God Nodes section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_fragmentation",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Knowledge Gaps section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_hyperedge_tabular",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Hyperedges section",
-      "weight": 1.0
-    },
-    {
-      "source": "graph_report",
-      "target": "graph_hyperedge_frontier_reasoning",
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Hyperedges section",
-      "weight": 1.0
-    },
-    {
-      "source": "technique_tfidf_knn",
-      "target": "technique_retrieval_vs_generation",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Key insight section",
-      "weight": 1.0
-    },
-    {
-      "source": "kaggle_csiro",
-      "target": "overview_sofascope_system",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.65,
-      "source_file": "wiki/kaggle/csiro-image2biomass.md",
-      "source_location": "Image embedding cluster note",
-      "weight": 0.65
-    },
-    {
-      "source": "technique_tfidf_knn",
-      "target": "technique_pseudo_labeling",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.62,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": null,
-      "weight": 0.62
-    },
-    {
-      "source": "kaggle_aimo",
-      "target": "kaggle_stanford_rna",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.65,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": null,
-      "weight": 0.65
-    },
-    {
-      "source": "concept_log_loss_calibration",
-      "target": "technique_realmlp_catboost_xgb",
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.7,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": null,
-      "weight": 0.7
-    },
-    {
-      "source": "groq_latency_prop",
-      "target": "groq_lpu_hardware",
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0
-    },
-    {
-      "source": "overview_second_brain",
-      "target": "overview_cameron_wiki",
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
       "source_location": "Title and intro",
-      "weight": 1.0
+      "weight": 1.0,
+      "_src": "overview_second_brain",
+      "_tgt": "overview_cameron_wiki",
+      "source": "overview_cameron_wiki",
+      "target": "overview_second_brain"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "wiki/kaggle/csiro-image2biomass.md",
+      "source_location": "Image embedding cluster note",
+      "weight": 0.65,
+      "_src": "kaggle_csiro",
+      "_tgt": "overview_sofascope_system",
+      "source": "overview_sofascope_system",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "related field",
+      "weight": 1.0,
+      "_src": "groq_tool",
+      "_tgt": "overview_autotrader_system",
+      "source": "overview_autotrader_system",
+      "target": "groq_tool"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 ingest entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_ingest_sofascope",
+      "source": "log_wiki_activity",
+      "target": "log_ingest_sofascope"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 ingest entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_ingest_karpathy",
+      "source": "log_wiki_activity",
+      "target": "log_ingest_karpathy"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 ingest entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_ingest_kaggle",
+      "source": "log_wiki_activity",
+      "target": "log_ingest_kaggle"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 ingest entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_ingest_arc_agi",
+      "source": "log_wiki_activity",
+      "target": "log_ingest_arc_agi"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 ingest entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_ingest_autotrader",
+      "source": "log_wiki_activity",
+      "target": "log_ingest_autotrader"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "2026-04-17 lint entry",
+      "weight": 1.0,
+      "_src": "log_wiki_activity",
+      "_tgt": "log_lint_pass",
+      "source": "log_wiki_activity",
+      "target": "log_lint_pass"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_motion_s",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_urban_flood",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_urban_flood"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_stanford_rna",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_mabe",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_house_prices",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_house_prices"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_aimo",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_google_tunix",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_march_mania",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_csiro",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "_src": "log_ingest_kaggle",
+      "_tgt": "kaggle_heart_disease",
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in lint",
+      "weight": 1.0,
+      "_src": "log_lint_pass",
+      "_tgt": "groq_tool",
+      "source": "log_lint_pass",
+      "target": "groq_tool"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in lint",
+      "weight": 1.0,
+      "_src": "log_lint_pass",
+      "_tgt": "llama_3_3_70b",
+      "source": "log_lint_pass",
+      "target": "llama_3_3_70b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in lint",
+      "weight": 1.0,
+      "_src": "log_lint_pass",
+      "_tgt": "kaggle_portfolio_overview",
+      "source": "log_lint_pass",
+      "target": "kaggle_portfolio_overview"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Production Systems section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "index_sofascope_page",
+      "source": "index_master_catalog",
+      "target": "index_sofascope_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Trading section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "index_autotrader_page",
+      "source": "index_master_catalog",
+      "target": "index_autotrader_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Benchmarks section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "index_arc_agi_benchmark_page",
+      "source": "index_master_catalog",
+      "target": "index_arc_agi_benchmark_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Methodology section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "index_llm_wiki_pattern_page",
+      "source": "index_master_catalog",
+      "target": "index_llm_wiki_pattern_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "index_kaggle_portfolio_page",
+      "source": "index_master_catalog",
+      "target": "index_kaggle_portfolio_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Tools section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "groq_tool",
+      "source": "index_master_catalog",
+      "target": "groq_tool"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Models section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "llama_3_3_70b",
+      "source": "index_master_catalog",
+      "target": "llama_3_3_70b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_portfolio_overview",
+      "source": "index_master_catalog",
+      "target": "kaggle_portfolio_overview"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_motion_s",
+      "source": "index_master_catalog",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_urban_flood",
+      "source": "index_master_catalog",
+      "target": "kaggle_urban_flood"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_house_prices",
+      "source": "index_master_catalog",
+      "target": "kaggle_house_prices"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_mabe",
+      "source": "index_master_catalog",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_stanford_rna",
+      "source": "index_master_catalog",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_csiro",
+      "source": "index_master_catalog",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_heart_disease",
+      "source": "index_master_catalog",
+      "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_aimo",
+      "source": "index_master_catalog",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_google_tunix",
+      "source": "index_master_catalog",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "_src": "index_master_catalog",
+      "_tgt": "kaggle_march_mania",
+      "source": "index_master_catalog",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "_src": "groq_tool",
+      "_tgt": "groq_lpu_hardware",
+      "source": "groq_tool",
+      "target": "groq_lpu_hardware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Where used section",
+      "weight": 1.0,
+      "_src": "groq_tool",
+      "_tgt": "groq_autotrader_use",
+      "source": "groq_tool",
+      "target": "groq_autotrader_use"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "_src": "groq_tool",
+      "_tgt": "groq_openai_compat",
+      "source": "groq_tool",
+      "target": "groq_openai_compat"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "_src": "groq_tool",
+      "_tgt": "groq_latency_prop",
+      "source": "groq_tool",
+      "target": "groq_latency_prop"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "related field + Why this model Speed via Groq",
+      "weight": 1.0,
+      "_src": "llama_3_3_70b",
+      "_tgt": "groq_tool",
+      "source": "groq_tool",
+      "target": "llama_3_3_70b"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "_src": "groq_latency_prop",
+      "_tgt": "groq_lpu_hardware",
+      "source": "groq_lpu_hardware",
+      "target": "groq_latency_prop"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "Why this model section",
+      "weight": 1.0,
+      "_src": "llama_3_3_70b",
+      "_tgt": "llama_sentiment_use",
+      "source": "llama_3_3_70b",
+      "target": "llama_sentiment_use"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "Why this model section",
+      "weight": 1.0,
+      "_src": "llama_cost_rationale",
+      "_tgt": "llama_3_3_70b",
+      "source": "llama_3_3_70b",
+      "target": "llama_cost_rationale"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "Key capabilities section",
+      "weight": 1.0,
+      "_src": "llama_3_3_70b",
+      "_tgt": "llama_128k_context",
+      "source": "llama_3_3_70b",
+      "target": "llama_128k_context"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "Model family context section",
+      "weight": 1.0,
+      "_src": "llama_3_3_70b",
+      "_tgt": "llama_model_family",
+      "source": "llama_3_3_70b",
+      "target": "llama_model_family"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "Confirmed Results table",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_motion_s",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "Confirmed Results table",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_urban_flood",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_urban_flood"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "Confirmed Results table",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_house_prices",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_house_prices"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_mabe",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_stanford_rna",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_csiro",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_heart_disease",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_aimo",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_google_tunix",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "_src": "kaggle_portfolio_overview",
+      "_tgt": "kaggle_march_mania",
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Cameron's approach section",
+      "weight": 1.0,
+      "_src": "kaggle_motion_s",
+      "_tgt": "technique_tfidf_knn",
+      "source": "kaggle_motion_s",
+      "target": "technique_tfidf_knn"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Key insight section",
+      "weight": 1.0,
+      "_src": "kaggle_motion_s",
+      "_tgt": "technique_retrieval_vs_generation",
+      "source": "kaggle_motion_s",
+      "target": "technique_retrieval_vs_generation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
+      "source_location": "Related competitions \u2014 Motion/behavior cluster",
+      "weight": 1.0,
+      "_src": "kaggle_mabe",
+      "_tgt": "kaggle_motion_s",
+      "source": "kaggle_motion_s",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Related competitions",
+      "weight": 1.0,
+      "_src": "kaggle_motion_s",
+      "_tgt": "kaggle_google_tunix",
+      "source": "kaggle_motion_s",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
+      "weight": 1.0,
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "kaggle_urban_flood",
+      "source": "kaggle_urban_flood",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/urban-flood-modelling.md",
+      "source_location": "Domain context section",
+      "weight": 1.0,
+      "_src": "kaggle_urban_flood",
+      "_tgt": "concept_flood_geospatial",
+      "source": "kaggle_urban_flood",
+      "target": "concept_flood_geospatial"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/urban-flood-modelling.md",
+      "source_location": "Related competitions",
+      "weight": 1.0,
+      "_src": "kaggle_urban_flood",
+      "_tgt": "kaggle_csiro",
+      "source": "kaggle_urban_flood",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/house-prices-regression.md",
+      "source_location": "Cameron's approach section",
+      "weight": 1.0,
+      "_src": "kaggle_house_prices",
+      "_tgt": "technique_tfdf",
+      "source": "kaggle_house_prices",
+      "target": "technique_tfdf"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
+      "source_location": "Related competitions \u2014 Tabular ML cluster",
+      "weight": 1.0,
+      "_src": "kaggle_heart_disease",
+      "_tgt": "kaggle_house_prices",
+      "source": "kaggle_house_prices",
+      "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
+      "weight": 1.0,
+      "_src": "kaggle_march_mania",
+      "_tgt": "kaggle_house_prices",
+      "source": "kaggle_house_prices",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
+      "source_location": "What it is section",
+      "weight": 1.0,
+      "_src": "kaggle_mabe",
+      "_tgt": "concept_mouse_behavior",
+      "source": "kaggle_mabe",
+      "target": "concept_mouse_behavior"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Techniques explored section",
+      "weight": 1.0,
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "technique_pseudo_labeling",
+      "source": "kaggle_stanford_rna",
+      "target": "technique_pseudo_labeling"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Techniques explored section",
+      "weight": 1.0,
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "technique_multigpu_embeddings",
+      "source": "kaggle_stanford_rna",
+      "target": "technique_multigpu_embeddings"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Domain notes section",
+      "weight": 1.0,
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "concept_rna_folding",
+      "source": "kaggle_stanford_rna",
+      "target": "concept_rna_folding"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
+      "weight": 1.0,
+      "_src": "kaggle_stanford_rna",
+      "_tgt": "kaggle_csiro",
+      "source": "kaggle_stanford_rna",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
+      "source_location": null,
+      "weight": 0.65,
+      "_src": "kaggle_aimo",
+      "_tgt": "kaggle_stanford_rna",
+      "source": "kaggle_stanford_rna",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/csiro-image2biomass.md",
+      "source_location": "What it is section",
+      "weight": 1.0,
+      "_src": "kaggle_csiro",
+      "_tgt": "concept_biomass_prediction",
+      "source": "kaggle_csiro",
+      "target": "concept_biomass_prediction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
+      "source_location": "Cameron's notebooks \u2014 realmlp-cat-xgb notebook",
+      "weight": 1.0,
+      "_src": "kaggle_heart_disease",
+      "_tgt": "technique_realmlp_catboost_xgb",
+      "source": "kaggle_heart_disease",
+      "target": "technique_realmlp_catboost_xgb"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
+      "source_location": "Approach highlights section",
+      "weight": 1.0,
+      "_src": "kaggle_heart_disease",
+      "_tgt": "technique_shap_analysis",
+      "source": "kaggle_heart_disease",
+      "target": "technique_shap_analysis"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
+      "weight": 1.0,
+      "_src": "kaggle_march_mania",
+      "_tgt": "kaggle_heart_disease",
+      "source": "kaggle_heart_disease",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
+      "source_location": "What it is section",
+      "weight": 1.0,
+      "_src": "kaggle_aimo",
+      "_tgt": "concept_math_olympiad_reasoning",
+      "source": "kaggle_aimo",
+      "target": "concept_math_olympiad_reasoning"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
+      "source_location": "Context \u2014 top teams used extended chain-of-thought",
+      "weight": 1.0,
+      "_src": "kaggle_aimo",
+      "_tgt": "technique_chain_of_thought",
+      "source": "kaggle_aimo",
+      "target": "technique_chain_of_thought"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/google-tunix-hackathon.md",
+      "source_location": "Related competitions",
+      "weight": 1.0,
+      "_src": "kaggle_google_tunix",
+      "_tgt": "kaggle_aimo",
+      "source": "kaggle_aimo",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/google-tunix-hackathon.md",
+      "source_location": "What it is section",
+      "weight": 1.0,
+      "_src": "kaggle_google_tunix",
+      "_tgt": "technique_chain_of_thought",
+      "source": "kaggle_google_tunix",
+      "target": "technique_chain_of_thought"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": "What it is section",
+      "weight": 1.0,
+      "_src": "kaggle_march_mania",
+      "_tgt": "concept_bracket_prediction",
+      "source": "kaggle_march_mania",
+      "target": "concept_bracket_prediction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": "Context section",
+      "weight": 1.0,
+      "_src": "kaggle_march_mania",
+      "_tgt": "concept_log_loss_calibration",
+      "source": "kaggle_march_mania",
+      "target": "concept_log_loss_calibration"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Communities section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_community_kaggle",
+      "source": "graph_report",
+      "target": "graph_community_kaggle"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Communities section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_community_autotrader",
+      "source": "graph_report",
+      "target": "graph_community_autotrader"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Communities section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_community_language_nlp",
+      "source": "graph_report",
+      "target": "graph_community_language_nlp"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Communities section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_community_wiki_core",
+      "source": "graph_report",
+      "target": "graph_community_wiki_core"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "God Nodes section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_god_node_index",
+      "source": "graph_report",
+      "target": "graph_god_node_index"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "God Nodes section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_god_node_agentic_trading",
+      "source": "graph_report",
+      "target": "graph_god_node_agentic_trading"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Knowledge Gaps section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_fragmentation",
+      "source": "graph_report",
+      "target": "graph_fragmentation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Hyperedges section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_hyperedge_tabular",
+      "source": "graph_report",
+      "target": "graph_hyperedge_tabular"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Hyperedges section",
+      "weight": 1.0,
+      "_src": "graph_report",
+      "_tgt": "graph_hyperedge_frontier_reasoning",
+      "source": "graph_report",
+      "target": "graph_hyperedge_frontier_reasoning"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Key insight section",
+      "weight": 1.0,
+      "_src": "technique_tfidf_knn",
+      "_tgt": "technique_retrieval_vs_generation",
+      "source": "technique_tfidf_knn",
+      "target": "technique_retrieval_vs_generation"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.62,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": null,
+      "weight": 0.62,
+      "_src": "technique_tfidf_knn",
+      "_tgt": "technique_pseudo_labeling",
+      "source": "technique_tfidf_knn",
+      "target": "technique_pseudo_labeling"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": null,
+      "weight": 0.7,
+      "_src": "concept_log_loss_calibration",
+      "_tgt": "technique_realmlp_catboost_xgb",
+      "source": "technique_realmlp_catboost_xgb",
+      "target": "concept_log_loss_calibration"
     }
   ],
   "hyperedges": [
