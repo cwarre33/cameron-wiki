@@ -6,9 +6,16 @@ import time
 from pathlib import Path
 
 
-from graphify.detect import CODE_EXTENSIONS, DOC_EXTENSIONS, PAPER_EXTENSIONS, IMAGE_EXTENSIONS
+from graphify.detect import (
+    CODE_EXTENSIONS,
+    DOC_EXTENSIONS,
+    PAPER_EXTENSIONS,
+    IMAGE_EXTENSIONS,
+)
 
-_WATCHED_EXTENSIONS = CODE_EXTENSIONS | DOC_EXTENSIONS | PAPER_EXTENSIONS | IMAGE_EXTENSIONS
+_WATCHED_EXTENSIONS = (
+    CODE_EXTENSIONS | DOC_EXTENSIONS | PAPER_EXTENSIONS | IMAGE_EXTENSIONS
+)
 _CODE_EXTENSIONS = CODE_EXTENSIONS
 
 
@@ -23,12 +30,16 @@ def _rebuild_code(watch_path: Path, *, follow_symlinks: bool = False) -> bool:
         from graphify.detect import detect
         from graphify.build import build_from_json
         from graphify.cluster import cluster, score_all
-        from graphify.analyze import god_nodes, surprising_connections, suggest_questions
+        from graphify.analyze import (
+            god_nodes,
+            surprising_connections,
+            suggest_questions,
+        )
         from graphify.report import generate
         from graphify.export import to_json, to_html
 
         detected = detect(watch_path, follow_symlinks=follow_symlinks)
-        code_files = [Path(f) for f in detected['files']['code']]
+        code_files = [Path(f) for f in detected["files"]["code"]]
 
         if not code_files:
             print("[graphify watch] No code files found - nothing to rebuild.")
@@ -43,11 +54,23 @@ def _rebuild_code(watch_path: Path, *, follow_symlinks: bool = False) -> bool:
         if existing_graph.exists():
             try:
                 existing = json.loads(existing_graph.read_text(encoding="utf-8"))
-                code_ids = {n["id"] for n in existing.get("nodes", []) if n.get("file_type") == "code"}
-                sem_nodes = [n for n in existing.get("nodes", []) if n.get("file_type") != "code"]
-                sem_edges = [e for e in existing.get("links", existing.get("edges", []))
-                             if e.get("confidence") in ("INFERRED", "AMBIGUOUS")
-                             or (e.get("source") not in code_ids and e.get("target") not in code_ids)]
+                code_ids = {
+                    n["id"]
+                    for n in existing.get("nodes", [])
+                    if n.get("file_type") == "code"
+                }
+                sem_nodes = [
+                    n for n in existing.get("nodes", []) if n.get("file_type") != "code"
+                ]
+                sem_edges = [
+                    e
+                    for e in existing.get("links", existing.get("edges", []))
+                    if e.get("confidence") in ("INFERRED", "AMBIGUOUS")
+                    or (
+                        e.get("source") not in code_ids
+                        and e.get("target") not in code_ids
+                    )
+                ]
                 result = {
                     "nodes": result["nodes"] + sem_nodes,
                     "edges": result["edges"] + sem_edges,
@@ -59,7 +82,12 @@ def _rebuild_code(watch_path: Path, *, follow_symlinks: bool = False) -> bool:
                 pass  # corrupt graph.json - proceed with AST-only
 
         detection = {
-            "files": {"code": [str(f) for f in code_files], "document": [], "paper": [], "image": []},
+            "files": {
+                "code": [str(f) for f in code_files],
+                "document": [],
+                "paper": [],
+                "image": [],
+            },
             "total_files": len(code_files),
             "total_words": detected.get("total_words", 0),
         }
@@ -74,20 +102,36 @@ def _rebuild_code(watch_path: Path, *, follow_symlinks: bool = False) -> bool:
 
         out.mkdir(exist_ok=True)
 
-        report = generate(G, communities, cohesion, labels, gods, surprises, detection,
-                          {"input": 0, "output": 0}, str(watch_path), suggested_questions=questions)
+        report = generate(
+            G,
+            communities,
+            cohesion,
+            labels,
+            gods,
+            surprises,
+            detection,
+            {"input": 0, "output": 0},
+            str(watch_path),
+            suggested_questions=questions,
+        )
         (out / "GRAPH_REPORT.md").write_text(report, encoding="utf-8")
         to_json(G, communities, str(out / "graph.json"))
-        to_html(G, communities, str(out / "graph.html"), community_labels=labels or None)
+        to_html(
+            G, communities, str(out / "graph.html"), community_labels=labels or None
+        )
 
         # clear stale needs_update flag if present
         flag = out / "needs_update"
         if flag.exists():
             flag.unlink()
 
-        print(f"[graphify watch] Rebuilt: {G.number_of_nodes()} nodes, "
-              f"{G.number_of_edges()} edges, {len(communities)} communities")
-        print(f"[graphify watch] graph.json, graph.html and GRAPH_REPORT.md updated in {out}")
+        print(
+            f"[graphify watch] Rebuilt: {G.number_of_nodes()} nodes, "
+            f"{G.number_of_edges()} edges, {len(communities)} communities"
+        )
+        print(
+            f"[graphify watch] graph.json, graph.html and GRAPH_REPORT.md updated in {out}"
+        )
         return True
 
     except Exception as exc:
@@ -101,8 +145,12 @@ def _notify_only(watch_path: Path) -> None:
     flag.parent.mkdir(parents=True, exist_ok=True)
     flag.write_text("1", encoding="utf-8")
     print(f"\n[graphify watch] New or changed files detected in {watch_path}")
-    print("[graphify watch] Non-code files changed - semantic re-extraction requires LLM.")
-    print("[graphify watch] Run `/graphify --update` in Claude Code to update the graph.")
+    print(
+        "[graphify watch] Non-code files changed - semantic re-extraction requires LLM."
+    )
+    print(
+        "[graphify watch] Run `/graphify --update` in Claude Code to update the graph."
+    )
     print(f"[graphify watch] Flag written to {flag}")
 
 
@@ -155,8 +203,10 @@ def watch(watch_path: Path, debounce: float = 3.0) -> None:
     observer.start()
 
     print(f"[graphify watch] Watching {watch_path.resolve()} - press Ctrl+C to stop")
-    print(f"[graphify watch] Code changes rebuild graph automatically. "
-          f"Doc/image changes require /graphify --update.")
+    print(
+        "[graphify watch] Code changes rebuild graph automatically. "
+        "Doc/image changes require /graphify --update."
+    )
     print(f"[graphify watch] Debounce: {debounce}s")
 
     try:
@@ -180,9 +230,18 @@ def watch(watch_path: Path, debounce: float = 3.0) -> None:
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Watch a folder and auto-update the graphify graph")
-    parser.add_argument("path", nargs="?", default=".", help="Folder to watch (default: .)")
-    parser.add_argument("--debounce", type=float, default=3.0,
-                        help="Seconds to wait after last change before updating (default: 3)")
+
+    parser = argparse.ArgumentParser(
+        description="Watch a folder and auto-update the graphify graph"
+    )
+    parser.add_argument(
+        "path", nargs="?", default=".", help="Folder to watch (default: .)"
+    )
+    parser.add_argument(
+        "--debounce",
+        type=float,
+        default=3.0,
+        help="Seconds to wait after last change before updating (default: 3)",
+    )
     args = parser.parse_args()
     watch(Path(args.path), debounce=args.debounce)

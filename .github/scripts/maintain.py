@@ -13,7 +13,6 @@ What it does:
   9. Runs graphify update and structural drift detection
 """
 
-import os
 import re
 import json
 import subprocess
@@ -31,6 +30,7 @@ NOW = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 
 # ── Metadata Extraction ───────────────────────────────────────────────────────
+
 
 def parse_frontmatter(content):
     """Simple parser for YAML-like frontmatter."""
@@ -64,8 +64,13 @@ def get_summary(content):
 
 # ── Counts ────────────────────────────────────────────────────────────────────
 
+
 def count_wiki_pages():
-    pages = [p for p in WIKI_DIR.rglob("*.md") if p.name not in ("index.md", "log.md", "overview.md")]
+    pages = [
+        p
+        for p in WIKI_DIR.rglob("*.md")
+        if p.name not in ("index.md", "log.md", "overview.md")
+    ]
     by_dir = defaultdict(int)
     for p in pages:
         by_dir[p.parent.name] += 1
@@ -82,6 +87,7 @@ def count_raw_sources():
 
 # ── Link Validation ───────────────────────────────────────────────────────────
 
+
 def find_links_and_orphans():
     """Detects orphans, broken links, and suggested links."""
     all_pages = {}
@@ -89,10 +95,10 @@ def find_links_and_orphans():
         if p.name in ("index.md", "log.md", "overview.md"):
             continue
         all_pages[p.stem.lower()] = p.relative_to(WIKI_DIR)
-    
+
     referenced_stems = set()
     broken_links = []
-    
+
     for p in WIKI_DIR.rglob("*.md"):
         text = p.read_text(encoding="utf-8")
         links = re.findall(r"\[\[([^\]]+)\]\]", text)
@@ -103,11 +109,15 @@ def find_links_and_orphans():
             referenced_stems.add(stem)
             if stem not in all_pages:
                 broken_links.append((str(p.relative_to(WIKI_DIR)), link))
-    
-    orphans = [str(path) for stem, path in all_pages.items() if stem not in referenced_stems]
-    
+
+    orphans = [
+        str(path) for stem, path in all_pages.items() if stem not in referenced_stems
+    ]
+
     suggested = []
-    titles_to_check = {stem: str(path) for stem, path in all_pages.items() if len(stem) > 5}
+    titles_to_check = {
+        stem: str(path) for stem, path in all_pages.items() if len(stem) > 5
+    }
     for p in WIKI_DIR.rglob("*.md"):
         if p.name in ("index.md", "log.md", "overview.md"):
             continue
@@ -116,7 +126,7 @@ def find_links_and_orphans():
         clean_text = re.sub(r"\[\[.*?\]\]", "", text)
         clean_text = re.sub(r"```.*?```", "", clean_text, flags=re.DOTALL)
         clean_text = re.sub(r"`.*?`", "", clean_text)
-        
+
         for stem, path in titles_to_check.items():
             if stem == current_stem:
                 continue
@@ -127,6 +137,7 @@ def find_links_and_orphans():
 
 
 # ── Recently updated pages ────────────────────────────────────────────────────
+
 
 def recently_updated(days=7):
     recent = []
@@ -145,6 +156,7 @@ def recently_updated(days=7):
 
 # ── Graphify Maintenance ──────────────────────────────────────────────────────
 
+
 def graphify_maintenance():
     print("[graphify] Starting graphify maintenance...")
     try:
@@ -158,7 +170,9 @@ def graphify_maintenance():
         if graph_path.exists():
             graph_data = json.loads(graph_path.read_text())
             nodes = graph_data.get("nodes", [])
-            community_ids = {n.get("community") for n in nodes if n.get("community") is not None}
+            community_ids = {
+                n.get("community") for n in nodes if n.get("community") is not None
+            }
             node_count = len(nodes)
             community_count = len(community_ids)
             if node_count > 0:
@@ -174,10 +188,22 @@ def graphify_maintenance():
 # ── Index Regeneration ───────────────────────────────────────────────────────
 
 SECTION_METADATA = {
-    "production-systems": ("Production Systems", "Cameron's FLS production engineering work."),
-    "architectures": ("Architectures", "Serverless patterns, agent systems, transformer family, retrieval systems."),
-    "techniques": ("Techniques", "CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, etc."),
-    "integrations": ("Integrations", "Zendesk API, NetSuite/SuiteQL, AWS, MiCollab, Groq, Copilot Studio."),
+    "production-systems": (
+        "Production Systems",
+        "Cameron's FLS production engineering work.",
+    ),
+    "architectures": (
+        "Architectures",
+        "Serverless patterns, agent systems, transformer family, retrieval systems.",
+    ),
+    "techniques": (
+        "Techniques",
+        "CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, etc.",
+    ),
+    "integrations": (
+        "Integrations",
+        "Zendesk API, NetSuite/SuiteQL, AWS, MiCollab, Groq, Copilot Studio.",
+    ),
     "papers": ("Papers", "Formal published research summaries."),
     "models": ("Models", ""),
     "benchmarks": ("Benchmarks", ""),
@@ -194,6 +220,7 @@ SECTION_METADATA = {
     "methodology": ("Methodology", "How this wiki system works."),
 }
 
+
 def regenerate_index():
     sections = defaultdict(list)
     for p in WIKI_DIR.rglob("*.md"):
@@ -201,84 +228,131 @@ def regenerate_index():
             continue
         content = p.read_text(encoding="utf-8")
         fm = parse_frontmatter(content)
-        sections[p.parent.name].append({
-            "title": fm.get("title", p.stem),
-            "path": str(p.relative_to(WIKI_DIR)),
-            "summary": get_summary(content),
-            "updated": fm.get("updated", ""),
-            "status": fm.get("status", ""),
-            "visibility": fm.get("visibility", ""),
-            "competition": fm.get("competition", "")
-        })
-    lines = ["# Wiki Index\n", "Master catalog of all wiki pages. Updated automatically.\n", "\n---\n"]
+        sections[p.parent.name].append(
+            {
+                "title": fm.get("title", p.stem),
+                "path": str(p.relative_to(WIKI_DIR)),
+                "summary": get_summary(content),
+                "updated": fm.get("updated", ""),
+                "status": fm.get("status", ""),
+                "visibility": fm.get("visibility", ""),
+                "competition": fm.get("competition", ""),
+            }
+        )
+    lines = [
+        "# Wiki Index\n",
+        "Master catalog of all wiki pages. Updated automatically.\n",
+        "\n---\n",
+    ]
     for key, val in SECTION_METADATA.items():
         display_name, desc = val
-        if key not in sections and key not in ["papers", "datasets", "labs"]: continue
+        if key not in sections and key not in ["papers", "datasets", "labs"]:
+            continue
         lines.append(f"\n## {display_name}\n")
-        if desc: lines.append(f"*{desc}*\n")
+        if desc:
+            lines.append(f"*{desc}*\n")
         lines.append("\n")
         entries = sorted(sections[key], key=lambda x: x["title"])
         if not entries:
-            lines.append("| Page | Summary | Updated |\n|------|---------|---------|\n| *(none yet)* | | |\n")
+            lines.append(
+                "| Page | Summary | Updated |\n|------|---------|---------|\n| *(none yet)* | | |\n"
+            )
             continue
         if key == "production-systems":
-            lines.append("| Page | Summary | Status | Visibility | Updated |\n|------|---------|--------|------------|---------|\n")
-            for e in entries: lines.append(f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['status']} | {e['visibility']} | {e['updated']} |\n")
+            lines.append(
+                "| Page | Summary | Status | Visibility | Updated |\n|------|---------|--------|------------|---------|\n"
+            )
+            for e in entries:
+                lines.append(
+                    f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['status']} | {e['visibility']} | {e['updated']} |\n"
+                )
         elif key == "kaggle":
-            lines.append("| Page | Summary | Competition | Updated |\n|------|---------|-------------|---------|\n")
-            for e in entries: lines.append(f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['competition'] or e['title']} | {e['updated']} |\n")
+            lines.append(
+                "| Page | Summary | Competition | Updated |\n|------|---------|-------------|---------|\n"
+            )
+            for e in entries:
+                lines.append(
+                    f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['competition'] or e['title']} | {e['updated']} |\n"
+                )
         else:
             lines.append("| Page | Summary | Updated |\n|------|---------|---------|\n")
-            for e in entries: lines.append(f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['updated']} |\n")
+            for e in entries:
+                lines.append(
+                    f"| [{e['title']}]({e['path']}) | {e['summary']} | {e['updated']} |\n"
+                )
     INDEX.write_text("".join(lines), encoding="utf-8")
 
 
 # ── Overview update ───────────────────────────────────────────────────────────
 
+
 def update_overview(total_pages, by_dir, total_sources):
     text = OVERVIEW.read_text(encoding="utf-8")
     new_stats = f"- Sources ingested: {total_sources}\n- Wiki pages: {total_pages}\n- Last maintenance: {NOW}\n"
-    updated = re.sub(r"(## Current knowledge state\n).*?(\n## )", lambda m: m.group(1) + "\n" + new_stats + "\n" + m.group(2), text, flags=re.DOTALL)
+    updated = re.sub(
+        r"(## Current knowledge state\n).*?(\n## )",
+        lambda m: m.group(1) + "\n" + new_stats + "\n" + m.group(2),
+        text,
+        flags=re.DOTALL,
+    )
     OVERVIEW.write_text(updated, encoding="utf-8")
 
 
 # ── Log append ────────────────────────────────────────────────────────────────
 
-def append_log(total_pages, by_dir, total_sources, recent, orphans, broken, suggested, frag_score=None, frag_alert=False):
+
+def append_log(
+    total_pages,
+    by_dir,
+    total_sources,
+    recent,
+    orphans,
+    broken,
+    suggested,
+    frag_score=None,
+    frag_alert=False,
+):
     entry_lines = [
-        f"\n---\n",
+        "\n---\n",
         f"## [{TODAY}] maintenance | Automated daily check\n",
-        f"\n",
+        "\n",
         f"Run: {NOW}\n",
         f"Wiki pages: {total_pages} | Raw sources: {total_sources}\n",
     ]
     if frag_score is not None:
-        entry_lines.append(f"Graph Fragmentation: {frag_score:.3f}{' 🔴 ALERT' if frag_alert else ''}\n")
+        entry_lines.append(
+            f"Graph Fragmentation: {frag_score:.3f}{' 🔴 ALERT' if frag_alert else ''}\n"
+        )
     entry_lines.append("\n")
-    
+
     if broken:
-        entry_lines.append(f"Broken Links (🔴 CRITICAL):\n")
-        for page, link in broken: entry_lines.append(f"  {page}: [[{link}]]\n")
+        entry_lines.append("Broken Links (🔴 CRITICAL):\n")
+        for page, link in broken:
+            entry_lines.append(f"  {page}: [[{link}]]\n")
         entry_lines.append("\n")
 
     if by_dir:
         entry_lines.append("Pages by section:\n")
-        for section, count in sorted(by_dir.items()): entry_lines.append(f"  {section}: {count}\n")
+        for section, count in sorted(by_dir.items()):
+            entry_lines.append(f"  {section}: {count}\n")
         entry_lines.append("\n")
 
     if recent:
-        entry_lines.append(f"Recently updated (last 7 days):\n")
-        for date, path in recent[:5]: entry_lines.append(f"  [{date}] {path}\n")
+        entry_lines.append("Recently updated (last 7 days):\n")
+        for date, path in recent[:5]:
+            entry_lines.append(f"  [{date}] {path}\n")
         entry_lines.append("\n")
 
     if orphans:
         entry_lines.append(f"Orphan pages ({len(orphans)}):\n")
-        for o in orphans[:10]: entry_lines.append(f"  {o}\n")
+        for o in orphans[:10]:
+            entry_lines.append(f"  {o}\n")
         entry_lines.append("\n")
-        
+
     if suggested:
-        entry_lines.append(f"Suggested Links (Unlinked Mentions):\n")
-        for page, stem in suggested: entry_lines.append(f"  {page}: mention of '{stem}'\n")
+        entry_lines.append("Suggested Links (Unlinked Mentions):\n")
+        for page, stem in suggested:
+            entry_lines.append(f"  {page}: mention of '{stem}'\n")
 
     log_text = LOG.read_text(encoding="utf-8")
     LOG.write_text(log_text + "".join(entry_lines), encoding="utf-8")
@@ -295,6 +369,16 @@ if __name__ == "__main__":
 
     update_overview(total_pages, by_dir, total_sources)
     frag_score, frag_alert = graphify_maintenance()
-    append_log(total_pages, by_dir, total_sources, recent, orphans, broken, suggested, frag_score, frag_alert)
+    append_log(
+        total_pages,
+        by_dir,
+        total_sources,
+        recent,
+        orphans,
+        broken,
+        suggested,
+        frag_score,
+        frag_alert,
+    )
     regenerate_index()
     print("Maintenance complete.")

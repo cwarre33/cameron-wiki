@@ -39,7 +39,8 @@ if [ -z "$GRAPHIFY_PYTHON" ]; then
 fi
 """
 
-_HOOK_SCRIPT = """\
+_HOOK_SCRIPT = (
+    """\
 # graphify-hook-start
 # Auto-rebuilds the knowledge graph after each commit (code files only, no LLM needed).
 # Installed by: graphify hook install
@@ -49,7 +50,9 @@ if [ -z "$CHANGED" ]; then
     exit 0
 fi
 
-""" + _PYTHON_DETECT + """
+"""
+    + _PYTHON_DETECT
+    + """
 export GRAPHIFY_CHANGED="$CHANGED"
 $GRAPHIFY_PYTHON -c "
 import os, sys
@@ -72,9 +75,11 @@ except Exception as exc:
 "
 # graphify-hook-end
 """
+)
 
 
-_CHECKOUT_SCRIPT = """\
+_CHECKOUT_SCRIPT = (
+    """\
 # graphify-checkout-hook-start
 # Auto-rebuilds the knowledge graph (code only) when switching branches.
 # Installed by: graphify hook install
@@ -93,7 +98,9 @@ if [ ! -d "graphify-out" ]; then
     exit 0
 fi
 
-""" + _PYTHON_DETECT + """
+"""
+    + _PYTHON_DETECT
+    + """
 echo "[graphify] Branch switched - rebuilding knowledge graph (code files)..."
 $GRAPHIFY_PYTHON -c "
 from graphify.watch import _rebuild_code
@@ -107,6 +114,7 @@ except Exception as exc:
 "
 # graphify-checkout-hook-end
 """
+)
 
 
 def _git_root(path: Path) -> Path | None:
@@ -123,7 +131,8 @@ def _hooks_dir(root: Path) -> Path:
     try:
         result = subprocess.run(
             ["git", "-C", str(root), "config", "core.hooksPath"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
         )
         if result.returncode == 0:
             custom = result.stdout.strip()
@@ -147,7 +156,9 @@ def _install_hook(hooks_dir: Path, name: str, script: str, marker: str) -> str:
         content = hook_path.read_text(encoding="utf-8")
         if marker in content:
             return f"already installed at {hook_path}"
-        hook_path.write_text(content.rstrip() + "\n\n" + script, encoding="utf-8", newline="\n")
+        hook_path.write_text(
+            content.rstrip() + "\n\n" + script, encoding="utf-8", newline="\n"
+        )
         return f"appended to existing {name} hook at {hook_path}"
     hook_path.write_text("#!/bin/sh\n" + script, encoding="utf-8", newline="\n")
     hook_path.chmod(0o755)
@@ -184,7 +195,9 @@ def install(path: Path = Path(".")) -> str:
     hooks_dir = _hooks_dir(root)
 
     commit_msg = _install_hook(hooks_dir, "post-commit", _HOOK_SCRIPT, _HOOK_MARKER)
-    checkout_msg = _install_hook(hooks_dir, "post-checkout", _CHECKOUT_SCRIPT, _CHECKOUT_MARKER)
+    checkout_msg = _install_hook(
+        hooks_dir, "post-checkout", _CHECKOUT_SCRIPT, _CHECKOUT_MARKER
+    )
 
     return f"post-commit: {commit_msg}\npost-checkout: {checkout_msg}"
 
@@ -196,8 +209,12 @@ def uninstall(path: Path = Path(".")) -> str:
         raise RuntimeError(f"No git repository found at or above {path.resolve()}")
 
     hooks_dir = _hooks_dir(root)
-    commit_msg = _uninstall_hook(hooks_dir, "post-commit", _HOOK_MARKER, _HOOK_MARKER_END)
-    checkout_msg = _uninstall_hook(hooks_dir, "post-checkout", _CHECKOUT_MARKER, _CHECKOUT_MARKER_END)
+    commit_msg = _uninstall_hook(
+        hooks_dir, "post-commit", _HOOK_MARKER, _HOOK_MARKER_END
+    )
+    checkout_msg = _uninstall_hook(
+        hooks_dir, "post-checkout", _CHECKOUT_MARKER, _CHECKOUT_MARKER_END
+    )
 
     return f"post-commit: {commit_msg}\npost-checkout: {checkout_msg}"
 
@@ -213,7 +230,11 @@ def status(path: Path = Path(".")) -> str:
         p = hooks_dir / name
         if not p.exists():
             return "not installed"
-        return "installed" if marker in p.read_text(encoding="utf-8") else "not installed (hook exists but graphify not found)"
+        return (
+            "installed"
+            if marker in p.read_text(encoding="utf-8")
+            else "not installed (hook exists but graphify not found)"
+        )
 
     commit = _check("post-commit", _HOOK_MARKER)
     checkout = _check("post-checkout", _CHECKOUT_MARKER)

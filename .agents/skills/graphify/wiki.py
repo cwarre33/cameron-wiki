@@ -10,7 +10,9 @@ def _safe_filename(name: str) -> str:
     return name.replace("/", "-").replace(" ", "_").replace(":", "-")
 
 
-def _cross_community_links(G: nx.Graph, nodes: list[str], own_cid: int, labels: dict[int, str]) -> list[tuple[str, int]]:
+def _cross_community_links(
+    G: nx.Graph, nodes: list[str], own_cid: int, labels: dict[int, str]
+) -> list[tuple[str, int]]:
     """Return (community_label, edge_count) pairs for cross-community connections, sorted descending."""
     counts: dict[str, int] = Counter()
     for nid in nodes:
@@ -85,7 +87,11 @@ def _community_article(
         lines.append(f"- {conf}: {n} ({pct}%)")
     lines.append("")
 
-    lines += ["---", "", "*Part of the graphify knowledge wiki. See [[index]] to navigate.*"]
+    lines += [
+        "---",
+        "",
+        "*Part of the graphify knowledge wiki. See [[index]] to navigate.*",
+    ]
     return "\n".join(lines)
 
 
@@ -121,7 +127,11 @@ def _god_node_article(G: nx.Graph, nid: str, labels: dict[int, str]) -> str:
             lines.append(f"- {t}")
         lines.append("")
 
-    lines += ["---", "", "*Part of the graphify knowledge wiki. See [[index]] to navigate.*"]
+    lines += [
+        "---",
+        "",
+        "*Part of the graphify knowledge wiki. See [[index]] to navigate.*",
+    ]
     return "\n".join(lines)
 
 
@@ -152,7 +162,11 @@ def _index_md(
     lines.append("")
 
     if god_nodes_data:
-        lines += ["## God Nodes", "(most connected concepts — the load-bearing abstractions)", ""]
+        lines += [
+            "## God Nodes",
+            "(most connected concepts — the load-bearing abstractions)",
+            "",
+        ]
         for node in god_nodes_data:
             lines.append(f"- [[{node['label']}]] — {node['degree']} connections")
         lines.append("")
@@ -208,7 +222,13 @@ def to_wiki(
 
     # Index
     (out / "index.md").write_text(
-        _index_md(communities, labels, god_nodes_data, G.number_of_nodes(), G.number_of_edges())
+        _index_md(
+            communities,
+            labels,
+            god_nodes_data,
+            G.number_of_nodes(),
+            G.number_of_edges(),
+        )
     )
 
     return count

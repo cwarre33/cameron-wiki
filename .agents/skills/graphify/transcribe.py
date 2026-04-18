@@ -5,9 +5,19 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-
-VIDEO_EXTENSIONS = {'.mp4', '.mov', '.webm', '.mkv', '.avi', '.m4v', '.mp3', '.wav', '.m4a', '.ogg'}
-URL_PREFIXES = ('http://', 'https://', 'www.')
+VIDEO_EXTENSIONS = {
+    ".mp4",
+    ".mov",
+    ".webm",
+    ".mkv",
+    ".avi",
+    ".m4v",
+    ".mp3",
+    ".wav",
+    ".m4a",
+    ".ogg",
+}
+URL_PREFIXES = ("http://", "https://", "www.")
 
 _DEFAULT_MODEL = "base"
 _TRANSCRIPTS_DIR = "graphify-out/transcripts"
@@ -21,6 +31,7 @@ def _model_name() -> str:
 def _get_whisper():
     try:
         from faster_whisper import WhisperModel
+
         return WhisperModel
     except ImportError as exc:
         raise ImportError(
@@ -32,6 +43,7 @@ def _get_whisper():
 def _get_yt_dlp():
     try:
         import yt_dlp
+
         return yt_dlp
     except ImportError as exc:
         raise ImportError(
@@ -56,29 +68,30 @@ def download_audio(url: str, output_dir: Path) -> Path:
 
     # yt-dlp uses %(title)s which can be long/weird — use a stable name based on URL hash
     import hashlib
+
     url_hash = hashlib.sha1(url.encode()).hexdigest()[:12]
     out_template = str(output_dir / f"yt_{url_hash}.%(ext)s")
 
     # Check for already-downloaded file
-    for ext in ('.m4a', '.opus', '.mp3', '.ogg', '.wav', '.webm'):
+    for ext in (".m4a", ".opus", ".mp3", ".ogg", ".wav", ".webm"):
         candidate = output_dir / f"yt_{url_hash}{ext}"
         if candidate.exists():
             print(f"  cached audio: {candidate.name}")
             return candidate
 
     ydl_opts = {
-        'format': 'bestaudio[ext=m4a]/bestaudio/best',
-        'outtmpl': out_template,
-        'quiet': True,
-        'no_warnings': True,
-        'noplaylist': True,
-        'postprocessors': [],  # no ffmpeg needed — use native audio
+        "format": "bestaudio[ext=m4a]/bestaudio/best",
+        "outtmpl": out_template,
+        "quiet": True,
+        "no_warnings": True,
+        "noplaylist": True,
+        "postprocessors": [],  # no ffmpeg needed — use native audio
     }
 
     print(f"  downloading audio: {url[:80]} ...", flush=True)
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(url, download=True)
-        ext = info.get('ext', 'm4a')
+        ext = info.get("ext", "m4a")
         downloaded = output_dir / f"yt_{url_hash}.{ext}"
         if not downloaded.exists():
             # yt-dlp may have picked a different extension
@@ -155,7 +168,9 @@ def transcribe(
 
     transcript_path.write_text(transcript, encoding="utf-8")
     lang = info.language if hasattr(info, "language") else "unknown"
-    print(f"  transcript saved -> {transcript_path} (lang={lang}, {len(lines)} segments)")
+    print(
+        f"  transcript saved -> {transcript_path} (lang={lang}, {len(lines)} segments)"
+    )
     return transcript_path
 
 

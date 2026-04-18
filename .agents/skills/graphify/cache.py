@@ -13,7 +13,7 @@ def _body_content(content: bytes) -> bytes:
     if text.startswith("---"):
         end = text.find("\n---", 3)
         if end != -1:
-            return text[end + 4:].encode()
+            return text[end + 4 :].encode()
     return content
 
 
@@ -85,6 +85,7 @@ def save_cached(path: Path, result: dict, root: Path = Path(".")) -> None:
             # Windows: os.replace can fail with WinError 5 if the target is
             # briefly locked. Fall back to copy-then-delete.
             import shutil
+
             shutil.copy2(tmp, entry)
             tmp.unlink(missing_ok=True)
     except Exception:
@@ -144,7 +145,9 @@ def save_semantic_cache(
     """
     from collections import defaultdict
 
-    by_file: dict[str, dict] = defaultdict(lambda: {"nodes": [], "edges": [], "hyperedges": []})
+    by_file: dict[str, dict] = defaultdict(
+        lambda: {"nodes": [], "edges": [], "hyperedges": []}
+    )
     for n in nodes:
         src = n.get("source_file", "")
         if src:
@@ -153,7 +156,7 @@ def save_semantic_cache(
         src = e.get("source_file", "")
         if src:
             by_file[src]["edges"].append(e)
-    for h in (hyperedges or []):
+    for h in hyperedges or []:
         src = h.get("source_file", "")
         if src:
             by_file[src]["hyperedges"].append(h)

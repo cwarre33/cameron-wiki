@@ -1,10 +1,10 @@
 """Token-reduction benchmark - measures how much context graphify saves vs naive full-corpus approach."""
+
 from __future__ import annotations
 import json
 from pathlib import Path
 import networkx as nx
 from networkx.readwrite import json_graph
-
 
 _CHARS_PER_TOKEN = 4  # standard approximation
 
@@ -43,11 +43,15 @@ def _query_subgraph_tokens(G: nx.Graph, question: str, depth: int = 3) -> int:
     lines = []
     for nid in visited:
         d = G.nodes[nid]
-        lines.append(f"NODE {d.get('label', nid)} src={d.get('source_file', '')} loc={d.get('source_location', '')}")
+        lines.append(
+            f"NODE {d.get('label', nid)} src={d.get('source_file', '')} loc={d.get('source_location', '')}"
+        )
     for u, v in edges_seen:
         if u in visited and v in visited:
             d = G.edges[u, v]
-            lines.append(f"EDGE {G.nodes[u].get('label', u)} --{d.get('relation', '')}--> {G.nodes[v].get('label', v)}")
+            lines.append(
+                f"EDGE {G.nodes[u].get('label', u)} --{d.get('relation', '')}--> {G.nodes[v].get('label', v)}"
+            )
 
     return _estimate_tokens("\n".join(lines))
 
@@ -92,13 +96,23 @@ def run_benchmark(
     for q in qs:
         qt = _query_subgraph_tokens(G, q)
         if qt > 0:
-            per_question.append({"question": q, "query_tokens": qt, "reduction": round(corpus_tokens / qt, 1)})
+            per_question.append(
+                {
+                    "question": q,
+                    "query_tokens": qt,
+                    "reduction": round(corpus_tokens / qt, 1),
+                }
+            )
 
     if not per_question:
-        return {"error": "No matching nodes found for sample questions. Build the graph first."}
+        return {
+            "error": "No matching nodes found for sample questions. Build the graph first."
+        }
 
     avg_query_tokens = sum(p["query_tokens"] for p in per_question) // len(per_question)
-    reduction_ratio = round(corpus_tokens / avg_query_tokens, 1) if avg_query_tokens > 0 else 0
+    reduction_ratio = (
+        round(corpus_tokens / avg_query_tokens, 1) if avg_query_tokens > 0 else 0
+    )
 
     return {
         "corpus_tokens": corpus_tokens,
@@ -117,13 +131,15 @@ def print_benchmark(result: dict) -> None:
         print(f"Benchmark error: {result['error']}")
         return
 
-    print(f"\ngraphify token reduction benchmark")
+    print("\ngraphify token reduction benchmark")
     print(f"{'─' * 50}")
-    print(f"  Corpus:          {result['corpus_words']:,} words → ~{result['corpus_tokens']:,} tokens (naive)")
+    print(
+        f"  Corpus:          {result['corpus_words']:,} words → ~{result['corpus_tokens']:,} tokens (naive)"
+    )
     print(f"  Graph:           {result['nodes']:,} nodes, {result['edges']:,} edges")
     print(f"  Avg query cost:  ~{result['avg_query_tokens']:,} tokens")
     print(f"  Reduction:       {result['reduction_ratio']}x fewer tokens per query")
-    print(f"\n  Per question:")
+    print("\n  Per question:")
     for p in result["per_question"]:
         print(f"    [{p['reduction']}x] {p['question'][:55]}")
     print()
