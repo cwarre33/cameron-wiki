@@ -1,1 +1,1 @@
-{"nodes": [{"id": "llm_review_pass", "label": "LLM Review Pass", "file_type": "document", "source_file": "wiki/techniques/llm-review-pass-before-rotation.md"}], "edges": [], "hyperedges": []}
+{"nodes": [{"id": "concept_llm_review_pass", "label": "LLM Review Pass Before Rotation", "file_type": "document", "source_file": "wiki/techniques/llm-review-pass-before-rotation.md", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}
