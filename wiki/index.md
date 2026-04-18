@@ -67,6 +67,7 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [FAISS — Facebook AI Similarity Search](tools/faiss.md) | Meta's library for efficient similarity search and clustering of dense vectors. Core infrastructure for any embedding-based retrieval system. | 2026-04-17 |
+| [Groq — LLM Inference API](tools/groq.md) | Groq provides ultra-low-latency inference for open-source LLMs via custom LPU (Language Processing Unit) hardware. Primary value proposition: signi... | 2026-04-17 |
 | [LiteLLM](tools/litellm.md) | LiteLLM is a Python library that provides a unified interface for calling 100+ LLM APIs (OpenAI, Anthropic, Gemini, HuggingFace, etc.) using the Op... | 2026-04-17 |
 
 ## Labs
@@ -87,19 +88,20 @@ Master catalog of all wiki pages. Updated automatically.
 |------|---------|-------------|---------|
 | ["Deep Past: Akkadian Translation"](kaggle/deep-past-akkadian-translation.md) | Competition: Deep Past Initiative — Translate Akkadian to English | "Deep Past: Akkadian Translation" | 2026-04-17 |
 | ["Motion-S: Text-to-Sign Motion Generation"](kaggle/motion-s-text-to-sign.md) | Competition: Motion-S: Hierarchical Text-to-Motion Generation for Sign Language (Signvrse) | "Motion-S: Text-to-Sign Motion Generation" | 2026-04-17 |
+| [AI Mathematical Olympiad — Progress Prize 3](kaggle/aimo-progress-prize-3.md) | Competition: AI Mathematical Olympiad - Progress Prize 3 | AI Mathematical Olympiad — Progress Prize 3 | 2026-04-17 |
 | [ARC Prize 2025](kaggle/arc-prize-2025.md) | Competition: ARC Prize 2025 | ARC Prize 2025 | 2026-04-17 |
 | [ARC-AGI Benchmarking Harness](kaggle/arc-agi-benchmarking.md) | Cameron's fork of [arcprizeorg/model_baseline](https://github.com/arcprizeorg/model_baseline). A production-grade async test harness for running fr... | ARC-AGI Benchmarking Harness | 2026-04-17 |
+| [CSIRO — Image2Biomass Prediction](kaggle/csiro-image2biomass.md) | Competition: CSIRO - Image2Biomass Prediction | CSIRO — Image2Biomass Prediction | 2026-04-17 |
+| [Cameron's Kaggle Portfolio — Overview](kaggle/portfolio-overview.md) | 14 competitions entered across NLP, bioinformatics, CV, mathematical reasoning, quantitative finance, sports analytics, and wildlife ID. Total priz... | Cameron's Kaggle Portfolio — Overview | 2026-04-17 |
+| [Google Tunix Hackathon](kaggle/google-tunix-hackathon.md) | Competition: Google Tunix Hack - Train a model to show its work | Google Tunix Hackathon | 2026-04-17 |
+| [House Prices — Advanced Regression Techniques](kaggle/house-prices-regression.md) | Competition: House Prices - Advanced Regression Techniques | House Prices — Advanced Regression Techniques | 2026-04-17 |
 | [Hull Tactical — Market Prediction](kaggle/hull-tactical-market-prediction.md) | Competition: Hull Tactical - Market Prediction | Hull Tactical — Market Prediction | 2026-04-17 |
+| [Jaguar Re-Identification Challenge](kaggle/jaguar-re-identification.md) | Competition: Jaguar Re-Identification Challenge | Jaguar Re-Identification Challenge | 2026-04-17 |
+| [MABe — Social Action Recognition in Mice](kaggle/mabe-mouse-behavior.md) | Competition: MABe Challenge - Social Action Recognition in Mice | MABe — Social Action Recognition in Mice | 2026-04-17 |
+| [March Machine Learning Mania 2026](kaggle/march-machine-learning-mania-2026.md) | Competition: March Machine Learning Mania 2026 | March Machine Learning Mania 2026 | 2026-04-17 |
+| [Predicting Heart Disease (Playground S6E2)](kaggle/playground-s6e2-heart-disease.md) | Competition: Predicting Heart Disease (Playground Series Season 6, Episode 2) | Predicting Heart Disease (Playground S6E2) | 2026-04-17 |
 | [Stanford RNA 3D Folding (Part 2)](kaggle/stanford-rna-3d-folding.md) | Competition: Stanford RNA 3D Folding Part 2 | Stanford RNA 3D Folding (Part 2) | 2026-04-17 |
 | [UrbanFloodBench — Flood Modelling](kaggle/urban-flood-modelling.md) | Competition: UrbanFloodBench: Flood Modelling | UrbanFloodBench — Flood Modelling | 2026-04-17 |
-| [AIMO Progress Prize 3](kaggle/aimo-progress-prize-3.md) | $2.2M math reasoning comp; top score 45/50; Cameron outside top 200 | AIMO 3 | 2026-04-17 |
-| [March Machine Learning Mania 2026](kaggle/march-machine-learning-mania-2026.md) | NCAA bracket prediction; log loss metric; Cameron outside top 200 | March Mania ($50k) | 2026-04-17 |
-| [Predicting Heart Disease (PGS6E2)](kaggle/playground-s6e2-heart-disease.md) | Tabular classification; RealMLP+CatBoost+XGB ensemble + SHAP analysis; outside top 200 | PGS6E2 | 2026-04-17 |
-| [CSIRO Image2Biomass](kaggle/csiro-image2biomass.md) | Satellite image → biomass regression; Cameron published baseline notebook; outside top 200 | CSIRO ($75k) | 2026-04-17 |
-| [Jaguar Re-Identification](kaggle/jaguar-re-identification.md) | Wildlife re-ID; metric learning; connects to CLIP+FAISS work; outside top 200 | Jaguar Re-ID | 2026-04-17 |
-| [MABe Mouse Behavior Detection](kaggle/mabe-mouse-behavior.md) | Video action recognition on mouse pose sequences; outside top 200 | MABe ($50k) | 2026-04-17 |
-| [Google Tunix Hackathon](kaggle/google-tunix-hackathon.md) | Train model to show its work; chain-of-thought/PRM domain; leaderboard private | Google Tunix ($100k) | 2026-04-17 |
-| [House Prices Regression](kaggle/house-prices-regression.md) | Beginner comp; Cameron rank ~19; RMSLE 0.00044; TFDF approach; perpetual competition | House Prices | 2026-04-17 |
 
 ## Trading
 
