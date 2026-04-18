@@ -69,7 +69,7 @@ Master catalog of all wiki pages. Updated automatically.
 |------|---------|---------|
 | [FAISS — Facebook AI Similarity Search](tools/faiss.md) | Meta's library for efficient similarity search and clustering of dense vectors. Core infrastructure for any embedding-based retrieval system. | 2026-04-17 |
 | [Groq — LLM Inference API](tools/groq.md) | Groq provides ultra-low-latency inference for open-source LLMs via custom LPU (Language Processing Unit) hardware. Primary value proposition: signi... | 2026-04-17 |
-| [LiteLLM](tools/litellm.md) | LiteLLM is a Python library that provides a unified interface for calling 100+ LLM APIs (OpenAI, Anthropic, Gemini, HuggingFace, etc.) using the Op... | 2026-04-17 |
+| [LiteLLM](tools/litellm.md) | A Python library that provides a unified interface for 100+ LLM providers (OpenAI, Anthropic, Gemini, Azure, Bedrock, HuggingFace, etc.) using the ... | 2026-04-17 |
 
 ## Labs
 
