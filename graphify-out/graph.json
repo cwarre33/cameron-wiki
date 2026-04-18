@@ -100,7 +100,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 8,
       "norm_label": "cameron-wiki readme",
       "id": "readme_cameron_wiki"
     },
@@ -719,7 +719,7 @@
       "label": "Wiki Index \u2014 Master Catalog",
       "file_type": "document",
       "source_file": "wiki/index.md",
-      "community": 6,
+      "community": 8,
       "norm_label": "wiki index \u2014 master catalog",
       "id": "wiki_index"
     },
@@ -727,7 +727,7 @@
       "label": "Activity Log \u2014 Append-Only Ingest History",
       "file_type": "document",
       "source_file": "wiki/log.md",
-      "community": 6,
+      "community": 8,
       "norm_label": "activity log \u2014 append-only ingest history",
       "id": "wiki_log"
     },
@@ -759,7 +759,7 @@
       "label": "Provider Adapter Pattern (Multi-LLM)",
       "file_type": "document",
       "source_file": "wiki/architectures/provider-adapter-pattern.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "provider adapter pattern (multi-llm)",
       "id": "arch_provider_adapter"
     },
@@ -823,7 +823,7 @@
       "label": "LiteLLM",
       "file_type": "document",
       "source_file": "wiki/tools/litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "litellm",
       "id": "tool_litellm"
     },
@@ -863,7 +863,7 @@
       "label": "Hull Tactical \u2014 Market Prediction",
       "file_type": "document",
       "source_file": "wiki/kaggle/hull-tactical-market-prediction.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "hull tactical \u2014 market prediction",
       "id": "kaggle_hull_tactical"
     },
@@ -871,7 +871,7 @@
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
       "file_type": "document",
       "source_file": "wiki/trading/autotrader.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "autotrader \u2014 autonomous paper trading bot",
       "id": "trading_autotrader"
     },
@@ -879,7 +879,7 @@
       "label": "ADR: 90-Day Rotating Retention for Trading Decisions Log",
       "file_type": "document",
       "source_file": "wiki/decisions/autotrader-decisions-log-retention.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "adr: 90-day rotating retention for trading decisions log",
       "id": "decision_autotrader_retention"
     },
@@ -887,7 +887,7 @@
       "label": "ADR: Custom Provider Adapters vs. LiteLLM",
       "file_type": "document",
       "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "adr: custom provider adapters vs. litellm",
       "id": "decision_arc_agi_adapters"
     },
@@ -895,7 +895,7 @@
       "label": "ADR: Wiki Retention Policy",
       "file_type": "document",
       "source_file": "wiki/decisions/wiki-retention-policy.md",
-      "community": 5,
+      "community": 4,
       "norm_label": "adr: wiki retention policy",
       "id": "decision_wiki_retention"
     },
@@ -903,7 +903,7 @@
       "label": "Rationale for Custom Adapters",
       "file_type": "document",
       "source_file": "wiki/decisions/arc-agi-adapters-vs-litellm.md",
-      "community": 4,
+      "community": 5,
       "norm_label": "rationale for custom adapters",
       "id": "rationale_arc_agi_adapters"
     },
@@ -911,7 +911,7 @@
       "label": "Consensus-Based Memory Distillation",
       "file_type": "document",
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "community": 8,
+      "community": 6,
       "norm_label": "consensus-based memory distillation",
       "id": "consensus_based_memory_distillation"
     },
@@ -919,7 +919,7 @@
       "label": "MBR Decoding",
       "file_type": "document",
       "source_file": "wiki/techniques/mbr-decoding.md",
-      "community": 8,
+      "community": 6,
       "norm_label": "mbr decoding",
       "id": "mbr_decoding"
     },
@@ -927,7 +927,7 @@
       "label": "LLM Review Pass",
       "file_type": "document",
       "source_file": "wiki/techniques/llm-review-pass-before-rotation.md",
-      "community": 8,
+      "community": 6,
       "norm_label": "llm review pass",
       "id": "llm_review_pass"
     }
