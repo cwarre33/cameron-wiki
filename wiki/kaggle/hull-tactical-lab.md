@@ -117,7 +117,22 @@ Submit D+M as the competition model. Use D+E+M+S as fallback if D+M overfits on 
 ## Key constraints
 
 - **Deadline:** 2026-06-16
+- **Evaluation metric:** Annualized Sharpe ratio (leaderboard top score = 5.44 as of 2026-04-18). NOT IC. Model predictions are used as allocation weights.
 - **Evaluation:** gRPC interactive API — walk-forward, no look-ahead
-- **Early rows:** date_id 0–~200 have NaN for all continuous features; impute or mask
+- **Early rows:** date_id 0–~200: only D features non-null. Continuous features start at date_id ~1006, some as late as 6969.
 - **Benchmark to beat:** `market_forward_excess_returns` column (not zero)
 - **Do not use:** future feature values, any look-ahead imputation across train/test boundary
+
+## Pipeline verification status (2026-04-18)
+
+| Component | Status | Notes |
+|-----------|--------|-------|
+| `predict()` function | ✅ tested | 10 gateway calls, log schema valid, attenuation logic fires correctly |
+| `retrain.py` | ✅ tested | IC +0.043, 27 features, writes `model_files/hull_dm_model.txt` |
+| `llm_review.py` summary | ✅ tested | IC proxy, D-flag regime breakdown, recent preds all render correctly |
+| `llm_review.py` LLM call | ⚠️ needs `ANTHROPIC_API_KEY` in env | Set `export ANTHROPIC_API_KEY=sk-ant-...` before running |
+| `weekly_review.sh` leaderboard | ✅ live | Returns top 10, score=5.44 for #1 |
+| `weekly_review.sh` submissions | ✅ live | Returns "No submissions yet" cleanly |
+| `weekly_review.sh` kernel output | ⏳ blocked | 404 until notebook is created on Kaggle |
+| `submit_notebook.py` | ✅ Playwright installed | Session cookie save/restore verified; login flow updated for Kaggle's "Sign in with Email" button structure |
+| Kaggle CLI (`kaggle` command) | ❌ token incompatible | `KGAT_` Bearer tokens ≠ legacy API key format. All scripts use REST+Bearer instead. |

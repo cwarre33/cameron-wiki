@@ -55,24 +55,34 @@ curl -s -L -H "$AUTH_HEADER" \
     | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
-teams = data.get('submissions', data.get('leaderboard', []))[:10]
+teams = data.get('submissions', [])[:10]
 for i, t in enumerate(teams, 1):
-    score = t.get('score', t.get('publicScore', '?'))
-    name = t.get('teamName', t.get('displayName', '?'))
+    score = t.get('score', '?')
+    name = t.get('teamName', '?')
     print(f'  {i:2d}. {name:<30} {score}')
-" 2>/dev/null || echo "  (leaderboard parse error — check manually)"
+" 2>/dev/null || echo "  (leaderboard unavailable)"
 
 # 4. Check our submission history
 echo "[4/5] Our submissions..."
-curl -s -L -H "$AUTH_HEADER" \
-    "https://www.kaggle.com/api/v1/competitions/submissions/${COMPETITION}" \
-    | python3 -c "
+SUBS_BODY=$(curl -s -L -H "$AUTH_HEADER" \
+    "https://www.kaggle.com/api/v1/competitions/submissions/${COMPETITION}")
+if [ -z "$SUBS_BODY" ] || [ "$SUBS_BODY" = "null" ]; then
+    echo "  No submissions yet."
+else
+    echo "$SUBS_BODY" | python3 -c "
 import json, sys
-subs = json.load(sys.stdin)
+body = sys.stdin.read().strip()
+if not body or body in ('null','[]',''):
+    print('  No submissions yet.')
+    sys.exit()
+subs = json.loads(body)
 if isinstance(subs, list):
     for s in subs[:5]:
-        print(f'  {s.get(\"date\",\"?\")}  score={s.get(\"publicScore\",\"?\")}  status={s.get(\"status\",\"?\")}')
-" 2>/dev/null || echo "  (submissions parse error)"
+        print(f'  {s.get(\"date\",\"?\")[:10]}  score={s.get(\"publicScore\",\"?\")}  status={s.get(\"status\",\"?\")}')
+elif isinstance(subs, dict):
+    print('  Response:', list(subs.keys()))
+" 2>/dev/null || echo "  (parse error — no submissions or unexpected format)"
+fi
 
 # 5. Dataset version bump (if model was retrained)
 echo "[5/5] Model update?"
