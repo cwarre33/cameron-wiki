@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/playground-s6e2-heart-disease.md]], [[wiki/kaggle/house-prices-regression.md]], [[wiki/kaggle/hull-tactical-market-prediction.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -36,3 +36,7 @@ Typical approaches for this competition:
 ## Context
 
 March Mania is notoriously hard to beat simple seed-based baselines on. The top of the leaderboard (log loss ~0.11) represents near-optimal calibration. Most ML approaches overfit to historical patterns that don't generalize to a specific year's bracket.
+
+## Related competitions
+
+**Tabular/prediction cluster:** [[wiki/kaggle/playground-s6e2-heart-disease.md]] and [[wiki/kaggle/house-prices-regression.md]] share the calibrated probabilistic prediction problem. [[wiki/kaggle/hull-tactical-market-prediction.md]] is the finance analog — predicting structured outcomes where simple baselines are hard to beat.

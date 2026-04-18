@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/jaguar-re-identification.md]], [[wiki/kaggle/stanford-rna-3d-folding.md]], [[wiki/kaggle/urban-flood-modelling.md]], [[wiki/techniques/clip-faiss-visual-search.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -34,3 +34,9 @@ Image-to-biomass is a regression problem over satellite imagery. Typical approac
 - Post-processing with spatial smoothing
 
 ⚠️ *Stub — rank, score, and detailed approach not confirmed from API data.*
+
+## Related competitions
+
+**Image embedding cluster:** [[wiki/kaggle/jaguar-re-identification.md]] uses the same embedding-retrieval paradigm (image → embedding → similarity search) applied to wildlife ID. Both connect to the CLIP+FAISS pattern in [[wiki/techniques/clip-faiss-visual-search.md]].
+
+**Scientific/environmental ML:** [[wiki/kaggle/stanford-rna-3d-folding.md]] (bioinformatics regression) and [[wiki/kaggle/urban-flood-modelling.md]] (geospatial regression) share the pattern of applying generalist ML to scientific domains.

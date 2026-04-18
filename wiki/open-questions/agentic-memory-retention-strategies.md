@@ -52,6 +52,11 @@ Different domains have different regime change frequencies, which should drive r
 
 3. **How does this generalize to the LLM Wiki itself?** This wiki uses `status: archived | superseded` instead of deletion. Is that sufficient, or should old `speculative` pages eventually be pruned?
 
+## Related decisions and proposals
+
+- [[wiki/decisions/wiki-retention-policy.md]] — applies this question to the wiki itself
+- [[wiki/decisions/consensus-based-memory-distillation.md]] — proposes multi-model consensus to reduce drift before retention
+
 ## Next steps to explore
 
 - Implement the weekly LLM review pass in AutoTrader before 90-day rotation

@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: [[wiki/kaggle/deep-past-akkadian-translation.md]]
+related: [[wiki/kaggle/deep-past-akkadian-translation.md]], [[wiki/kaggle/mabe-mouse-behavior.md]], [[wiki/kaggle/google-tunix-hackathon.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: high
@@ -48,6 +48,12 @@ Given a text input, generate sign language motion sequences. A hierarchical gene
 ## Status
 
 Competition still active (closes 2026-05-10). Rank 25 is current standing, not final.
+
+## Related competitions
+
+**Sequence generation cluster:** [[wiki/kaggle/deep-past-akkadian-translation.md]] is the other sequence generation competition — text-to-translation vs. text-to-motion, same retrieval-vs-generation tradeoff question. [[wiki/kaggle/google-tunix-hackathon.md]] also involves structured sequence output (reasoning traces).
+
+**Motion/behavior cluster:** [[wiki/kaggle/mabe-mouse-behavior.md]] is the reverse direction — recognizing behavior from motion sequences rather than generating motion from text. Both involve temporal skeletal/pose data.
 
 ## What to try next (if continuing)
 

@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: [[wiki/kaggle/deep-past-akkadian-translation.md]]
+related: [[wiki/kaggle/csiro-image2biomass.md]], [[wiki/kaggle/urban-flood-modelling.md]], [[wiki/kaggle/deep-past-akkadian-translation.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -44,3 +44,7 @@ RNA structure prediction requires understanding:
 - Existing tools: RoseTTAFold2NA, AlphaFold3 (limited RNA), EternaFold
 
 This is a significantly harder domain than NLP — Cameron was entering as a generalist ML practitioner applying engineering patterns (pseudo-labeling, multi-GPU inference) to a bioinformatics problem.
+
+## Related competitions
+
+**Scientific/environmental ML cluster:** [[wiki/kaggle/csiro-image2biomass.md]] (satellite imagery → biomass) and [[wiki/kaggle/urban-flood-modelling.md]] (geospatial → flood extent) share the same generalist-ML-applied-to-science pattern. All three involve regression over structured scientific inputs where labeled data is scarce and domain knowledge matters.

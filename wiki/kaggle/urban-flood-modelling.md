@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/csiro-image2biomass.md]], [[wiki/kaggle/stanford-rna-3d-folding.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: medium
@@ -36,3 +36,7 @@ Flood modelling at scale is a hard geospatial problem. Top solutions typically i
 - Physics-informed ML or hybrid numerical/ML approaches
 
 Cameron entered as a generalist — this was likely an exploratory competition rather than a deep domain push.
+
+## Related competitions
+
+**Scientific/environmental ML cluster:** [[wiki/kaggle/csiro-image2biomass.md]] (satellite imagery → biomass regression) shares the geospatial/remote-sensing paradigm. [[wiki/kaggle/stanford-rna-3d-folding.md]] completes the trio of scientific regression competitions where Cameron applied generalist ML patterns to domain problems.

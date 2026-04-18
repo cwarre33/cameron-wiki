@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/motion-s-text-to-sign.md]], [[wiki/kaggle/jaguar-re-identification.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -31,3 +31,7 @@ Multi-label temporal classification on pose/keypoint sequences or raw video. The
 Unusual domain for a generalist ML practitioner — Cameron likely entered for the learning value or competition prize size rather than domain expertise.
 
 ⚠️ *Stub — rank, score, and approach not confirmed from API data.*
+
+## Related competitions
+
+**Motion/behavior cluster:** [[wiki/kaggle/motion-s-text-to-sign.md]] is the inverse problem — generating motion from text rather than classifying behavior from motion. Both operate on temporal skeletal sequences. [[wiki/kaggle/jaguar-re-identification.md]] also uses visual sequences for identity/behavior tasks.

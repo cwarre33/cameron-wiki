@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/production-systems/sofascope.md]], [[wiki/techniques/clip-faiss-visual-search.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -29,6 +29,6 @@ Re-identification is a metric learning problem: learn an embedding space where i
 - CLIP-style vision encoders as backbone
 - Test-time augmentation + re-ranking
 
-Connects to Cameron's CLIP+FAISS work in [[wiki/production-systems/sofascope.md]] — same embedding-retrieval paradigm, different domain.
+Connects to Cameron's CLIP+FAISS work in [[wiki/production-systems/sofascope.md]] — same embedding-retrieval paradigm, different domain. See [[wiki/techniques/clip-faiss-visual-search.md]] for the full pipeline.
 
 ⚠️ *Stub — rank, score, and approach not confirmed from API data.*

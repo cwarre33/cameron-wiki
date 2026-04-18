@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: [[wiki/benchmarks/arc-agi.md]]
+related: [[wiki/benchmarks/arc-agi.md]], [[wiki/kaggle/arc-prize-2025.md]], [[wiki/kaggle/google-tunix-hackathon.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -41,3 +41,7 @@ Cameron entering this competition reflects ambition; it's a frontier research pr
 Unknown — rank outside top 200, no distinctive notebook titles confirmed for AIMO. May have used frontier LLM prompting with chain-of-thought.
 
 ⚠️ *This is a stub. Update with actual approach and final rank when available.*
+
+## Related competitions
+
+**Reasoning cluster:** [[wiki/kaggle/arc-prize-2025.md]] is the other anti-memorization reasoning competition Cameron entered — visual abstract reasoning vs. mathematical reasoning. Both test whether models can genuinely generalize rather than pattern-match training data (see [[wiki/benchmarks/arc-agi.md]]). [[wiki/kaggle/google-tunix-hackathon.md]] overlaps on the "show your work" / chain-of-thought dimension.

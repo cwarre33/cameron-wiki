@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/playground-s6e2-heart-disease.md]], [[wiki/kaggle/march-machine-learning-mania-2026.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: medium
@@ -34,3 +34,7 @@ Notebook `house-prices-prediction-using-tfdf` — **TensorFlow Decision Forests 
 ## Portfolio note
 
 House Prices is a learning competition, not a competitive one. The value is in demonstrating tabular ML fundamentals: feature engineering (handling ordinal categoricals, log-transforming skewed targets), model selection, and validation strategy. Good for showing progression from beginner to practitioner.
+
+## Related competitions
+
+**Tabular ML cluster:** [[wiki/kaggle/playground-s6e2-heart-disease.md]] shows Cameron's mature tabular stack (RealMLP + CatBoost + XGBoost + SHAP) — the natural evolution from this TFDF baseline. [[wiki/kaggle/march-machine-learning-mania-2026.md]] is similarly structured data where calibration dominates.

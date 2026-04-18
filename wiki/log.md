@@ -5,6 +5,24 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-04-17] lint | First full lint pass + remediation
+
+Issues found: 0 critical / 4 moderate / 4 low
+Actions taken:
+  - Fixed stale note in decisions/autotrader-decisions-log-retention.md (agentic-memory page falsely marked "not yet created")
+  - Added consensus-based-memory-distillation + wiki-retention-policy wikilinks to open-questions/agentic-memory-retention-strategies.md
+  - Added clip-faiss-visual-search wikilink to kaggle/jaguar-re-identification.md
+Pages created (to resolve orphans and missing concepts):
+  - wiki/kaggle/portfolio-overview.md (resolves 11 orphan Kaggle stubs in one shot)
+  - wiki/tools/groq.md (Groq mentioned 4+ times, no page)
+  - wiki/models/llama-3-3-70b.md (Llama 3.3 70B mentioned 4+ times, no page)
+Pages updated: wiki/index.md
+Orphans resolved: 11 of 12 (consensus-based-memory-distillation still weakly linked — acceptable)
+Remaining moderate issues: consensus ADR weakly connected; Hull Tactical approach undocumented
+Next lint recommended: after FLS ingests
+
+---
+
 ## [2026-04-17] init | Wiki scaffold created
 
 Source: N/A — initial setup

@@ -4,7 +4,7 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: []
+related: [[wiki/kaggle/house-prices-regression.md]], [[wiki/kaggle/march-machine-learning-mania-2026.md]]
 created: 2026-04-17
 updated: 2026-04-17
 confidence: low
@@ -45,3 +45,7 @@ The notebook progression shows the classic tabular Kaggle workflow:
 - Move to gradient boosting ensemble + interpretability layer
 
 ⚠️ *Final rank and score not confirmed. Stub.*
+
+## Related competitions
+
+**Tabular ML cluster:** [[wiki/kaggle/house-prices-regression.md]] uses the same gradient-boosted tree stack (TFDF vs. XGB/CatBoost — different implementations, same paradigm). [[wiki/kaggle/march-machine-learning-mania-2026.md]] is also structured data prediction where calibration and ensembling matter.
