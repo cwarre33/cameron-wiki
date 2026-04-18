@@ -77,32 +77,32 @@
 ## Communities
 
 ### Community 0 - "Community 0"
-Cohesion: 0.2
-Nodes (21): ADR: 90-Day Rotating Retention for Trading Decisions Log, Agentic Drift (hallucination compounding in memory), Open Question — Agentic Memory Retention Strategies, Mathematical Olympiad / IMO-level Reasoning, ARC-AGI Benchmark, ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI, AutoTrader — Autonomous Paper Trading Bot, Chain-of-Thought Reasoning (o1-style) (+13 more)
-
-### Community 1 - "Community 1"
 Cohesion: 0.14
 Nodes (17): Agentic Trading System Architecture, HuggingFace Spaces Docker Deployment, Health Check as First-Class Concern, JSONL Persistent Feedback Loop, Self-Improvement Loop Design, Single Entrypoint + Shared Lib Pattern, ADR: 90-Day Rotating Retention for Decisions Log, ADR: Open Model vs. Frontier for Trading Sentiment (+9 more)
+
+### Community 1 - "Community 1"
+Cohesion: 0.29
+Nodes (15): ADR: 90-Day Rotating Retention for Trading Decisions Log, Agentic Drift (hallucination compounding in memory), Open Question — Agentic Memory Retention Strategies, ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI, AutoTrader — Autonomous Paper Trading Bot, Deep Past — Akkadian Translation (Kaggle), LLM Review Pass Before Rotation, MBR Decoding (Minimum Bayes Risk) (+7 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.2
 Nodes (14): Computer Vision (Kaggle competitions), Log Loss / Calibration (March Mania), CSIRO — Image2Biomass Prediction, Google Tunix Hackathon, Jaguar Re-Identification Challenge, MABe — Social Action Recognition in Mice, March Machine Learning Mania 2026, SofaScope Production System (+6 more)
 
 ### Community 3 - "Community 3"
+Cohesion: 0.21
+Nodes (13): Mathematical Olympiad / IMO-level Reasoning, ARC-AGI Benchmark, Chain-of-Thought Reasoning (o1-style), Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, Retrieval-Augmented Generation (RAG), SofaScope — AI-Powered Furniture Visual Search (+5 more)
+
+### Community 4 - "Community 4"
 Cohesion: 0.27
 Nodes (12): Agentic Memory Compression via Distillation, AutoTrader Decisions-Log Retention (decisions.jsonl / outcomes.jsonl), MemGPT / Letta Tiered Memory, Quarterly Lint Pass (/lint workflow), Retain Outcomes / Rotate Reasoning Principle, Speculative Page Pruning (90-day staleness threshold), Weekly Review Pass (AutoTrader weekly_review.py), ADR: Wiki Retention Policy (+4 more)
 
-### Community 4 - "Community 4"
+### Community 5 - "Community 5"
 Cohesion: 0.33
 Nodes (7): Async Batch Runner (asyncio fan-out), Config-Driven Model Selection (models.yml), Cost Tracking at Model Level, Per-Provider Rate Limiting (config-driven), Tenacity Exponential Backoff, ARC-AGI Benchmarking Harness, ARC-AGI Benchmarking README (raw)
 
-### Community 5 - "Community 5"
-Cohesion: 0.38
-Nodes (7): Tabular ML (Kaggle), House Prices — Advanced Regression Techniques, Predicting Heart Disease — Playground Series S6E2, Gradient Boosting Ensemble (XGBoost + CatBoost + RealMLP), SHAP (SHapley Additive exPlanations), TensorFlow Decision Forests (TFDF), XGBoost
-
 ### Community 6 - "Community 6"
 Cohesion: 0.38
-Nodes (7): Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, Retrieval-Augmented Generation (RAG), CLAUDE.md — Wiki Schema & Workflows, Andrej Karpathy, Rationale: Compiling > Re-deriving (LLM Wiki vs RAG)
+Nodes (7): Tabular ML (Kaggle), House Prices — Advanced Regression Techniques, Predicting Heart Disease — Playground Series S6E2, Gradient Boosting Ensemble (XGBoost + CatBoost + RealMLP), SHAP (SHapley Additive exPlanations), TensorFlow Decision Forests (TFDF), XGBoost
 
 ### Community 7 - "Community 7"
 Cohesion: 0.5
@@ -117,12 +117,12 @@ Cohesion: 0.67
 Nodes (3): cameron-wiki README, Wiki Index — Master Catalog, Activity Log — Append-Only Ingest History
 
 ### Community 10 - "Community 10"
-Cohesion: 0.67
-Nodes (3): Consensus-Based Memory Distillation, LLM Review Pass, MBR Decoding
-
-### Community 11 - "Community 11"
 Cohesion: 1.0
 Nodes (3): SofaScope — AI-Powered Furniture Visual Search, CLIP + FAISS Visual Search Pipeline, Persistent Model Loading Pattern
+
+### Community 11 - "Community 11"
+Cohesion: 0.67
+Nodes (3): Consensus-Based Memory Distillation, LLM Review Pass, MBR Decoding
 
 ### Community 12 - "Community 12"
 Cohesion: 1.0
@@ -251,13 +251,13 @@ Nodes (1): ARC-AGI Benchmarking Harness
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Agentic Trading System Architecture` connect `Community 1` to `Community 4`?**
+- **Why does `Agentic Trading System Architecture` connect `Community 0` to `Community 5`?**
   _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **Why does `wiki/index.md — Master Catalog` connect `Community 0` to `Community 6`?**
+- **Why does `wiki/index.md — Master Catalog` connect `Community 1` to `Community 3`?**
   _High betweenness centrality (0.027) - this node is a cross-community bridge._
-- **Why does `Cameron Kaggle Profile (raw source)` connect `Community 2` to `Community 5`?**
+- **Why does `Cameron Kaggle Profile (raw source)` connect `Community 2` to `Community 6`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `FAISS Vector Search Tool`, `Config-Driven Model Selection (models.yml)`, `Tenacity Exponential Backoff` to the rest of the system?**
   _53 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Community 1` be split into smaller, more focused modules?**
+- **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.14 - nodes in this community are weakly interconnected._
