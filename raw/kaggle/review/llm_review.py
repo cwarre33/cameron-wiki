@@ -65,7 +65,7 @@ def build_summary(rows: list[dict]) -> str:
     summary = f"""PREDICTION LOG SUMMARY — last {len(rows)} days
 Predictions: mean={np.mean(preds):+.5f}  std={np.std(preds):.5f}
 Lagged returns available: {len(lags)} days
-IC proxy (pred vs next-day return): {ic_proxy:+.4f if ic_proxy else 'insufficient data'}
+IC proxy (pred vs next-day return): {f'{ic_proxy:+.4f}' if ic_proxy is not None else 'insufficient data'}
 Attenuated predictions: {attenuated}/{len(rows)}
 
 D-FLAG REGIME PERFORMANCE (signed return when flag is active):
@@ -81,7 +81,14 @@ RECENT PREDICTIONS (last 5):
 
 
 def run_review(summary: str, lookback: int) -> str:
-    client = anthropic.Anthropic()
+    import os
+    api_key = os.getenv('ANTHROPIC_API_KEY')
+    if not api_key:
+        sys.exit(
+            "ANTHROPIC_API_KEY not set.\n"
+            "  export ANTHROPIC_API_KEY=sk-ant-..."
+        )
+    client = anthropic.Anthropic(api_key=api_key)
     prompt = f"""You are a quantitative strategy analyst reviewing a systematic trading model.
 
 The model uses 9 binary D-flag regime indicators (D1-D9, values 0/1 except D6 which is -1/0)

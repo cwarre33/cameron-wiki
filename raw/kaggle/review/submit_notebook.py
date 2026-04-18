@@ -48,25 +48,26 @@ def parse_args():
 
 def login(page, username: str, password: str):
     print("  Logging in...")
-    page.goto(f'{KAGGLE_BASE}/account/login')
-    page.wait_for_load_state('networkidle')
+    page.goto(f'{KAGGLE_BASE}/account/login', wait_until='networkidle')
 
-    # Handle Google login prompt if present — use email/password instead
-    email_field = page.locator('input[name="email"]')
-    if email_field.is_visible(timeout=3000):
-        email_field.fill(username)
-        page.locator('input[name="password"]').fill(password)
-        page.locator('button[type="submit"]').click()
-    else:
-        # Sign in with email link
-        page.locator('text=Sign in with Email').click()
-        page.locator('input[name="email"]').fill(username)
-        page.locator('input[name="password"]').fill(password)
-        page.locator('button[type="submit"]').click()
+    # Click "Sign in with Email" to reveal the email/password form
+    signin_btn = page.get_by_text('Sign in with Email')
+    signin_btn.click()
+    page.wait_for_selector('input[name="email"]', timeout=8000)
 
-    page.wait_for_load_state('networkidle', timeout=15000)
-    if 'login' in page.url:
-        sys.exit("Login failed — check KAGGLE_USERNAME / KAGGLE_PASSWORD env vars.")
+    page.locator('input[name="email"]').fill(username)
+    page.locator('input[name="password"]').fill(password)
+
+    # Submit — Kaggle uses a div-based button, not <button type="submit">
+    page.get_by_role('button', name='Sign In').last.click()
+
+    page.wait_for_load_state('networkidle', timeout=20000)
+    if '/account/login' in page.url:
+        page.screenshot(path='/tmp/kaggle_login_fail.png')
+        sys.exit(
+            "Login failed — check KAGGLE_USERNAME / KAGGLE_PASSWORD env vars.\n"
+            "Screenshot: /tmp/kaggle_login_fail.png"
+        )
     print("  Logged in.")
 
 
@@ -88,7 +89,8 @@ def save_session(context):
 
 def is_logged_in(page) -> bool:
     page.goto(KAGGLE_BASE, wait_until='networkidle')
-    return page.locator('[data-testid="user-avatar"]').is_visible(timeout=4000)
+    # Logged-in users see a profile/notification area; logged-out see Sign In
+    return not page.get_by_role('button', name='Sign In').is_visible(timeout=4000)
 
 
 def open_kernel_and_submit(page, kernel_slug: str, competition_slug: str):
