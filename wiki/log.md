@@ -50,11 +50,42 @@ Contradictions: None.
 
 ---
 
-## [2026-04-17] ingest | Cameron's Kaggle Profile (API export)
+## [2026-04-17] ingest | Cameron's Kaggle Profile — all 14 competitions
 
 Source: raw/kaggle/cameron-kaggle-profile.md (Kaggle API v1, Bearer token)
 Pages created:
   - wiki/kaggle/deep-past-akkadian-translation.md
+  - wiki/kaggle/motion-s-text-to-sign.md
+  - wiki/kaggle/stanford-rna-3d-folding.md
+  - wiki/kaggle/urban-flood-modelling.md
+  - wiki/kaggle/hull-tactical-market-prediction.md
+  - wiki/kaggle/arc-prize-2025.md
+  - wiki/kaggle/aimo-progress-prize-3.md
+  - wiki/kaggle/march-machine-learning-mania-2026.md
+  - wiki/kaggle/playground-s6e2-heart-disease.md
+  - wiki/kaggle/csiro-image2biomass.md
+  - wiki/kaggle/jaguar-re-identification.md
+  - wiki/kaggle/mabe-mouse-behavior.md
+  - wiki/kaggle/google-tunix-hackathon.md
+  - wiki/kaggle/house-prices-regression.md
+  - wiki/techniques/mbr-decoding.md
+  - wiki/models/byt5.md
+Pages updated: wiki/index.md, wiki/overview.md
+Contradictions: None.
+
+Known rankings (from leaderboard API):
+  - House Prices: rank ~19, RMSLE 0.00044 (perpetual competition, inflated leaderboard)
+  - Motion-S: rank 25, score 0.43263 (2% below #1; active until 2026-05-10)
+  - Urban Flood: rank 117, score 0.5304
+  - Deep Past: outside top 200 (legit score 34.7); leakage exploit → 1st place (documented separately)
+  - All others: outside top 200 or leaderboard unavailable
+
+Notes:
+  - Individual notebook content not available via Kaggle API (SPA-rendered pages)
+  - Stubs based on notebook titles + leaderboard data + domain context
+  - Hull Tactical ($100k) still active as of 2026-04-17
+
+---
   - wiki/kaggle/motion-s-text-to-sign.md
   - wiki/kaggle/stanford-rna-3d-folding.md
   - wiki/kaggle/urban-flood-modelling.md

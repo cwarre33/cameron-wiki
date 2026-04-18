@@ -48,11 +48,11 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 - **Knowledge management methodology** — LLM Wiki pattern, RAG comparison, Cameron-specific setup
 - **LLM evaluation infrastructure** — ARC-AGI harness with async concurrency, provider adapter pattern, cost tracking
 - **Algorithmic trading** — AutoTrader RSI+LLM strategy, Alpaca integration, agentic feedback loop
-- **Kaggle competition work** — 7 competitions documented: Deep Past (ByT5+MBR+leakage), Motion-S (rank 25), Stanford RNA, Urban Flood, Hull Tactical (active), ARC Prize 2025
+- **Kaggle competition work** — all 14 competitions documented across NLP, bioinformatics, CV, math reasoning, trading, sports analytics, and wildlife ID
 
 ## Known gaps
 
 - FLS production systems (CRR, SellSmart, transcript pipeline) — deferred, will be ingested when docs are properly gathered
 - Labs, datasets, people — mostly empty; will populate through future ingests
-- ARC Prize 2025 / Hull Tactical final results — active or recently closed, outcomes TBD
-- March Mania, AIMO, Heart Disease, CSIRO Biomass — entered but not yet documented
+- Hull Tactical ($100k, deadline 2026-06-16) — active, outcome TBD
+- Most Kaggle stubs lack notebook-level detail (Kaggle SPA blocks API content access)

@@ -92,6 +92,14 @@ Master catalog of all wiki pages. Updated automatically.
 | [Hull Tactical — Market Prediction](kaggle/hull-tactical-market-prediction.md) | Competition: Hull Tactical - Market Prediction | Hull Tactical — Market Prediction | 2026-04-17 |
 | [Stanford RNA 3D Folding (Part 2)](kaggle/stanford-rna-3d-folding.md) | Competition: Stanford RNA 3D Folding Part 2 | Stanford RNA 3D Folding (Part 2) | 2026-04-17 |
 | [UrbanFloodBench — Flood Modelling](kaggle/urban-flood-modelling.md) | Competition: UrbanFloodBench: Flood Modelling | UrbanFloodBench — Flood Modelling | 2026-04-17 |
+| [AIMO Progress Prize 3](kaggle/aimo-progress-prize-3.md) | $2.2M math reasoning comp; top score 45/50; Cameron outside top 200 | AIMO 3 | 2026-04-17 |
+| [March Machine Learning Mania 2026](kaggle/march-machine-learning-mania-2026.md) | NCAA bracket prediction; log loss metric; Cameron outside top 200 | March Mania ($50k) | 2026-04-17 |
+| [Predicting Heart Disease (PGS6E2)](kaggle/playground-s6e2-heart-disease.md) | Tabular classification; RealMLP+CatBoost+XGB ensemble + SHAP analysis; outside top 200 | PGS6E2 | 2026-04-17 |
+| [CSIRO Image2Biomass](kaggle/csiro-image2biomass.md) | Satellite image → biomass regression; Cameron published baseline notebook; outside top 200 | CSIRO ($75k) | 2026-04-17 |
+| [Jaguar Re-Identification](kaggle/jaguar-re-identification.md) | Wildlife re-ID; metric learning; connects to CLIP+FAISS work; outside top 200 | Jaguar Re-ID | 2026-04-17 |
+| [MABe Mouse Behavior Detection](kaggle/mabe-mouse-behavior.md) | Video action recognition on mouse pose sequences; outside top 200 | MABe ($50k) | 2026-04-17 |
+| [Google Tunix Hackathon](kaggle/google-tunix-hackathon.md) | Train model to show its work; chain-of-thought/PRM domain; leaderboard private | Google Tunix ($100k) | 2026-04-17 |
+| [House Prices Regression](kaggle/house-prices-regression.md) | Beginner comp; Cameron rank ~19; RMSLE 0.00044; TFDF approach; perpetual competition | House Prices | 2026-04-17 |
 
 ## Trading
 

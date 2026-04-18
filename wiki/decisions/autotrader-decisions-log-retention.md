@@ -56,4 +56,4 @@ This is an instance of a general problem in agentic systems: **what should an ag
 ## Related
 
 - [[wiki/trading/autotrader.md]]
-- [[wiki/open-questions/agentic-memory-retention-strategies.md]] — ⚠️ page not yet created; this decision surfaces a general open question worth its own page
+- [[wiki/open-questions/agentic-memory-retention-strategies.md]]
