@@ -96,10 +96,13 @@ def find_links_and_orphans():
             continue
         all_pages[p.stem.lower()] = p.relative_to(WIKI_DIR)
 
+    SKIP_FILES = {"index.md", "log.md", "overview.md"}
     referenced_stems = set()
     broken_links = []
 
     for p in WIKI_DIR.rglob("*.md"):
+        if p.name in SKIP_FILES:
+            continue
         text = p.read_text(encoding="utf-8")
         links = re.findall(r"\[\[([^\]]+)\]\]", text)
         for link in links:
