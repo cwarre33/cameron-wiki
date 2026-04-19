@@ -1,7 +1,5 @@
 import json
 import pytest
-from pathlib import Path
-from datetime import date
 
 
 SCAN_DATE = "2026-04-19"
