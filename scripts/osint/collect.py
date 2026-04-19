@@ -32,7 +32,11 @@ def _normalize_match(match: dict, protocol: str) -> dict:
 
 def collect(limit: int = 1000, out_dir: Path = None) -> Path:
     load_dotenv()
-    api = shodan.Shodan(os.environ["SHODAN_API_KEY"])
+    api_key = os.environ.get("SHODAN_API_KEY")
+    if not api_key:
+        print("Error: SHODAN_API_KEY not set in environment or .env file", file=sys.stderr)
+        sys.exit(1)
+    api = shodan.Shodan(api_key)
 
     if out_dir is None:
         out_dir = Path("raw/osint")
@@ -45,16 +49,19 @@ def collect(limit: int = 1000, out_dir: Path = None) -> Path:
         hosts = []
         total = 0
         try:
+            first = api.search(query, limit=1)
+            total = first.get("total", 0)
+        except shodan.APIError as e:
+            print(f"[{protocol}] Shodan error getting total: {e}", file=sys.stderr)
+
+        try:
             cursor = api.search_cursor(query)
             for match in cursor:
                 if len(hosts) >= limit:
                     break
                 hosts.append(_normalize_match(match, protocol))
-            # total from first page search for reporting
-            first = api.search(query, limit=1)
-            total = first.get("total", len(hosts))
         except shodan.APIError as e:
-            print(f"[{protocol}] Shodan error: {e}", file=sys.stderr)
+            print(f"[{protocol}] Shodan error collecting hosts: {e}", file=sys.stderr)
 
         result["protocols"][protocol] = {
             "query": query,
@@ -66,7 +73,7 @@ def collect(limit: int = 1000, out_dir: Path = None) -> Path:
 
     out_path = out_dir / f"{scan_date}-scan-raw.json"
     out_path.write_text(json.dumps(result, indent=2))
-    print(f"Saved → {out_path}")
+    print(f"Saved: {out_path}")
     return out_path
 
 
