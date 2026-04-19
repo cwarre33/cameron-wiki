@@ -3,6 +3,10 @@ raw/**/*.pdf
 raw/**/*.docx
 raw/**/*.pptx
 
+# OSINT scan data (large JSON files and graphs, but keep HTML D3 viz for portfolio)
+raw/osint/*.json
+raw/osint/*.graphml
+
 # FLS internal content — never publish without explicit sanitization
 raw/fls-work/
 
