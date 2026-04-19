@@ -524,3 +524,58 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-19] maintenance | Automated daily check
+
+Run: 2026-04-19 20:49 UTC
+Wiki pages: 49 | Raw sources: 6
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 8
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 1
+  people: 1
+  production-systems: 1
+  techniques: 5
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-18] kaggle/hull-tactical-market-prediction.md
+  [2026-04-18] kaggle/hull-tactical-lab.md
+  [2026-04-18] decisions/hull-tactical-strategy.md
+  [2026-04-17] trading/rsi-llm-signal-strategy.md
+  [2026-04-17] trading/autotrader.md
+
+Orphan pages (2):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
