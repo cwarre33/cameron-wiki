@@ -24,6 +24,9 @@ raw/fls-work/
 .graph/cache/
 .graph/*.tmp
 
+# Git worktrees
+.worktrees/
+
 # OS
 .DS_Store
 Thumbs.db
