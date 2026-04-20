@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ICS Exposure Map — {{ scan_date }}</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+#header { padding: 16px 24px; border-bottom: 1px solid #30363d; display: flex; align-items: center; gap: 16px; }
+#header h1 { font-size: 18px; font-weight: 600; }
+#header .meta { font-size: 13px; color: #8b949e; }
+#filters { padding: 10px 24px; display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  padding: 4px 14px; border-radius: 20px; border: 1px solid #30363d;
+  cursor: pointer; font-size: 13px; background: #161b22; color: #e6edf3;
+  transition: all 0.15s;
+}
+.pill.active { border-color: #58a6ff; color: #58a6ff; background: #0d1f38; }
+.pill[data-proto="modbus"].active { border-color: #e63946; color: #e63946; background: #1f0d0e; }
+.pill[data-proto="bacnet"].active  { border-color: #457b9d; color: #457b9d; background: #0d1520; }
+.pill[data-proto="dnp3"].active   { border-color: #2a9d8f; color: #2a9d8f; background: #0d1f1e; }
+.pill[data-proto="s7"].active     { border-color: #e9c46a; color: #e9c46a; background: #1f1a0d; }
+#canvas { width: 100%; height: calc(100vh - 110px); }
+.tooltip {
+  position: absolute; padding: 8px 12px; background: #161b22;
+  border: 1px solid #30363d; border-radius: 6px; font-size: 12px;
+  pointer-events: none; opacity: 0; transition: opacity 0.15s;
+  max-width: 240px; line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>ICS Exposure Map</h1>
+  <span class="meta">{{ scan_date }} &nbsp;·&nbsp; {{ total_hosts }} hosts &nbsp;·&nbsp; {{ total_nodes }} nodes &nbsp;·&nbsp; {{ total_edges }} edges</span>
+</div>
+<div id="filters">
+  <button class="pill active" data-proto="all">All protocols</button>
+  <button class="pill" data-proto="modbus">Modbus</button>
+  <button class="pill" data-proto="bacnet">BACnet</button>
+  <button class="pill" data-proto="dnp3">DNP3</button>
+  <button class="pill" data-proto="s7">Siemens S7</button>
+</div>
+<svg id="canvas"></svg>
+<div class="tooltip" id="tip"></div>
+
+<script>
+const GRAPH = {{ graph_json }};
+const NODE_COLORS = {
+  ip: "#4a9eda",
+  asn: "#9f7be1",
+  country: "#6e7681",
+  protocol: { modbus: "#e63946", bacnet: "#457b9d", dnp3: "#2a9d8f", s7: "#e9c46a" },
+};
+
+function nodeColor(n) {
+  if (n.node_type === "protocol") return NODE_COLORS.protocol[n.id] || "#888";
+  return NODE_COLORS[n.node_type] || "#888";
+}
+function nodeRadius(n) {
+  if (n.node_type === "protocol") return 18;
+  if (n.node_type === "country") return 14;
+  if (n.node_type === "asn") return 10;
+  return 5;
+}
+
+let activeProto = "all";
+let simulation, link, node, label;
+
+const svg = document.getElementById("canvas");
+const tip = document.getElementById("tip");
+
+function getSize() {
+  return { w: svg.clientWidth || window.innerWidth, h: svg.clientHeight || window.innerHeight - 110 };
+}
+
+function visibleNodes() {
+  if (activeProto === "all") return GRAPH.nodes;
+  return GRAPH.nodes.filter(n =>
+    n.node_type === "country" ||
+    n.node_type === "asn" ||
+    n.id === activeProto ||
+    (n.node_type === "ip" && n.protocol === activeProto)
+  );
+}
+
+function visibleLinks(nodes) {
+  const ids = new Set(nodes.map(n => n.id));
+  return GRAPH.links.filter(l => ids.has(l.source.id ?? l.source) && ids.has(l.target.id ?? l.target));
+}
+
+function render() {
+  const { w, h } = getSize();
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+
+  const ns = visibleNodes();
+  const ls = visibleLinks(ns);
+
+  if (simulation) simulation.stop();
+
+  const svgEl = d3.select("#canvas");
+  svgEl.selectAll("*").remove();
+
+  const g = svgEl.append("g");
+  svgEl.call(d3.zoom().scaleExtent([0.1, 8]).on("zoom", e => g.attr("transform", e.transform)));
+
+  svgEl.append("defs").append("marker")
+    .attr("id", "arrow").attr("viewBox", "0 -5 10 10").attr("refX", 18)
+    .attr("markerWidth", 6).attr("markerHeight", 6).attr("orient", "auto")
+    .append("path").attr("fill", "#444").attr("d", "M0,-5L10,0L0,5");
+
+  link = g.append("g").selectAll("line").data(ls).join("line")
+    .attr("stroke", "#30363d").attr("stroke-width", 1)
+    .attr("marker-end", "url(#arrow)");
+
+  node = g.append("g").selectAll("circle").data(ns, d => d.id).join("circle")
+    .attr("r", nodeRadius)
+    .attr("fill", nodeColor)
+    .attr("stroke", "#0d1117").attr("stroke-width", 1.5)
+    .style("cursor", "grab")
+    .call(d3.drag()
+      .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }))
+    .on("mouseover", (e, d) => {
+      tip.style.opacity = 1;
+      tip.style.left = (e.pageX + 12) + "px";
+      tip.style.top = (e.pageY - 10) + "px";
+      tip.innerHTML = tooltipHtml(d);
+    })
+    .on("mousemove", e => { tip.style.left = (e.pageX + 12) + "px"; tip.style.top = (e.pageY - 10) + "px"; })
+    .on("mouseout", () => { tip.style.opacity = 0; });
+
+  simulation = d3.forceSimulation(ns)
+    .force("link", d3.forceLink(ls).id(d => d.id).distance(60))
+    .force("charge", d3.forceManyBody().strength(-120))
+    .force("center", d3.forceCenter(w / 2, h / 2))
+    .force("collision", d3.forceCollide().radius(d => nodeRadius(d) + 4))
+    .on("tick", () => {
+      link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+      node.attr("cx", d => d.x).attr("cy", d => d.y);
+    });
+}
+
+function tooltipHtml(d) {
+  if (d.node_type === "ip") {
+    return `<b>${d.id}</b><br>Org: ${d.org || "—"}<br>ASN: ${d.asn || "—"}<br>City: ${d.city || "—"}<br>CVEs: ${d.vuln_count || 0}<br>Protocol: ${d.protocol}`;
+  }
+  if (d.node_type === "asn") return `<b>${d.id}</b><br>${d.org_name || ""}<br>IPs: ${d.ip_count || ""}`;
+  if (d.node_type === "country") return `<b>${d.id}</b><br>Exposed: ${d.total_exposed || ""}`;
+  if (d.node_type === "protocol") return `<b>${d.id.toUpperCase()}</b><br>Exposed: ${d.exposure_count || ""}`;
+  return d.id;
+}
+
+document.querySelectorAll(".pill").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".pill").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeProto = btn.dataset.proto;
+    render();
+  });
+});
+
+window.addEventListener("resize", render);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script>render();</script>
+</body>
+</html>

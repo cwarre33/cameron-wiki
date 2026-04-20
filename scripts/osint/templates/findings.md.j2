@@ -1,0 +1,53 @@
+---
+title: ICS Exposure Findings — {{ scan_date }}
+type: open-question
+status: active
+visibility: public
+sources: [raw/osint/{{ scan_date }}-scan-enriched.json]
+related: [wiki/techniques/shodan-ics-osint.md]
+created: {{ scan_date }}
+updated: {{ scan_date }}
+confidence: high
+tags: [shodan, ics, osint, exposure, {{ scan_date }}]
+---
+
+# ICS Exposure Findings — {{ scan_date }}
+
+Scan run via [[shodan-ics-osint]] pipeline. {{ total_hosts }} unique hosts across {{ protocol_count }} protocols.
+
+## Protocol exposure
+
+| Protocol | Exposed hosts (sampled) | Total in Shodan index |
+|----------|------------------------|-----------------------|
+{% for p in protocols %}| {{ p.name }} | {{ p.sampled }} | {{ p.total_results }} |
+{% endfor %}
+
+## Top countries by exposure
+
+| Rank | Country | Hosts |
+|------|---------|-------|
+{% for c in top_countries %}| {{ loop.index }} | {{ c.country }} | {{ c.count }} |
+{% endfor %}
+
+## CVE patterns
+
+{% if top_vulns %}
+| CVE | Occurrences |
+|-----|-------------|
+{% for v in top_vulns %}| {{ v.cve }} | {{ v.count }} |
+{% endfor %}
+{% else %}
+No CVEs recorded in this scan sample.
+{% endif %}
+
+## Open questions
+
+- Which ASNs concentrate the most exposed ICS endpoints?
+- Are exposed Modbus/DNP3 hosts clustered in specific utility operators?
+- How does exposure change week-over-week? ⚠️ (requires longitudinal tracking)
+
+## Next steps
+
+- Re-run with `--limit 5000` for a larger sample
+- Cross-reference ASN owners with known utility operators
+- Correlate CVE counts with exploit availability in NVD
