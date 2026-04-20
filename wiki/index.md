@@ -151,3 +151,8 @@ Master catalog of all wiki pages. Updated automatically.
 |------|---------|---------|
 | [Cameron's Wiki — Setup and Adaptations](methodology/cameron-wiki-setup.md) | How this wiki instantiates Karpathy's LLM Wiki pattern, and what was adapted for Cameron's broader context. | 2026-04-17 |
 | [The LLM Wiki Pattern (Karpathy, April 2026)](methodology/llm-wiki-pattern.md) | A pattern for building persistent, compounding personal knowledge bases using LLMs. Published April 4, 2026 as a GitHub gist by Andrej Karpathy. 5,... | 2026-04-17 |
+
+- [[ics-exposure-2026-04-19]] — ICS exposure findings 2026-04-19
+- [[shodan-ics-osint]] — Shodan ICS OSINT methodology
+- [[bacnet-bbmd-exposure-2026-04-19]] — 84 internet-facing BACnet BBMDs, Tridium pre-4.13 CVEs, KIPP/Shriners findings
+- [[walkermedical-disclosure-2026-04-19]] — Responsible disclosure: Walker Medical Building, Delta Controls DSM_RTR V3.40, active FDT, CVE-2019-9569

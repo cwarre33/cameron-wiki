@@ -634,3 +634,23 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+## [2026-04-19] ingest | Shodan ICS Exposure Scan
+Source: raw/osint/2026-04-19-scan-enriched.json
+Pages created: [ics-exposure-2026-04-19.md]
+Pages updated: [shodan-ics-osint.md]
+Contradictions: none
+
+## [2026-04-19] osint-analysis | BACnet BBMD Internet Exposure Deep Dive
+Source: raw/osint/2026-04-19-scan-enriched.json
+Pages created: [bacnet-bbmd-exposure-2026-04-19.md, walkermedical-disclosure-2026-04-19.md]
+Pages updated: [ics-exposure-2026-04-19.md]
+Contradictions: none
+Key findings:
+  - 84 internet-facing BACnet BBMDs in 1,000-host sample
+  - 20+ Tridium Niagara hosts on pre-4.13 firmware (CVE-2021-22656/22657/44228)
+  - KIPP Academy (12.5.26.10): single BBMD routing 13 school campuses
+  - WalkerMedical (108.252.186.105): Delta Controls DSM_RTR V3.40 BBMD with active FDT entry at scan time, bridging internet to medical building BAS (surgery center, cancer center, DaVita dialysis). CVE-2019-9569 (CVSS 9.8) version-family match. Responsible disclosure report drafted.
+  - Shriners Children's Hospital Charlotte (70.63.96.202): Tridium 4.11 on Charter residential ISP, three confirmed CVEs by version
+  - Modbus CVE cluster: 39 Aliyun cloud VMs running SSH on port 502 — likely honeypots, not real ICS
+  - DNP3 sample: 603/1000 hosts returned HTTP — mostly CDN/web false positives, not SCADA
