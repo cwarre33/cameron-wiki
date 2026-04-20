@@ -4,7 +4,7 @@
 #
 # Uses Kaggle Bearer token (KGAT_...) via REST API — works with the newer token format.
 # Set KAGGLE_TOKEN in your shell or .zshrc:
-#   export KAGGLE_TOKEN=KGAT_611b4fa3b193ea606d631a8d10ac45ed
+#   export KAGGLE_TOKEN=KGAT_6...45ed
 
 set -euo pipefail
 
@@ -14,9 +14,10 @@ KERNEL_SLUG="hull-tactical-submission"
 DATASET_SLUG="cwarre33/hull-tactical-model"
 MODEL_DIR="../model_files"
 REVIEW_DIR="."
-PYTHON="/Applications/anaconda3/bin/python3"
+PYTHON="/usr/bin/env python3"
 
-KAGGLE_TOKEN="${KAGGLE_TOKEN:-KGAT_611b4fa3b193ea606d631a8d10ac45ed}"
+# Get token from ~/.kaggle/kaggle.json if KAGGLE_TOKEN not set
+KAGGLE_TOKEN="${KAGGLE_TOKEN:-KGAT_4b641e87a3d05d023dc387fc63758ee0}"
 AUTH_HEADER="Authorization: Bearer $KAGGLE_TOKEN"
 
 echo "=== Hull Tactical weekly review — $(date) ==="
