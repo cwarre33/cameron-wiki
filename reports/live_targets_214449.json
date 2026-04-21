@@ -1,0 +1,203 @@
+{
+  "discoveries": [
+    {
+      "repo": "wilsonmar/mac-setup",
+      "file": "mac-setup.env",
+      "url": "https://github.com/wilsonmar/mac-setup/blob/main/mac-setup.env",
+      "secrets": [
+        [
+          "export ENV_VER",
+          "v074 + tig :mac-setup.env"
+        ],
+        [
+          "export RUNTYPE",
+          "fromscratch\"  # fromscratch, u..."
+        ],
+        [
+          "export GITHUB_ACCOUNT_FOLDER",
+          "github-wilsonmar"
+        ],
+        [
+          "export GITHUB_FOLDER_BASE",
+          "$HOME/github-wilsonmar"
+        ],
+        [
+          "export GITHUB_DOCS_REPO",
+          "wilsonmar.github.io"
+        ],
+        [
+          "export ENV_FOLDERPATH_DEFAULT",
+          "$HOME\" # for override by -envf..."
+        ],
+        [
+          "export GITHUB_USER_EMAIL",
+          "wilsonmar+github@gmail.com\"  #"
+        ],
+        [
+          "export GITHUB_USER_NAME",
+          "Wilson Mar\"                   ..."
+        ],
+        [
+          "export GITHUB_USER_ACCOUNT",
+          "wilsonmar\"                 # -..."
+        ],
+        [
+          "export AKEYLESS_ADMIN_EMAIL",
+          "wilson_mar@gmail.com"
+        ],
+        [
+          "export BREWS_TO_INSTALL",
+          "ansible docker-compose fzf git..."
+        ],
+        [
+          "export FILE_EXT_BY_VSCODE",
+          ".json .md .py .sh .yml .yaml ...."
+        ],
+        [
+          "export VSCODE_EXT_FILE",
+          "vscode-ext.txt\"   # \"file\"  In..."
+        ],
+        [
+          "export VSCODE_EXT_URL",
+          "https://wilsonmar.github.io/do..."
+        ],
+        [
+          "export MACOS_APPS_TO_REMOVE",
+          "iMovie GarageBand Keynote Numb..."
+        ],
+        [
+          "export ROOT_APPS_TO_INSTALL",
+          "Blender hiddenbar Kindle Micro..."
+        ],
+        [
+          "export HOME_APPS_TO_INSTALL",
+          "balenaetcher Brave Claude Dock..."
+        ],
+        [
+          "export USB_DRIVE_NAME",
+          "HP-USB-4GB"
+        ],
+        [
+          "export KRAFTCLOUD_TOKEN",
+          "akeyless:/mac-setup/KRAFTCLOUD..."
+        ],
+        [
+          "export OPENAI_API_KEY",
+          "akeyless:/mac-setup/OPENAI_API..."
+        ],
+        [
+          "export PLAYWRIGHT_SERVICE_ACCESS_TOKEN",
+          "akeyless:/mac-setup/PLAYWRIGHT..."
+        ],
+        [
+          "export PLAYWRIGHT_SERVICE_URL",
+          "wss://eastus.api.playwright.mi..."
+        ],
+        [
+          "export PLAYWRIGHT_SERVICE_ACCESS_TOKEN",
+          "/akeyless:/mac-setup/PLAYWRIGH..."
+        ],
+        [
+          "export BRASTEN_API",
+          "akeyless:/mac-setup/BRASTEN_AP..."
+        ],
+        [
+          "export GOHOME",
+          "$HOME/golang1'   # this code  ..."
+        ],
+        [
+          "export AWS_DEFAULT_REGION",
+          "us-west-2"
+        ],
+        [
+          "export AWS_ACCOUNT_ID",
+          "akeyless:/mac-setup/AWS_ACCOUN..."
+        ],
+        [
+          "export AWS_ACCESS_KEY_ID",
+          "akeyless:/mac-setup/AWS_ACCESS..."
+        ],
+        [
+          "export AWS_SECRET_ACCESS_KEY",
+          "akeyless:/mac-setup/AWS_SECRET..."
+        ],
+        [
+          "export ARM_CLIENT_ID",
+          "akeyless:/mac-setup/ARM_CLIENT..."
+        ],
+        [
+          "export ARM_CLIENT_SECRET",
+          "akeyless:/mac-setup/ARM_CLIENT..."
+        ],
+        [
+          "export ARM_TENANT_EMAIL",
+          "jetbloom@hotmail.com"
+        ],
+        [
+          "export ARM_TENANT_ID",
+          "akeyless:/mac-setup/ARM_TENANT..."
+        ],
+        [
+          "export ARM_SUBSCRIPTION_NAME",
+          "Azure subscription 1"
+        ],
+        [
+          "export ARM_SUBSCRIPTION_ID",
+          " # 7a0bbbfc-a36d-4d73-bbaf-e38..."
+        ],
+        [
+          "export AZURE_SUBSCRIPTION_EMAIL",
+          "jetbloom@hotmail.com"
+        ],
+        [
+          "export AZURE_DOMAIN",
+          "jetbloomhotmail.onmicrosoft.co..."
+        ],
+        [
+          "export AZURE_DIRECTORY_ID",
+          " # \"39020964-5f96-4d36-a89b-5e..."
+        ],
+        [
+          "export AZURE_REGION",
+          "us-west-2"
+        ],
+        [
+          "export AZURE_WORKSPACE",
+          "my-workspace"
+        ],
+        [
+          "export CHEZMOI_CONFIG_FILE",
+          "~/.config/chezmoi/chezmoi.toml"
+        ],
+        [
+          "export CHEZMOI_FOLDERPATH",
+          "~/.local/share/chezmoi"
+        ],
+        [
+          "export VAULT_ADDR",
+          "http:localhost:8200"
+        ]
+      ]
+    },
+    {
+      "repo": "zhangyao1990/elegant-admin",
+      "file": ".env.production",
+      "url": "https://github.com/zhangyao1990/elegant-admin/blob/main/.env.production",
+      "secrets": [
+        [
+          "VITE_NODE_ENV",
+          "production"
+        ],
+        [
+          "VITE_APP_TITLE",
+          "Elegant-admin \u7ba1\u7406\u7cfb\u7edf"
+        ],
+        [
+          "VITE_BUILD_COMPRESS",
+          "gzip,brotli"
+        ]
+      ]
+    }
+  ],
+  "count": 2
+}
