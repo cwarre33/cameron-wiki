@@ -237,3 +237,30 @@ April 27 - Day 7 public disclosure consideration
 ```
 
 ## Mission Status: ✅ COMPLETE
+
+---
+
+## April 21 Update - New Disclosures Posted
+
+### New Findings (Hunt 2)
+| # | Repository | Severity | Issue URL | Status |
+|---|------------|----------|-----------|--------|
+| 1 | ettfemnio/dbd-server | 🔴 CRITICAL | https://github.com/ettfemnio/dbd-server/issues/23 | ✅ POSTED |
+| 2 | totaljs/superadmin | 🔴 CRITICAL | https://github.com/totaljs/superadmin/issues/53 | ✅ POSTED |
+
+### Combined Stats
+- **Total Discoveries:** 7 live credentials
+- **Total Posted:** 6/7 (86%)
+- **Critical Severity:** 3
+- **High Severity:** 3
+- **Medium Severity:** 1
+- **Pending:** 1 (olympus-2.0)
+
+### Impact Summary
+| Category | Count | Repositories |
+|----------|-------|--------------|
+| Private Keys | 2 | ettfemnio/dbd-server, totaljs/superadmin |
+| Database URIs | 3 | openworkflow, svgtofont, olympus-2.0 |
+| GitHub Tokens | 2 | atuin, codename-co/devs |
+
+
