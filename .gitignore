@@ -19,6 +19,10 @@ raw/fls-work/
 .env.local
 *.env
 
+# Claude Code machine-local settings (can capture command-line args from permission prompts — never commit)
+.claude/settings.local.json
+*.local.json
+
 # Obsidian — commit shared settings, ignore machine-specific state
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json

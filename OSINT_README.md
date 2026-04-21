@@ -97,7 +97,7 @@ python scripts/osint/trufflehog_scanner.py
 
 **Usage:**
 ```bash
-export SHODAN_API_KEY="REDACTED_SHODAN_KEY"
+export SHODAN_API_KEY="your_shodan_api_key_here"  # or put it in .env (gitignored)
 python -m scripts.osint.collect --limit 1000
 ```
 
