@@ -110,7 +110,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "readme \u2014 cameron-wiki",
       "id": "doc_readme"
     },
@@ -123,7 +123,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "claude.md \u2014 wiki schema & workflows",
       "id": "doc_claudemd"
     },
@@ -136,7 +136,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "graphify \u2014 knowledge graph skill",
       "id": "concept_graphify"
     },
@@ -149,7 +149,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "obsidian integration",
       "id": "concept_obsidian"
     },
@@ -191,7 +191,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "jaguar re-identification challenge",
       "id": "kaggle_jaguar_reidentification"
     },
@@ -204,7 +204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)",
       "id": "technique_metric_learning"
     },
@@ -217,7 +217,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "clip+faiss embedding retrieval",
       "id": "technique_clip_faiss"
     },
@@ -272,7 +272,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "llm wiki pattern (karpathy)",
       "id": "concept_llm_wiki_pattern"
     },
@@ -504,7 +504,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "sofascope production system",
       "id": "production_sofascope"
     },
@@ -671,7 +671,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "cameron kaggle profile (raw source)",
       "id": "source_cameron_kaggle_profile"
     },
@@ -684,7 +684,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 5,
       "norm_label": "cameron's second brain \u2014 overview",
       "id": "overview_cameron_wiki"
     },
@@ -697,7 +697,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 5,
       "norm_label": "second brain knowledge system",
       "id": "overview_second_brain"
     },
@@ -710,7 +710,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 5,
       "norm_label": "sofascope visual search system",
       "id": "overview_sofascope_system"
     },
@@ -723,7 +723,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 5,
       "norm_label": "arc-agi async llm test harness",
       "id": "overview_arc_agi_harness"
     },
@@ -736,7 +736,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 5,
       "norm_label": "autotrader rsi+llm strategy",
       "id": "overview_autotrader_system"
     },
@@ -749,7 +749,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 5,
       "norm_label": "kaggle competition portfolio (14 competitions)",
       "id": "overview_kaggle_portfolio"
     },
