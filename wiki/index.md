@@ -139,9 +139,9 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| ["Maintainer Response Log: April 2026 Security Disclosures"](comparisons/maintainer-response-log.md) | Documenting how open-source maintainers responded to security disclosures for exposed credentials discovered via OSINT. | 2026-04-21 |
 | [Credential Exposure Patterns Comparison](comparisons/credential-exposure-patterns.md) | Comparative analysis of different credential types discovered via OSINT, their risk profiles, and detection strategies. | 2026-04-21 |
 | [LLM Wiki vs. RAG — Architectural Comparison](comparisons/llm-wiki-vs-rag.md) | Two fundamentally different approaches to LLM + documents. Cameron has built production systems using both. | 2026-04-17 |
-| [Maintainer Response Log — Security Disclosures (April 2026)](comparisons/maintainer-response-log.md) | Real-world maintainer responses to security disclosures: rapid dismissal vs engagement patterns, lessons learned from "ai-slop" label. | 2026-04-21 |
 
 ## Open Questions
 
