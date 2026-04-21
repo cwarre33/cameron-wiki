@@ -2024,41 +2024,86 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
 
+---
+## [2026-04-21] maintenance | Automated daily check
 
-## [2026-04-21] osint | Pre-disclosure validation protocol — prevent "ai-slop" dismissals
+Run: 2026-04-21 23:31 UTC
+Wiki pages: 67 | Raw sources: 7
+Graph Fragmentation: 0.310
 
-Source: Analysis of ettfemnio/dbd-server Issue #23 response
-Pages created:
-  - wiki/techniques/pre-disclosure-validation-protocol.md
-Pages updated: wiki/index.md, wiki/log.md
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
 
-5-tier validation framework:
-  - Tier 1: Automated screening (entropy, keywords, patterns)
-  - Tier 2: Cryptographic verification (OpenSSL, key size, modulus matching)
-  - Tier 3: Contextual analysis (local clone, source code, production usage)
-  - Tier 4: Impact assessment (stars, forks, deployment scope)
-  - Tier 5: Evidence packaging (screenshots, snippets, risk analysis)
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 7
+  tools: 3
+  trading: 2
 
-Key insight from ettfemnio dismissal:
-  - Finding was legitimate (OpenSSL verified, production code confirmed)
-  - But evidence was buried in disclosure text
-  - Maintainer skimmed, assumed AI-generated spam, archived
+Recently updated (last 7 days):
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+  [2026-04-21] open-questions/bacnet-bbmd-exposure-2026-04-19.md
+  [2026-04-21] open-questions/acsalaska-216-67-73-166-2026-04-21.md
 
-Solution: Lead with cryptographic verification, not search methodology
-  Old: "I found this using GitHub search..."
-  New: "VERIFIED: RSA-2048 production key, OpenSSL validation attached"
+Orphan pages (9):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
 
-Confidence scoring system:
-  - Automated screening: 20 points
-  - Crypto verification: 30 points
-  - Context analysis: 30 points
-  - Impact assessment: 20 points
-  - Thresholds: 90+ READY, 75+ PROBABLE, 60+ QUESTIONABLE
-
-Portfolio value:
-  - Shows mature security research process
-  - Learning from rejection to improve methodology
-  - Professional quality assurance standards
-  - Evidence-based reporting culture
-
-
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
