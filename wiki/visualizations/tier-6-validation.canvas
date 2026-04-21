@@ -1,0 +1,204 @@
+{
+  "nodes": [
+    {
+      "id": "problem",
+      "type": "text",
+      "text": "## The Problem: \"ai-slop\" Dismissal\n\n**ettfemnio/dbd-server Issue #23**\n\n- Maintainer dismissed finding in ~15 minutes\n- Added label: `ai-slop 🤮`\n- Archived repo (acknowledged) but didn't rotate key\n- **Finding was legitimate** - verified with OpenSSL\n\n**Root Cause:**\nEvidence buried in disclosure text.\nMaintainer assumed AI-generated spam.",
+      "x": 0,
+      "y": -400,
+      "width": 400,
+      "height": 300,
+      "color": "#ff4444"
+    },
+    {
+      "id": "solution",
+      "type": "text",
+      "text": "## The Solution: 6-Tier Validation\n\n**Tier 1-5:** Prove credential exists\n**Tier 6:** Prove it's DEPLOYED\n\n**Goal:**\nEvidence so overwhelming that dismissal is impossible\n\n**Updated Threshold:**\n- 130-140 pts: DEFINITIVE\n- 110-129 pts: STRONG\n- 90-109 pts: PROBABLE",
+      "x": 0,
+      "y": 0,
+      "width": 400,
+      "height": 250
+    },
+    {
+      "id": "tier1",
+      "type": "text",
+      "text": "## Tier 1: Automated Screening\n**20 points**\n\n- Entropy check (> 3.5)\n- Keyword filtering\n- Pattern matching\n- File extension validation\n\n**Purpose:**\nEliminate obvious false positives",
+      "x": -600,
+      "y": 300,
+      "width": 300,
+      "height": 250
+    },
+    {
+      "id": "tier2",
+      "type": "text",
+      "text": "## Tier 2: Crypto Verification\n**30 points**\n\n- OpenSSL validation\n- Key size check (2048+)\n- Modulus calculation\n- CSR matching\n\n**Purpose:**\nProve real, not placeholder",
+      "x": -300,
+      "y": 300,
+      "width": 300,
+      "height": 250
+    },
+    {
+      "id": "tier3",
+      "type": "text",
+      "text": "## Tier 3: Context Analysis\n**30 points**\n\n- Local clone verification\n- Source code analysis\n- Production usage proof\n- Not in test directories\n\n**Purpose:**\nProve production, not test",
+      "x": 0,
+      "y": 300,
+      "width": 300,
+      "height": 250
+    },
+    {
+      "id": "tier4",
+      "type": "text",
+      "text": "## Tier 4: Impact Assessment\n**20 points**\n\n- GitHub stars/forks\n- Exposure duration\n- Deployment scope\n- Risk quantification\n\n**Purpose:**\nUnderstand blast radius",
+      "x": 300,
+      "y": 300,
+      "width": 300,
+      "height": 250
+    },
+    {
+      "id": "tier5",
+      "type": "text",
+      "text": "## Tier 5: Evidence Package\n**10 points**\n\n- Screenshots\n- Code snippets\n- Risk assessment doc\n- Line numbers\n\n**Purpose:**\nCreate undeniable proof",
+      "x": 600,
+      "y": 300,
+      "width": 300,
+      "height": 250
+    },
+    {
+      "id": "tier6",
+      "type": "text",
+      "text": "## Tier 6: EXTERNAL Validation\n**30 points**\n\n🎯 **The Bulletproof Tier**\n\n- Certificate Transparency logs\n- Live service enumeration (Shodan)\n- Git history forensics\n- Organization attribution\n- Associated service validation\n- Threat intelligence\n\n**Purpose:**\nProve ACTIVE DEPLOYMENT",
+      "x": 0,
+      "y": 650,
+      "width": 500,
+      "height": 300,
+      "color": "#44ff44"
+    },
+    {
+      "id": "ct-logs",
+      "type": "text",
+      "text": "## 6.1: Certificate Transparency\n\n**Method:**\n```bash
+# Extract SPKI hash
+openssl rsa -in key.pem -pubout -outform DER | \
+  openssl dgst -sha256 -binary | \
+  openssl base64
+
+# Search crt.sh\nhttps://crt.sh/?q=hkfO9q...1dQ
+```\n\n**Proof:**\n- CA-signed certificate\n- Valid dates\n- Domain associated",
+      "x": -800,
+      "y": 1000,
+      "width": 350,
+      "height": 300
+    },
+    {
+      "id": "shodan",
+      "type": "text",
+      "text": "## 6.2: Live Service (Shodan)\n\n**Method:**\n```bash
+# Check if live
+shodan host api.example.com
+
+# Verify TLS
+curl -I https://api.example.com
+
+# Modulus match
+openssl s_client -connect host:443 | \
+  openssl x509 -noout -modulus
+```\n\n**Proof:**\n- Host online\n- Port 443 open\n- Cert matches key",
+      "x": -400,
+      "y": 1000,
+      "width": 350,
+      "height": 300
+    },
+    {
+      "id": "git-forensics",
+      "type": "text",
+      "text": "## 6.3: Git History\n\n**Method:**\n```bash
+# When added
+git log --follow --all file.key
+
+# Who added it
+git log --all --pretty=format:\"%an %ae\" file.key
+
+# Age
+FIRST=$(git log --all --reverse -- file.key | head -1)
+git show $FIRST --stat
+```\n\n**Proof:**\n- Exposure duration\n- Author identity\n- Intent (accidental vs malicious)",
+      "x": 0,
+      "y": 1000,
+      "width": 350,
+      "height": 300
+    },
+    {
+      "id": "org-attrib",
+      "type": "text",
+      "text": "## 6.4: Organization\n\n**Method:**\n```bash
+# WHOIS
+whois example.com
+
+# LinkedIn
+site:linkedin.com \"Company\" employees
+
+# Business reg
+https://opencorporates.com/
+
+# Website
+curl -I https://example.com
+```\n\n**Proof:**\n- Legal entity exists\n- Real employees\n- Active business",
+      "x": 400,
+      "y": 1000,
+      "width": 350,
+      "height": 300
+    },
+    {
+      "id": "service-enum",
+      "type": "text",
+      "text": "## 6.5: Service Enumeration\n\n**Method:**\n```bash
+# DNS lookup
+nslookup prod-db.example.com
+
+# Port check
+nmap -Pn -p 5432 host.com
+
+# Banner grab
+curl -I http://host:8080
+```\n\n**Proof:**\n- DNS resolves\n- Port open\n- Service responding",
+      "x": 800,
+      "y": 1000,
+      "width": 350,
+      "height": 300
+    },
+    {
+      "id": "improved-disclosure",
+      "type": "text",
+      "text": "## Improved Disclosure (Would Survive)\n\n**Subject:** VERIFIED: Production RSA-2048 Private Key with Live TLS Certificate\n\n**Lead With:**\n```\n$ openssl rsa -in privatekey.key -check -noout\nRSA key ok\n```\n\n**CT Log Evidence:**\n- crt.sh/?id=12345678\n- Serial: 00:ff:3a:2c...\n- Valid: 2026-01-15 to 2026-04-15\n- **Domain:** dbd-server.example.com\n\n**Live Service:**\n- Host: 203.0.113.45\n- Port 443: OPEN\n- **Modulus Match: CONFIRMED**\n\n**Exposure Duration:**\n- First commit: 2021-02-05\n- **2+ years exposed**\n- Author: ettfemnio (owner)\n\n**This is NOT test data. CT logs impossible to fake.**",
+      "x": 0,
+      "y": 1400,
+      "width": 500,
+      "height": 350,
+      "color": "#44ff44"
+    }
+  ],
+  "edges": [
+    {"fromNode": "problem", "fromSide": "bottom", "toNode": "solution", "toSide": "top"},
+    {"fromNode": "solution", "fromSide": "bottom", "toNode": "tier1", "toSide": "top"},
+    {"fromNode": "solution", "fromSide": "bottom", "toNode": "tier2", "toSide": "top"},
+    {"fromNode": "solution", "fromSide": "bottom", "toNode": "tier3", "toSide": "top"},
+    {"fromNode": "solution", "fromSide": "bottom", "toNode": "tier4", "toSide": "top"},
+    {"fromNode": "solution", "fromSide": "bottom", "toNode": "tier5", "toSide": "top"},
+    {"fromNode": "tier1", "fromSide": "bottom", "toNode": "tier6", "toSide": "top"},
+    {"fromNode": "tier2", "fromSide": "bottom", "toNode": "tier6", "toSide": "top"},
+    {"fromNode": "tier3", "fromSide": "bottom", "toNode": "tier6", "toSide": "top"},
+    {"fromNode": "tier4", "fromSide": "bottom", "toNode": "tier6", "toSide": "top"},
+    {"fromNode": "tier5", "fromSide": "bottom", "toNode": "tier6", "toSide": "top"},
+    {"fromNode": "tier6", "fromSide": "bottom", "toNode": "ct-logs", "toSide": "top"},
+    {"fromNode": "tier6", "fromSide": "bottom", "toNode": "shodan", "toSide": "top"},
+    {"fromNode": "tier6", "fromSide": "bottom", "toNode": "git-forensics", "toSide": "top"},
+    {"fromNode": "tier6", "fromSide": "bottom", "toNode": "org-attrib", "toSide": "top"},
+    {"fromNode": "tier6", "fromSide": "bottom", "toNode": "service-enum", "toSide": "top"},
+    {"fromNode": "ct-logs", "fromSide": "bottom", "toNode": "improved-disclosure", "toSide": "left"},
+    {"fromNode": "shodan", "fromSide": "bottom", "toNode": "improved-disclosure", "toSide": "top"},
+    {"fromNode": "git-forensics", "fromSide": "bottom", "toNode": "improved-disclosure", "toSide": "top"},
+    {"fromNode": "org-attrib", "fromSide": "bottom", "toNode": "improved-disclosure", "toSide": "top"},
+    {"fromNode": "service-enum", "fromSide": "bottom", "toNode": "improved-disclosure", "toSide": "right"}
+  ]
+}
