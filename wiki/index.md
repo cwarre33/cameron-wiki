@@ -28,6 +28,7 @@ Master catalog of all wiki pages. Updated automatically.
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
 | [Persistent Model Loading Pattern](techniques/persistent-model-loading.md) | Rule: Load ML models once at service startup. Never reload per request. | 2026-04-17 |
+| [Shodan ICS OSINT — Methodology](techniques/shodan-ics-osint.md) | Purpose: Systematically enumerate publicly exposed industrial control system (ICS) endpoints via Shodan's passive index. No active scanning — read-... | 2026-04-19 |
 
 ## Integrations
 *Zendesk API, NetSuite/SuiteQL, AWS, MiCollab, Groq, Copilot Studio.*
@@ -143,8 +144,12 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [BACnet BBMD Internet Exposure — 2026-04-19](open-questions/bacnet-bbmd-exposure-2026-04-19.md) | Derived from ics-exposure-2026-04-19 scan. 1,000 BACnet hosts sampled from 43,629 in Shodan index. All data passive — Shodan indexed responses only... | 2026-04-19 |
+| [CVE-2019-9569 Confirmed Vulnerable Hosts — Deep Dive 2026-04-20](open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md) | CVE-2019-9569 — Delta Controls enteliBUS V3.40_B-571848 | 2026-04-20 |
+| [ICS Exposure Findings — 2026-04-19](open-questions/ics-exposure-2026-04-19.md) | Scan run via shodan-ics-osint pipeline. 3000 unique hosts across 4 protocols. | 2026-04-19 |
+| [Municipal ICS Cluster — Water Tank, Fire Station, School Network (Deep Dive)](open-questions/municipal-ics-cluster-2026-04-20.md) | Three municipal critical-infrastructure devices identified in the 2026-04-19 BACnet scan with confirmed facility identities and full evidence chain... | 2026-04-20 |
 | [Open Question — Agentic Memory Retention Strategies](open-questions/agentic-memory-retention-strategies.md) | Surfaced from AutoTrader's 90-day rotating `decisions.jsonl`. The general problem: what should an agentic system remember vs. forget, and for how l... | 2026-04-17 |
 | [Responsible Disclosure — Walker Medical Building BACnet BBMD](open-questions/walkermedical-disclosure-2026-04-19.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at the Walker Medical Building, 12855 North Forty Drive, Town and Count... | 2026-04-19 |
+| [Scottsboro Electric Power Board — Internet-Exposed JCI NAE Controllers (Deep Dive)](open-questions/scottsboro-electric-power-board-2026-04-20.md) | | Layer | Evidence | Source | | 2026-04-20 |
 
 ## Methodology
 *How this wiki system works.*
