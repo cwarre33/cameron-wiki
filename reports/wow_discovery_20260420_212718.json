@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-04-20T21:27:18.545362",
+  "discoveries": [],
+  "targets_scanned": 5,
+  "patterns": [
+    {
+      "query": "filename:.env mongodb+srv",
+      "desc": "MongoDB connection strings"
+    },
+    {
+      "query": "filename:.env AWS_ACCESS_KEY",
+      "desc": "AWS credentials"
+    },
+    {
+      "query": "filename:.env OPENAI_API_KEY",
+      "desc": "OpenAI API keys"
+    },
+    {
+      "query": "filename:.env SLACK_TOKEN",
+      "desc": "Slack tokens"
+    },
+    {
+      "query": "filename:.env DATABASE_URL postgres",
+      "desc": "PostgreSQL databases"
+    },
+    {
+      "query": "filename:config.json stripe sk_live",
+      "desc": "Stripe API keys"
+    },
+    {
+      "query": "filename:.env private_key",
+      "desc": "Private keys"
+    },
+    {
+      "query": "filename:.env jwt_secret",
+      "desc": "JWT secrets"
+    }
+  ]
+}
