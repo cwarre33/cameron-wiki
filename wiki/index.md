@@ -143,7 +143,8 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
-| [BACnet BBMD Internet Exposure — 2026-04-19](open-questions/bacnet-bbmd-exposure-2026-04-19.md) | Derived from ics-exposure-2026-04-19 scan. 1,000 BACnet hosts sampled from 43,629 in Shodan index. All data passive — Shodan indexed responses only... | 2026-04-19 |
+| [BACnet BBMD Internet Exposure — 2026-04-19](open-questions/bacnet-bbmd-exposure-2026-04-19.md) | Derived from ics-exposure-2026-04-19 scan. 1,000 BACnet hosts sampled from 43,629 in Shodan index. All data passive — Shodan indexed responses only... | 2026-04-21 |
+| [BACnet FDT External-Cloud Tunnel Pattern — 12 Cases Observed](open-questions/bacnet-fdt-external-tunnels-2026-04-21.md) | An aggregate finding from the 2026-04-20 longitudinal Shodan pull over 17 seeded BBMDs. It surfaces a population-level pattern that was first spott... | 2026-04-21 |
 | [CVE-2019-9569 Confirmed Vulnerable Hosts — Deep Dive 2026-04-20](open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md) | CVE-2019-9569 — Delta Controls enteliBUS V3.40_B-571848 | 2026-04-20 |
 | [Exploitability Assessment — ICS Exposure Findings 2026-04-20](open-questions/exploitability-assessment-2026-04-20.md) | This page documents the concrete attack surface available to a malicious actor for each identified device. Purpose: produce disclosure letters comp... | 2026-04-20 |
 | [ICS Exposure Findings — 2026-04-19](open-questions/ics-exposure-2026-04-19.md) | Scan run via shodan-ics-osint pipeline. 3000 unique hosts across 4 protocols. | 2026-04-19 |
@@ -151,7 +152,9 @@ Master catalog of all wiki pages. Updated automatically.
 | [Niagara Admin Access — What CVE-2017-16748 Actually Gives (Lahey Medical)](open-questions/niagara-admin-capabilities-2026-04-20.md) | CVE-2017-16748 — Tridium Niagara 4 Improper Authentication | 2026-04-20 |
 | [Open Question — Agentic Memory Retention Strategies](open-questions/agentic-memory-retention-strategies.md) | Surfaced from AutoTrader's 90-day rotating `decisions.jsonl`. The general problem: what should an agentic system remember vs. forget, and for how l... | 2026-04-17 |
 | [Responsible Disclosure Letters — All Targets 2026-04-20](open-questions/disclosure-letters-2026-04-20.md) | All letters follow the same structure: specific findings, no exploitation details, concrete immediate actions, clear offer of technical follow-up. ... | 2026-04-20 |
-| [Responsible Disclosure — Walker Medical Building BACnet BBMD](open-questions/walkermedical-disclosure-2026-04-19.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at the Walker Medical Building, 12855 North Forty Drive, Town and Count... | 2026-04-19 |
+| [Responsible Disclosure — Homanit Lietuva BACnet Exposure (Pagiriai)](open-questions/homanit-disclosure-2026-04-20.md) | An internet-facing BACnet device (`Homanit.VAS_LNS_1`, WAGO controller) at IP `85.206.88.54` in Lithuania bridges the public internet to the buildi... | 2026-04-21 |
+| [Responsible Disclosure — KIPP St. Louis BACnet BBMD ("Mitchell")](open-questions/kipp-mitchell-disclosure-2026-04-20.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at IP `12.5.26.10` (device name `Mitchell`) via passive Shodan OSINT. T... | 2026-04-20 |
+| [Responsible Disclosure — Walker Medical Building BACnet BBMD](open-questions/walkermedical-disclosure-2026-04-19.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at the Walker Medical Building, 12855 North Forty Drive, Town and Count... | 2026-04-20 |
 | [Scottsboro Electric Power Board — Internet-Exposed JCI NAE Controllers (Deep Dive)](open-questions/scottsboro-electric-power-board-2026-04-20.md) | | Layer | Evidence | Source | | 2026-04-20 |
 
 ## Methodology
