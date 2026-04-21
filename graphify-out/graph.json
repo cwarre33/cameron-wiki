@@ -110,7 +110,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "readme \u2014 cameron-wiki",
       "id": "doc_readme"
     },
@@ -123,7 +123,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "claude.md \u2014 wiki schema & workflows",
       "id": "doc_claudemd"
     },
@@ -136,7 +136,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "graphify \u2014 knowledge graph skill",
       "id": "concept_graphify"
     },
@@ -149,7 +149,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "obsidian integration",
       "id": "concept_obsidian"
     },
@@ -191,7 +191,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "jaguar re-identification challenge",
       "id": "kaggle_jaguar_reidentification"
     },
@@ -204,7 +204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)",
       "id": "technique_metric_learning"
     },
@@ -217,7 +217,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "clip+faiss embedding retrieval",
       "id": "technique_clip_faiss"
     },
@@ -230,7 +230,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "deep past \u2014 akkadian translation (kaggle)",
       "id": "concept_deep_past"
     },
@@ -272,7 +272,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "llm wiki pattern (karpathy)",
       "id": "concept_llm_wiki_pattern"
     },
@@ -298,7 +298,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "open question \u2014 agentic memory retention strategies",
       "id": "concept_agentic_memory_retention"
     },
@@ -319,7 +319,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "provider adapter pattern (multi-llm)",
       "id": "concept_provider_adapter_pattern"
     },
@@ -348,7 +348,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "adr: custom provider adapters vs. litellm for arc-agi",
       "id": "concept_arc_agi_adapters_adr"
     },
@@ -387,7 +387,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "adr: consensus-based memory distillation",
       "id": "doc_consensus_memory_adr"
     },
@@ -400,7 +400,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "agentic drift (hallucination compounding in memory)",
       "id": "concept_agentic_drift"
     },
@@ -413,7 +413,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)",
       "id": "rationale_consensus_anti_hallucination"
     },
@@ -504,7 +504,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "sofascope production system",
       "id": "production_sofascope"
     },
@@ -556,7 +556,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "autotrader \u2014 autonomous paper trading bot",
       "id": "concept_autotrader"
     },
@@ -577,7 +577,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "llm review pass before rotation",
       "id": "concept_llm_review_pass"
     },
@@ -598,7 +598,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 2,
       "norm_label": "mbr decoding (minimum bayes risk)",
       "id": "concept_mbr_decoding"
     },
@@ -671,7 +671,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "cameron kaggle profile (raw source)",
       "id": "source_cameron_kaggle_profile"
     },
@@ -853,7 +853,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "wiki index \u2014 master catalog",
       "id": "index_master_catalog"
     },
@@ -866,7 +866,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "sofascope production system page",
       "id": "index_sofascope_page"
     },
@@ -879,7 +879,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "autotrader trading bot page",
       "id": "index_autotrader_page"
     },
@@ -892,7 +892,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "arc-agi benchmark page",
       "id": "index_arc_agi_benchmark_page"
     },
@@ -905,7 +905,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "llm wiki pattern (karpathy) page",
       "id": "index_llm_wiki_pattern_page"
     },
@@ -918,7 +918,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 0,
       "norm_label": "kaggle portfolio overview page",
       "id": "index_kaggle_portfolio_page"
     },
@@ -1100,7 +1100,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)",
       "id": "kaggle_house_prices"
     },
@@ -1152,7 +1152,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "predicting heart disease \u2014 playground s6e2",
       "id": "kaggle_heart_disease"
     },
@@ -1191,7 +1191,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "march machine learning mania 2026",
       "id": "kaggle_march_mania"
     },
@@ -1308,7 +1308,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "tensorflow decision forests (tfdf)",
       "id": "technique_tfdf"
     },
@@ -1321,7 +1321,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "realmlp + catboost + xgboost ensemble",
       "id": "technique_realmlp_catboost_xgb"
     },
@@ -1334,7 +1334,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "shap analysis for feature importance",
       "id": "technique_shap_analysis"
     },
@@ -1438,7 +1438,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "ncaa bracket prediction (march mania)",
       "id": "concept_bracket_prediction"
     },
@@ -1451,7 +1451,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 2,
+      "community": 4,
       "norm_label": "log loss and calibration in probabilistic prediction",
       "id": "concept_log_loss_calibration"
     },
