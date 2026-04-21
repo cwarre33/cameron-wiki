@@ -1,0 +1,22 @@
+loop:
+  max_iterations: 50
+  patience: 5
+  subset_size: 10
+
+models:
+  meta_agent:
+    provider: nim
+    model: meta/llama-3.1-70b-instruct
+    base_url: https://integrate.api.nvidia.com/v1
+    api_key_env: NVIDIA_NIM_API_KEY
+  harness:
+    provider: ollama
+    model: llama3.1:8b
+
+benchmark:
+  name: terminalbench
+  task_dir: ./terminalbench_tasks
+  command: "python -m terminalbench.run"
+
+traces:
+  root: ./traces
