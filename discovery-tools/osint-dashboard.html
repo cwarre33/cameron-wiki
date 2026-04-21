@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Discovery Frequency Mapper</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: rgba(15, 20, 35, 0.95);
+            --accent-critical: #ff2d55;
+            --accent-high: #ff9500;
+            --accent-medium: #5e5ce6;
+            --accent-low: #30d158;
+            --text-primary: #f5f5f7;
+            --text-secondary: #98989d;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(100,150,255,0.1) 0%, transparent 60%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #2997ff, #bf5af2, #ff375f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+        
+        .btn:hover { background: rgba(255,255,255,0.15); }
+        .btn.active { background: #2997ff; border-color: #2997ff; }
+        
+        .main-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .sidebar {
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            padding: 25px;
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
+        }
+        
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .category-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .category-item:hover { 
+            background: rgba(255,255,255,0.06);
+            transform: translateX(5px);
+        }
+        
+        .category-item.active {
+            border-color: var(--accent-medium);
+            background: rgba(94, 92, 230, 0.1);
+        }
+        
+        .category-item.risk-critical { border-left: 4px solid var(--accent-critical); }
+        .category-item.risk-high { border-left: 4px solid var(--accent-high); }
+        .category-item.risk-medium { border-left: 4px solid var(--accent-medium); }
+        .category-item.risk-low { border-left: 4px solid var(--accent-low); }
+        
+        .cat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .cat-name {
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        
+        .risk-badge {
+            font-size: 0.65em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        
+        .risk-badge.critical { background: rgba(255,45,85,0.2); color: var(--accent-critical); }
+        .risk-badge.high { background: rgba(255,149,0,0.2); color: var(--accent-high); }
+        .risk-badge.medium { background: rgba(94,92,230,0.2); color: var(--accent-medium); }
+        .risk-badge.low { background: rgba(48,209,88,0.2); color: var(--accent-low); }
+        
+        .cat-count {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .cat-desc {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+        
+        .content-area {
+            padding: 30px;
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .metric-label {
+            font-size: 0.8em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 1200px) { .chart-grid { grid-template-columns: 1fr; } }
+        
+        .chart-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .chart-container h3 {
+            font-size: 1em;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .chart-wrapper {
+            height: 300px;
+            position: relative;
+        }
+        
+        .data-table {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .table-header {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+        
+        .table-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 12px 15px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        
+        .table-row:hover { background: rgba(255,255,255,0.03); }
+        
+        .text-right { text-align: right; }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s;
+        }
+        
+        .discovery-log {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85em;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            padding: 4px 0;
+            color: var(--text-secondary);
+        }
+        
+        .log-entry.highlight { color: #2997ff; }
+        
+        .expandable-section {
+            margin-top: 30px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        
+        .expand-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .expand-icon {
+            transition: transform 0.2s;
+        }
+        
+        .expand-btn.expanded .expand-icon {
+            transform: rotate(90deg);
+        }
+        
+        .expand-content {
+            display: none;
+            padding-top: 20px;
+        }
+        
+        .expand-content.visible { display: block; }
+        
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-chip {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+        
+        .filter-chip.active {
+            background: #2997ff;
+            border-color: #2997ff;
+        }
+        
+        #loading {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top-color: #2997ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div id="loading"><div class="spinner"></div></div>
+    
+    <div class="header">
+        <div class="header-content">
+            <h1>OSINT Discovery Mapper</h1>
+            <p>Internet-exposed IoT/ICS Intelligence</p>
+            <div class="controls">
+                <button class="btn active" onclick="setTab('overview')">Overview</button>
+                <button class="btn" onclick="setTab('geography')">Geography</button>
+                <button class="btn" onclick="setTab('organizations')">Organizations</button>
+                <button class="btn" onclick="setTab('risk')">Risk Analysis</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-grid">
+        <div class="sidebar">
+            <div class="category-list" id="category-list"></div>
+        </div>
+        
+        <div class="content-area" id="content-area">
+            <!-- Content injected here -->
+        </div>
+    </div>
+
+    <script>
+        let discoveryData = {};
+        let currentTab = 'overview';
+        let selectedCategory = null;
+        let charts = {};
+        
+        // Risk level mapping
+        const riskLevels = {
+            'industrial_control': 'critical',
+            'medical_devices': 'critical', 
+            'cameras_security': 'high',
+            'network_infrastructure': 'high',
+            'building_automation': 'medium',
+            'vehicles_transport': 'medium',
+            'misc_iot': 'medium'
+        };
+        
+        // Category descriptions
+        const descriptions = {
+            'industrial_control': 'SCADA, PLCs, HMIs, Modbus, MQTT, BACnet exposed to internet',
+            'medical_devices': 'DICOM, PACS, hospital equipment, patient monitoring systems',
+            'cameras_security': 'IP cameras, DVRs/NVRs, video surveillance, access control',
+            'network_infrastructure': 'Routers, firewalls, VPN concentrators, network switches',
+            'building_automation': 'HVAC controllers, smart lighting, access/badging systems',
+            'vehicles_transport': 'Connected vehicle telematics, fleet tracking, EV chargers',
+            'misc_iot': 'Printers, NAS devices, smart home gateways, misc IoT'
+        };
+        
+        // Load JSON data
+        async function loadData() {
+            try {
+                const response = await fetch('output/shodan_iot_full_20260421.json');
+                discoveryData = await response.json();
+                initDashboard();
+            } catch (e) {
+                console.error('Failed to load data:', e);
+                // Fallback to embedded data structure
+                discoveryData = getSampleData();
+                initDashboard();
+            }
+        }
+        
+        function getSampleData() {
+            // Minimal fallback - real data would be loaded from JSON
+            window.alert('Please host this file with the JSON data in an output folder');
+            return {};
+        }
+        
+        function initDashboard() {
+            renderCategoryList();
+            document.getElementById('loading').style.display = 'none';
+            
+            // Auto-select first category with data
+            const cats = Object.keys(discoveryData);
+            for (const cat of cats) {
+                if (discoveryData[cat].queries && 
+                    Object.values(discoveryData[cat].queries).some(v => v > 0)) {
+                    selectCategory(cat);
+                    break;
+                }
+            }
+        }
+        
+        function renderCategoryList() {
+            const container = document.getElementById('category-list');
+            container.innerHTML = '';
+            
+            for (const [key, data] of Object.entries(discoveryData)) {
+                const total = Object.values(data.queries || {}).reduce((a, b) => a + (b || 0), 0);
+                const risk = riskLevels[key] || 'low';
+                
+                const item = document.createElement('div');
+                item.className = `category-item risk-${risk}`;
+                item.onclick = () => selectCategory(key);
+                item.innerHTML = `
+                    <div class="cat-header">
+                        <span class="cat-name">${formatCategoryName(key)}</span>
+                        <span class="risk-badge ${risk}">${risk}</span>
+                    </div>
+                    <div class="cat-count" style="color: var(--accent-${risk === 'critical' ? 'critical' : risk === 'high' ? 'high' : 'low'})">
+                        ${formatNumber(total)}
+                    </div>
+                    <div class="cat-desc">${descriptions[key]}</div>
+                `;
+                container.appendChild(item);
+            }
+        }
+        
+        function selectCategory(key) {
+            selectedCategory = key;
+            
+            // Update active state
+            document.querySelectorAll('.category-item').forEach(el => {
+                el.classList.remove('active');
+            });
+            event?.currentTarget?.classList.add('active');
+            
+            renderTabContent();
+        }
+        
+        function renderTabContent() {
+            if (!selectedCategory) return;
+            
+            const content = document.getElementById('content-area');
+            const data = discoveryData[selectedCategory];
+            
+            switch(currentTab) {
+                case 'overview':
+                    renderOverview(content, data);
+                    break;
+                case 'geography':
+                    renderGeography(content, data);
+                    break;
+                case 'organizations':
+                    renderOrganizations(content, data);
+                    break;
+                case 'risk':
+                    renderRisk(content, data);
+                    break;
+            }
+        }
+        
+        function renderOverview(content, data) {
+            const queries = data.queries || {};
+            const stats = data.stats || {};
+            const sortedQueries = Object.entries(queries).sort((a, b) => b[1] - a[1]).filter(x => x[1] > 0);
+            
+            // Get counts
+            const totalDevices = Object.values(queries).reduce((a, b) => a + (b || 0), 0);
+            const uniqueTypes = Object.keys(queries).filter(k => queries[k] > 0).length;
+            const topType = sortedQueries[0] || ['None', 0];
+            
+            content.innerHTML = `
+                <div class="section-title">${formatCategoryName(selectedCategory)} Overview</div>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total Exposed</div>
+                        <div class="metric-value" style="color: var(--accent-${riskLevels[selectedCategory] === 'critical' ? 'critical' : 'high'})">
+                            ${formatNumber(totalDevices)}
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Device Types</div>
+                        <div class="metric-value">${uniqueTypes}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Top Device</div>
+                        <div class="metric-value" style="font-size: 1.3em;">${formatDeviceName(topType[0])}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Countries Affected</div>
+                        <div class="metric-value">${(stats.country || []).length}</div>
+                    </div>
+                </div>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <h3>Device Type Distribution (Top 15)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="device-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Exposure Timeline</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="timeline-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expandable-section">
+                    <button class="expand-btn" onclick="toggleExpand(this)">
+                        <span class="expand-icon">▶</span>
+                        <span>Full Query Breakdown (${sortedQueries.length} query types)</span>
+                    </button>
+                    <div class="expand-content">
+                        <div class="data-table">
+                            <div class="table-header">
+                                <span>Device/Service</span>
+                                <span class="text-right">Query</span>
+                                <span class="text-right">Exposed</span>
+                                <span class="text-right">Visual</span>
+                            </div>
+                            ${sortedQueries.map(([query, count]) => `
+                                <div class="table-row">
+                                    <span>${formatDeviceName(query)}</span>
+                                    <span class="text-right" style="font-family: monospace; color: var(--text-secondary)">${query.replace(/_/g, ' ')}</span>
+                                    <span class="text-right" style="color: ${getSeverityColor(count)}">${formatNumber(count)}</span>
+                                    <span>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: ${getPercentage(count, topType[1])}%; background: ${getSeverityColor(count, true)}"></div>
+                                        </div>
+                                    </span>
+                                </div>
+                            ${''}).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expandable-section">
+                    <button class="expand-btn expanded" onclick="toggleExpand(this)">
+                        <span class="expand-icon">▶</span>
+                        <span>Discovery Logs</span>
+                    </button>
+                    <div class="expand-content visible">
+                        <div class="discovery-log" id="discovery-log">
+                            <div class="log-entry">[${data.timestamp || new Date().toISOString()}] Initialized scan for ${selectedCategory}</div>
+                            <div class="log-entry highlight">⚡ Discovery module: shodan_profiler.py</div>
+                            <div class="log-entry">• Using free tier (count/stats API)</div>
+                            <div class="log-entry">• ${uniqueTypes} query types configured</div>
+                            <div class="log-entry">• Total exposed: ${formatNumber(totalDevices)}</div>
+                            ${sortedQueries.slice(0, 10).map(([q, c]) => 
+                                `<div class="log-entry">▶ ${q.replace(/_/g, ' ')}: ${formatNumber(c)}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Create device distribution chart
+            createDeviceChart(sortedQueries.slice(0, 15));
+            createTimelineChart();
+        }
+        
+        function renderGeography(content, data) {
+            const stats = data.stats || {};
+            const countries = stats.country || [];
+            
+            content.innerHTML = `
+                <div class="section-title">Geographic Distribution</div>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <h3>Exposure by Country (Top 20)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="country-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Country Distribution</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="country-pie"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-bar">
+                    <span class="filter-chip active" onclick="filterGeo('all')">All Regions</span>
+                    <span class="filter-chip" onclick="filterGeo('na')">North America</span>
+                    <span class="filter-chip" onclick="filterGeo('eu')">Europe</span>
+                    <span class="filter-chip" onclick="filterGeo('asia')">Asia</span>
+                    <span class="filter-chip" onclick="filterGeo('critical')">Critical (>1000)</span>
+                </div>
+                
+                <div class="data-table" id="geo-table">
+                    <div class="table-header">
+                        <span>Country</span>
+                        <span class="text-right">Exposed Count</span>
+                        <span class="text-right">% of Total</span>
+                        <span>Distribution</span>
+                    </div>
+                    ${countries.slice(0, 50).map((c, i) => {
+                        const total = countries.reduce((a, b) => a + (b.count || 0), 0);
+                        const pct = ((c.count / total) * 100).toFixed(1);
+                        return `
+                            <div class="table-row" data-country="${c.name}">
+                                <span>${getCountryEmoji(c.name)} ${c.name}</span>
+                                <span class="text-right" style="color: #2997ff; font-weight: 600">${formatNumber(c.count)}</span>
+                                <span class="text-right">${pct}%</span>
+                                <span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: ${pct}%; background: ${getGradient(i)}"></div>
+                                    </div>
+                                </span>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            
+            if (countries.length > 0) {
+                createCountryBarChart(countries.slice(0, 15));
+                createCountryPieChart(countries.slice(0, 10));
+            }
+        }
+        
+        function renderOrganizations(content, data) {
+            const stats = data.stats || {};
+            const orgs = stats.org || [];
+            const products = stats.product || [];
+            const ports = stats.port || [];
+            
+            content.innerHTML = `
+                <div class="section-title">Organization & Infrastructure Profile</div>
+                
+                <div class="chart-grid">
+                    <div class="chart-container">
+                        <h3>Top Organizations (${orgs.length} total)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="org-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Top Products (${products.length} detected)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="product-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container" style="margin-top: 20px;">
+                    <h3>Port Distribution</h3>
+                    <div class="chart-wrapper" style="height: 200px;">
+                        <canvas id="port-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="expandable-section">
+                    <button class="expand-btn" onclick="toggleExpand(this)">
+                        <span class="expand-icon">▶</span>
+                        <span>All Organizations (${orgs.length})</span>
+                    </button>
+                    <div class="expand-content">
+                        <div class="data-table">
+                            <div class="table-header">
+                                <span>Organization</span>
+                                <span class="text-right">Exposed Count</span>
+                                <span class="text-right">Status</span>
+                                <span>Notes</span>
+                            </div>
+                            ${orgs.map(o => `
+                                <div class="table-row">
+                                    <span>${o.name}</span>
+                                    <span class="text-right" style="color: var(--accent-high); font-weight: 600">${formatNumber(o.count)}</span>
+                                    <span class="text-right">${getOrgStatus(o.count)}</span>
+                                    <span style="color: var(--text-secondary); font-size: 0.85em">${getOrgNote(o.name)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            if (orgs.length > 0) createOrgChart(orgs.slice(0, 10));
+            if (products.length > 0) createProductChart(products.slice(0, 8));
+            if (ports.length > 0) createPortChart(ports.slice(0, 10));
+        }
+        
+        function renderRisk(content, data) {
+            const queries = data.queries || {};
+            const risk = riskLevels[selectedCategory] || 'low';
+            const sortedQueries = Object.entries(queries).sort((a, b) => b[1] - a[1]).filter(x => x[1] > 0);
+            
+            // High-impact queries
+            const criticalQueries = sortedQueries.filter(x => x[1] > 10000);
+            const highQueries = sortedQueries.filter(x => x[1] > 1000 && x[1] <= 10000);
+            
+            content.innerHTML = `
+                <div class="section-title">Risk Analysis: ${formatCategoryName(selectedCategory)}</div>
+                
+                <div class="metric-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="metric-card" style="border: 2px solid var(--accent-critical)">
+                        <div class="metric-label">Category Risk Level</div>
+                        <div class="metric-value" style="color: var(--accent-${risk === 'critical' ? 'critical' : risk === 'high' ? 'high' : 'medium'})">
+                            ${risk.toUpperCase()}
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Critical Exposure (>10K)</div>
+                        <div class="metric-value" style="color: var(--accent-critical)">${criticalQueries.length}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">High Exposure (>1K)</div>
+                        <div class="metric-value" style="color: var(--accent-high)">${highQueries.length}</div>
+                    </div>
+                </div>
+                
+                <div class="chart-grid" style="margin-top: 30px;">
+                    <div class="chart-container">
+                        <h3>⚠️ Critical Exposures (>10,000 devices)</h3>
+                        <div class="data-table" style="border: none;">
+                            ${criticalQueries.length > 0 ? criticalQueries.map(([q, c]) => `
+                                <div class="table-row" style="border-left: 4px solid var(--accent-critical)">
+                                    <span>${formatDeviceName(q)}</span>
+                                    <span class="text-right" style="color: var(--accent-critical); font-weight: 700">${formatNumber(c)}</span>
+                                    <span>${getRiskDescription(q)}</span>
+                                    <span class="text-right">${getDisclosureAction(c)}</span>
+                                </div>
+                            `).join('') : '<div class="table-row" style="padding: 40px; color: var(--text-secondary)">No critical exposures in this category</div>'}
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>📧 Responsible Disclosure Targets</h3>
+                        <div class="data-table" style="border: none;">
+                            ${getDisclosureTargets(data).map(t => `
+                                <div class="table-row" style="background: rgba(41,151,255,0.1); margin-bottom: 8px; border-radius: 8px;">
+                                    <span>✉️ ${t.name}</span>
+                                    <span class="text-right">${formatNumber(t.count)}</span>
+                                    <span style="color: var(--text-secondary)">${t.reason}</span>
+                                    <span class="text-right">
+                                        <button class="btn" style="padding: 4px 12px; font-size: 0.8em;" onclick="copyTemplate('${t.name}')">Get Template</button>
+                                    </span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="expandable-section">
+                    <button class="expand-btn expanded" onclick="toggleExpand(this)">
+                        <span class="expand-icon">▶</span>
+                        <span>Disclosure Email Template</span>
+                    </button>
+                    <div class="expand-content visible" style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                        <textarea id="email-template" style="width: 100%; height: 300px; background: rgba(0,0,0,0.5); border: 1px solid var(--border); border-radius: 8px; padding: 15px; color: var(--text-primary); font-family: monospace; font-size: 0.9em; resize: vertical;">
+Subject: Security Notification - Exposed [Device Type] on Your Network
+
+Hello Security Team,
+
+I'm reaching out as an independent security researcher regarding potentially exposed systems on your network that I discovered during routine internet scanning.
+
+FINDINGS:
+- Device/Service: [device type]
+- Protocol: [protocol if relevant]
+- Visibility: Publicly accessible over IPv4
+- Risk: Unauthorized access potential
+
+RECOMMENDATION:
+These systems may benefit from:
+1. Network segmentation (MPLS/private addressing)
+2. VPN access required
+3. Firewall restrictions on public IPs
+4. Service-level authentication
+
+I can provide specific IP information upon request. Happy to discuss remediation approaches.
+
+Best regards,
+[Your Name]</textarea>
+                        <button class="btn" style="margin-top: 10px;" onclick="copyText('email-template')">Copy to Clipboard</button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Chart creation functions
+        function createDeviceChart(data) {
+            if (!data || data.length === 0) return;
+            const ctx = document.getElementById('device-chart');
+            if (!ctx) return;
+            
+            if (charts.device) charts.device.destroy();
+            
+            charts.device = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.map(d => formatDeviceName(d[0])),
+                    datasets: [{
+                        label: 'Exposed',
+                        data: data.map(d => d[1]),
+                        backgroundColor: data.map((_, i) => getGradient(i)),
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'var(--text-secondary)' } },
+                        y: { grid: { display: false }, ticks: { color: 'var(--text-primary)', font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+        
+        function createTimelineChart() {
+            const ctx = document.getElementById('timeline-chart');
+            if (!ctx) return;
+            
+            // Mock timeline - in real app, would have historical data
+            charts.timeline = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Exposed',
+                        data: [800000, 850000, 920000, 980000, 1050000, 1100000],
+                        borderColor: '#2997ff',
+                        backgroundColor: 'rgba(41,151,255,0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'var(--text-secondary)' } },
+                        x: { grid: { display: false }, ticks: { color: 'var(--text-secondary)' } }
+                    }
+                }
+            });
+        }
+        
+        function createCountryBarChart(countries) {
+            const ctx = document.getElementById('country-chart');
+            if (!ctx || !countries.length) return;
+            
+            charts.country = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: countries.map(c => c.name),
+                    datasets: [{
+                        label: 'Devices',
+                        data: countries.map(c => c.count),
+                        backgroundColor: countries.map((_, i) => `hsl(${200 + i * 10}, 70%, 50%)`),
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'var(--text-secondary)' } },
+                        x: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+                    }
+                }
+            });
+        }
+        
+        function createCountryPieChart(countries) {
+            const ctx = document.getElementById('country-pie');
+            if (!ctx || !countries.length) return;
+            
+            charts.countryPie = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: countries.map(c => c.name),
+                    datasets: [{
+                        data: countries.map(c => c.count),
+                        backgroundColor: ['#ff4757', '#ff6348', '#ff7f50', '#ff8c00', '#ffa502', '#fbc531', '#4cd137', '#44bd32', '#00a8ff', '#0097e6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: 'var(--text-primary)' } }
+                    }
+                }
+            });
+        }
+        
+        function createOrgChart(orgs) {
+            const ctx = document.getElementById('org-chart');
+            if (!ctx || !orgs.length) return;
+            
+            charts.org = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: orgs.map(o => o.name.slice(0, 20)),
+                    datasets: [{
+                        label: 'Exposed',
+                        data: orgs.map(o => o.count),
+                        backgroundColor: 'rgba(255,159,67,0.8)',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'var(--text-secondary)' } },
+                        y: { grid: { display: false }, ticks: { color: 'var(--text-primary)', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+        
+        function createProductChart(products) {
+            const ctx = document.getElementById('product-chart');
+            if (!ctx || !products.length) return;
+            
+            charts.product = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: products.map(p => p.name.slice(0, 25)),
+                    datasets: [{
+                        data: products.map(p => p.count),
+                        backgroundColor: products.map((_, i) => `hsl(${150 + i * 30}, 60%, 50%)`)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: 'var(--text-primary)', font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+        
+        function createPortChart(ports) {
+            const ctx = document.getElementById('port-chart');
+            if (!ctx || !ports.length) return;
+            
+            charts.port = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ports.map(p => p.name),
+                    datasets: [{
+                        label: 'Count',
+                        data: ports.map(p => p.count),
+                        backgroundColor: 'rgba(255,71,87,0.8)',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } },
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: 'var(--text-secondary)' } }
+                    }
+                }
+            });
+        }
+        
+        // Helper functions
+        function formatNumber(num) {
+            if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
+            if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+            return num.toString();
+        }
+        
+        function formatCategoryName(key) {
+            return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+        
+        function formatDeviceName(key) {
+            return key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
+        
+        function setTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.header .btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderTabContent();
+        }
+        
+        function toggleExpand(btn) {
+            btn.classList.toggle('expanded');
+            btn.nextElementSibling.classList.toggle('visible');
+        }
+        
+        function getPercentage(value, max) {
+            return Math.min((value / max) * 100, 100);
+        }
+        
+        function getSeverityColor(count, bg = false) {
+            if (count > 100000) return bg ? '#ff2d55' : '#ff2d55';
+            if (count > 10000) return bg ? '#ff9500' : '#ff9500';
+            if (count > 1000) return bg ? '#ffcc00' : '#5e5ce6';
+            return bg ? '#30d158' : '#98989d';
+        }
+        
+        function getGradient(index) {
+            return `hsl(${200 + index * 5}, 70%, ${50 + index % 2 * 10}%)`;
+        }
+        
+        function getCountryEmoji(code) {
+            const emojis = { 'US': '🇺🇸', 'CN': '🇨🇳', 'DE': '🇩🇪', 'GB': '🇬🇧', 'FR': '🇫🇷', 'JP': '🇯🇵', 'IN': '🇮🇳', 'BR': '🇧🇷', 'CN': '🇨🇳' };
+            return emojis[code] || '🌍';
+        }
+        
+        function getOrgStatus(count) {
+            if (count > 500) return '⚠️ High';
+            if (count > 100) return '⚡ Medium';
+            return '✓ Low';
+        }
+        
+        function getOrgNote(name) {
+            if (name.includes('Microsoft')) return 'Cloud environment review needed';
+            if (name.includes('DigitalOcean') || name.includes('Linode') || name.includes('Vultr')) return 'VPS/Cloud hosting - likely tenant responsibility';
+            if (name.includes('Comcast') || name.includes('Verizon')) return 'ISP customer premises equipment';
+            return '';
+        }
+        
+        function getRiskDescription(device) {
+            const descs = {
+                'mqtt': 'Pub/sub broker often without auth',
+                'modbus': 'SCADA control protocol unencrypted',
+                'dicom': 'Medical imaging often contains PHI',
+                'webcam': 'Live video stream accessible',
+                'dvr': 'Full surveillance access',
+                'hikvision': 'Known for backdoors, CVEs',
+                'dahua': 'Multiple CVEs, credential leaks'
+            };
+            for (const [k, v] of Object.entries(descs)) {
+                if (device.includes(k)) return v;
+            }
+            return 'Review protocol security';
+        }
+        
+        function getDisclosureAction(count) {
+            if (count > 10000) return '📧 Email Candidate';
+            if (count > 1000) return '📝 Track';
+            return '📊 Data Point';
+        }
+        
+        function getDisclosureTargets(data) {
+            const stats = data.stats || {};
+            const orgs = stats.org || [];
+            return orgs.slice(0, 5).map(o => ({
+                name: o.name,
+                count: o.count,
+                reason: o.count > 500 ? 'Large exposure cluster' : 'Interesting target'
+            }));
+        }
+        
+        function copyText(elementId) {
+            const el = document.getElementById(elementId);
+            el.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        }
+        
+        function copyTemplate(orgName) {
+            const template = document.getElementById('email-template');
+            if (template) {
+                console.log(`Template prepared for: ${orgName}`);
+            }
+        }
+        
+        function filterGeo(region) {
+            // Implementation would filter the table
+            console.log('Filter by:', region);
+        }
+        
+        // Initialize
+        loadData();
+    </script>
+</body>
+</html>

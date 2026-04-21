@@ -1,0 +1,24 @@
+{
+  "category": "network_infrastructure",
+  "timestamp": "2026-04-21T14:49:32.743009",
+  "queries": {
+    "router": 1951618,
+    "firewall": 328001,
+    "cisco_asa": 7926,
+    "palo_alto": 8475,
+    "fortinet": 596152,
+    "juniper": 64067,
+    "mikrotik": 3691969,
+    "ubiquiti": 25359,
+    "netgear": 260718,
+    "linksys": 97893,
+    "d-link": 0,
+    "vpn_concentrator": 0,
+    "load_balancer": 0,
+    "switch_managed": 0
+  },
+  "totals": {},
+  "stats": {
+    "error": "Error: Rate limit reached. Please throttle your requests to 1 request per second."
+  }
+}

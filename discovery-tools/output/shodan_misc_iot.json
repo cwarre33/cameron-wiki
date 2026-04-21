@@ -1,0 +1,23 @@
+{
+  "category": "misc_iot",
+  "timestamp": "2026-04-21T14:49:47.760246",
+  "queries": {
+    "printer": 0,
+    "hp_jetdirect": 0,
+    "network_printer": 0,
+    "nas": 0,
+    "synology": 0,
+    "qnap": 0,
+    "iot_gateway": 0,
+    "smart_home": 0,
+    "home_assistant": 0,
+    "homekit": 0,
+    "zigbee_bridge": 0,
+    "z-wave": 0,
+    "wifi_thermostat": 0,
+    "smart_lock": 0,
+    "doorbell": 0,
+    "robot_vacuum": 0
+  },
+  "totals": {}
+}

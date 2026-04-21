@@ -1,0 +1,923 @@
+{
+  "industrial_control": {
+    "category": "industrial_control",
+    "timestamp": "2026-04-21T14:49:00.562633",
+    "queries": {
+      "modbus_port_502": 1235,
+      "mqtt_port_1883": 452115,
+      "bacnet_port_47808": 6560,
+      "ethernet/ip_port_44818": 205,
+      "s7comm_port_102": 2,
+      "iec-104_port_2404": 0,
+      "dnp3_port_20000": 0,
+      "profinet": 4,
+      "scada": 2634,
+      "plc": 11493,
+      "rtu": 8624,
+      "hmi": 650,
+      "siemens": 42662,
+      "schneider_electric": 3823,
+      "rockwell": 5883,
+      "allen-bradley": 5321,
+      "mitsubishi": 388,
+      "omron": 164,
+      "wonderware": 2,
+      "ge_fanuc": 0
+    },
+    "totals": {},
+    "stats": {
+      "country": [
+        {
+          "name": "US",
+          "count": 965
+        },
+        {
+          "name": "ES",
+          "count": 225
+        },
+        {
+          "name": "IN",
+          "count": 18
+        },
+        {
+          "name": "LT",
+          "count": 5
+        },
+        {
+          "name": "AU",
+          "count": 3
+        },
+        {
+          "name": "CN",
+          "count": 3
+        },
+        {
+          "name": "FR",
+          "count": 3
+        },
+        {
+          "name": "RO",
+          "count": 3
+        },
+        {
+          "name": "BO",
+          "count": 2
+        },
+        {
+          "name": "NL",
+          "count": 2
+        },
+        {
+          "name": "RU",
+          "count": 2
+        },
+        {
+          "name": "AL",
+          "count": 1
+        },
+        {
+          "name": "DE",
+          "count": 1
+        },
+        {
+          "name": "HK",
+          "count": 1
+        },
+        {
+          "name": "HU",
+          "count": 1
+        }
+      ],
+      "product": [
+        {
+          "name": "BMX P34 2020",
+          "count": 1
+        }
+      ],
+      "port": [],
+      "org": [
+        {
+          "name": "Cogent Communications",
+          "count": 615
+        },
+        {
+          "name": "PSINet, Inc.",
+          "count": 245
+        },
+        {
+          "name": "Cogent Communications - IPENG",
+          "count": 206
+        },
+        {
+          "name": "Hurricane Electric LLC",
+          "count": 105
+        },
+        {
+          "name": "Verizon Business",
+          "count": 7
+        },
+        {
+          "name": "Internet Service Provider",
+          "count": 4
+        },
+        {
+          "name": "Mobile Services Lithuania",
+          "count": 4
+        },
+        {
+          "name": "Bharat Bhawan  - II, IIS Department",
+          "count": 3
+        },
+        {
+          "name": "RailTel Corporation is an Internet Service Provider.",
+          "count": 3
+        },
+        {
+          "name": "Telstra Limited",
+          "count": 3
+        },
+        {
+          "name": "Vultr Holdings, LLC",
+          "count": 3
+        },
+        {
+          "name": "Cluster Logic Inc",
+          "count": 2
+        },
+        {
+          "name": "Comcast Cable Communications, LLC",
+          "count": 2
+        },
+        {
+          "name": "DigitalOcean, LLC",
+          "count": 2
+        },
+        {
+          "name": "Edgeuno LPB1",
+          "count": 2
+        },
+        {
+          "name": "Orange Romania",
+          "count": 2
+        },
+        {
+          "name": "Orange S.A.",
+          "count": 2
+        },
+        {
+          "name": "Brahmaputra Valley Fertilizer Corporation Limited",
+          "count": 1
+        },
+        {
+          "name": "COAL INDIA LIMITED",
+          "count": 1
+        },
+        {
+          "name": "Cablevision Systems Corp.",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "medical_devices": {
+    "category": "medical_devices",
+    "timestamp": "2026-04-21T14:49:18.000057",
+    "queries": {
+      "dicom": 6854,
+      "hl7": 237,
+      "pacs_server": 1227,
+      "hospital": 2179,
+      "patient_monitor": 4,
+      "mri": 384,
+      "ct_scanner": 4,
+      "dialysis": 16,
+      "ventilator": 10,
+      "medical_device": 420,
+      "philips_healthcare": 2,
+      "ge_healthcare": 1
+    },
+    "totals": {},
+    "stats": {
+      "country": [
+        {
+          "name": "DE",
+          "count": 668
+        },
+        {
+          "name": "IN",
+          "count": 503
+        },
+        {
+          "name": "TW",
+          "count": 480
+        },
+        {
+          "name": "BR",
+          "count": 381
+        },
+        {
+          "name": "FR",
+          "count": 193
+        },
+        {
+          "name": "CN",
+          "count": 179
+        },
+        {
+          "name": "GB",
+          "count": 169
+        },
+        {
+          "name": "JP",
+          "count": 136
+        },
+        {
+          "name": "ID",
+          "count": 123
+        },
+        {
+          "name": "CA",
+          "count": 105
+        },
+        {
+          "name": "VN",
+          "count": 98
+        },
+        {
+          "name": "NL",
+          "count": 85
+        },
+        {
+          "name": "AU",
+          "count": 82
+        },
+        {
+          "name": "ES",
+          "count": 79
+        },
+        {
+          "name": "ZA",
+          "count": 79
+        },
+        {
+          "name": "IT",
+          "count": 75
+        },
+        {
+          "name": "SG",
+          "count": 75
+        },
+        {
+          "name": "MX",
+          "count": 66
+        },
+        {
+          "name": "PL",
+          "count": 66
+        }
+      ],
+      "product": [
+        {
+          "name": "nginx",
+          "count": 77
+        },
+        {
+          "name": "Microsoft IIS httpd",
+          "count": 14
+        },
+        {
+          "name": "Remote Desktop Protocol",
+          "count": 8
+        },
+        {
+          "name": "Apache httpd",
+          "count": 4
+        },
+        {
+          "name": "Samba",
+          "count": 4
+        },
+        {
+          "name": "Apache Tomcat/Coyote JSP engine",
+          "count": 3
+        },
+        {
+          "name": "Prometheus Node Exporter",
+          "count": 3
+        },
+        {
+          "name": "Docker Registry HTTP API",
+          "count": 2
+        },
+        {
+          "name": "MS-SQL Server 2008 R2 RTM",
+          "count": 1
+        },
+        {
+          "name": "Microsoft RPC Endpoint Mapper",
+          "count": 1
+        },
+        {
+          "name": "WinRM",
+          "count": 1
+        },
+        {
+          "name": "mDNS",
+          "count": 1
+        },
+        {
+          "name": "rsyncd",
+          "count": 1
+        }
+      ],
+      "port": [
+        {
+          "name": "8081",
+          "count": 66
+        },
+        {
+          "name": "443",
+          "count": 15
+        },
+        {
+          "name": "445",
+          "count": 10
+        },
+        {
+          "name": "3389",
+          "count": 8
+        },
+        {
+          "name": "5001",
+          "count": 8
+        },
+        {
+          "name": "80",
+          "count": 7
+        },
+        {
+          "name": "3306",
+          "count": 6
+        },
+        {
+          "name": "3001",
+          "count": 5
+        },
+        {
+          "name": "2762",
+          "count": 4
+        },
+        {
+          "name": "8181",
+          "count": 4
+        },
+        {
+          "name": "9000",
+          "count": 4
+        },
+        {
+          "name": "2345",
+          "count": 3
+        },
+        {
+          "name": "5000",
+          "count": 3
+        },
+        {
+          "name": "8083",
+          "count": 3
+        },
+        {
+          "name": "9100",
+          "count": 3
+        },
+        {
+          "name": "21",
+          "count": 2
+        },
+        {
+          "name": "137",
+          "count": 2
+        }
+      ],
+      "org": [
+        {
+          "name": "Microsoft Corporation",
+          "count": 584
+        },
+        {
+          "name": "Taiwan IPv6 Development Program.",
+          "count": 432
+        },
+        {
+          "name": "DigitalOcean, LLC",
+          "count": 258
+        },
+        {
+          "name": "Google LLC",
+          "count": 256
+        },
+        {
+          "name": "University of Texas at San Antonio",
+          "count": 247
+        },
+        {
+          "name": "Hetzner Online GmbH",
+          "count": 240
+        },
+        {
+          "name": "netcup GmbH",
+          "count": 189
+        },
+        {
+          "name": "Contabo GmbH",
+          "count": 150
+        },
+        {
+          "name": "Amazon Technologies Inc.",
+          "count": 79
+        },
+        {
+          "name": "OVH SAS",
+          "count": 79
+        },
+        {
+          "name": "Vultr Holdings, LLC",
+          "count": 73
+        },
+        {
+          "name": "Microsoft Limited",
+          "count": 65
+        },
+        {
+          "name": "Linode",
+          "count": 57
+        },
+        {
+          "name": "Verizon Business",
+          "count": 47
+        },
+        {
+          "name": "Viettel Group",
+          "count": 45
+        },
+        {
+          "name": "Oracle Corporation",
+          "count": 39
+        },
+        {
+          "name": "Broadband Multiplay Project, O/o DGM BB, NOC BSNL Bangalore",
+          "count": 38
+        },
+        {
+          "name": "Amazon.com, Inc.",
+          "count": 36
+        },
+        {
+          "name": "Charter Communications Inc",
+          "count": 36
+        },
+        {
+          "name": "Comcast Cable Communications, LLC",
+          "count": 35
+        }
+      ]
+    }
+  },
+  "cameras_security": {
+    "category": "cameras_security",
+    "timestamp": "2026-04-21T14:49:24.153805",
+    "queries": {
+      "webcam": 2973,
+      "axis_camera": 1808,
+      "hikvision": 2268360,
+      "dahua": 1075731,
+      "cisco_video_surveillance": 0,
+      "panasonic_security": 377,
+      "samsung_techwin": 319,
+      "mobotix": 40009,
+      "avigilon": 400,
+      "ip_camera": 2419801,
+      "cctv": 3308,
+      "surveillance": 4301,
+      "dvr_nvr": 18700,
+      "blue_iris": 34,
+      "zone_minder": 0
+    },
+    "totals": {},
+    "stats": {
+      "country": [
+        {
+          "name": "US",
+          "count": 794
+        },
+        {
+          "name": "CN",
+          "count": 359
+        },
+        {
+          "name": "DE",
+          "count": 257
+        },
+        {
+          "name": "GB",
+          "count": 226
+        },
+        {
+          "name": "SG",
+          "count": 157
+        },
+        {
+          "name": "JP",
+          "count": 155
+        },
+        {
+          "name": "FR",
+          "count": 123
+        },
+        {
+          "name": "IT",
+          "count": 68
+        },
+        {
+          "name": "KZ",
+          "count": 65
+        },
+        {
+          "name": "KR",
+          "count": 64
+        },
+        {
+          "name": "PL",
+          "count": 64
+        },
+        {
+          "name": "CA",
+          "count": 61
+        },
+        {
+          "name": "NL",
+          "count": 61
+        },
+        {
+          "name": "PT",
+          "count": 42
+        },
+        {
+          "name": "AU",
+          "count": 41
+        },
+        {
+          "name": "IN",
+          "count": 33
+        },
+        {
+          "name": "HK",
+          "count": 32
+        },
+        {
+          "name": "ES",
+          "count": 25
+        },
+        {
+          "name": "MY",
+          "count": 24
+        },
+        {
+          "name": "TH",
+          "count": 21
+        }
+      ],
+      "product": [
+        {
+          "name": "Yawcam webcam viewer httpd",
+          "count": 119
+        },
+        {
+          "name": "nginx",
+          "count": 56
+        },
+        {
+          "name": "webcam 7 httpd",
+          "count": 48
+        },
+        {
+          "name": "Ivanti Endpoint Manager Mobile (EPMM)",
+          "count": 34
+        },
+        {
+          "name": "Sophos SSL VPN User Portal",
+          "count": 33
+        },
+        {
+          "name": "Apache httpd",
+          "count": 29
+        },
+        {
+          "name": "Netwave IP camera http config",
+          "count": 20
+        },
+        {
+          "name": "D-Link DCS-5020L webcam http interface",
+          "count": 6
+        },
+        {
+          "name": "Microsoft IIS httpd",
+          "count": 6
+        },
+        {
+          "name": "Remote Desktop Protocol",
+          "count": 5
+        },
+        {
+          "name": "D-Link DCS-932LB1 webcam http interface",
+          "count": 3
+        },
+        {
+          "name": "D-Link DCS-942L",
+          "count": 3
+        },
+        {
+          "name": "Squid http proxy",
+          "count": 3
+        },
+        {
+          "name": "D-Link DCS-5000L webcam http interface",
+          "count": 2
+        },
+        {
+          "name": "D-Link DCS-5010L webcam http interface",
+          "count": 2
+        },
+        {
+          "name": "D-Link DCS-5222L",
+          "count": 2
+        },
+        {
+          "name": "D-Link DCS-942LB1",
+          "count": 2
+        },
+        {
+          "name": "PPTP",
+          "count": 2
+        },
+        {
+          "name": "Postfix smtpd",
+          "count": 2
+        },
+        {
+          "name": "dvr1614n web-cam httpd",
+          "count": 2
+        }
+      ],
+      "port": [
+        {
+          "name": "8081",
+          "count": 218
+        },
+        {
+          "name": "8080",
+          "count": 172
+        },
+        {
+          "name": "443",
+          "count": 93
+        },
+        {
+          "name": "80",
+          "count": 77
+        },
+        {
+          "name": "8888",
+          "count": 50
+        },
+        {
+          "name": "81",
+          "count": 48
+        },
+        {
+          "name": "8181",
+          "count": 48
+        },
+        {
+          "name": "9000",
+          "count": 42
+        },
+        {
+          "name": "10000",
+          "count": 39
+        },
+        {
+          "name": "50000",
+          "count": 38
+        },
+        {
+          "name": "52869",
+          "count": 38
+        },
+        {
+          "name": "8443",
+          "count": 37
+        },
+        {
+          "name": "37215",
+          "count": 37
+        },
+        {
+          "name": "49152",
+          "count": 36
+        },
+        {
+          "name": "60001",
+          "count": 35
+        },
+        {
+          "name": "7547",
+          "count": 34
+        },
+        {
+          "name": "8083",
+          "count": 29
+        },
+        {
+          "name": "21",
+          "count": 16
+        },
+        {
+          "name": "3001",
+          "count": 16
+        },
+        {
+          "name": "8090",
+          "count": 16
+        }
+      ],
+      "org": [
+        {
+          "name": "Linode",
+          "count": 769
+        },
+        {
+          "name": "Aliyun Computing Co., LTD",
+          "count": 222
+        },
+        {
+          "name": "Linode, LLC",
+          "count": 169
+        },
+        {
+          "name": "139.162.0.0/16",
+          "count": 128
+        },
+        {
+          "name": "Aliyun Computing Co.LTD",
+          "count": 95
+        },
+        {
+          "name": "Alibaba Cloud - US",
+          "count": 86
+        },
+        {
+          "name": "Alibaba Cloud LLC",
+          "count": 76
+        },
+        {
+          "name": "Alibaba Cloud (Singapore) Private Limited",
+          "count": 75
+        },
+        {
+          "name": "Hoster.KZ",
+          "count": 64
+        },
+        {
+          "name": "Deutsche Telekom AG",
+          "count": 58
+        },
+        {
+          "name": "Scaleway - Warsaw, Poland",
+          "count": 50
+        },
+        {
+          "name": "Microsoft Corporation",
+          "count": 43
+        },
+        {
+          "name": "NOS COMUNICACOES S.A.",
+          "count": 36
+        },
+        {
+          "name": "Huawei Public Cloud Service (Huawei Software Technologies Ltd.Co)",
+          "count": 33
+        },
+        {
+          "name": "Scaleway Dedibox - Paris, France",
+          "count": 32
+        },
+        {
+          "name": "Korea Telecom",
+          "count": 30
+        },
+        {
+          "name": "Scaleway - Amsterdam, Netherlands",
+          "count": 29
+        },
+        {
+          "name": "Telecom Italia S.p.A.",
+          "count": 25
+        },
+        {
+          "name": "Scaleway fr-par-1",
+          "count": 16
+        },
+        {
+          "name": "SK Broadband Co Ltd",
+          "count": 13
+        }
+      ]
+    }
+  },
+  "network_infrastructure": {
+    "category": "network_infrastructure",
+    "timestamp": "2026-04-21T14:49:32.743009",
+    "queries": {
+      "router": 1951618,
+      "firewall": 328001,
+      "cisco_asa": 7926,
+      "palo_alto": 8475,
+      "fortinet": 596152,
+      "juniper": 64067,
+      "mikrotik": 3691969,
+      "ubiquiti": 25359,
+      "netgear": 260718,
+      "linksys": 97893,
+      "d-link": 0,
+      "vpn_concentrator": 0,
+      "load_balancer": 0,
+      "switch_managed": 0
+    },
+    "totals": {},
+    "stats": {
+      "error": "Error: Rate limit reached. Please throttle your requests to 1 request per second."
+    }
+  },
+  "building_automation": {
+    "category": "building_automation",
+    "timestamp": "2026-04-21T14:49:39.312086",
+    "queries": {
+      "bacnet": 0,
+      "knx": 0,
+      "lonworks": 0,
+      "hvac_control": 0,
+      "thermostat": 0,
+      "nest": 0,
+      "ecobee": 0,
+      "building_automation": 0,
+      "bms": 0,
+      "lighting_control": 0,
+      "access_control": 0,
+      "intercom": 0,
+      "elevator_control": 0
+    },
+    "totals": {}
+  },
+  "vehicles_transport": {
+    "category": "vehicles_transport",
+    "timestamp": "2026-04-21T14:49:44.030552",
+    "queries": {
+      "tesla": 0,
+      "teslamate": 0,
+      "vehicle_telematics": 0,
+      "gps_tracker": 0,
+      "fleet_management": 0,
+      "obd2": 0,
+      "toll_system": 0,
+      "parking_system": 0,
+      "ev_charging": 0,
+      "traffic_control": 0
+    },
+    "totals": {}
+  },
+  "misc_iot": {
+    "category": "misc_iot",
+    "timestamp": "2026-04-21T14:49:47.760246",
+    "queries": {
+      "printer": 0,
+      "hp_jetdirect": 0,
+      "network_printer": 0,
+      "nas": 0,
+      "synology": 0,
+      "qnap": 0,
+      "iot_gateway": 0,
+      "smart_home": 0,
+      "home_assistant": 0,
+      "homekit": 0,
+      "zigbee_bridge": 0,
+      "z-wave": 0,
+      "wifi_thermostat": 0,
+      "smart_lock": 0,
+      "doorbell": 0,
+      "robot_vacuum": 0
+    },
+    "totals": {}
+  }
+}

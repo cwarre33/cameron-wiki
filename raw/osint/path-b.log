@@ -1,0 +1,13 @@
+C:\Users\cameronwarren\AppData\Roaming\Python\Python310\site-packages\requests\__init__.py:113: RequestsDependencyWarning: urllib3 (2.5.0) or chardet (6.0.0.post1)/charset_normalizer (3.4.3) doesn't match a supported version!
+  warnings.warn(
+[dnp3] Shodan error collecting hosts: Retry limit reached (5)
+[s7] Shodan error getting total: Insufficient query credits, please upgrade your API plan or wait for the monthly limit to reset
+[s7] Shodan error collecting hosts: Insufficient query credits, please upgrade your API plan or wait for the monthly limit to reset
+[modbus] 1000 hosts collected
+[bacnet] 1000 hosts collected
+[dnp3] 300 hosts collected
+[s7] 0 hosts collected
+Saved: raw\osint\2026-04-20-scan-raw.json
+usage: enrich.py [-h] [--out-dir OUT_DIR] raw_path
+enrich.py: error: the following arguments are required: raw_path
+=== DONE ===

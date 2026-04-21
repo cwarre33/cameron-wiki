@@ -1,0 +1,20 @@
+{
+  "category": "building_automation",
+  "timestamp": "2026-04-21T14:49:39.312086",
+  "queries": {
+    "bacnet": 0,
+    "knx": 0,
+    "lonworks": 0,
+    "hvac_control": 0,
+    "thermostat": 0,
+    "nest": 0,
+    "ecobee": 0,
+    "building_automation": 0,
+    "bms": 0,
+    "lighting_control": 0,
+    "access_control": 0,
+    "intercom": 0,
+    "elevator_control": 0
+  },
+  "totals": {}
+}

@@ -1,0 +1,305 @@
+{
+  "category": "medical_devices",
+  "timestamp": "2026-04-21T14:49:18.000057",
+  "queries": {
+    "dicom": 6854,
+    "hl7": 237,
+    "pacs_server": 1227,
+    "hospital": 2179,
+    "patient_monitor": 4,
+    "mri": 384,
+    "ct_scanner": 4,
+    "dialysis": 16,
+    "ventilator": 10,
+    "medical_device": 420,
+    "philips_healthcare": 2,
+    "ge_healthcare": 1
+  },
+  "totals": {},
+  "stats": {
+    "country": [
+      {
+        "name": "DE",
+        "count": 668
+      },
+      {
+        "name": "IN",
+        "count": 503
+      },
+      {
+        "name": "TW",
+        "count": 480
+      },
+      {
+        "name": "BR",
+        "count": 381
+      },
+      {
+        "name": "FR",
+        "count": 193
+      },
+      {
+        "name": "CN",
+        "count": 179
+      },
+      {
+        "name": "GB",
+        "count": 169
+      },
+      {
+        "name": "JP",
+        "count": 136
+      },
+      {
+        "name": "ID",
+        "count": 123
+      },
+      {
+        "name": "CA",
+        "count": 105
+      },
+      {
+        "name": "VN",
+        "count": 98
+      },
+      {
+        "name": "NL",
+        "count": 85
+      },
+      {
+        "name": "AU",
+        "count": 82
+      },
+      {
+        "name": "ES",
+        "count": 79
+      },
+      {
+        "name": "ZA",
+        "count": 79
+      },
+      {
+        "name": "IT",
+        "count": 75
+      },
+      {
+        "name": "SG",
+        "count": 75
+      },
+      {
+        "name": "MX",
+        "count": 66
+      },
+      {
+        "name": "PL",
+        "count": 66
+      }
+    ],
+    "product": [
+      {
+        "name": "nginx",
+        "count": 77
+      },
+      {
+        "name": "Microsoft IIS httpd",
+        "count": 14
+      },
+      {
+        "name": "Remote Desktop Protocol",
+        "count": 8
+      },
+      {
+        "name": "Apache httpd",
+        "count": 4
+      },
+      {
+        "name": "Samba",
+        "count": 4
+      },
+      {
+        "name": "Apache Tomcat/Coyote JSP engine",
+        "count": 3
+      },
+      {
+        "name": "Prometheus Node Exporter",
+        "count": 3
+      },
+      {
+        "name": "Docker Registry HTTP API",
+        "count": 2
+      },
+      {
+        "name": "MS-SQL Server 2008 R2 RTM",
+        "count": 1
+      },
+      {
+        "name": "Microsoft RPC Endpoint Mapper",
+        "count": 1
+      },
+      {
+        "name": "WinRM",
+        "count": 1
+      },
+      {
+        "name": "mDNS",
+        "count": 1
+      },
+      {
+        "name": "rsyncd",
+        "count": 1
+      }
+    ],
+    "port": [
+      {
+        "name": "8081",
+        "count": 66
+      },
+      {
+        "name": "443",
+        "count": 15
+      },
+      {
+        "name": "445",
+        "count": 10
+      },
+      {
+        "name": "3389",
+        "count": 8
+      },
+      {
+        "name": "5001",
+        "count": 8
+      },
+      {
+        "name": "80",
+        "count": 7
+      },
+      {
+        "name": "3306",
+        "count": 6
+      },
+      {
+        "name": "3001",
+        "count": 5
+      },
+      {
+        "name": "2762",
+        "count": 4
+      },
+      {
+        "name": "8181",
+        "count": 4
+      },
+      {
+        "name": "9000",
+        "count": 4
+      },
+      {
+        "name": "2345",
+        "count": 3
+      },
+      {
+        "name": "5000",
+        "count": 3
+      },
+      {
+        "name": "8083",
+        "count": 3
+      },
+      {
+        "name": "9100",
+        "count": 3
+      },
+      {
+        "name": "21",
+        "count": 2
+      },
+      {
+        "name": "137",
+        "count": 2
+      }
+    ],
+    "org": [
+      {
+        "name": "Microsoft Corporation",
+        "count": 584
+      },
+      {
+        "name": "Taiwan IPv6 Development Program.",
+        "count": 432
+      },
+      {
+        "name": "DigitalOcean, LLC",
+        "count": 258
+      },
+      {
+        "name": "Google LLC",
+        "count": 256
+      },
+      {
+        "name": "University of Texas at San Antonio",
+        "count": 247
+      },
+      {
+        "name": "Hetzner Online GmbH",
+        "count": 240
+      },
+      {
+        "name": "netcup GmbH",
+        "count": 189
+      },
+      {
+        "name": "Contabo GmbH",
+        "count": 150
+      },
+      {
+        "name": "Amazon Technologies Inc.",
+        "count": 79
+      },
+      {
+        "name": "OVH SAS",
+        "count": 79
+      },
+      {
+        "name": "Vultr Holdings, LLC",
+        "count": 73
+      },
+      {
+        "name": "Microsoft Limited",
+        "count": 65
+      },
+      {
+        "name": "Linode",
+        "count": 57
+      },
+      {
+        "name": "Verizon Business",
+        "count": 47
+      },
+      {
+        "name": "Viettel Group",
+        "count": 45
+      },
+      {
+        "name": "Oracle Corporation",
+        "count": 39
+      },
+      {
+        "name": "Broadband Multiplay Project, O/o DGM BB, NOC BSNL Bangalore",
+        "count": 38
+      },
+      {
+        "name": "Amazon.com, Inc.",
+        "count": 36
+      },
+      {
+        "name": "Charter Communications Inc",
+        "count": 36
+      },
+      {
+        "name": "Comcast Cable Communications, LLC",
+        "count": 35
+      }
+    ]
+  }
+}

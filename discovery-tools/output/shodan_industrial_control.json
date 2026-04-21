@@ -1,0 +1,180 @@
+{
+  "category": "industrial_control",
+  "timestamp": "2026-04-21T14:49:00.562633",
+  "queries": {
+    "modbus_port_502": 1235,
+    "mqtt_port_1883": 452115,
+    "bacnet_port_47808": 6560,
+    "ethernet/ip_port_44818": 205,
+    "s7comm_port_102": 2,
+    "iec-104_port_2404": 0,
+    "dnp3_port_20000": 0,
+    "profinet": 4,
+    "scada": 2634,
+    "plc": 11493,
+    "rtu": 8624,
+    "hmi": 650,
+    "siemens": 42662,
+    "schneider_electric": 3823,
+    "rockwell": 5883,
+    "allen-bradley": 5321,
+    "mitsubishi": 388,
+    "omron": 164,
+    "wonderware": 2,
+    "ge_fanuc": 0
+  },
+  "totals": {},
+  "stats": {
+    "country": [
+      {
+        "name": "US",
+        "count": 965
+      },
+      {
+        "name": "ES",
+        "count": 225
+      },
+      {
+        "name": "IN",
+        "count": 18
+      },
+      {
+        "name": "LT",
+        "count": 5
+      },
+      {
+        "name": "AU",
+        "count": 3
+      },
+      {
+        "name": "CN",
+        "count": 3
+      },
+      {
+        "name": "FR",
+        "count": 3
+      },
+      {
+        "name": "RO",
+        "count": 3
+      },
+      {
+        "name": "BO",
+        "count": 2
+      },
+      {
+        "name": "NL",
+        "count": 2
+      },
+      {
+        "name": "RU",
+        "count": 2
+      },
+      {
+        "name": "AL",
+        "count": 1
+      },
+      {
+        "name": "DE",
+        "count": 1
+      },
+      {
+        "name": "HK",
+        "count": 1
+      },
+      {
+        "name": "HU",
+        "count": 1
+      }
+    ],
+    "product": [
+      {
+        "name": "BMX P34 2020",
+        "count": 1
+      }
+    ],
+    "port": [],
+    "org": [
+      {
+        "name": "Cogent Communications",
+        "count": 615
+      },
+      {
+        "name": "PSINet, Inc.",
+        "count": 245
+      },
+      {
+        "name": "Cogent Communications - IPENG",
+        "count": 206
+      },
+      {
+        "name": "Hurricane Electric LLC",
+        "count": 105
+      },
+      {
+        "name": "Verizon Business",
+        "count": 7
+      },
+      {
+        "name": "Internet Service Provider",
+        "count": 4
+      },
+      {
+        "name": "Mobile Services Lithuania",
+        "count": 4
+      },
+      {
+        "name": "Bharat Bhawan  - II, IIS Department",
+        "count": 3
+      },
+      {
+        "name": "RailTel Corporation is an Internet Service Provider.",
+        "count": 3
+      },
+      {
+        "name": "Telstra Limited",
+        "count": 3
+      },
+      {
+        "name": "Vultr Holdings, LLC",
+        "count": 3
+      },
+      {
+        "name": "Cluster Logic Inc",
+        "count": 2
+      },
+      {
+        "name": "Comcast Cable Communications, LLC",
+        "count": 2
+      },
+      {
+        "name": "DigitalOcean, LLC",
+        "count": 2
+      },
+      {
+        "name": "Edgeuno LPB1",
+        "count": 2
+      },
+      {
+        "name": "Orange Romania",
+        "count": 2
+      },
+      {
+        "name": "Orange S.A.",
+        "count": 2
+      },
+      {
+        "name": "Brahmaputra Valley Fertilizer Corporation Limited",
+        "count": 1
+      },
+      {
+        "name": "COAL INDIA LIMITED",
+        "count": 1
+      },
+      {
+        "name": "Cablevision Systems Corp.",
+        "count": 1
+      }
+    ]
+  }
+}

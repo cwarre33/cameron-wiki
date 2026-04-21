@@ -1,0 +1,17 @@
+{
+  "category": "vehicles_transport",
+  "timestamp": "2026-04-21T14:49:44.030552",
+  "queries": {
+    "tesla": 0,
+    "teslamate": 0,
+    "vehicle_telematics": 0,
+    "gps_tracker": 0,
+    "fleet_management": 0,
+    "obd2": 0,
+    "toll_system": 0,
+    "parking_system": 0,
+    "ev_charging": 0,
+    "traffic_control": 0
+  },
+  "totals": {}
+}

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT/ICS Discovery Frequency Map</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(90deg, transparent, rgba(100,255,218,0.1), transparent);
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 3em;
+            background: linear-gradient(90deg, #64ffda, #00b4d8, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #888;
+            font-size: 1.2em;
+        }
+        .frequency-visualizer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .category-card {
+            background: linear-gradient(145deg, rgba(20,30,50,0.8), rgba(10,15,30,0.9));
+            border: 1px solid rgba(100,255,218,0.2);
+            border-radius: 16px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--risk-color), transparent);
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--risk-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px var(--risk-color-glow);
+        }
+        .category-card.risk-critical { --risk-color: #ff4757; --risk-color-glow: rgba(255,71,87,0.3); }
+        .category-card.risk-high { --risk-color: #ff9f43; --risk-color-glow: rgba(255,159,67,0.3); }
+        .category-card.risk-medium { --risk-color: #74b9ff; --risk-color-glow: rgba(116,185,255,0.3); }
+        .category-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .category-count {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--risk-color);
+            margin: 15px 0;
+        }
+        .category-desc {
+            color: #888;
+            font-size: 0.9em;
+        }
+        .risk-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: var(--risk-color);
+            color: #fff;
+        }
+        .detail-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+        .detail-panel.active { display: block; }
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .close-btn {
+            background: rgba(255,71,87,0.8);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .close-btn:hover { background: #ff4757; }
+        .chart-container {
+            background: rgba(20,30,50,0.6);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 900px) { .two-column { grid-template-columns: 1fr; } }
+        .device-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .device-item {
+            background: linear-gradient(145deg, rgba(30,40,60,0.6), rgba(20,30,50,0.8));
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .device-name { font-weight: 500; }
+        .device-count { 
+            color: #64ffda; 
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .discovery-log {
+            background: #0a0a15;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85em;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            color: #64ffda;
+            margin-bottom: 8px;
+        }
+        .log-entry.timestamp { color: #888; }
+        .geo-section { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔮 IoT/ICS Discovery Frequency Map</h1>
+        <p>Real-time internet exposure intelligence</p>
+        <p style="font-size: 0.9em; margin-top: 15px; color: #666;">Powered by Shodan • GitHub Dorks • Cert Transparency</p>
+    </div>
+
+    <div class="frequency-visualizer" id="card-container">
+        <!-- Cards injected by JS -->
+    </div>
+
+    <div class="detail-panel" id="detail-panel">
+        <div class="detail-header">
+            <h2 id="detail-title">Category Details</h2>
+            <button class="close-btn" onclick="closeDetail()">✕ Close</button>
+        </div>
+        <div class="two-column">
+            <div class="chart-container">
+                <h3>By Country</h3>
+                <canvas id="country-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>By Organization</h3>
+                <canvas id="org-chart"></canvas>
+            </div>
+        </div>
+        <div class="chart-container">
+            <h3>Device Type Breakdown</h3>
+            <canvas id="device-chart" style="max-height: 300px;"></canvas>
+        </div>
+        <div class="chart-container geo-section">
+            <h3>🎯 Discovery Log</h3>
+            <div class="discovery-log" id="discovery-log">
+                <div class="log-entry timestamp">[$(new Date().toISOString())] Initializing discovery protocol...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data structure (in production, load from JSON file)
+        const discoveryData = {
+            "industrial_control": {
+                "total_devices": 536854,
+                "risk_level": "critical",
+                "description": "SCADA systems, PLCs, and industrial control exposed",
+                "top_devices": {"mqtt_port_1883": 452115, "plc": 11493, "siemens": 42662},
+                "countries": ["US:965", "ES:225", "IN:18", "LT:5", "AU:3"],
+                "orgs": ["Cogent Communications:615", "PSINet Inc:245", "Hurricane Electric:105"]
+            },
+            "medical_devices": {
+                "total_devices": 11017,
+                "risk_level": "critical",
+                "description": "Hospital equipment and medical IoT devices",
+                "top_devices": {"dicom": 6854, "pacs_server": 1227, "hospital": 2179},
+                "countries": ["DE:668", "IN:503", "TW:480", "BR:381", "FR:193", "CN:179"],
+                "orgs": ["Microsoft Corporation:584", "Taiwan IPv6:432", "DigitalOcean:258"]
+            },
+            "cameras_security": {
+                "total_devices": 5793500,
+                "risk_level": "high",
+                "description": "IP cameras, DVRs, and surveillance systems",
+                "top_devices": {"hikvision": 2268360, "ip_camera": 2419801, "dahua": 1075731},
+                "countries": ["US:793", "CN:359", "DE:256", "GB:225", "SG:158"],
+                "orgs": ["Linode:768", "Aliyun:222", "Linode LLC:169"]
+            },
+            "network_infrastructure": {
+                "total_devices": 7400000,
+                "risk_level": "high",
+                "description": "Routers, firewalls, VPN concentrators",
+                "top_devices": {"mikrotik": 3691969, "router": 1951618, "fortinet": 596152},
+                "stats": {},
+                "countries": [],
+                "orgs": []
+            }
+        };
+
+        let currentChart = null;
+
+        function createCards() {
+            const container = document.getElementById('card-container');
+            
+            for (const [key, data] of Object.entries(discoveryData)) {
+                const card = document.createElement('div');
+                card.className = `category-card risk-${data.risk_level}`;
+                card.onclick = () => showDetail(key, data);
+                
+                card.innerHTML = `
+                    <div class="category-title">
+                        ${key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        <span class="risk-badge">${data.risk_level}</span>
+                    </div>
+                    <div class="category-count">${data.total_devices.toLocaleString()}</div>
+                    <div class="category-desc">${data.description}</div>
+                `;
+                
+                container.appendChild(card);
+            }
+        }
+
+        function showDetail(key, data) {
+            const panel = document.getElementById('detail-panel');
+            panel.classList.add('active');
+            document.getElementById('detail-title').textContent = key.replace(/_/g, ' ').toUpperCase();
+            
+            // Generate discovery logs
+            const log = document.getElementById('discovery-log');
+            log.innerHTML = `
+                <div class="log-entry timestamp">[${new Date().toISOString()}] Opening discovery channel: ${key}...</div>
+                <div class="log-entry">▶ Port scanning active nodes...</div>
+                <div class="log-entry">✓ Found ${data.total_devices.toLocaleString()} exposed devices</div>
+                <div class="log-entry">⚠ Risk classification: ${data.risk_level.toUpperCase()}</div>
+                <div class="log-entry">▶ Geolocating endpoints...</div>
+                ${data.countries ? data.countries.slice(0, 5).map(c => `<div class="log-entry">  ├ ${c}</div>`).join('') : ''}
+                <div class="log-entry">▶ Analyzing organizational distribution...</div>
+                ${data.orgs ? data.orgs.slice(0, 5).map(o => `<div class="log-entry">  ├ ${o}</div>`).join('') : ''}
+                <div class="log-entry timestamp">[${new Date().toISOString()}] Discovery complete.</div>
+            `;
+            
+            // Create charts
+            createDeviceChart(data.top_devices);
+            if (data.countries) createCountryChart(data.countries);
+            if (data.orgs) createOrgChart(data.orgs);
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-panel').classList.remove('active');
+            if (currentChart) {
+                currentChart.destroy();
+                currentChart = null;
+            }
+        }
+
+        function createDeviceChart(devices) {
+            const ctx = document.getElementById('device-chart').getContext('2d');
+            const labels = Object.keys(devices);
+            const values = Object.values(devices);
+            
+            if (currentChart) currentChart.destroy();
+            
+            currentChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels.map(l => l.replace(/_/g, ' ')),
+                    datasets: [{
+                        label: 'Exposed Count',
+                        data: values,
+                        backgroundColor: 'rgba(100,255,218,0.6)',
+                        borderColor: '#64ffda',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#888' }, grid: { color: '#333' } },
+                        x: { ticks: { color: '#888' }, grid: { color: '#333' } }
+                    }
+                }
+            });
+        }
+
+        function createCountryChart(countries) {
+            const ctx = document.getElementById('country-chart').getContext('2d');
+            const parsed = countries.map(c => {
+                const [name, count] = c.split(':');
+                return { name, count: parseInt(count) };
+            });
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: parsed.map(c => c.name),
+                    datasets: [{
+                        data: parsed.map(c => c.count),
+                        backgroundColor: ['#ff4757', '#ff9f43', '#74b9ff', '#a29bfe', '#00b894', '#e17055']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'right', labels: { color: '#fff' } } }
+                }
+            });
+        }
+
+        function createOrgChart(orgs) {
+            const ctx = document.getElementById('org-chart').getContext('2d');
+            const parsed = orgs.slice(0, 6).map(o => {
+                const parts = o.split(':');
+                return { name: parts[0], count: parseInt(parts[1]) };
+            });
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: parsed.map(o => o.name.slice(0, 20)),
+                    datasets: [{
+                        data: parsed.map(o => o.count),
+                        backgroundColor: 'rgba(116,185,255,0.6)'
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { beginAtZero: true, ticks: { color: '#888' }, grid: { color: '#333' } },
+                        y: { ticks: { color: '#fff' } }
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        createCards();
+        
+        // Animate cards on load
+        document.querySelectorAll('.category-card').forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, i * 100);
+        });
+    </script>
+</body>
+</html>

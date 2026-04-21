@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "generated": "2026-04-21T14:51:00.443710",
+    "tool": "IoT/ICS Frequency Mapper",
+    "data_source": "Shodan (free tier)"
+  },
+  "summary": {
+    "total_categories": 0,
+    "total_exposed_devices": 0,
+    "high_risk_count": 0,
+    "medium_risk_count": 0,
+    "critical_infrastructure": false
+  },
+  "categories": {},
+  "geography": {
+    "by_country": {}
+  },
+  "organizations": {
+    "by_org": {}
+  },
+  "risk_analysis": []
+}
