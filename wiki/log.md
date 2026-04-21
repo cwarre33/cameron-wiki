@@ -1485,3 +1485,114 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+
+## [2026-04-20] disclosure | KIPP St. Louis BACnet BBMD ("Mitchell")
+
+Source: raw/osint/2026-04-19-scan-enriched.json
+Pages created: wiki/open-questions/kipp-mitchell-disclosure-2026-04-20.md
+Pages updated: wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md
+Contradictions: corrected prior wiki entry — "KIPP Inspired Academy / 13-campus" → KIPP Inspire Academy (KIPP St. Louis network: 6 schools / ~2,700 students). Subnet count (13) is BACnet network segments, not 1:1 with campuses.
+Key findings:
+  - 12.5.26.10 (Delta Controls DSC-1616E "Mitchell") routes 13 internal BACnet subnets through one internet-facing BBMD
+  - Single point of failure for 6-campus K-12 charter network (~2,700 students)
+  - Wow framing: blast-radius — one internet action affects every campus simultaneously
+  - K-12 building automation is asthma/heat/CO2-relevant safety infrastructure, not "comfort only"
+  - Disclosure target: KIPP St. Louis (1310 Papin St Suite 203, 314-349-1388)
+  - "Mitchell" is not a known KIPP campus name — likely integrator or building name; open question
+
+---
+
+## [2026-04-20] disclosure | Homanit Lietuva BACnet exposure (Pagiriai MDF/HDF plant)
+
+Source: raw/osint/2026-04-19-scan-enriched.json
+Pages created: wiki/open-questions/homanit-disclosure-2026-04-20.md
+Pages updated: wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md
+Contradictions: none
+Key findings:
+  - 85.206.88.54 (WAGO controller "Homanit.VAS_LNS_1") in Pagiriai, Vilniaus rajonas, Lithuania
+  - Operator attribution high-confidence: device name carries operator name
+  - MDF/HDF wood-fiberboard plant, 260,000 m³/yr capacity, ~€175M investment
+  - Wow framing: combustible-dust regime (NFPA 664 / ATEX 2014/34/EU + 1999/92/EC)
+  - Cannot confirm passively whether process-safety actuators are integrated to this BAS network — that distinction sets the impact ceiling
+  - Disclosure path: Homanit Lietuva (info@homanit.lt) + German parent + WAGO PSIRT + NKSC (CERT-LT)
+
+---
+
+## [2026-04-20] correction | Shriners misidentification in BACnet survey page
+
+Source: web verification (oasisshriners.org, shrinerschildrens.org/locations)
+Pages updated: wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md
+Contradictions: previous entry "Shriners Children's Hospital Charlotte" was incorrect. Device "Shriners_Oasis_10001" at 70.63.96.202 is the Oasis Shrine Temple (fraternal lodge / event venue, 604 Doug Mayes Pl, Charlotte NC 28262). Shriners Children's operates no hospital in Charlotte; nearest is Greenville SC. Pediatric patient-safety framing originally attached to this finding does not apply.
+Resolution: in-place correction with explicit "Correction note" block in the BACnet survey page. No separate disclosure page filed for the Oasis exposure (downgraded — Niagara 4.11/Log4Shell exposure is real but lower severity than originally framed).
+
+---
+
+## [2026-04-20] update | Walker Medical disclosure — follow-up investigation plan appended
+
+Source: existing wiki/open-questions/walkermedical-disclosure-2026-04-19.md
+Pages updated: wiki/open-questions/walkermedical-disclosure-2026-04-19.md
+Contradictions: flagged the unverified "same AT&T block" adjacency claim in the BACnet survey page (WalkerMedical 108.252.186.105 vs KIPP 12.5.26.10 — different address spaces; "same AS7018" is too weak a claim to repeat as "adjacent").
+Key additions:
+  - 6 follow-up investigation threads: identify 192.168.53.36, verify AT&T adjacency, Delta Controls firmware build cross-reference, Shodan history pivot, Wayback Machine pivot, BMS integrator identification
+  - Cross-references to kipp-mitchell-disclosure-2026-04-20 and homanit-disclosure-2026-04-20
+
+---
+
+
+## [2026-04-21] analysis | Path B longitudinal — 12 external-FDT tunnel cases identified
+
+Source: raw/osint/2026-04-20-scan-raw.json → raw/osint/2026-04-20-scan-enriched.json → raw/osint/2026-04-20-longitudinal.json
+Pages created: wiki/open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+Pages updated:
+  - wiki/open-questions/homanit-disclosure-2026-04-20.md (cross-ref to aggregate page; "Homanit is not unique" note added)
+  - wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md (2026-04-21 update block answering original open question about FDT prevalence; 94%/71% prevalence stats added)
+Contradictions: none — extends prior findings.
+Key additions:
+  - Ran path B full Shodan collect → enrich → longitudinal. S7 credits exhausted (no S7 hosts); Modbus 1000 + BACnet 1000 + DNP3 300 collected.
+  - Longitudinal seeded 17 BBMDs with any FDT entry; 16 had persistent tunnels (scan_count >= 3); 12 had external-public-IP FDT entries (the Homanit pattern).
+  - Shared integrator endpoint discovered: 216.67.73.166 registered as Foreign Device for both 66.58.248.125 and 24.237.132.230, with identical 13-port rotation pattern over overlapping dates. Likely a single integrator bridging two client buildings.
+  - Cloud-hosted BACnet clients observed across DigitalOcean (Homanit), AWS ca-central-1 (184.69.115.182), Azure East US (208.104.56.247) — an emerging class of cloud-VM-to-BACnet-building exposure.
+  - Most-persistent case: 166.144.189.152 → 108.190.193.44, 275 scans across 37 rotating source ports. Most-scanned (internal-FDT): 104.36.136.27 → 10.21.175.238, 930 scans.
+  - Queued 5 candidate per-target disclosures; not written yet pending Cameron review (per CLAUDE.md "never batch-write pages Cameron hasn't seen").
+  - Fixed a Unicode/cp1252 crash in scripts/osint/longitudinal.py print statement (→ -> -->).
+
+---
+
+## [2026-04-21] update | KIPP and Homanit pages refreshed with path A longitudinal evidence
+
+Source: raw/osint/2026-04-20-longitudinal.json
+Pages updated:
+  - wiki/open-questions/kipp-mitchell-disclosure-2026-04-20.md (FDT history section: 4 controllers registered over 47 days; .181 → .175 handoff on 2026-04-07 documented; FDT-vs-BDT distinction clarified; updated timeline)
+  - wiki/open-questions/homanit-disclosure-2026-04-20.md (cross-reference to aggregate external-FDT findings page; broader-pattern note added without downgrading Homanit urgency)
+Contradictions: none.
+
+---
+
+## [2026-04-21] security | Shodan API key rotation + history rewrite
+
+Source: GitGuardian alert (secret detected in push to public repo)
+Pages updated: (none — this is a repo-level incident, not a wiki content change)
+Incident:
+  - Commit 56bcdd2 "Add OSINT secret monitoring suite" (2026-04-20 21:19 from the other machine) hardcoded the Shodan API key in OSINT_README.md:100 as an `export SHODAN_API_KEY="..."` usage example.
+  - Key was public on GitHub for ~12 hours before GitGuardian flagged it.
+Response:
+  - Rotated the Shodan key (done out of band by Cameron).
+  - Redacted the literal key from OSINT_README.md HEAD; placeholder "your_shodan_api_key_here" substituted.
+  - Added .claude/settings.local.json and *.local.json to .gitignore (settings.local.json can capture command-line args passed through Claude Code permission prompts).
+  - Untracked .claude/settings.local.json from the index (kept on disk).
+  - Scanned all incoming commits for other leaked secrets; only AWS's well-known dummy example AKIAIOSFODNN7EXAMPLE present — no additional real credentials.
+  - `git filter-repo --replace-text` rewrote all history replacing the literal key with REDACTED_SHODAN_KEY.
+  - `git push --force origin main` published the rewritten history. All commit SHAs on main rebuilt. The other machine(s) with clones of this repo must re-clone before their next push.
+Lessons / preventive actions queued:
+  - Enable GitHub's native secret scanning + push protection in repo Settings → Security.
+  - Consider a pre-commit hook that runs gitleaks or trufflehog against staged content.
+  - Document in CLAUDE.md: never pass secrets as command-line arguments to Claude Code (they are captured in .claude/settings.local.json via permission prompts).
+  - Document: when wiring a new Shodan-using script, always source from .env, never hardcode in docs, examples, or tests.
+Residual risk:
+  - Old commit SHAs (56bcdd2 etc.) may still be reachable via direct URL on GitHub for up to ~90 days until GC.
+  - Any fork, cache, or indexer that pulled before 2026-04-21 still has the old key in their history. The rotation (step 1) is what mitigates this.
+Contradictions: none.
+
+---
