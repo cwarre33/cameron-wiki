@@ -142,6 +142,7 @@ Master catalog of all wiki pages. Updated automatically.
 |------|---------|---------|
 | [Credential Exposure Patterns — Comparative Analysis](comparisons/credential-exposure-patterns.md) | Comparative analysis of private keys, database URIs, and API tokens discovered via OSINT — detection difficulty, risk profiles, and mitigation strategies. | 2026-04-21 |
 | [LLM Wiki vs. RAG — Architectural Comparison](comparisons/llm-wiki-vs-rag.md) | Two fundamentally different approaches to LLM + documents. Cameron has built production systems using both. | 2026-04-17 |
+| [Maintainer Response Log — Security Disclosures (April 2026)](comparisons/maintainer-response-log.md) | Real-world maintainer responses to security disclosures: rapid dismissal vs engagement patterns, lessons learned from "ai-slop" label. | 2026-04-21 |
 
 ## Open Questions
 

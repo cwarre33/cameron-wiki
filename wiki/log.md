@@ -1942,3 +1942,30 @@ Disclosure issues posted:
   - https://github.com/atuinsh/atuin/issues/3438
 
 
+
+
+## [2026-04-21] osint | Maintainer response analysis — ettfemnio dismissal documented
+
+Source: GitHub issue #23 (ettfemnio/dbd-server) response pattern
+Pages created:
+  - wiki/comparisons/maintainer-response-log.md
+Pages updated: wiki/index.md, wiki/log.md
+
+Key learning:
+  - ettfemnio maintainer dismissed as "ai-slop" BUT archived repository (~15 min response)
+  - Finding was legitimate: OpenSSL verified, source code confirmed production use
+  - Archive ≠ remediation: Key still exposed in git history
+  - Rapid dismissal indicates maintainer fatigue with AI-generated spam reports
+
+Portfolio value:
+  - Demonstrates real-world security disclosure experience
+  - Shows professional verification standards (not AI-generated noise)
+  - Documents handling of maintainer skepticism
+
+Lessons for researchers:
+  - Concrete evidence (line numbers, OpenSSL validation) distinguishes real from fake
+  - Professional tone and specific technical details are essential
+  - Dismissive response ≠ invalid finding
+  - Archival is reactive, not proactive security posture
+
+
