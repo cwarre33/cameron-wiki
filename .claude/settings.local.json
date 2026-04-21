@@ -26,7 +26,22 @@
       "WebFetch(domain:fvfpd.com)",
       "WebFetch(domain:www.trellix.com)",
       "WebFetch(domain:www.nozominetworks.com)",
-      "WebFetch(domain:www.runzero.com)"
+      "WebFetch(domain:www.runzero.com)",
+      "WebFetch(domain:www.cvedetails.com)",
+      "WebFetch(domain:www.fortinet.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:us-cert.gov)",
+      "WebFetch(domain:services.netscreen.com)",
+      "WebFetch(domain:www.tenable.com)",
+      "WebFetch(domain:dci.deltacontrols.com)",
+      "WebFetch(domain:wiki.hvac.io)",
+      "WebFetch(domain:www.bacnetinternational.net)",
+      "WebFetch(domain:www.arcat.com)",
+      "WebFetch(domain:www.veridify.com)",
+      "WebFetch(domain:tsapps.nist.gov)",
+      "WebFetch(domain:guides.smartbuildingsacademy.com)",
+      "WebFetch(domain:www.cybersecurity-help.cz)",
+      "WebFetch(domain:www.tridium.com)"
     ]
   }
 }

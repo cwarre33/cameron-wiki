@@ -5,6 +5,23 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-04-20] osint | ICS exploitability assessment — full evidence chain with attack surface documentation
+
+Source: raw/osint/2026-04-19-scan-enriched.json + NIST NISTIR 7956 + CVE NVD + CISA advisories + vendor docs
+Pages created:
+  - wiki/open-questions/exploitability-assessment-2026-04-20.md
+Pages updated: wiki/log.md
+
+Key evidence confirmed:
+  - BACnet WriteProperty: unauthenticated by ASHRAE 135 design (NIST NISTIR 7956)
+  - CVE-2019-9569: buffer overflow in dactetra, RCE, build 571848 confirmed, McAfee/Trellix HVACking paper
+  - CVE-2017-16748: Tridium Niagara ≤4.4 admin bypass via disabled account + blank password (Lahey Medical at 4.4.73.24 CONFIRMED vulnerable)
+  - CVE-2018-12594: Reliable Controls MACH-ProWebCom unauthenticated GET to fileinfo.xml returns Master Password (v7.80 confirmed; v2.19.1 status uncertain)
+  - Fortinet research confirmed: "full command and control without username/password" demonstrated against live boiler equipment
+  - Attack difficulty: TRIVIAL for all devices — bacpypes pip install, 15 lines of Python, free BDT tool
+
+---
+
 ## [2026-04-20] osint | ICS OSINT deep-dive — evidence verification pass (ARIN RDAP + web)
 
 Source: raw/osint/2026-04-19-scan-enriched.json (re-analysis) + ARIN RDAP + web sources
