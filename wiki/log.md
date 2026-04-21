@@ -1718,3 +1718,64 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 17:13 UTC
+Wiki pages: 62 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 1
+  decisions: 8
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 13
+  people: 1
+  production-systems: 1
+  techniques: 6
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+  [2026-04-21] open-questions/bacnet-bbmd-exposure-2026-04-19.md
+  [2026-04-20] open-questions/walkermedical-disclosure-2026-04-19.md
+  [2026-04-20] open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Orphan pages (8):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
