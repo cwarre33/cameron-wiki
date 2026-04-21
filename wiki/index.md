@@ -19,15 +19,16 @@ Master catalog of all wiki pages. Updated automatically.
 | [Provider Adapter Pattern (Multi-LLM)](architectures/provider-adapter-pattern.md) | A strategy pattern for abstracting LLM provider APIs behind a uniform interface. Each provider (OpenAI, Anthropic, Gemini, Grok) gets its own adapt... | 2026-04-17 |
 
 ## Techniques
-*CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, etc.*
+*CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, OSINT, etc.*
 
 | Page | Summary | Updated |
 |------|---------|---------|
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Pattern for production image similarity search: encode images with CLIP, index embeddings with FAISS, retrieve nearest neighbors. | 2026-04-17 |
-| [GitHub OSINT Credential Discovery](techniques/github-osint-credential-discovery.md) | Summary: Systematic approach to discovering exposed cryptographic credentials in public GitHub repositories using the Code Search API combined with... | 2026-04-21 |
+| [GitHub OSINT Credential Discovery](techniques/github-osint-credential-discovery.md) | Systematic approach to discovering exposed credentials via GitHub Code Search API, with multi-layer filtering and responsible disclosure. Discovered 7 live credentials. | 2026-04-21 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Pattern for multi-modal search: route queries to the optimal search engine based on modality rather than using one unified approach. | 2026-04-17 |
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
+| [Pre-Disclosure Validation Protocol](techniques/pre-disclosure-validation-protocol.md) | Bulletproof evidence collection framework to prevent "ai-slop" dismissals. 5-tier validation: entropy → crypto → context → impact → package. | 2026-04-21 |
 | [Persistent Model Loading Pattern](techniques/persistent-model-loading.md) | Rule: Load ML models once at service startup. Never reload per request. | 2026-04-17 |
 | [Shodan ICS OSINT — Methodology](techniques/shodan-ics-osint.md) | Purpose: Systematically enumerate publicly exposed industrial control system (ICS) endpoints via Shodan's passive index. No active scanning — read-... | 2026-04-19 |
 

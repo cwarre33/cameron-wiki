@@ -2023,3 +2023,42 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+
+## [2026-04-21] osint | Pre-disclosure validation protocol — prevent "ai-slop" dismissals
+
+Source: Analysis of ettfemnio/dbd-server Issue #23 response
+Pages created:
+  - wiki/techniques/pre-disclosure-validation-protocol.md
+Pages updated: wiki/index.md, wiki/log.md
+
+5-tier validation framework:
+  - Tier 1: Automated screening (entropy, keywords, patterns)
+  - Tier 2: Cryptographic verification (OpenSSL, key size, modulus matching)
+  - Tier 3: Contextual analysis (local clone, source code, production usage)
+  - Tier 4: Impact assessment (stars, forks, deployment scope)
+  - Tier 5: Evidence packaging (screenshots, snippets, risk analysis)
+
+Key insight from ettfemnio dismissal:
+  - Finding was legitimate (OpenSSL verified, production code confirmed)
+  - But evidence was buried in disclosure text
+  - Maintainer skimmed, assumed AI-generated spam, archived
+
+Solution: Lead with cryptographic verification, not search methodology
+  Old: "I found this using GitHub search..."
+  New: "VERIFIED: RSA-2048 production key, OpenSSL validation attached"
+
+Confidence scoring system:
+  - Automated screening: 20 points
+  - Crypto verification: 30 points
+  - Context analysis: 30 points
+  - Impact assessment: 20 points
+  - Thresholds: 90+ READY, 75+ PROBABLE, 60+ QUESTIONABLE
+
+Portfolio value:
+  - Shows mature security research process
+  - Learning from rejection to improve methodology
+  - Professional quality assurance standards
+  - Evidence-based reporting culture
+
+
