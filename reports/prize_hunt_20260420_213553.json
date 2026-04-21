@@ -1,0 +1,21 @@
+{
+  "discoveries": [
+    {
+      "repo": "av/harbor",
+      "file": "profiles/default.env",
+      "url": "https://github.com/av/harbor/blob/05e52a380859c2f24bfb6b98b776a72b48d0fa02/profiles/default.env",
+      "secrets": 302,
+      "pattern": "OpenAI Key in JWT",
+      "time": "2026-04-20T21:35:53.132532"
+    },
+    {
+      "repo": "imyasir882/SlowLetters",
+      "file": "VERCEL_ENV_SETUP.md",
+      "url": "https://github.com/imyasir882/SlowLetters/blob/c4760b37aa4fa9d06320de4e06e8c44cd45212d7/VERCEL_ENV_SETUP.md",
+      "secrets": 4,
+      "pattern": "OpenAI Key in JWT",
+      "time": "2026-04-20T21:35:53.314108"
+    }
+  ],
+  "timestamp": "2026-04-20T21:35:53.315079"
+}
