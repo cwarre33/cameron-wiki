@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash *)",
+      "Bash(ls -d .worktrees)",
+      "Bash(ls -d worktrees)",
+      "Bash(pip install *)",
+      "Bash(python *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(pytest tests/osint/conftest.py --fixtures -q)",
+      "Bash(python3 *)",
+      "WebSearch",
+      "WebFetch(domain:deltacontrols.com)",
+      "WebFetch(domain:marketplace.vts.com)",
+      "WebFetch(domain:www.loopnet.com)",
+      "WebFetch(domain:www.cisa.gov)",
+      "WebFetch(domain:wolfmediausa.com)",
+      "WebFetch(domain:nvd.nist.gov)",
+      "WebFetch(domain:rdap.arin.net)",
+      "WebFetch(domain:www.survalent.com)",
+      "WebFetch(domain:cartersvillemuseumcity.com)",
+      "WebFetch(domain:www.libertymissouri.gov)",
+      "WebFetch(domain:www.kippstl.org)",
+      "WebFetch(domain:ipinfo.io)",
+      "WebFetch(domain:fvfpd.com)",
+      "WebFetch(domain:www.trellix.com)",
+      "WebFetch(domain:www.nozominetworks.com)",
+      "WebFetch(domain:www.runzero.com)"
+    ]
+  }
+}

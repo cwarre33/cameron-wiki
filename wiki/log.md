@@ -5,6 +5,52 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-04-20] osint | ICS OSINT deep-dive — evidence verification pass (ARIN RDAP + web)
+
+Source: raw/osint/2026-04-19-scan-enriched.json (re-analysis) + ARIN RDAP + web sources
+Pages updated:
+  - wiki/open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md (full evidence chain added)
+  - wiki/open-questions/scottsboro-electric-power-board-2026-04-20.md (full evidence chain added)
+  - wiki/open-questions/municipal-ics-cluster-2026-04-20.md (full evidence chain added)
+
+Evidence confirmed via ARIN RDAP API and web sources (all passive):
+  - 104.36.136.27 → City of Cartersville, CARTERSVILLE-FIBERCOM (AS64261)
+    Contact: sgrier@cartersvillega.gov | Device = ClarenceBrownAHUs = Clarence Brown Conference Center (40,000 sq ft civic venue, 5450 GA Hwy 20)
+  - 173.242.239.157/.158 → Scottsboro Electric Power Board (AS26809)
+    Contact: sharp@sepb.net (ARIN unvalidated since Feb 2025) | TVA member utility, Survalent SCADA, 7 substations
+  - 54.234.107.205 → AWS EC2 us-east-1, hostname ec2-54-234-107-205.compute-1.amazonaws.com (vanilla, no custom domain)
+    Live BACnet FDT tunnel from this EC2 into Chicago boiler room (216.80.86.155, firmware 571848 = CVE-2019-9569 confirmed)
+  - 12.5.26.10 → KIPP INSPIRED ACADEMY (AS, ARIN POC unvalidated since Oct 2016)
+    Device Mitchell (DSC_1616E) aggregates 13 KIPP school building BACnet zones through one BBMD
+  - 24.240.179.78 → Metro North Fire Protection District, 1815 Chambers Rd, St. Louis MO 63136 (name match confirmed)
+  - 24.103.25.90 → City of Liberty MO water distribution tank (DSC_633E), peer BBMD at 24.39.116.210
+
+---
+
+## [2026-04-20] osint | ICS OSINT deep-dive — new critical infrastructure findings
+
+Source: raw/osint/2026-04-19-scan-enriched.json (re-analysis)
+Pages created:
+  - wiki/open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  - wiki/open-questions/scottsboro-electric-power-board-2026-04-20.md
+  - wiki/open-questions/municipal-ics-cluster-2026-04-20.md
+Pages updated: wiki/log.md
+Contradictions: None. These are new findings not previously profiled.
+
+Key findings:
+  - 4 hosts with Delta Controls firmware build 571848 = CONFIRMED CVE-2019-9569 vulnerable (CVSS 9.8)
+    - 216.80.86.155 Chicago boiler room + AWS EC2 FDT tunnel (54.234.107.205, us-east-1)
+    - 104.36.136.27 City of Cartersville, GA (municipal govt ASN AS64261) — ClarenceBrownAHUs
+    - 64.62.4.194 Seattle — PT Elevator Access Control MASTER (physical security infrastructure)
+    - 91.126.135.34 Barcelona — commercial building
+  - AWS EC2 instance (54.234.107.205) maintaining live BACnet FDT tunnel into Chicago HVAC — possible remote mgmt or unauthorized C2
+  - Scottsboro Electric Power Board (AS26809) — municipal electric utility's own ASN, 2x JCI NAE controllers internet-facing
+  - 1700 Woodbourne Tank (Liberty, MO) — water distribution tank controller, peer BBMD on second Charter IP
+  - Chambers Firehouse (Florissant, MO) — fire station HVAC on internet, same St. Louis metro as WalkerMedical
+  - St. Louis metro cluster now 4 sectors: medical, commercial, emergency services, education
+
+---
+
 ## [2026-04-18] ingest | Hull Tactical competition data — Kaggle API pull
 
 Source: raw/kaggle/hull-tactical-base-gateway.py, raw/kaggle/hull-tactical-relay.py, raw/kaggle/hull-tactical-data-schema.txt

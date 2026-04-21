@@ -1,0 +1,62 @@
+<h2>Three Pipeline Architectures</h2>
+<p class="subtitle">Same goal, different structure. My recommendation is <strong>B</strong>. Click to select, reply in terminal.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Single Script</h3>
+      <p style="font-size:12px;color:var(--subtle);margin:4px 0 10px;">osint_scan.py — fetch → enrich → viz in one run</p>
+      <div style="font-family:monospace;font-size:11px;background:var(--bg);padding:10px;border-radius:4px;margin-bottom:10px;">
+        python osint_scan.py --protocols all --limit 500
+      </div>
+      <p>One file, runs end-to-end. Fetches Shodan results for all 4 protocols, enriches with ASN/geo, writes D3 HTML and wiki markdown in one shot.</p>
+      <div class="pros-cons" style="margin-top:10px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Fastest to build</li><li>Zero setup beyond pip install</li><li>Easy to share</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Re-fetches Shodan every run (API quota)</li><li>Hard to re-viz without re-scanning</li><li>Monolithic — hard to extend</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B ★</div>
+    <div class="content">
+      <h3>Modular Stage Pipeline</h3>
+      <p style="font-size:12px;color:var(--subtle);margin:4px 0 10px;">collect → enrich → graph → viz → ingest — each stage is independently re-runnable</p>
+      <div style="font-family:monospace;font-size:11px;background:var(--bg);padding:10px;border-radius:4px;margin-bottom:10px;line-height:1.8;">
+        python collect.py --protocols modbus,bacnet,dnp3,s7<br>
+        python enrich.py  # ASN, geo, CVE lookups<br>
+        python viz.py     # D3 HTML snapshot<br>
+        python ingest.py  # → raw/osint/ + wiki pages
+      </div>
+      <p>Each stage reads/writes timestamped JSON in <code>raw/osint/</code>. Scan once, re-viz and re-ingest as many times as you want. Cached data survives across sessions.</p>
+      <div class="pros-cons" style="margin-top:10px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Scan once, iterate on viz/wiki</li><li>Resumable — skip stages already done</li><li>Each file is focused and testable</li><li>Maps to wiki ingest workflow</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>4 scripts to run in sequence</li><li>Need a runner script for convenience</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Typer CLI with Subcommands</h3>
+      <p style="font-size:12px;color:var(--subtle);margin:4px 0 10px;">osint scan / osint enrich / osint viz / osint ingest</p>
+      <div style="font-family:monospace;font-size:11px;background:var(--bg);padding:10px;border-radius:4px;margin-bottom:10px;line-height:1.8;">
+        osint scan --protocols all --limit 1000<br>
+        osint enrich --run modbus,bacnet<br>
+        osint viz --protocol dnp3<br>
+        osint ingest --wiki
+      </div>
+      <p>Polished CLI tool with <code>--help</code>, flags, validation. Looks like a real tool. Same modular stages as B but packaged as an installable CLI.</p>
+      <div class="pros-cons" style="margin-top:10px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Best portfolio UX</li><li>Installable via pip</li><li>Flags make it feel professional</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Typer/Click overhead upfront</li><li>Packaging adds complexity before it's proven</li><li>Polish-before-proven is the wrong order</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:20px;padding:14px;background:var(--surface);border-left:3px solid var(--accent);border-radius:4px;font-size:13px;">
+  <strong>Recommendation: B.</strong> Modular stages match the wiki ingest pattern you already have. Start functional, promote to C-style CLI once it's proven — that's the right order given your stated priority.
+</div>

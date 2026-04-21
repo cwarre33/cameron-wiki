@@ -1,0 +1,78 @@
+<h2>Design — Section 1: Pipeline & Directory Structure</h2>
+<p class="subtitle">Five stages, each reads/writes timestamped JSON in raw/osint/. Does this look right?</p>
+
+<div class="section">
+  <!-- Pipeline flow -->
+  <div style="display:flex;align-items:center;gap:0;margin:24px 0;overflow-x:auto;">
+
+    <div style="text-align:center;min-width:110px;">
+      <div style="background:#2563eb;color:white;border-radius:8px;padding:12px 8px;font-size:12px;font-weight:600;">collect.py</div>
+      <div style="font-size:10px;color:var(--subtle);margin-top:6px;">Shodan API<br>4 protocols</div>
+    </div>
+    <div style="color:var(--subtle);padding:0 6px;font-size:18px;">→</div>
+    <div style="text-align:center;min-width:110px;">
+      <div style="background:#7c3aed;color:white;border-radius:8px;padding:12px 8px;font-size:12px;font-weight:600;">enrich.py</div>
+      <div style="font-size:10px;color:var(--subtle);margin-top:6px;">ASN · geo<br>CVE · org</div>
+    </div>
+    <div style="color:var(--subtle);padding:0 6px;font-size:18px;">→</div>
+    <div style="text-align:center;min-width:110px;">
+      <div style="background:#059669;color:white;border-radius:8px;padding:12px 8px;font-size:12px;font-weight:600;">graph.py</div>
+      <div style="font-size:10px;color:var(--subtle);margin-top:6px;">NetworkX<br>GraphML</div>
+    </div>
+    <div style="color:var(--subtle);padding:0 6px;font-size:18px;">→</div>
+    <div style="text-align:center;min-width:110px;">
+      <div style="background:#d97706;color:white;border-radius:8px;padding:12px 8px;font-size:12px;font-weight:600;">viz.py</div>
+      <div style="font-size:10px;color:var(--subtle);margin-top:6px;">D3.js HTML<br>force graph</div>
+    </div>
+    <div style="color:var(--subtle);padding:0 6px;font-size:18px;">→</div>
+    <div style="text-align:center;min-width:110px;">
+      <div style="background:#dc2626;color:white;border-radius:8px;padding:12px 8px;font-size:12px;font-weight:600;">ingest.py</div>
+      <div style="font-size:10px;color:var(--subtle);margin-top:6px;">→ raw/osint<br>→ wiki pages</div>
+    </div>
+  </div>
+
+  <!-- Directory structure -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <div class="label">File layout</div>
+      <pre style="font-size:11px;margin:10px 0 0;line-height:1.8;color:var(--text);">raw/osint/
+  YYYY-MM-DD-scan-raw.json
+  YYYY-MM-DD-scan-enriched.json
+  YYYY-MM-DD-graph.graphml
+  YYYY-MM-DD-viz.html
+
+scripts/osint/
+  collect.py
+  enrich.py
+  graph.py
+  viz.py
+  ingest.py
+  run_all.sh
+
+wiki/techniques/
+  shodan-ics-osint.md
+wiki/open-questions/
+  ics-exposure-YYYY-MM-DD.md</pre>
+    </div>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <div class="label">Enriched host record (per IP)</div>
+      <pre style="font-size:11px;margin:10px 0 0;line-height:1.8;color:var(--text);">{
+  "ip": "x.x.x.x",
+  "port": 502,
+  "protocol": "modbus",
+  "org": "City Water Authority",
+  "asn": "AS12345",
+  "country": "US",
+  "city": "Houston",
+  "vulns": ["CVE-2021-1234"],
+  "tags": ["ics", "scada"],
+  "banner": "..."
+}</pre>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;padding:12px 16px;background:var(--surface);border-left:3px solid var(--accent);border-radius:4px;font-size:12px;">
+    <strong>Shodan queries:</strong> <code>port:502</code> · <code>port:47808</code> · <code>port:20000</code> · <code>port:102 product:Siemens</code> — academic key gives ~10k results per query, sampled to 1000/protocol for v1.
+  </div>
+</div>

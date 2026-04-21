@@ -1,0 +1,26 @@
+<h2>OSINT Network Mapping — Project Brainstorm</h2>
+<p class="subtitle">Clarifying scope before we design. Answer in the terminal — I'll use this screen for diagrams and options.</p>
+
+<div class="section">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 24px;">
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+      <div style="font-size: 28px; margin-bottom: 8px;">🔍</div>
+      <h3 style="margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle);">Collect</h3>
+      <p style="margin: 0; font-size: 13px; color: var(--text);">Open-source CLI tools pull public data — Shodan, Censys, WHOIS, BGP feeds, DNS, cert transparency</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+      <div style="font-size: 28px; margin-bottom: 8px;">🧩</div>
+      <h3 style="margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle);">Enrich</h3>
+      <p style="margin: 0; font-size: 13px; color: var(--text);">Link entities — ASNs to orgs, IPs to exposed services, domains to cert chains — building a relationship graph</p>
+    </div>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+      <div style="font-size: 28px; margin-bottom: 8px;">📡</div>
+      <h3 style="margin: 0 0 8px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--subtle);">Visualize</h3>
+      <p style="margin: 0; font-size: 13px; color: var(--text);">Render network topology — who connects to what, which nodes are high-risk, where the fragile choke points are</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 28px; padding: 16px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 4px;">
+  <p style="margin: 0; font-size: 13px; color: var(--subtle);">All data from <strong>public sources only</strong> — no active scanning of systems you don't own. Legitimate OSINT: read-only, passive, documented methodology.</p>
+</div>

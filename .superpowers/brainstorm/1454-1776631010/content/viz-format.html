@@ -1,0 +1,54 @@
+<h2>Visualization Format — Which output fits best?</h2>
+<p class="subtitle">All four are achievable with open-source tools. Pick what matches your workflow. Click to select.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Interactive Web Dashboard</h3>
+      <p>D3.js force-directed graph, runs locally in browser. Nodes = IPs/orgs/countries, edges = protocol exposure. Filter by protocol, zoom into country clusters. Export to PNG. <strong>Best for exploration and demo.</strong></p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Shareable HTML file</li><li>Filterable, zoomable</li><li>Strong portfolio piece</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Requires JS to build</li><li>Heavier upfront work</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Python NetworkX + Gephi Export</h3>
+      <p>Build graph in Python (NetworkX), export as GraphML or GEXF, open in Gephi for layout. Gephi renders thousands of nodes cleanly. <strong>Best for deep graph analysis.</strong></p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Gephi is purpose-built for this</li><li>Powerful layout algorithms</li><li>Good for publication-quality output</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Two-step workflow (Python → Gephi)</li><li>Gephi requires Java</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>CLI → CSV → Plotly/Dash</h3>
+      <p>Pipeline outputs structured CSV/JSON, Plotly Dash serves an interactive choropleth map + bubble chart. Country-level heat map of exposure by protocol. <strong>Best for repeatable reporting.</strong></p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Geographic view is intuitive</li><li>Easy to re-run on fresh data</li><li>Dash app is shareable</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Less graph topology, more stats</li><li>Requires Dash server to view</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="d" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>Layered: CLI → JSON → Wiki + D3</h3>
+      <p>Pipeline saves structured findings to <code>raw/osint/</code>, auto-ingests into <code>cameron-wiki</code>, AND generates a D3 snapshot. Wiki gets the knowledge; dashboard gets the viz. <strong>Best for long-term wiki integration.</strong></p>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>Pros</h4><ul><li>Feeds the wiki natively</li><li>Re-runnable → wiki stays fresh</li><li>Both research artifact + portfolio</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Most moving parts upfront</li><li>Requires ingest schema design</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top: 20px; font-size: 12px; color: var(--subtle);">Check at <strong>http://localhost:56006</strong> · Click to select, then reply in terminal</p>

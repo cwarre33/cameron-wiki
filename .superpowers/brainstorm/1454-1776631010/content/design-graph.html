@@ -1,0 +1,119 @@
+<h2>Design — Section 2: Graph Model & D3 Visualization</h2>
+<p class="subtitle">Four node types, three edge types, one self-contained HTML output. Does this look right?</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;">
+
+  <!-- Graph schema -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+    <div class="label">Graph schema (NetworkX → GraphML)</div>
+
+    <div style="margin-top:14px;">
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px;">Node types</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#60a5fa;flex-shrink:0;"></div>
+          <span style="font-size:12px;"><strong>ip</strong> — one node per exposed host. Attrs: org, city, vuln_count, port</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#a78bfa;flex-shrink:0;"></div>
+          <span style="font-size:12px;"><strong>asn</strong> — one node per autonomous system. Attrs: asn_number, org_name, ip_count</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#6b7280;flex-shrink:0;"></div>
+          <span style="font-size:12px;"><strong>country</strong> — one node per country code. Attrs: name, total_exposed</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:18px;height:18px;border-radius:3px;flex-shrink:0;background:linear-gradient(135deg,#2563eb,#dc2626,#059669,#d97706);"></div>
+          <span style="font-size:12px;"><strong>protocol</strong> — 4 nodes: modbus, bacnet, dnp3, s7. Sized by total exposure count</span>
+        </div>
+      </div>
+
+      <div style="font-size:12px;font-weight:600;color:var(--text);margin:14px 0 8px;">Edge types</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;">
+        <div><code style="background:var(--bg);padding:2px 5px;border-radius:3px;">ip → protocol</code> &nbsp;<span style="color:var(--subtle)">exposes</span></div>
+        <div><code style="background:var(--bg);padding:2px 5px;border-radius:3px;">ip → asn</code> &nbsp;<span style="color:var(--subtle)">belongs_to</span></div>
+        <div><code style="background:var(--bg);padding:2px 5px;border-radius:3px;">asn → country</code> &nbsp;<span style="color:var(--subtle)">located_in</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3 viz mockup -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+    <div class="label">D3 output (self-contained HTML)</div>
+    <div style="margin-top:12px;background:#0f172a;border-radius:6px;padding:14px;font-size:11px;color:#94a3b8;min-height:220px;position:relative;">
+
+      <!-- Mock filter bar -->
+      <div style="display:flex;gap:6px;margin-bottom:12px;">
+        <span style="background:#2563eb;color:white;padding:2px 8px;border-radius:10px;font-size:10px;">modbus</span>
+        <span style="background:#dc2626;color:white;padding:2px 8px;border-radius:10px;font-size:10px;">bacnet</span>
+        <span style="background:#059669;color:white;padding:2px 8px;border-radius:10px;font-size:10px;">dnp3</span>
+        <span style="background:#d97706;color:white;padding:2px 8px;border-radius:10px;font-size:10px;">s7</span>
+        <span style="border:1px solid #334155;padding:2px 8px;border-radius:10px;font-size:10px;">all</span>
+      </div>
+
+      <!-- Mock force graph nodes -->
+      <svg width="100%" height="170" style="overflow:visible;">
+        <!-- Country nodes -->
+        <circle cx="160" cy="85" r="22" fill="#4b5563" opacity="0.9"/>
+        <text x="160" y="89" text-anchor="middle" fill="white" font-size="9">US</text>
+        <circle cx="60" cy="50" r="14" fill="#4b5563" opacity="0.9"/>
+        <text x="60" y="54" text-anchor="middle" fill="white" font-size="9">CN</text>
+        <circle cx="270" cy="60" r="12" fill="#4b5563" opacity="0.9"/>
+        <text x="270" y="64" text-anchor="middle" fill="white" font-size="9">DE</text>
+
+        <!-- Protocol nodes -->
+        <circle cx="50" cy="130" r="16" fill="#2563eb" opacity="0.9"/>
+        <text x="50" y="134" text-anchor="middle" fill="white" font-size="8">modbus</text>
+        <circle cx="200" cy="150" r="11" fill="#dc2626" opacity="0.9"/>
+        <text x="200" y="154" text-anchor="middle" fill="white" font-size="8">bacnet</text>
+        <circle cx="300" cy="130" r="9" fill="#059669" opacity="0.9"/>
+        <text x="300" y="134" text-anchor="middle" fill="white" font-size="8">dnp3</text>
+
+        <!-- IP nodes -->
+        <circle cx="110" cy="110" r="5" fill="#60a5fa" opacity="0.8"/>
+        <circle cx="130" cy="60" r="5" fill="#60a5fa" opacity="0.8"/>
+        <circle cx="190" cy="90" r="7" fill="#f87171" opacity="0.8"/>
+        <circle cx="240" cy="110" r="4" fill="#60a5fa" opacity="0.8"/>
+        <circle cx="80" cy="90" r="6" fill="#60a5fa" opacity="0.8"/>
+
+        <!-- Edges -->
+        <line x1="110" y1="110" x2="160" y2="85" stroke="#334155" stroke-width="1"/>
+        <line x1="110" y1="110" x2="50" y2="130" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+        <line x1="130" y1="60" x2="60" y2="50" stroke="#334155" stroke-width="1"/>
+        <line x1="190" y1="90" x2="160" y2="85" stroke="#334155" stroke-width="1"/>
+        <line x1="190" y1="90" x2="200" y2="150" stroke="#dc2626" stroke-width="1" opacity="0.5"/>
+        <line x1="240" y1="110" x2="270" y2="60" stroke="#334155" stroke-width="1"/>
+        <line x1="240" y1="110" x2="300" y2="130" stroke="#059669" stroke-width="1" opacity="0.5"/>
+        <line x1="80" y1="90" x2="60" y2="50" stroke="#334155" stroke-width="1"/>
+        <line x1="80" y1="90" x2="50" y2="130" stroke="#2563eb" stroke-width="1" opacity="0.5"/>
+
+        <!-- Tooltip hint -->
+        <rect x="105" y="75" width="90" height="28" rx="3" fill="#1e293b" stroke="#334155"/>
+        <text x="150" y="88" text-anchor="middle" fill="#94a3b8" font-size="8">hover → org · CVEs · port</text>
+        <text x="150" y="98" text-anchor="middle" fill="#64748b" font-size="7">City Water Auth · AS12345</text>
+        <line x1="110" y1="110" x2="138" y2="103" stroke="#475569" stroke-width="0.5" stroke-dasharray="2"/>
+      </svg>
+    </div>
+    <p style="font-size:11px;color:var(--subtle);margin-top:8px;">Single <code>.html</code> file, no server needed. Drag nodes, hover for tooltip, click protocol pills to filter. Saved to <code>raw/osint/YYYY-MM-DD-viz.html</code>.</p>
+  </div>
+</div>
+
+<div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+  <div style="padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:12px;">
+    <strong>Wiki pages generated by ingest.py</strong>
+    <ul style="margin:8px 0 0;padding-left:16px;color:var(--subtle);line-height:1.8;">
+      <li><code>wiki/techniques/shodan-ics-osint.md</code> — methodology</li>
+      <li><code>wiki/open-questions/ics-exposure-YYYY-MM-DD.md</code> — per-run findings</li>
+      <li>Updates <code>wiki/index.md</code> + <code>wiki/log.md</code></li>
+    </ul>
+  </div>
+  <div style="padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:12px;">
+    <strong>Dependencies (pip)</strong>
+    <ul style="margin:8px 0 0;padding-left:16px;color:var(--subtle);line-height:1.8;">
+      <li><code>shodan</code> — API client</li>
+      <li><code>networkx</code> — graph construction</li>
+      <li><code>python-dotenv</code> — .env loading</li>
+      <li><code>jinja2</code> — D3 HTML templating</li>
+    </ul>
+  </div>
+</div>
