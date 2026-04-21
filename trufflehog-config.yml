@@ -1,0 +1,192 @@
+# TruffleHog OSS Configuration
+# https://github.com/trufflesecurity/trufflehog
+#
+# Use: trufflehog filesystem . --config trufflehog-config.yml
+# Or: trufflehog git https://github.com/user/repo --config trufflehog-config.yml
+
+version: 3
+
+# Include default detectors (AWS, GCP, Slack, etc.)
+detectors:
+  # AWS Keys
+  - name: AWS Access Key ID
+    keyword: AKIA
+    regex:
+      pattern: "(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}"
+    
+  # Google API Keys
+  - name: Google API Key
+    keyword: AIza
+    regex:
+      pattern: "AIza[0-9A-Za-z_-]{35}"
+  
+  # Firebase
+  - name: Firebase URL
+    keyword: firebaseio
+    regex:
+      pattern: "[a-z0-9-]+\.firebaseio\.com"
+  
+  # MongoDB
+  - name: MongoDB Connection URI
+    keyword: mongodb
+    regex:
+      pattern: "mongodb(\+srv)?://[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+"
+  
+  # MySQL
+  - name: MySQL Connection String
+    keyword: mysql
+    regex:
+      pattern: "mysql://[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+"
+  
+  # PostgreSQL
+  - name: PostgreSQL Connection String
+    keyword: postgres
+    regex:
+      pattern: "postgres(ql)?://[a-zA-Z0-9_-]+:[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+"
+  
+  # Private Keys
+  - name: RSA Private Key
+    keyword: PRIVATE KEY
+    regex:
+      pattern: "-----BEGIN RSA PRIVATE KEY-----[\\s\\S]*-----END RSA PRIVATE KEY-----"
+  
+  - name: OpenSSH Private Key
+    keyword: OPENSSH PRIVATE KEY
+    regex:
+      pattern: "-----BEGIN OPENSSH PRIVATE KEY-----[\\s\\S]*-----END OPENSSH PRIVATE KEY-----"
+  
+  - name: EC Private Key
+    keyword: EC PRIVATE KEY
+    regex:
+      pattern: "-----BEGIN EC PRIVATE KEY-----[\\s\\S]*-----END EC PRIVATE KEY-----"
+  
+  - name: PGP Private Key
+    keyword: PGP PRIVATE KEY
+    regex:
+      pattern: "-----BEGIN PGP PRIVATE KEY BLOCK-----[\\s\\S]*-----END PGP PRIVATE KEY BLOCK-----"
+  
+  # API Keys
+  - name: Generic API Key
+    keyword: api_key
+    regex:
+      pattern: "[aA][pP][iI]_?[kK][eE][yY][\\s]*[=:][\\s]*['\"][a-zA-Z0-9_-]{16,64}['\"]"
+  
+  - name: Generic Secret
+    keyword: secret
+    regex:
+      pattern: "[sS][eE][cC][rR][eE][tT][\\s]*[=:][\\s]*['\"][a-zA-Z0-9_-]{16,64}['\"]"
+  
+  # Authentication
+  - name: Bearer Token
+    keyword: Bearer
+    regex:
+      pattern: "Bearer\\s+[a-zA-Z0-9_\\-]+\\.[a-zA-Z0-9_\\-]+\\.[a-zA-Z0-9_\\-]+"
+  
+  - name: Basic Auth
+    keyword: Basic
+    regex:
+      pattern: "Basic\\s+[a-zA-Z0-9=]+"
+  
+  # Cloud Platform Keys
+  - name: GitHub Personal Access Token
+    keyword: ghp_
+    regex:
+      pattern: "ghp_[a-zA-Z0-9]{36}"
+  
+  - name: GitHub OAuth
+    keyword: gho_
+    regex:
+      pattern: "gho_[a-zA-Z0-9]{36}"
+  
+  - name: Slack Bot Token
+    keyword: xoxb
+    regex:
+      pattern: "xoxb-[0-9]{10,13}-[0-9]{10,13}-[a-zA-Z0-9]{24}"
+  
+  - name: Slack User Token
+    keyword: xoxp
+    regex:
+      pattern: "xoxp-[0-9]{10,13}-[0-9]{10,13}-[a-zA-Z0-9]{24}"
+  
+  - name: Stripe Live Key
+    keyword: sk_live
+    regex:
+      pattern: "sk_live_[0-9a-zA-Z]{24}"
+  
+  - name: Stripe Test Key
+    keyword: sk_test
+    regex:
+      pattern: "sk_test_[0-9a-zA-Z]{24}"
+  
+  # Database Credentials
+  - name: Database Password
+    keyword: password
+    regex:
+      pattern: "(DB_PASSWORD|DATABASE_PASSWORD|DB_PASS|DATABASE_URL)[\\s]*[=:][\\s]*['\"][^'\"]{8,}['\"]"
+  
+  # CI/CD
+  - name: Jenkins API Token
+    keyword: Jenkins
+    regex:
+      pattern: "[0-9a-f]{32}"
+  
+  - name: Travis CI Token
+    keyword: travis
+    regex:
+      pattern: "[a-zA-Z0-9_]{22,40}"
+
+# Exclude paths (common false positives)
+paths:
+  - path: ".git/*"
+    type: exclude
+  
+  - path: "*/node_modules/*"
+    type: exclude
+  
+  - path: "*/vendor/*"
+    type: exclude
+  
+  - path: "*.min.js"
+    type: exclude
+  
+  - path: "*.lock"
+    type: exclude
+  
+  - path: "*test*"
+    type: exclude
+  
+  - path: "*example*"
+    type: exclude
+  
+  - path: "*mock*"
+    type: exclude
+  
+  - path: "*/fixtures/*"
+    type: exclude
+
+# Entropy settings
+entropy:
+  # Minimum entropy for high-confidence detection
+  minimum: 4.5
+  
+  # Maximum entropy (prevents false positives on random data)
+  maximum: 8.0
+
+# Verify secrets (where applicable)
+verify:
+  # Whether to attempt verification of found secrets
+  enabled: true
+  
+  # Timeout for verification requests
+  timeout: 10s
+
+# Output settings
+output:
+  # Format: json, text, yaml
+  format: json
+  
+  # Show filename and line numbers
+  show_source: true
+  
+  # Show detector type
+  show_detector: true
