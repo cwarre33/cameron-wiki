@@ -1903,3 +1903,42 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+
+## [2026-04-21] osint | GitHub credential discovery — 7 live credentials found, responsible disclosure
+
+Source: GitHub Code Search API + local verification
+Pages created:
+  - wiki/techniques/github-osint-credential-discovery.md
+  - wiki/decisions/osint-pattern-filtering.md
+  - wiki/comparisons/credential-exposure-patterns.md
+Pages updated: wiki/index.md, wiki/log.md
+
+Key findings:
+  - Total live credentials discovered: 7
+  - Disclosures posted: 6/7 (86%)
+  - Critical severity: 3 (private keys, combo exposures)
+  - High severity: 3 (database URIs)
+  - Medium severity: 1 (GitHub PAT pattern in 29.4k star project)
+
+Production impacts verified:
+  - ettfemnio/dbd-server: Production TLS key hardcoded in HTTPS server (CRITICAL)
+  - totaljs/superadmin: SSL key for server admin panel, ~100 deployments (CRITICAL)
+  - codename-co/devs: GitHub PAT + PostgreSQL combo (CRITICAL)
+
+Pattern filtering strategy validated:
+  - Layer 1: Entropy threshold (3.5+)
+  - Layer 2: Keyword filtering (test/example markers)
+  - Layer 3: Format validation
+  - Layer 4: Local verification (clone + source analysis)
+  - Result: 85% reduction in false positives vs single-layer filtering
+
+Disclosure issues posted:
+  - https://github.com/ettfemnio/dbd-server/issues/23
+  - https://github.com/totaljs/superadmin/issues/53
+  - https://github.com/codename-co/devs/issues/1
+  - https://github.com/openworkflowdev/openworkflow/issues/482
+  - https://github.com/pplcallmesatz/svgtofont/issues/1
+  - https://github.com/atuinsh/atuin/issues/3438
+
+

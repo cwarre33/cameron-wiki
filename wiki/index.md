@@ -19,11 +19,12 @@ Master catalog of all wiki pages. Updated automatically.
 | [Provider Adapter Pattern (Multi-LLM)](architectures/provider-adapter-pattern.md) | A strategy pattern for abstracting LLM provider APIs behind a uniform interface. Each provider (OpenAI, Anthropic, Gemini, Grok) gets its own adapt... | 2026-04-17 |
 
 ## Techniques
-*CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, etc.*
+*CLIP+FAISS, Whisper pipelines, routing algorithms, MBR decoding, OSINT, etc.*
 
 | Page | Summary | Updated |
 |------|---------|---------|
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Pattern for production image similarity search: encode images with CLIP, index embeddings with FAISS, retrieve nearest neighbors. | 2026-04-17 |
+| [GitHub OSINT Credential Discovery](techniques/github-osint-credential-discovery.md) | Systematic approach to discovering exposed credentials via GitHub Code Search API, with multi-layer filtering and responsible disclosure. Discovered 7 live credentials. | 2026-04-21 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Pattern for multi-modal search: route queries to the optimal search engine based on modality rather than using one unified approach. | 2026-04-17 |
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
@@ -124,6 +125,7 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Treat the AutoTrader dual-gate signal architecture as the conceptual frame for interpreting Hull Tactical's anonymized features, then train a gradi... | 2026-04-18 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
+| ["ADR: OSINT Pattern Filtering Strategy"](decisions/osint-pattern-filtering.md) | Use layered filtering (entropy + keywords + source verification) to eliminate false positives in credential discovery, accepting slower verification in exchange for 85% accuracy. | 2026-04-21 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
 
@@ -134,9 +136,11 @@ Master catalog of all wiki pages. Updated automatically.
 | [System Design — Visual Search at Scale (SofaScope)](interview-prep/system-design-visual-search.md) | Interview preparation grounded in real production work at FLS. | 2026-04-17 |
 
 ## Comparisons
+*Synthesis pages comparing approaches, patterns, or systems.*
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| [Credential Exposure Patterns — Comparative Analysis](comparisons/credential-exposure-patterns.md) | Comparative analysis of private keys, database URIs, and API tokens discovered via OSINT — detection difficulty, risk profiles, and mitigation strategies. | 2026-04-21 |
 | [LLM Wiki vs. RAG — Architectural Comparison](comparisons/llm-wiki-vs-rag.md) | Two fundamentally different approaches to LLM + documents. Cameron has built production systems using both. | 2026-04-17 |
 
 ## Open Questions
