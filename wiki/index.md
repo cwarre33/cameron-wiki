@@ -23,7 +23,10 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| ["Pre-Disclosure Validation Protocol"](techniques/pre-disclosure-validation-protocol.md) | Preventing "ai-slop" dismissals through rigorous evidence collection. | 2026-04-21 |
+| ["Tier 6: External OSINT Validation"](techniques/tier-6-external-osint-validation.md) | Beyond the repository: confirming credentials are actively deployed in production environments. | 2026-04-21 |
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Pattern for production image similarity search: encode images with CLIP, index embeddings with FAISS, retrieve nearest neighbors. | 2026-04-17 |
+| [GitHub OSINT Credential Discovery](techniques/github-osint-credential-discovery.md) | Summary: Systematic approach to discovering exposed cryptographic credentials in public GitHub repositories using the Code Search API combined with... | 2026-04-21 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Pattern for multi-modal search: route queries to the optimal search engine based on modality rather than using one unified approach. | 2026-04-17 |
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
@@ -123,6 +126,7 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI Harness"](decisions/arc-agi-adapters-vs-litellm.md) | The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches: | 2026-04-17 |
 | ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Treat the AutoTrader dual-gate signal architecture as the conceptual frame for interpreting Hull Tactical's anonymized features, then train a gradi... | 2026-04-18 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
+| ["ADR: OSINT Pattern Filtering Strategy"](decisions/osint-pattern-filtering.md) | Accepted | High Confidence | 2026-04-21 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
@@ -138,6 +142,8 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| ["Maintainer Response Log: April 2026 Security Disclosures"](comparisons/maintainer-response-log.md) | Documenting how open-source maintainers responded to security disclosures for exposed credentials discovered via OSINT. | 2026-04-21 |
+| [Credential Exposure Patterns Comparison](comparisons/credential-exposure-patterns.md) | Comparative analysis of different credential types discovered via OSINT, their risk profiles, and detection strategies. | 2026-04-21 |
 | [LLM Wiki vs. RAG — Architectural Comparison](comparisons/llm-wiki-vs-rag.md) | Two fundamentally different approaches to LLM + documents. Cameron has built production systems using both. | 2026-04-17 |
 
 ## Open Questions
@@ -155,6 +161,7 @@ Master catalog of all wiki pages. Updated automatically.
 | [Responsible Disclosure Letters — All Targets 2026-04-20](open-questions/disclosure-letters-2026-04-20.md) | All letters follow the same structure: specific findings, no exploitation details, concrete immediate actions, clear offer of technical follow-up. ... | 2026-04-20 |
 | [Responsible Disclosure — Homanit Lietuva BACnet Exposure (Pagiriai)](open-questions/homanit-disclosure-2026-04-20.md) | An internet-facing BACnet device (`Homanit.VAS_LNS_1`, WAGO controller) at IP `85.206.88.54` in Lithuania bridges the public internet to the buildi... | 2026-04-21 |
 | [Responsible Disclosure — KIPP St. Louis BACnet BBMD ("Mitchell")](open-questions/kipp-mitchell-disclosure-2026-04-20.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at IP `12.5.26.10` (device name `Mitchell`) via passive Shodan OSINT. T... | 2026-04-20 |
+| [Responsible Disclosure — Shared Integrator Endpoint 216.67.73.166 (Anchorage AK)](open-questions/acsalaska-216-67-73-166-2026-04-21.md) | A single public IP — `216.67.73.166` — appears as a persistent BACnet Foreign Device Table (FDT) entry on two different internet-facing Delta Contr... | 2026-04-21 |
 | [Responsible Disclosure — Walker Medical Building BACnet BBMD](open-questions/walkermedical-disclosure-2026-04-19.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at the Walker Medical Building, 12855 North Forty Drive, Town and Count... | 2026-04-20 |
 | [Scottsboro Electric Power Board — Internet-Exposed JCI NAE Controllers (Deep Dive)](open-questions/scottsboro-electric-power-board-2026-04-20.md) | | Layer | Evidence | Source | | 2026-04-20 |
 

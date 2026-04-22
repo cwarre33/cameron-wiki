@@ -1,0 +1,129 @@
+{
+  "hunt_session": "Bulk Discovery",
+  "timestamp": "20260421_183732",
+  "rounds_completed": 6,
+  "files_checked": 28,
+  "discoveries_count": 5,
+  "discoveries": [
+    {
+      "timestamp": "2026-04-21T18:37:09.788146",
+      "pattern": "PostgreSQL URL",
+      "repo": "serenorg/database-replicator",
+      "file": "src/utils.rs",
+      "url": "https://github.com/serenorg/database-replicator/blob/main/src/utils.rs",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 1743,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "\"postgres://user:pass@host:5432/db\","
+        },
+        {
+          "type": "Database URL",
+          "line": 1809,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "let parts = parse_postgres_url(\"postgres://user:pass@host/db\").unwrap();"
+        },
+        {
+          "type": "Database URL",
+          "line": 1975,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "\"postgres://u:p@x.serendb.com:5432/db?sslmode=require\""
+        }
+      ],
+      "secret_count": 3
+    },
+    {
+      "timestamp": "2026-04-21T18:37:32.004602",
+      "pattern": "Database URL",
+      "repo": "karrioapi/karrio",
+      "file": "AGENTS.md",
+      "url": "https://github.com/karrioapi/karrio/blob/main/AGENTS.md",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 949,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "DATABASE_URL=postgres://user:pass@localhost:5432/karrio"
+        }
+      ],
+      "secret_count": 1
+    },
+    {
+      "timestamp": "2026-04-21T18:37:32.189346",
+      "pattern": "Database URL",
+      "repo": "khoben/telemirror",
+      "file": "README.md",
+      "url": "https://github.com/khoben/telemirror/blob/main/README.md",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 43,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "DATABASE_URL=postgres://user:pass@host/dbname"
+        }
+      ],
+      "secret_count": 1
+    },
+    {
+      "timestamp": "2026-04-21T18:37:32.313009",
+      "pattern": "Database URL",
+      "repo": "psrth/mori",
+      "file": "SKILL.md",
+      "url": "https://github.com/psrth/mori/blob/main/SKILL.md",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 27,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "mori init --from \"postgres://user:pass@host:5432/mydb?sslmode=require\""
+        },
+        {
+          "type": "Database URL",
+          "line": 48,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "mori init --from \"postgres://user:pass@host:26257/mydb?sslmode=require\""
+        },
+        {
+          "type": "Database URL",
+          "line": 81,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "DATABASE_URL=postgres://user:pass@prod-host:5432/mydb"
+        },
+        {
+          "type": "Database URL",
+          "line": 84,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "DATABASE_URL=postgres://user:pass@127.0.0.1:5432/mydb"
+        }
+      ],
+      "secret_count": 4
+    },
+    {
+      "timestamp": "2026-04-21T18:37:32.544948",
+      "pattern": "Database URL",
+      "repo": "altudev/eachlabs-ai-logo-maker-saas",
+      "file": "QWEN.md",
+      "url": "https://github.com/altudev/eachlabs-ai-logo-maker-saas/blob/main/QWEN.md",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 69,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "DATABASE_URL=postgres://user:pass@localhost:1453/db"
+        }
+      ],
+      "secret_count": 1
+    }
+  ]
+}
