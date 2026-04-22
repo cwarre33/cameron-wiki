@@ -5,6 +5,23 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-04-21] decision | Disclosure communication humanization — atuinsh/atuin incident
+
+Source: GitHub Issue #3438 + maintainer response emails + block notification
+Pages created:
+  - wiki/decisions/disclosure-communication-humanization.md
+Pages updated:
+  - DISCLOSURE_TRACKER.md (atuin status → BLOCKED, lessons learned added)
+
+Incident summary:
+  - Disclosure: atuinsh/atuin Issue #3438 — `ghp_R2***2muH` in `crates/atuin-client/src/secrets.rs`
+  - Maintainer response: "lol what?", "just no dude", "tell your claude to stand down"
+  - Consequence: Blocked from atuinsh organization on GitHub
+  - Root cause: Test token in test file + templated AI-recognizable disclosure format + "security researcher" self-framing
+  - Key decision: Bulk disclosure templates banned for repos >1k stars; human rewrite required; max 3 sentences for GitHub issues; first-name-only sign-off
+
+---
+
 ## [2026-04-20] osint | ICS exploitability assessment — full evidence chain with attack surface documentation
 
 Source: raw/osint/2026-04-19-scan-enriched.json + NIST NISTIR 7956 + CVE NVD + CISA advisories + vendor docs

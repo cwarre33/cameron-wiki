@@ -12,7 +12,7 @@
 
 | Repo | Maintainers | Severity | Credential Types | Status |
 |------|-------------|----------|------------------|--------|
-| atuinsh/atuin | @ellie, team | MEDIUM | GitHub PAT (test) | READY |
+| atuinsh/atuin | @ellie, team | MEDIUM | GitHub PAT (test) | **BLOCKED — hostile response, AI-slop detected** |
 | openworkflowdev/openworkflow | Unknown | HIGH | PostgreSQL URL | READY |
 | pplcallmesatz/svgtofont | Unknown | HIGH | PostgreSQL URL | READY |
 | ayoubagrebi062-hue/olympus-2.0 | Unknown | HIGH | PostgreSQL + Password | READY |
@@ -98,6 +98,30 @@ scripts/osint/
   ├── wow_continuous_discovery.py
   └── (4 other scanners)
 ```
+
+---
+
+## Lessons Learned (2026-04-21)
+
+### atuinsh/atuin — BLOCKED
+
+**What happened:** Issue #3438 submitted with templated "security researcher" disclosure format. Maintainer Ellie Huxtable responded with hostility ("lol what?", "just no dude", "tell your claude to stand down") and blocked from the atuinsh organization.
+
+**Why it failed:**
+1. The finding was likely a **test token** in a test file — not a production leak
+2. The disclosure was **immediately recognizable as AI-generated** (structured template, formal sign-off, severity labels)
+3. The maintainer perceived it as **spam/self-promotion** rather than a good-faith report
+4. The "security researcher" framing for a minor finding came across as self-important
+
+**Decision:** See [[wiki/decisions/disclosure-communication-humanization.md]] for full analysis and new rules:
+- No bulk templates for repos >1k stars
+- Human rewrite required for every disclosure to a popular repo
+- Test/fixture findings get a "should I even send this?" gate
+- Max 3 sentences for GitHub issue disclosures unless genuinely critical
+- First-name-only sign-off — no "security researcher" title
+- 5-minute cooling-off period before posting any disclosure
+
+**Cost:** Blocked from atuinsh/atuin (20k+ stars). Public block record visible to other maintainers. Future disclosures must be significantly more careful.
 
 ---
 
