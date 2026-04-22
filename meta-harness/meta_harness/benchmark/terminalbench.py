@@ -42,11 +42,12 @@ class TerminalBenchAdapter(BenchmarkAdapter):
 
         # Use wrapper script that applies Windows path patch
         wrapper = Path(__file__).parent.parent.parent / "terminalbench_runner.py"
+
         cmd = [
             "python", str(wrapper), "run",
             "-d", f"{self.dataset_name}=={self.version}",
             "-t", task_id,
-            "-a", "oracle",  # Use oracle agent for now, will be replaced with harness agent
+            "-a", "oracle",  # Oracle agent for real task evaluation
             "--no-cleanup",
             "--output-path", str(output_dir),
         ]
@@ -59,7 +60,7 @@ class TerminalBenchAdapter(BenchmarkAdapter):
                 timeout=300,
             )
 
-            # Find the results JSON
+            # Find the results JSON (pick most recent run)
             result_files = list(output_dir.glob("*/results.json"))
             if not result_files:
                 return {
@@ -69,7 +70,8 @@ class TerminalBenchAdapter(BenchmarkAdapter):
                     "tokens": 0,
                 }
 
-            with open(result_files[0]) as f:
+            result_files.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+            with open(result_files[0], encoding="utf-8") as f:
                 data = json.load(f)
 
             # Find the specific task result
