@@ -130,7 +130,7 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
-| ["ADR: Disclosure Communication Humanization — The atuinsh/atuin Incident"](decisions/disclosure-communication-humanization.md) | Templated AI-generated disclosures to popular open-source projects trigger hostility and blocks. New rules: no bulk templates for repos >1k stars, human rewrite required, max 3 sentences, first-name-only sign-off. | 2026-04-22 |
+| [Disclosure Communication Humanization — The atuinsh/atuin Incident](decisions/disclosure-communication-humanization.md) | On 2026-04-21, a disclosure was submitted to `atuinsh/atuin` (20k+ stars) via GitHub Issue #3438: | 2026-04-22 |
 
 ## Interview Prep
 
