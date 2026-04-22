@@ -4,6 +4,10 @@ import subprocess
 from pathlib import Path
 
 from meta_harness.benchmark.base import BenchmarkAdapter
+from meta_harness.benchmark.terminalbench_patch import apply_patch
+
+# Apply Windows compatibility patch on import
+apply_patch()
 
 
 class TerminalBenchAdapter(BenchmarkAdapter):
@@ -36,8 +40,10 @@ class TerminalBenchAdapter(BenchmarkAdapter):
         output_dir = Path("runs") / f"meta_harness_{task_id}"
         output_dir.mkdir(parents=True, exist_ok=True)
 
+        # Use wrapper script that applies Windows path patch
+        wrapper = Path(__file__).parent.parent.parent / "terminalbench_runner.py"
         cmd = [
-            "python", "-m", "terminal_bench.cli.tb.main", "run",
+            "python", str(wrapper), "run",
             "-d", f"{self.dataset_name}=={self.version}",
             "-t", task_id,
             "-a", "oracle",  # Use oracle agent for now, will be replaced with harness agent

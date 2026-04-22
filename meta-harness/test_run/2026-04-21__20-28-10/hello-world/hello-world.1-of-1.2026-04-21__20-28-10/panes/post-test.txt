@@ -1,0 +1,40 @@
+root@d7faf6737441:/app# bash /tests/run-tests.sh; tmux wait -S done
+/tests/run-tests.sh: line 2: $'\r': command not found
+: No such file or directory: /tests/setup-uv-pytest.sh
+: No such file or directorysh
+root@d7faf6737441:/app#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
