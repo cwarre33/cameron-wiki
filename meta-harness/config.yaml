@@ -15,8 +15,9 @@ models:
 
 benchmark:
   name: terminalbench
-  task_dir: ./terminalbench_tasks
-  command: "python -m terminalbench.run"
+  dataset_name: terminal-bench-core
+  version: "0.1.1"
+  task_dir: null
 
 traces:
   root: ./traces

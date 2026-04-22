@@ -18,9 +18,11 @@ class OptimizerLoop:
             max_iterations=config["loop"]["max_iterations"],
         )
         self.validator = HarnessValidator()
+        benchmark_config = config.get("benchmark", {})
         self.adapter = TerminalBenchAdapter(
-            task_dir=Path(config["benchmark"]["task_dir"]),
-            command=config["benchmark"].get("command"),
+            dataset_name=benchmark_config.get("dataset_name", "terminal-bench-core"),
+            version=benchmark_config.get("version", "0.1.1"),
+            task_dir=Path(benchmark_config["task_dir"]) if benchmark_config.get("task_dir") else None,
         )
         self.baseline_harness = baseline_harness or Path(__file__).parent.parent / "harness" / "templates" / "baseline"
         self.meta_agent: MetaAgent | None = None

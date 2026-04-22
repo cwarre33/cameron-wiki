@@ -34,26 +34,31 @@ The external-FDT pattern cannot be explained by normal BBMD operation. Possible 
 
 At this survey level we cannot distinguish (1)/(2)/(3). All three warrant remediation.
 
-## The 12 cases
+**2026-04-21 full census update:** 86 BBMDs scanned → 13 with external-FDT (15%). The original 17-host seed set had 71% external-FDT — a strong selection bias toward interesting cases. The true population rate is lower, but the absolute count (13 confirmed external tunnels) and structural patterns (shared integrators, cloud hosting) remain significant.
 
-All tunnels below had `scan_count >= 3` over the 2026-03-04 → 2026-04-20 window. "External internal IP" means the Foreign-Device IP is publicly routable (not RFC1918 / CGNAT / loopback).
+## The 13 cases (2026-04-21 full census update)
+
+Full longitudinal scan of 86 BBMDs completed 2026-04-21. **13 BBMDs (15%) show external-FDT behavior** — lower than the 71% from the 17-host seed set, suggesting selection bias in the original sample. However, the absolute count (13) and structural patterns (shared integrators, cloud hosting) remain significant.
+
+All tunnels below had `scan_count >= 3` over the 2026-03-04 → 2026-04-21 window. "External internal IP" means the Foreign-Device IP is publicly routable (not RFC1918 / CGNAT / loopback).
 
 | # | Public BBMD | External FD IP | Scans | First seen | Last seen | Source ports | Notes |
 |---|-------------|----------------|-------|------------|-----------|--------------|-------|
-| 1 | `166.144.189.152` | `108.190.193.44` | 275 | 2026-03-05 | 2026-04-20 | **37 rotating** | Highest scan count with rotation. Almost certainly a NAT'd client repeatedly calling home. |
-| 2 | `24.199.212.139` | `174.99.186.214` | 182 | 2026-03-04 | 2026-04-18 | 1 (static) | Static single-port ≈ direct/managed endpoint, not NAT. |
-| 3 | `75.112.176.136` | `24.227.56.226` | 146 | 2026-03-11 | 2026-04-20 | 18 rotating | Second case of heavy rotation. Same-ISP block (`24.x`) — could be across-building integrator. |
-| 4 | `85.206.88.54` | `157.245.127.71` | 126 | 2026-04-03 | 2026-04-20 | 1 (static) | **Homanit** — DigitalOcean NYC. Disclosure open. |
-| 4 | `85.206.88.54` | `104.131.63.228` | 126 | 2026-04-03 | 2026-04-20 | 13 rotating | **Homanit** — DigitalOcean NYC. Paired with `157.245.*`. |
-| 5 | `63.41.64.84` | `208.161.229.62` | 108 | 2026-03-04 | 2026-04-20 | 16 rotating | TTL mix (30/60) is unusual. Possibly two devices behind same NAT. |
-| 6 | `66.58.248.125` | `216.67.73.166` | 108 | 2026-03-04 | 2026-04-20 | 13 rotating | **Shared with case #7** below. |
-| 7 | `24.237.132.230` | `216.67.73.166` | 104 | 2026-03-04 | 2026-04-19 | 13 rotating | **Same internal IP as case #6.** |
-| 8 | `184.69.115.182` | `35.182.50.76` | 107 | 2026-03-04 | 2026-04-19 | 8 rotating | **AWS ca-central-1** (Canada). Cloud-hosted BACnet client. |
-| 9 | `208.104.56.247` | `40.76.12.72` | 11 | 2026-03-05 | 2026-04-20 | 1 (static) | **Azure East US.** Long interval between scans — stable endpoint. |
-| 10 | `72.174.109.126` | `72.174.229.106` | 8 | 2026-04-14 | 2026-04-19 | 1 (static) | Same /16 ISP block as BBMD. Local-ish. |
-| 11 | `142.176.198.154` | `142.68.5.130` | 6 | 2026-03-08 | 2026-04-20 | 4 rotating | Eastlink (Canadian ISP). |
-| 12 | `76.125.152.123` | `64.58.243.130` | 4 | 2026-03-17 | 2026-04-20 | 4 rotating | Comcast ↔ ATT. Cross-ISP. |
-| 13 | `75.112.176.136` | `108.188.161.116` | 4 | 2026-03-29 | 2026-03-30 | 1 (static) | Transient secondary FD for case #3. |
+| 1 | `154.70.214.34` | `96.52.237.206` | 5 | 2026-03-21 | 2026-04-20 | **3 rotating** | South Africa. Rotating ports ≈ NAT'd client. |
+| 2 | `99.210.18.108` | `99.225.171.210` | 6 | 2026-04-14 | 2026-04-15 | 1 (static) | Canada. Static port. |
+| 3 | `85.206.88.54` | `157.245.127.71` | 130 | 2026-04-04 | 2026-04-21 | 1 (static) | **Homanit** — DigitalOcean NYC. Disclosure open. |
+| 4 | `85.206.88.54` | `104.131.63.228` | 130 | 2026-04-04 | 2026-04-21 | **14 rotating** | **Homanit** — DigitalOcean NYC. Paired with `157.245.*`. |
+| 5 | `216.80.86.155` | `54.234.107.205` | 8 | 2026-03-17 | 2026-04-19 | **2 rotating** | **AWS us-east-1** (Virginia). Cloud-hosted client. |
+| 6 | `208.181.96.182` | `205.206.1.224` | 8 | 2026-03-07 | 2026-04-08 | 1 (static) | Canada. Static port. |
+| 7 | `50.253.115.217` | `66.6.106.91` | 110 | 2026-03-04 | 2026-04-21 | **8 rotating** | US. Heavy rotation. |
+| 8 | `142.116.52.177` | `52.60.38.224` | 106 | 2026-03-04 | 2026-04-21 | 1 (static) | Canada. Static port. |
+| 9 | `166.168.94.153` | `50.185.187.18` | 23 | 2026-03-04 | 2026-04-21 | **4 rotating** | US. Comcast. |
+| 10 | `166.168.94.153` | `73.139.9.70` | 6 | 2026-03-04 | 2026-04-21 | **2 rotating** | US. Comcast (second tunnel). |
+| 11 | `184.69.115.182` | `35.182.50.76` | 110 | 2026-03-04 | 2026-04-21 | **8 rotating** | **AWS ca-central-1** (Canada). Cloud-hosted BACnet client. |
+| 12 | `50.79.138.67` | `104.131.63.228` | 1 | 2026-04-04 | 2026-04-21 | 1 (static) | **SHARED with Homanit** — same DigitalOcean IP. |
+| 13 | `115.241.1.87` | `104.131.63.228` | 3 | 2026-04-04 | 2026-04-21 | 1 (static) | **SHARED with Homanit** — same DigitalOcean IP. |
+| 14 | `76.150.205.88` | `98.222.234.160` | 102 | 2026-03-04 | 2026-04-21 | **4 rotating** | US. Heavy rotation. |
+| 15 | `76.150.205.88` | `173.30.83.81` | 13 | 2026-03-04 | 2026-04-21 | **2 rotating** | US. Second tunnel. |
 
 ## The single most interesting structural finding
 
@@ -67,21 +72,59 @@ What this suggests:
 - If a third BBMD also has `216.67.73.166` in its FDT outside this seed list, that integrator may be running a fleet.
 - The rotating-port behavior from a presumed-managed monitoring station is odd — a disciplined integrator would use a stable port. Rotation implies either NAT traversal or a consumer-grade ISP in front of the station.
 
+**2026-04-21 update: A SECOND shared integrator IP discovered.**
+
+The full 86-BBMD census revealed **`104.131.63.228` (DigitalOcean NYC) shared across 3 BBMDs**:
+
+| BBMD IP | Country | Scans | Notes |
+|---------|---------|-------|-------|
+| `85.206.88.54` | Lithuania | 130 | **Homanit Lietuva** — MDF/HDF plant, ATEX-regulated |
+| `50.79.138.67` | US | 1 | Single scan, static port |
+| `115.241.1.87` | India | 3 | Low scan count |
+
+This is the **same integrator pattern** as the Alaska case, but cloud-hosted. A single DigitalOcean droplet (or VPS cluster) is maintaining persistent BACnet Foreign Device registrations across three continents simultaneously. The Homanit pairing (`157.245.127.71` + `104.131.63.228`) suggests a primary + backup architecture, or a migration in progress.
+
+**Attribution hypothesis:** The same entity operating the Homanit tunnels (DigitalOcean NYC) is also bridging the US and India BBMDs. This could be:
+- A global BMS integrator with cloud infrastructure
+- A BACnet analytics SaaS (e.g., Coppertree, BuildingOS)
+- A shared-services monitoring platform
+
+**Disclosure leverage:** Identifying the owner of `104.131.63.228` fixes 3 buildings across 3 countries with one contact.
+
 ## Also notable
 
-- **Cloud-hosted BACnet clients exist (3 confirmed):** Homanit → DigitalOcean (×2), `208.104.56.247` → Azure East US, `184.69.115.182` → AWS ca-central-1. This is an emerging pattern: BACnet reach is being exposed to commodity public clouds where compromising one VM yields building-level ICS access.
-- **`104.36.136.27 → 10.21.175.238` (930 scans, static single port)** — not in the list above because the internal IP is RFC1918, but the persistence is extreme: **930 Shodan observations in 47 days**, single-port, steady TTL. This is the single most-scanned BBMD in the seed set and a strong candidate for a Walker-pattern disclosure.
-- **Of the 17 seeded BBMDs, 12 (71%) show external-FDT behavior.** If this ratio holds against the full 1000-host BACnet census, there may be **~700+ similar external-tunnel cases in the dataset** — a population worth a separate open-question / methodology page before we try to disclose at scale.
+- **Cloud-hosted BACnet clients exist (4 confirmed providers):**
+  - **DigitalOcean NYC:** `157.245.127.71` + `104.131.63.228` (Homanit, shared across 3 BBMDs)
+  - **AWS us-east-1:** `54.234.107.205` (Virginia)
+  - **AWS ca-central-1:** `35.182.50.76` (Canada)
+  - **Azure East US:** `40.76.12.72` (from original seed, needs re-verification)
+  
+  This is an emerging pattern: BACnet reach is being exposed to commodity public clouds where compromising one VM yields building-level ICS access across multiple continents.
 
-## Candidate targets ranked for per-target disclosure
+- **`104.36.136.27 → 10.21.175.238` (949 scans, static single port)** — not in the list above because the internal IP is RFC1918, but the persistence is extreme: **949 Shodan observations in 47 days**, single-port, steady TTL. This is the single most-scanned BBMD in the full census and a strong candidate for a Walker-pattern disclosure.
+
+- **Full census correction:** Of 86 BBMDs scanned, **13 (15%) show external-FDT behavior** — not 71%. The original seed set was biased toward interesting cases. The absolute count (13 confirmed external tunnels) remains significant, and the shared-integrator patterns (Alaska `216.67.73.166`, DigitalOcean `104.131.63.228`) are the highest-leverage disclosure targets.
+
+## Candidate targets ranked for per-target disclosure (2026-04-21 update)
 
 Ranked by a combination of (a) wow-value, (b) feasibility of attribution, (c) public-interest impact:
 
-1. **`216.67.73.166` (integrator)** — identify the owner of this shared endpoint; disclosure reaches ≥2 buildings.
-2. **`166.144.189.152 → 108.190.193.44`** — 275 scans, 37 rotating ports. The most persistent case. Unknown owner of either IP.
-3. **`184.69.115.182 → 35.182.50.76` (AWS)** — cloud-hosted BACnet. Novel pattern; probable SaaS or bad actor.
-4. **`208.104.56.247 → 40.76.12.72` (Azure)** — same cloud pattern, different provider.
-5. **`104.36.136.27` (internal-FDT extreme persistence)** — candidate Walker-pattern disclosure.
+### Tier 1: Shared integrator endpoints (highest leverage)
+
+1. **`104.131.63.228` (DigitalOcean NYC)** — Shared across **3 BBMDs** (Lithuania, US, India). One disclosure = 3 buildings fixed. Cloud-hosted integrator or SaaS.
+2. **`216.67.73.166` (ACS Alaska)** — Shared across **2 BBMDs** (Anchorage). One disclosure = 2 buildings fixed. Likely Alaska Integrated Services (attribution pending).
+
+### Tier 2: Cloud-hosted tunnels (novel pattern, high impact)
+
+3. **`157.245.127.71` (DigitalOcean NYC)** — Homanit Lietuva, 130 scans, ATEX-regulated MDF plant. Disclosure already drafted.
+4. **`35.182.50.76` (AWS ca-central-1)** — Canada, 110 scans, rotating ports.
+5. **`54.234.107.205` (AWS us-east-1)** — Virginia, 8 scans, rotating ports.
+
+### Tier 3: High-persistence individual tunnels
+
+6. **`66.6.106.91`** — 110 scans, US, 8 rotating ports.
+7. **`98.222.234.160`** — 102 scans, US, 4 rotating ports.
+8. **`104.36.136.27` (internal-FDT)** — 949 scans, extreme persistence, Walker-pattern disclosure.
 
 ## Open questions for Cameron
 
