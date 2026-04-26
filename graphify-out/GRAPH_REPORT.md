@@ -88,12 +88,12 @@ Cohesion: 0.19
 Nodes (14): NCAA Bracket Prediction (March Mania), Log Loss and Calibration in Probabilistic Prediction, ARC-AGI Benchmark Page, AutoTrader Trading Bot Page, Kaggle Portfolio Overview Page, LLM Wiki Pattern (Karpathy) Page, Wiki Index — Master Catalog, SofaScope Production System Page (+6 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.18
-Nodes (11): Llama 3.3 70B 128K Context Window, Llama 3.3 70B — Meta Open-Weights LLM, Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader, Llama Model Family (1B/3B/8B/70B/405B), Llama 3.3 70B Sentiment Classification for AutoTrader, Ingest: ARC-AGI Benchmarking Harness, Ingest: AutoTrader Autonomous Paper Trading Bot, Ingest: Karpathy LLM Wiki Gist (+3 more)
-
-### Community 3 - "Community 3"
 Cohesion: 0.2
 Nodes (11): Groq Usage in AutoTrader 15-Min Sentiment Loop, Groq Ultra-Low Latency Token Generation, Groq LPU (Language Processing Unit) Hardware, Groq OpenAI-Compatible Chat Completions Endpoint, Groq — LLM Inference API, ARC-AGI Async LLM Test Harness, AutoTrader RSI+LLM Strategy, Cameron's Second Brain — Overview (+3 more)
+
+### Community 3 - "Community 3"
+Cohesion: 0.18
+Nodes (11): Llama 3.3 70B 128K Context Window, Llama 3.3 70B — Meta Open-Weights LLM, Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader, Llama Model Family (1B/3B/8B/70B/405B), Llama 3.3 70B Sentiment Classification for AutoTrader, Ingest: ARC-AGI Benchmarking Harness, Ingest: AutoTrader Autonomous Paper Trading Bot, Ingest: Karpathy LLM Wiki Gist (+3 more)
 
 ### Community 4 - "Community 4"
 Cohesion: 0.2
@@ -282,9 +282,9 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Wiki Index — Master Catalog` connect `Community 1` to `Community 0`, `Community 2`, `Community 3`?**
   _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **Why does `Groq — LLM Inference API` connect `Community 3` to `Community 1`, `Community 2`?**
+- **Why does `Groq — LLM Inference API` connect `Community 2` to `Community 1`, `Community 3`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 1`, `Community 2`?**
+- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 1`, `Community 3`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **What connects `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
