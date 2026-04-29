@@ -6,7 +6,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@cursor/sdk": "^0.8.0"
+    "@cursor/sdk": "^1.0.9"
   },
   "devDependencies": {
     "tsx": "^4.19.2",
