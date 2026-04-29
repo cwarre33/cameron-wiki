@@ -67,7 +67,11 @@ async function main() {
   const run = await agent.send(prompt);
 
   for await (const event of run.stream()) {
-    if (event.type === "text") process.stdout.write(event.text);
+    if (event.type === "assistant") {
+      for (const block of event.message.content) {
+        if (block.type === "text") process.stdout.write(block.text);
+      }
+    }
   }
 }
 
