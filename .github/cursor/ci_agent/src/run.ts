@@ -33,8 +33,12 @@ async function main() {
 
   // Stream events so the GitHub Actions log has useful breadcrumbs.
   for await (const event of run.stream()) {
-    if (event.type === "text") {
-      process.stdout.write(event.text);
+    if (event.type === "assistant") {
+      for (const block of event.message.content) {
+        if (block.type === "text") {
+          process.stdout.write(block.text);
+        }
+      }
     }
   }
 }
