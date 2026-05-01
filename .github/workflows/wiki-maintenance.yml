@@ -44,8 +44,8 @@ jobs:
 
       - name: Commit and push if changes exist
         run: |
-          git config user.name "Cameron Warren"
-          git config user.email "cwarren@example.com" # Placeholder email, update if needed
+          git config user.name "cwarre33"
+          git config user.email "cwarre33@alumni.uncc.edu"
           git add wiki/overview.md wiki/log.md wiki/index.md graphify-out/ .graph/
           if git diff --staged --quiet; then
             echo "No changes to commit."
