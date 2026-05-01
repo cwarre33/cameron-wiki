@@ -28,7 +28,7 @@ Complete automated monitoring system for exposed credentials across GitHub and i
 - `reports/history/YYYY-MM-DD-report.md` - Historical reports
 
 **Setup:**
-1. Set `GITHUB_PAT` secret in repo settings
+1. No repo secret needed — the workflow uses the built-in GitHub Actions token (`GITHUB_TOKEN`)
 2. Action runs automatically
 3. Reports auto-committed to repo
 
@@ -67,7 +67,7 @@ trufflehog git https://github.com/user/repo --config trufflehog-config.yml
 
 **Usage:**
 ```bash
-export GITHUB_PAT="github_pat_11..."
+export GITHUB_TOKEN="ghp_..."  # or GITHUB_PAT="ghp_..." for local runs
 python scripts/osint/trufflehog_scanner.py
 ```
 
@@ -113,10 +113,7 @@ cd scripts/osint
 
 ### GitHub Secret Monitoring (Automated)
 ```bash
-# Set secret in repo settings
-echo "GITHUB_PAT=github_pat_11..." >> .env
-
-# Push to trigger workflow
+# Push to trigger workflow (runs with GitHub Actions' built-in token)
 git push origin main
 ```
 
@@ -170,7 +167,8 @@ python -m scripts.osint.collect
 
 | Variable | Required For | Description |
 |----------|--------------|-------------|
-| `GITHUB_PAT` | GitHub Monitor, TruffleHog Scanner | GitHub Personal Access Token |
+| `GITHUB_TOKEN` | GitHub Monitor (Actions), local scripts | GitHub token (Actions provides automatically; local can use a PAT) |
+| `GITHUB_PAT` | Local scripts (optional) | Legacy alias for a GitHub token (PAT); prefer `GITHUB_TOKEN` |
 | `SHODAN_API_KEY` | ICS Scanner | Shodan API key |
 
 ### GitHub PAT Permissions

@@ -43,7 +43,7 @@ jobs:
 
       - name: Commit and push if changes exist
         run: |
-          git config user.name "Cameron Warren"
+          git config user.name "cwarre33"
           git config user.email "cwarre33@alumni.uncc.edu"
           git add .agents/skills/graphify/ .github/scripts/
           if git diff --staged --quiet; then
