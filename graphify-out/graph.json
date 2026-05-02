@@ -110,7 +110,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "readme \u2014 cameron-wiki",
       "id": "doc_readme"
     },
@@ -123,7 +123,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "claude.md \u2014 wiki schema & workflows",
       "id": "doc_claudemd"
     },
@@ -136,7 +136,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "graphify \u2014 knowledge graph skill",
       "id": "concept_graphify"
     },
@@ -149,7 +149,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "obsidian integration",
       "id": "concept_obsidian"
     },
@@ -191,7 +191,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "jaguar re-identification challenge",
       "id": "kaggle_jaguar_reidentification"
     },
@@ -204,7 +204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)",
       "id": "technique_metric_learning"
     },
@@ -217,7 +217,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "clip+faiss embedding retrieval",
       "id": "technique_clip_faiss"
     },
@@ -272,7 +272,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "llm wiki pattern (karpathy)",
       "id": "concept_llm_wiki_pattern"
     },
@@ -504,7 +504,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "sofascope production system",
       "id": "production_sofascope"
     },
@@ -671,7 +671,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "cameron kaggle profile (raw source)",
       "id": "source_cameron_kaggle_profile"
     },
@@ -684,7 +684,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "cameron's second brain \u2014 overview",
       "id": "overview_cameron_wiki"
     },
@@ -697,7 +697,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "second brain knowledge system",
       "id": "overview_second_brain"
     },
@@ -710,7 +710,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "sofascope visual search system",
       "id": "overview_sofascope_system"
     },
@@ -723,7 +723,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "arc-agi async llm test harness",
       "id": "overview_arc_agi_harness"
     },
@@ -736,7 +736,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "autotrader rsi+llm strategy",
       "id": "overview_autotrader_system"
     },
@@ -749,7 +749,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "kaggle competition portfolio (14 competitions)",
       "id": "overview_kaggle_portfolio"
     },
@@ -853,7 +853,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "wiki index \u2014 master catalog",
       "id": "index_master_catalog"
     },
@@ -866,7 +866,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "sofascope production system page",
       "id": "index_sofascope_page"
     },
@@ -879,7 +879,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "autotrader trading bot page",
       "id": "index_autotrader_page"
     },
@@ -892,7 +892,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "arc-agi benchmark page",
       "id": "index_arc_agi_benchmark_page"
     },
@@ -905,7 +905,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "llm wiki pattern (karpathy) page",
       "id": "index_llm_wiki_pattern_page"
     },
@@ -918,7 +918,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 1,
       "norm_label": "kaggle portfolio overview page",
       "id": "index_kaggle_portfolio_page"
     },
@@ -931,7 +931,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "groq \u2014 llm inference api",
       "id": "groq_tool"
     },
@@ -944,7 +944,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "groq lpu (language processing unit) hardware",
       "id": "groq_lpu_hardware"
     },
@@ -957,7 +957,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "groq usage in autotrader 15-min sentiment loop",
       "id": "groq_autotrader_use"
     },
@@ -970,7 +970,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "groq openai-compatible chat completions endpoint",
       "id": "groq_openai_compat"
     },
@@ -983,7 +983,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 1,
+      "community": 3,
       "norm_label": "groq ultra-low latency token generation",
       "id": "groq_latency_prop"
     },
@@ -1100,7 +1100,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)",
       "id": "kaggle_house_prices"
     },
@@ -1152,7 +1152,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "predicting heart disease \u2014 playground s6e2",
       "id": "kaggle_heart_disease"
     },
@@ -1191,7 +1191,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "march machine learning mania 2026",
       "id": "kaggle_march_mania"
     },
@@ -1204,7 +1204,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "graphify graph report",
       "id": "graph_report"
     },
@@ -1217,7 +1217,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "community: kaggle portfolio",
       "id": "graph_community_kaggle"
     },
@@ -1230,7 +1230,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "community: autotrader infrastructure",
       "id": "graph_community_autotrader"
     },
@@ -1243,7 +1243,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "community: language & nlp kaggle",
       "id": "graph_community_language_nlp"
     },
@@ -1256,7 +1256,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "community: wiki core",
       "id": "graph_community_wiki_core"
     },
@@ -1308,7 +1308,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "tensorflow decision forests (tfdf)",
       "id": "technique_tfdf"
     },
@@ -1321,7 +1321,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "realmlp + catboost + xgboost ensemble",
       "id": "technique_realmlp_catboost_xgb"
     },
@@ -1334,7 +1334,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "shap analysis for feature importance",
       "id": "technique_shap_analysis"
     },
@@ -1438,7 +1438,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "ncaa bracket prediction (march mania)",
       "id": "concept_bracket_prediction"
     },
@@ -1451,7 +1451,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 5,
+      "community": 1,
       "norm_label": "log loss and calibration in probabilistic prediction",
       "id": "concept_log_loss_calibration"
     },
@@ -1464,7 +1464,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "god node: wiki/index.md (14 edges \u2014 most connected)",
       "id": "graph_god_node_index"
     },
@@ -1477,7 +1477,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "god node: agentic trading system architecture (13 edges)",
       "id": "graph_god_node_agentic_trading"
     },
@@ -1490,7 +1490,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "hyperedge: tabular ml kaggle cluster (house prices + heart disease)",
       "id": "graph_hyperedge_tabular"
     },
@@ -1503,7 +1503,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "hyperedge: frontier reasoning benchmarks (aimo + arc-agi + cot)",
       "id": "graph_hyperedge_frontier_reasoning"
     },
@@ -1516,7 +1516,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 5,
       "norm_label": "graph fragmentation metric (0.400 \u2014 53 isolated nodes)",
       "id": "graph_fragmentation"
     }
@@ -1529,8 +1529,6 @@
       "source_file": "README.md",
       "source_location": "CLAUDE.md reference",
       "weight": 1.0,
-      "_src": "doc_readme",
-      "_tgt": "doc_claudemd",
       "source": "doc_readme",
       "target": "doc_claudemd"
     },
@@ -1541,8 +1539,6 @@
       "source_file": "CLAUDE.md",
       "source_location": "graphify section: 'graphify \u2192 wiki' workflow",
       "weight": 1.0,
-      "_src": "doc_claudemd",
-      "_tgt": "concept_llm_wiki_pattern",
       "source": "doc_claudemd",
       "target": "concept_llm_wiki_pattern"
     },
@@ -1553,8 +1549,6 @@
       "source_file": "CLAUDE.md",
       "source_location": "graphify skill section",
       "weight": 1.0,
-      "_src": "doc_claudemd",
-      "_tgt": "concept_graphify",
       "source": "doc_claudemd",
       "target": "concept_graphify"
     },
@@ -1565,8 +1559,6 @@
       "source_file": "CLAUDE.md",
       "source_location": "Obsidian integration section",
       "weight": 1.0,
-      "_src": "doc_claudemd",
-      "_tgt": "concept_obsidian",
       "source": "doc_claudemd",
       "target": "concept_obsidian"
     },
@@ -1577,8 +1569,6 @@
       "source_file": "CLAUDE.md",
       "source_location": "graphify section: 'graph and wiki together are more powerful than either alone'",
       "weight": 0.75,
-      "_src": "concept_graphify",
-      "_tgt": "concept_llm_wiki_pattern",
       "source": "concept_graphify",
       "target": "concept_llm_wiki_pattern"
     },
@@ -1589,8 +1579,6 @@
       "source_file": "CLAUDE.md",
       "source_location": "Both are visualization/navigation layers over the wiki vault",
       "weight": 0.7,
-      "_src": "concept_graphify",
-      "_tgt": "concept_obsidian",
       "source": "concept_graphify",
       "target": "concept_obsidian"
     },
@@ -1601,8 +1589,6 @@
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "frontmatter sources",
       "weight": 1.0,
-      "_src": "kaggle_jaguar_reidentification",
-      "_tgt": "source_cameron_kaggle_profile",
       "source": "kaggle_jaguar_reidentification",
       "target": "source_cameron_kaggle_profile"
     },
@@ -1613,8 +1599,6 @@
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context section",
       "weight": 1.0,
-      "_src": "kaggle_jaguar_reidentification",
-      "_tgt": "technique_metric_learning",
       "source": "kaggle_jaguar_reidentification",
       "target": "technique_metric_learning"
     },
@@ -1625,8 +1609,6 @@
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 CLIP-style vision encoders as backbone",
       "weight": 1.0,
-      "_src": "kaggle_jaguar_reidentification",
-      "_tgt": "technique_clip_faiss",
       "source": "kaggle_jaguar_reidentification",
       "target": "technique_clip_faiss"
     },
@@ -1637,8 +1619,6 @@
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 explicit wikilink to sofascope.md",
       "weight": 1.0,
-      "_src": "kaggle_jaguar_reidentification",
-      "_tgt": "production_sofascope",
       "source": "kaggle_jaguar_reidentification",
       "target": "production_sofascope"
     },
@@ -1649,8 +1629,6 @@
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 explicit wikilink citing CLIP+FAISS work in SofaScope",
       "weight": 1.0,
-      "_src": "technique_clip_faiss",
-      "_tgt": "production_sofascope",
       "source": "technique_clip_faiss",
       "target": "production_sofascope"
     },
@@ -1661,8 +1639,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: [[wiki/kaggle/deep-past-akkadian-translation.md|Deep Past]]",
       "weight": 1.0,
-      "_src": "concept_deep_past",
-      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_deep_past",
       "target": "doc_consensus_memory_adr"
     },
@@ -1673,8 +1649,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: Deep Past used MBR Decoding for translation consensus",
       "weight": 1.0,
-      "_src": "concept_deep_past",
-      "_tgt": "concept_mbr_decoding",
       "source": "concept_deep_past",
       "target": "concept_mbr_decoding"
     },
@@ -1685,8 +1659,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
       "weight": 1.0,
-      "_src": "concept_agentic_memory_retention",
-      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_agentic_memory_retention",
       "target": "doc_consensus_memory_adr"
     },
@@ -1697,8 +1669,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Agentic drift is the core risk addressed in memory retention open-question",
       "weight": 0.85,
-      "_src": "concept_agentic_memory_retention",
-      "_tgt": "concept_agentic_drift",
       "source": "concept_agentic_memory_retention",
       "target": "concept_agentic_drift"
     },
@@ -1709,8 +1679,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale: [[wiki/architectures/provider-adapter-pattern.md|Provider Adapter Pattern]]",
       "weight": 1.0,
-      "_src": "concept_provider_adapter_pattern",
-      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_provider_adapter_pattern",
       "target": "doc_consensus_memory_adr"
     },
@@ -1721,8 +1689,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale: Provider Adapter enables cross-examination of models",
       "weight": 1.0,
-      "_src": "concept_provider_adapter_pattern",
-      "_tgt": "rationale_consensus_anti_hallucination",
       "source": "concept_provider_adapter_pattern",
       "target": "rationale_consensus_anti_hallucination"
     },
@@ -1733,8 +1699,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "frontmatter related: [[wiki/decisions/arc-agi-adapters-vs-litellm.md]]",
       "weight": 1.0,
-      "_src": "concept_arc_agi_adapters_adr",
-      "_tgt": "doc_consensus_memory_adr",
       "source": "concept_arc_agi_adapters_adr",
       "target": "doc_consensus_memory_adr"
     },
@@ -1745,8 +1709,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Decision: MBR selection used for consensus memory distillation",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_mbr_decoding",
       "source": "doc_consensus_memory_adr",
       "target": "concept_mbr_decoding"
     },
@@ -1757,8 +1719,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "frontmatter related + Context + Related section",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_llm_review_pass",
       "source": "doc_consensus_memory_adr",
       "target": "concept_llm_review_pass"
     },
@@ -1769,8 +1729,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: [[wiki/trading/autotrader.md|AutoTrader]]",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_autotrader",
       "source": "doc_consensus_memory_adr",
       "target": "concept_autotrader"
     },
@@ -1781,8 +1739,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context section: 'Agentic Drift' introduced as concept",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "concept_agentic_drift",
       "source": "doc_consensus_memory_adr",
       "target": "concept_agentic_drift"
     },
@@ -1793,8 +1749,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale section",
       "weight": 1.0,
-      "_src": "doc_consensus_memory_adr",
-      "_tgt": "rationale_consensus_anti_hallucination",
       "source": "doc_consensus_memory_adr",
       "target": "rationale_consensus_anti_hallucination"
     },
@@ -1805,8 +1759,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Context: single-pass LLM review is the vulnerability enabling agentic drift",
       "weight": 0.85,
-      "_src": "concept_agentic_drift",
-      "_tgt": "concept_llm_review_pass",
       "source": "concept_agentic_drift",
       "target": "concept_llm_review_pass"
     },
@@ -1817,8 +1769,6 @@
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
       "source_location": "Rationale: MBR selection = anti-hallucination mechanism",
       "weight": 1.0,
-      "_src": "rationale_consensus_anti_hallucination",
-      "_tgt": "concept_mbr_decoding",
       "source": "rationale_consensus_anti_hallucination",
       "target": "concept_mbr_decoding"
     },
@@ -1827,8 +1777,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
-      "_src": "tech_persistent_model",
-      "_tgt": "tech_clip_faiss",
       "source": "tech_persistent_model",
       "target": "tech_clip_faiss"
     },
@@ -1839,8 +1787,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "overview_sofascope_system",
       "source": "overview_cameron_wiki",
       "target": "overview_sofascope_system"
     },
@@ -1851,8 +1797,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "overview_arc_agi_harness",
       "source": "overview_cameron_wiki",
       "target": "overview_arc_agi_harness"
     },
@@ -1863,8 +1807,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "overview_autotrader_system",
       "source": "overview_cameron_wiki",
       "target": "overview_autotrader_system"
     },
@@ -1875,8 +1817,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "overview_kaggle_portfolio",
       "source": "overview_cameron_wiki",
       "target": "overview_kaggle_portfolio"
     },
@@ -1887,8 +1827,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "related field",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "index_master_catalog",
       "source": "overview_cameron_wiki",
       "target": "index_master_catalog"
     },
@@ -1899,8 +1837,6 @@
       "source_file": "wiki/overview.md",
       "source_location": "Title and intro",
       "weight": 1.0,
-      "_src": "overview_cameron_wiki",
-      "_tgt": "overview_second_brain",
       "source": "overview_cameron_wiki",
       "target": "overview_second_brain"
     },
@@ -1911,8 +1847,6 @@
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
       "source_location": "Image embedding cluster note",
       "weight": 0.65,
-      "_src": "overview_sofascope_system",
-      "_tgt": "kaggle_csiro",
       "source": "overview_sofascope_system",
       "target": "kaggle_csiro"
     },
@@ -1923,8 +1857,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "related field",
       "weight": 1.0,
-      "_src": "overview_autotrader_system",
-      "_tgt": "groq_tool",
       "source": "overview_autotrader_system",
       "target": "groq_tool"
     },
@@ -1935,8 +1867,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_ingest_sofascope",
       "source": "log_wiki_activity",
       "target": "log_ingest_sofascope"
     },
@@ -1947,8 +1877,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_ingest_karpathy",
       "source": "log_wiki_activity",
       "target": "log_ingest_karpathy"
     },
@@ -1959,8 +1887,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_ingest_kaggle",
       "source": "log_wiki_activity",
       "target": "log_ingest_kaggle"
     },
@@ -1971,8 +1897,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_ingest_arc_agi",
       "source": "log_wiki_activity",
       "target": "log_ingest_arc_agi"
     },
@@ -1983,8 +1907,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_ingest_autotrader",
       "source": "log_wiki_activity",
       "target": "log_ingest_autotrader"
     },
@@ -1995,8 +1917,6 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 lint entry",
       "weight": 1.0,
-      "_src": "log_wiki_activity",
-      "_tgt": "log_lint_pass",
       "source": "log_wiki_activity",
       "target": "log_lint_pass"
     },
@@ -2007,8 +1927,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_motion_s",
       "source": "log_ingest_kaggle",
       "target": "kaggle_motion_s"
     },
@@ -2019,8 +1937,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_urban_flood",
       "source": "log_ingest_kaggle",
       "target": "kaggle_urban_flood"
     },
@@ -2031,8 +1947,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_stanford_rna",
       "source": "log_ingest_kaggle",
       "target": "kaggle_stanford_rna"
     },
@@ -2043,8 +1957,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_mabe",
       "source": "log_ingest_kaggle",
       "target": "kaggle_mabe"
     },
@@ -2055,8 +1967,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_house_prices",
       "source": "log_ingest_kaggle",
       "target": "kaggle_house_prices"
     },
@@ -2067,8 +1977,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_aimo",
       "source": "log_ingest_kaggle",
       "target": "kaggle_aimo"
     },
@@ -2079,8 +1987,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_google_tunix",
       "source": "log_ingest_kaggle",
       "target": "kaggle_google_tunix"
     },
@@ -2091,8 +1997,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_march_mania",
       "source": "log_ingest_kaggle",
       "target": "kaggle_march_mania"
     },
@@ -2103,8 +2007,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_csiro",
       "source": "log_ingest_kaggle",
       "target": "kaggle_csiro"
     },
@@ -2115,8 +2017,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "_src": "log_ingest_kaggle",
-      "_tgt": "kaggle_heart_disease",
       "source": "log_ingest_kaggle",
       "target": "kaggle_heart_disease"
     },
@@ -2127,8 +2027,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "_src": "log_lint_pass",
-      "_tgt": "groq_tool",
       "source": "log_lint_pass",
       "target": "groq_tool"
     },
@@ -2139,8 +2037,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "_src": "log_lint_pass",
-      "_tgt": "llama_3_3_70b",
       "source": "log_lint_pass",
       "target": "llama_3_3_70b"
     },
@@ -2151,8 +2047,6 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "_src": "log_lint_pass",
-      "_tgt": "kaggle_portfolio_overview",
       "source": "log_lint_pass",
       "target": "kaggle_portfolio_overview"
     },
@@ -2163,8 +2057,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Production Systems section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "index_sofascope_page",
       "source": "index_master_catalog",
       "target": "index_sofascope_page"
     },
@@ -2175,8 +2067,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Trading section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "index_autotrader_page",
       "source": "index_master_catalog",
       "target": "index_autotrader_page"
     },
@@ -2187,8 +2077,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Benchmarks section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "index_arc_agi_benchmark_page",
       "source": "index_master_catalog",
       "target": "index_arc_agi_benchmark_page"
     },
@@ -2199,8 +2087,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Methodology section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "index_llm_wiki_pattern_page",
       "source": "index_master_catalog",
       "target": "index_llm_wiki_pattern_page"
     },
@@ -2211,8 +2097,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "index_kaggle_portfolio_page",
       "source": "index_master_catalog",
       "target": "index_kaggle_portfolio_page"
     },
@@ -2223,8 +2107,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Tools section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "groq_tool",
       "source": "index_master_catalog",
       "target": "groq_tool"
     },
@@ -2235,8 +2117,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Models section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "llama_3_3_70b",
       "source": "index_master_catalog",
       "target": "llama_3_3_70b"
     },
@@ -2247,8 +2127,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_portfolio_overview",
       "source": "index_master_catalog",
       "target": "kaggle_portfolio_overview"
     },
@@ -2259,8 +2137,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_motion_s",
       "source": "index_master_catalog",
       "target": "kaggle_motion_s"
     },
@@ -2271,8 +2147,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_urban_flood",
       "source": "index_master_catalog",
       "target": "kaggle_urban_flood"
     },
@@ -2283,8 +2157,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_house_prices",
       "source": "index_master_catalog",
       "target": "kaggle_house_prices"
     },
@@ -2295,8 +2167,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_mabe",
       "source": "index_master_catalog",
       "target": "kaggle_mabe"
     },
@@ -2307,8 +2177,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_stanford_rna",
       "source": "index_master_catalog",
       "target": "kaggle_stanford_rna"
     },
@@ -2319,8 +2187,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_csiro",
       "source": "index_master_catalog",
       "target": "kaggle_csiro"
     },
@@ -2331,8 +2197,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_heart_disease",
       "source": "index_master_catalog",
       "target": "kaggle_heart_disease"
     },
@@ -2343,8 +2207,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_aimo",
       "source": "index_master_catalog",
       "target": "kaggle_aimo"
     },
@@ -2355,8 +2217,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_google_tunix",
       "source": "index_master_catalog",
       "target": "kaggle_google_tunix"
     },
@@ -2367,8 +2227,6 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "_src": "index_master_catalog",
-      "_tgt": "kaggle_march_mania",
       "source": "index_master_catalog",
       "target": "kaggle_march_mania"
     },
@@ -2379,8 +2237,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "groq_lpu_hardware",
       "source": "groq_tool",
       "target": "groq_lpu_hardware"
     },
@@ -2391,8 +2247,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Where used section",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "groq_autotrader_use",
       "source": "groq_tool",
       "target": "groq_autotrader_use"
     },
@@ -2403,8 +2257,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "groq_openai_compat",
       "source": "groq_tool",
       "target": "groq_openai_compat"
     },
@@ -2415,8 +2267,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "groq_latency_prop",
       "source": "groq_tool",
       "target": "groq_latency_prop"
     },
@@ -2427,8 +2277,6 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "related field + Why this model Speed via Groq",
       "weight": 1.0,
-      "_src": "groq_tool",
-      "_tgt": "llama_3_3_70b",
       "source": "groq_tool",
       "target": "llama_3_3_70b"
     },
@@ -2439,8 +2287,6 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "_src": "groq_lpu_hardware",
-      "_tgt": "groq_latency_prop",
       "source": "groq_lpu_hardware",
       "target": "groq_latency_prop"
     },
@@ -2451,8 +2297,6 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Why this model section",
       "weight": 1.0,
-      "_src": "llama_3_3_70b",
-      "_tgt": "llama_sentiment_use",
       "source": "llama_3_3_70b",
       "target": "llama_sentiment_use"
     },
@@ -2463,8 +2307,6 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Why this model section",
       "weight": 1.0,
-      "_src": "llama_3_3_70b",
-      "_tgt": "llama_cost_rationale",
       "source": "llama_3_3_70b",
       "target": "llama_cost_rationale"
     },
@@ -2475,8 +2317,6 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Key capabilities section",
       "weight": 1.0,
-      "_src": "llama_3_3_70b",
-      "_tgt": "llama_128k_context",
       "source": "llama_3_3_70b",
       "target": "llama_128k_context"
     },
@@ -2487,8 +2327,6 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Model family context section",
       "weight": 1.0,
-      "_src": "llama_3_3_70b",
-      "_tgt": "llama_model_family",
       "source": "llama_3_3_70b",
       "target": "llama_model_family"
     },
@@ -2499,8 +2337,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_motion_s",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_motion_s"
     },
@@ -2511,8 +2347,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_urban_flood",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_urban_flood"
     },
@@ -2523,8 +2357,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_house_prices",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_house_prices"
     },
@@ -2535,8 +2367,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_mabe",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_mabe"
     },
@@ -2547,8 +2377,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_stanford_rna",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_stanford_rna"
     },
@@ -2559,8 +2387,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_csiro",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_csiro"
     },
@@ -2571,8 +2397,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_heart_disease",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_heart_disease"
     },
@@ -2583,8 +2407,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_aimo",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_aimo"
     },
@@ -2595,8 +2417,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_google_tunix",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_google_tunix"
     },
@@ -2607,8 +2427,6 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "_src": "kaggle_portfolio_overview",
-      "_tgt": "kaggle_march_mania",
       "source": "kaggle_portfolio_overview",
       "target": "kaggle_march_mania"
     },
@@ -2619,8 +2437,6 @@
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
       "source_location": "Cameron's approach section",
       "weight": 1.0,
-      "_src": "kaggle_motion_s",
-      "_tgt": "technique_tfidf_knn",
       "source": "kaggle_motion_s",
       "target": "technique_tfidf_knn"
     },
@@ -2631,8 +2447,6 @@
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
       "source_location": "Key insight section",
       "weight": 1.0,
-      "_src": "kaggle_motion_s",
-      "_tgt": "technique_retrieval_vs_generation",
       "source": "kaggle_motion_s",
       "target": "technique_retrieval_vs_generation"
     },
@@ -2643,8 +2457,6 @@
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
       "source_location": "Related competitions \u2014 Motion/behavior cluster",
       "weight": 1.0,
-      "_src": "kaggle_motion_s",
-      "_tgt": "kaggle_mabe",
       "source": "kaggle_motion_s",
       "target": "kaggle_mabe"
     },
@@ -2655,8 +2467,6 @@
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
       "source_location": "Related competitions",
       "weight": 1.0,
-      "_src": "kaggle_motion_s",
-      "_tgt": "kaggle_google_tunix",
       "source": "kaggle_motion_s",
       "target": "kaggle_google_tunix"
     },
@@ -2667,8 +2477,6 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
       "weight": 1.0,
-      "_src": "kaggle_urban_flood",
-      "_tgt": "kaggle_stanford_rna",
       "source": "kaggle_urban_flood",
       "target": "kaggle_stanford_rna"
     },
@@ -2679,8 +2487,6 @@
       "source_file": "wiki/kaggle/urban-flood-modelling.md",
       "source_location": "Domain context section",
       "weight": 1.0,
-      "_src": "kaggle_urban_flood",
-      "_tgt": "concept_flood_geospatial",
       "source": "kaggle_urban_flood",
       "target": "concept_flood_geospatial"
     },
@@ -2691,8 +2497,6 @@
       "source_file": "wiki/kaggle/urban-flood-modelling.md",
       "source_location": "Related competitions",
       "weight": 1.0,
-      "_src": "kaggle_urban_flood",
-      "_tgt": "kaggle_csiro",
       "source": "kaggle_urban_flood",
       "target": "kaggle_csiro"
     },
@@ -2703,8 +2507,6 @@
       "source_file": "wiki/kaggle/house-prices-regression.md",
       "source_location": "Cameron's approach section",
       "weight": 1.0,
-      "_src": "kaggle_house_prices",
-      "_tgt": "technique_tfdf",
       "source": "kaggle_house_prices",
       "target": "technique_tfdf"
     },
@@ -2715,8 +2517,6 @@
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
       "source_location": "Related competitions \u2014 Tabular ML cluster",
       "weight": 1.0,
-      "_src": "kaggle_house_prices",
-      "_tgt": "kaggle_heart_disease",
       "source": "kaggle_house_prices",
       "target": "kaggle_heart_disease"
     },
@@ -2727,8 +2527,6 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "Related competitions \u2014 Tabular/prediction cluster",
       "weight": 1.0,
-      "_src": "kaggle_house_prices",
-      "_tgt": "kaggle_march_mania",
       "source": "kaggle_house_prices",
       "target": "kaggle_march_mania"
     },
@@ -2739,8 +2537,6 @@
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
       "source_location": "What it is section",
       "weight": 1.0,
-      "_src": "kaggle_mabe",
-      "_tgt": "concept_mouse_behavior",
       "source": "kaggle_mabe",
       "target": "concept_mouse_behavior"
     },
@@ -2751,8 +2547,6 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Techniques explored section",
       "weight": 1.0,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "technique_pseudo_labeling",
       "source": "kaggle_stanford_rna",
       "target": "technique_pseudo_labeling"
     },
@@ -2763,8 +2557,6 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Techniques explored section",
       "weight": 1.0,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "technique_multigpu_embeddings",
       "source": "kaggle_stanford_rna",
       "target": "technique_multigpu_embeddings"
     },
@@ -2775,8 +2567,6 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Domain notes section",
       "weight": 1.0,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "concept_rna_folding",
       "source": "kaggle_stanford_rna",
       "target": "concept_rna_folding"
     },
@@ -2787,8 +2577,6 @@
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
       "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
       "weight": 1.0,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "kaggle_csiro",
       "source": "kaggle_stanford_rna",
       "target": "kaggle_csiro"
     },
@@ -2799,8 +2587,6 @@
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
       "source_location": null,
       "weight": 0.65,
-      "_src": "kaggle_stanford_rna",
-      "_tgt": "kaggle_aimo",
       "source": "kaggle_stanford_rna",
       "target": "kaggle_aimo"
     },
@@ -2811,8 +2597,6 @@
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
       "source_location": "What it is section",
       "weight": 1.0,
-      "_src": "kaggle_csiro",
-      "_tgt": "concept_biomass_prediction",
       "source": "kaggle_csiro",
       "target": "concept_biomass_prediction"
     },
@@ -2823,8 +2607,6 @@
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
       "source_location": "Cameron's notebooks \u2014 realmlp-cat-xgb notebook",
       "weight": 1.0,
-      "_src": "kaggle_heart_disease",
-      "_tgt": "technique_realmlp_catboost_xgb",
       "source": "kaggle_heart_disease",
       "target": "technique_realmlp_catboost_xgb"
     },
@@ -2835,8 +2617,6 @@
       "source_file": "wiki/kaggle/playground-s6e2-heart-disease.md",
       "source_location": "Approach highlights section",
       "weight": 1.0,
-      "_src": "kaggle_heart_disease",
-      "_tgt": "technique_shap_analysis",
       "source": "kaggle_heart_disease",
       "target": "technique_shap_analysis"
     },
@@ -2847,8 +2627,6 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "Related competitions \u2014 Tabular/prediction cluster",
       "weight": 1.0,
-      "_src": "kaggle_heart_disease",
-      "_tgt": "kaggle_march_mania",
       "source": "kaggle_heart_disease",
       "target": "kaggle_march_mania"
     },
@@ -2859,8 +2637,6 @@
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
       "source_location": "What it is section",
       "weight": 1.0,
-      "_src": "kaggle_aimo",
-      "_tgt": "concept_math_olympiad_reasoning",
       "source": "kaggle_aimo",
       "target": "concept_math_olympiad_reasoning"
     },
@@ -2871,8 +2647,6 @@
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
       "source_location": "Context \u2014 top teams used extended chain-of-thought",
       "weight": 1.0,
-      "_src": "kaggle_aimo",
-      "_tgt": "technique_chain_of_thought",
       "source": "kaggle_aimo",
       "target": "technique_chain_of_thought"
     },
@@ -2883,8 +2657,6 @@
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
       "source_location": "Related competitions",
       "weight": 1.0,
-      "_src": "kaggle_aimo",
-      "_tgt": "kaggle_google_tunix",
       "source": "kaggle_aimo",
       "target": "kaggle_google_tunix"
     },
@@ -2895,8 +2667,6 @@
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
       "source_location": "What it is section",
       "weight": 1.0,
-      "_src": "kaggle_google_tunix",
-      "_tgt": "technique_chain_of_thought",
       "source": "kaggle_google_tunix",
       "target": "technique_chain_of_thought"
     },
@@ -2907,8 +2677,6 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "What it is section",
       "weight": 1.0,
-      "_src": "kaggle_march_mania",
-      "_tgt": "concept_bracket_prediction",
       "source": "kaggle_march_mania",
       "target": "concept_bracket_prediction"
     },
@@ -2919,8 +2687,6 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": "Context section",
       "weight": 1.0,
-      "_src": "kaggle_march_mania",
-      "_tgt": "concept_log_loss_calibration",
       "source": "kaggle_march_mania",
       "target": "concept_log_loss_calibration"
     },
@@ -2931,8 +2697,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_community_kaggle",
       "source": "graph_report",
       "target": "graph_community_kaggle"
     },
@@ -2943,8 +2707,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_community_autotrader",
       "source": "graph_report",
       "target": "graph_community_autotrader"
     },
@@ -2955,8 +2717,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_community_language_nlp",
       "source": "graph_report",
       "target": "graph_community_language_nlp"
     },
@@ -2967,8 +2727,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_community_wiki_core",
       "source": "graph_report",
       "target": "graph_community_wiki_core"
     },
@@ -2979,8 +2737,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "God Nodes section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_god_node_index",
       "source": "graph_report",
       "target": "graph_god_node_index"
     },
@@ -2991,8 +2747,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "God Nodes section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_god_node_agentic_trading",
       "source": "graph_report",
       "target": "graph_god_node_agentic_trading"
     },
@@ -3003,8 +2757,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Knowledge Gaps section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_fragmentation",
       "source": "graph_report",
       "target": "graph_fragmentation"
     },
@@ -3015,8 +2767,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Hyperedges section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_hyperedge_tabular",
       "source": "graph_report",
       "target": "graph_hyperedge_tabular"
     },
@@ -3027,8 +2777,6 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Hyperedges section",
       "weight": 1.0,
-      "_src": "graph_report",
-      "_tgt": "graph_hyperedge_frontier_reasoning",
       "source": "graph_report",
       "target": "graph_hyperedge_frontier_reasoning"
     },
@@ -3039,8 +2787,6 @@
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
       "source_location": "Key insight section",
       "weight": 1.0,
-      "_src": "technique_tfidf_knn",
-      "_tgt": "technique_retrieval_vs_generation",
       "source": "technique_tfidf_knn",
       "target": "technique_retrieval_vs_generation"
     },
@@ -3051,8 +2797,6 @@
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
       "source_location": null,
       "weight": 0.62,
-      "_src": "technique_tfidf_knn",
-      "_tgt": "technique_pseudo_labeling",
       "source": "technique_tfidf_knn",
       "target": "technique_pseudo_labeling"
     },
@@ -3063,8 +2807,6 @@
       "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
       "source_location": null,
       "weight": 0.7,
-      "_src": "technique_realmlp_catboost_xgb",
-      "_tgt": "concept_log_loss_calibration",
       "source": "technique_realmlp_catboost_xgb",
       "target": "concept_log_loss_calibration"
     }
