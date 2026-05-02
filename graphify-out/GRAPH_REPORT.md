@@ -1,4 +1,4 @@
-# Graph Report - .  (2026-05-01)
+# Graph Report - .  (2026-05-02)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -96,12 +96,12 @@ Cohesion: 0.18
 Nodes (11): Llama 3.3 70B 128K Context Window, Llama 3.3 70B — Meta Open-Weights LLM, Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader, Llama Model Family (1B/3B/8B/70B/405B), Llama 3.3 70B Sentiment Classification for AutoTrader, Ingest: ARC-AGI Benchmarking Harness, Ingest: AutoTrader Autonomous Paper Trading Bot, Ingest: Karpathy LLM Wiki Gist (+3 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.2
-Nodes (10): Community: AutoTrader Infrastructure, Community: Kaggle Portfolio, Community: Language & NLP Kaggle, Community: Wiki Core, Graph Fragmentation Metric (0.400 — 53 isolated nodes), God Node: Agentic Trading System Architecture (13 edges), God Node: wiki/index.md (14 edges — most connected), Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT) (+2 more)
-
-### Community 5 - "Community 5"
 Cohesion: 0.31
 Nodes (10): Agentic Drift (hallucination compounding in memory), Open Question — Agentic Memory Retention Strategies, ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI, AutoTrader — Autonomous Paper Trading Bot, Deep Past — Akkadian Translation (Kaggle), LLM Review Pass Before Rotation, MBR Decoding (Minimum Bayes Risk), Provider Adapter Pattern (Multi-LLM) (+2 more)
+
+### Community 5 - "Community 5"
+Cohesion: 0.2
+Nodes (10): Community: AutoTrader Infrastructure, Community: Kaggle Portfolio, Community: Language & NLP Kaggle, Community: Wiki Core, Graph Fragmentation Metric (0.400 — 53 isolated nodes), God Node: Agentic Trading System Architecture (13 edges), God Node: wiki/index.md (14 edges — most connected), Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT) (+2 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.5
