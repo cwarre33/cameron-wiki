@@ -39,7 +39,7 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 - Sources ingested: 7
 - Wiki pages: 72
-- Last maintenance: 2026-05-08 21:11 UTC
+- Last maintenance: 2026-05-09 03:46 UTC
 
 
 ## Strongest areas (so far)
