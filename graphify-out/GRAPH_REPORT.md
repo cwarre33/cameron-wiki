@@ -9,7 +9,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1434404d`
+- Built from commit: `89a30831`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -110,16 +110,16 @@ Cohesion: 0.33
 Nodes (6): ARC-AGI Async LLM Test Harness, AutoTrader RSI+LLM Strategy, Cameron's Second Brain — Overview, Kaggle Competition Portfolio (14 competitions), Second Brain Knowledge System, SofaScope Visual Search System
 
 ### Community 6 - "Community 6"
+Cohesion: 0.6
+Nodes (5): Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, CLAUDE.md — Wiki Schema & Workflows, README — cameron-wiki
+
+### Community 7 - "Community 7"
 Cohesion: 0.5
 Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Cameron Kaggle Profile (raw source), CLIP+FAISS Embedding Retrieval, Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)
 
-### Community 7 - "Community 7"
+### Community 8 - "Community 8"
 Cohesion: 0.4
 Nodes (5): Ingest: ARC-AGI Benchmarking Harness, Ingest: AutoTrader Autonomous Paper Trading Bot, Ingest: Karpathy LLM Wiki Gist, Ingest: SofaScope AI-Powered Furniture Visual Search, Wiki Activity Log — Append-Only
-
-### Community 8 - "Community 8"
-Cohesion: 0.6
-Nodes (5): Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, CLAUDE.md — Wiki Schema & Workflows, README — cameron-wiki
 
 ## Knowledge Gaps
 - **69 isolated node(s):** `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool`, `ARC Prize 2025`, `Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)` (+64 more)
@@ -133,7 +133,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.126) - this node is a cross-community bridge._
 - **Why does `Groq — LLM Inference API` connect `Community 2` to `Community 1`, `Community 5`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 1`, `Community 7`?**
+- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 8`, `Community 1`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **What connects `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
