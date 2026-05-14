@@ -9,7 +9,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9289309a`
+- Built from commit: `ac2cd18c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -109,12 +109,12 @@ Cohesion: 0.32
 Nodes (8): NCAA Bracket Prediction (March Mania), Log Loss and Calibration in Probabilistic Prediction, Predicting Heart Disease — Playground S6E2, House Prices — Advanced Regression Techniques (Rank ~19), March Machine Learning Mania 2026, RealMLP + CatBoost + XGBoost Ensemble, SHAP Analysis for Feature Importance, TensorFlow Decision Forests (TFDF)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.5
-Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Cameron Kaggle Profile (raw source), CLIP+FAISS Embedding Retrieval, Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)
-
-### Community 7 - "Community 7"
 Cohesion: 0.6
 Nodes (5): Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, CLAUDE.md — Wiki Schema & Workflows, README — cameron-wiki
+
+### Community 7 - "Community 7"
+Cohesion: 0.5
+Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Cameron Kaggle Profile (raw source), CLIP+FAISS Embedding Retrieval, Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)
 
 ## Knowledge Gaps
 - **69 isolated node(s):** `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool`, `ARC Prize 2025`, `Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)` (+64 more)
