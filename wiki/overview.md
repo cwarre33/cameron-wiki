@@ -37,9 +37,9 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 7 + May 2026 Jira/git sweep (complete)
-- Wiki pages: 84
-- Last maintenance: 2026-05-20 (full ingest + commit; CI maintenance 11:14 UTC)
+- Sources ingested: 7
+- Wiki pages: 83
+- Last maintenance: 2026-05-20 15:48 UTC
 
 
 ## Strongest areas (so far)
