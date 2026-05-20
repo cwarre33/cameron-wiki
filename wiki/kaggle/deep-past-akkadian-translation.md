@@ -4,9 +4,9 @@ type: kaggle-competition
 status: active
 visibility: public
 sources: [raw/kaggle/cameron-kaggle-profile.md]
-related: [[wiki/techniques/mbr-decoding.md]], [[wiki/models/byt5.md]], [[wiki/kaggle/arc-agi-benchmarking.md]]
+related: [[wiki/techniques/mbr-decoding.md]], [[wiki/models/byt5.md]], [[wiki/kaggle/arc-agi-benchmarking.md]], [[wiki/architectures/mai-kaggle-harness.md]]
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-05-20
 confidence: high
 tags: [kaggle, nlp, translation, akkadian, byt5, mbr, low-resource, leakage]
 ---

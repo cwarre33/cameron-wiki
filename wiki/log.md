@@ -5,6 +5,54 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-05-20] ingest | Full remaining work sweep before commit
+
+Source: SellSmartTools, KaggleCompetition/harness, LifeCycle, Jira FLSP-102/132/133
+Pages created:
+  - wiki/production-systems/sellsmart-copilot.md
+  - wiki/integrations/sellsmart-netsuite-rest-tool.md
+  - wiki/production-systems/zendesk-returns-reporting.md
+  - wiki/architectures/mai-kaggle-harness.md
+  - wiki/architectures/lifecycle-self-sustaining-agent.md
+Pages updated:
+  - wiki/kaggle/deep-past-akkadian-translation.md (link to mai-harness)
+  - wiki/work-log/2026-05-period-summary.md (additional ingests table)
+  - wiki/overview.md, wiki/index.md
+
+---
+
+## [2026-05-20] ingest | May 2026 catch-up — Jira + git sweep across FLS production work
+
+Source: Atlassian MCP (Jira assignee/reporter queries, Confluence CQL) + local git history across CleanDevEnvironment repos
+Pages created:
+  - wiki/work-log/2026-05-period-summary.md
+  - wiki/production-systems/inventory-lookup-clearview.md
+  - wiki/production-systems/pilot-database-migration.md
+  - wiki/production-systems/dedicated-agent-assignment.md
+  - wiki/integrations/netsuite-zendesk-customer-sync.md
+  - wiki/architectures/kimi-agentic-harness.md
+Pages updated:
+  - wiki/overview.md (knowledge state, strongest areas, May highlights, gaps)
+  - wiki/index.md (new Production Systems, Architectures, Integrations, Work Log sections)
+
+Key Jira items captured:
+  - FLSP-159/221 — Inventory Lookup / ClearView, sales feedback (Carmen Wilkins)
+  - FLSP-232 — Pilot database migration spec (NetSuite + iSeries → Postgres)
+  - FLSP-163/162 — Dedicated Agent Assignment (Zendesk Lambda)
+  - FLSM-20 — NetSuite→Zendesk customer sync Task Server spec
+  - FLSP-160 — Vendor-specific ticket routing scoping
+  - FLSP-111 Done, FLSP-102/134 Done
+
+Git findings:
+  - No commits in tracked repos during 2026-05-01→20
+  - Active local edits: NetSuite/Inventory-Lookup (2026-05-20), Zendesk/DedicatedAgentAssignment
+  - Uncommitted WIP: SellSmartTools/sellsmart-netsuite-rest-tool
+  - auto-harness last commit 2026-04-25 (feature/kimi-harness, 52/52 tests)
+
+Contradictions: None.
+
+---
+
 ## [2026-04-21] decision | Disclosure communication humanization — atuinsh/atuin incident
 
 Source: GitHub Issue #3438 + maintainer response emails + block notification

@@ -6,7 +6,7 @@ visibility: public
 sources: []
 related: [[index]], [[methodology/llm-wiki-pattern.md]]
 created: 2026-04-17
-updated: 2026-04-17
+updated: 2026-05-20
 confidence: high
 tags: [meta, overview, second-brain]
 ---
@@ -37,22 +37,36 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 7
-- Wiki pages: 72
-- Last maintenance: 2026-05-20 11:14 UTC
+- Sources ingested: 7 + May 2026 Jira/git sweep (complete)
+- Wiki pages: 84
+- Last maintenance: 2026-05-20 (full ingest + commit; CI maintenance 11:14 UTC)
 
 
 ## Strongest areas (so far)
 
 - **Visual search systems** — SofaScope CLIP+FAISS pipeline fully documented with ADRs, technique pages, interview prep
+- **FLS production engineering** — Inventory Lookup, pilot DB migration, Dedicated Agent, SellSmart Copilot, Zendesk returns reporting
 - **Knowledge management methodology** — LLM Wiki pattern, RAG comparison, Cameron-specific setup
-- **LLM evaluation infrastructure** — ARC-AGI harness with async concurrency, provider adapter pattern, cost tracking
+- **LLM evaluation infrastructure** — ARC-AGI harness + Kimi agentic harness (TVC loop, benchmark gate)
 - **Algorithmic trading** — AutoTrader RSI+LLM strategy, Alpaca integration, agentic feedback loop
 - **Kaggle competition work** — all 14 competitions documented across NLP, bioinformatics, CV, math reasoning, trading, sports analytics, and wildlife ID
+- **Security OSINT** — 6-tier credential discovery methodology, ICS exposure case studies, disclosure protocol ADRs
+
+## Recent work (May 2026)
+
+See [[work-log/2026-05-period-summary.md]] for the full catch-up. Highlights:
+
+- **Inventory Lookup / ClearView** — Next.js replacement for Review All Barcodes suitelet; sales feedback implemented (FLSP-159, FLSP-221)
+- **Pilot database migration** — NetSuite + iSeries → Postgres one-time ETL spec and implementation (FLSP-232)
+- **Dedicated Agent Assignment** — AWS Lambda + Zendesk webhook for CCS ticket routing (FLSP-163)
+- **Customer sync spec** — SmartConnect → Task Server migration documented (FLSM-20)
+- **auto-harness** — TVC agent loop with Ollama + 4 benchmark adapters (April; branch active)
 
 ## Known gaps
 
-- FLS production systems (CRR, SellSmart, transcript pipeline) — deferred, will be ingested when docs are properly gathered
+- **SellSmart Copilot REST tool** — ingested (WIP uncommitted in SellSmartTools)
+- CRR deep-dive — still deferred
 - Labs, datasets, people — mostly empty; will populate through future ingests
 - Hull Tactical ($100k, deadline 2026-06-16) — active, outcome TBD
 - Most Kaggle stubs lack notebook-level detail (Kaggle SPA blocks API content access)
+- FLSM-20 Task Server implementation — spec only, code not started

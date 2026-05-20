@@ -8,7 +8,12 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Status | Visibility | Updated |
 |------|---------|--------|------------|---------|
+| [Dedicated Agent Assignment — Zendesk CCS Automation](production-systems/dedicated-agent-assignment.md) | AWS Lambda + Zendesk webhook assigns CCS/Vendor Care tickets to requester's dedicated_agent user field. Org→user propagation via bulk scripts. FLSP-1... | active | fls-internal | 2026-05-20 |
+| [Inventory Lookup (ClearView) — NetSuite Barcode Intelligence](production-systems/inventory-lookup-clearview.md) | Next.js replacement for Review All Barcodes suitelet. Barcode scan/lookup, all-items search, timeline, case notes, pilot DB mode. FLSP-159/221. | active | fls-internal | 2026-05-20 |
+| [Pilot Database Migration — NetSuite + Legacy → Postgres](production-systems/pilot-database-migration.md) | One-time ETL: NetSuite customers/transactions/inventory + iSeries legacy notes → Postgres pilot DB for v1 dev without live sync. FLSP-232. | active | fls-internal | 2026-05-20 |
 | [SofaScope — AI-Powered Furniture Visual Search](production-systems/sofascope.md) | Live pilot at Furnitureland South (FLS). Dual-modality search over a 200,000-product catalog: fast metadata-weighted text search and CLIP + FAISS i... | active | public | 2026-04-17 |
+| [SellSmart Copilot Studio Tools](production-systems/sellsmart-copilot.md) | NetSuite→Copilot datasync, diagnostics, improvements loop, and WIP live REST tool. Bitbucket sellsmart-tools. | active | fls-internal | 2026-05-20 |
+| [Zendesk Returns Reporting (D2K + Choros)](production-systems/zendesk-returns-reporting.md) | FLSP-102 epic: Francisco D2K agent concessions report + Choros damaged inventory SuiteQL parity (651/652 barcodes). Done. | active | fls-internal | 2026-05-20 |
 
 ## Architectures
 *Serverless patterns, agent systems, transformer family, retrieval systems.*
@@ -16,6 +21,9 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Agentic Trading System Architecture](architectures/agentic-trading-system.md) | Pattern for a containerized, scheduled LLM-driven trading agent with persistent memory and a self-improvement feedback loop. Implemented in wiki/tr... | 2026-04-17 |
+| [Kimi-K2.6 Agentic Harness (auto-harness)](architectures/kimi-agentic-harness.md) | TVC (Test-Verify-Correct) agent loop with Ollama execution, skill store, and benchmark gate (SWE-bench, Terminal-Bench, BrowseComp, GAIA). 52 tests... | 2026-05-20 |
+| [LifeCycle — Self-Sustaining AI Agent](architectures/lifecycle-self-sustaining-agent.md) | Agent accrues rent, earns via Bountycaster/PayrollEscrow on Base mainnet, tier-upgrades Ollama→Claude at 100 USDC. GitHub Actions heartbeat. | 2026-05-20 |
+| [MAI Harness — Reusable Kaggle Competition Framework](architectures/mai-kaggle-harness.md) | Hydra-configured sklearn+PyTorch competition scaffold: BaseTask ABC, CLI train/predict/submit, NIM research brief. KaggleCompetition repo WIP. | 2026-05-20 |
 | [Provider Adapter Pattern (Multi-LLM)](architectures/provider-adapter-pattern.md) | A strategy pattern for abstracting LLM provider APIs behind a uniform interface. Each provider (OpenAI, Anthropic, Gemini, Grok) gets its own adapt... | 2026-04-17 |
 
 ## Techniques
@@ -39,6 +47,8 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Alpaca API Integration](integrations/alpaca-api.md) | Alpaca is a commission-free stock trading API. Offers separate paper trading and live trading environments with identical API interfaces — swap cre... | 2026-04-17 |
+| [NetSuite → Zendesk Customer Sync (Task Server)](integrations/netsuite-zendesk-customer-sync.md) | Spec to replace SmartConnect NS→Zendesk user sync with Task Server job. Upsert on external_id, writeback to custentity_zendesk_user_id_eone. FLSM-20. | 2026-05-20 |
+| [SellSmart NetSuite REST Tool (Copilot Studio)](integrations/sellsmart-netsuite-rest-tool.md) | OpenAPI 3 live SuiteQL tool: getProductContextView, getFieldOptions, getInventoryTiers. Complements CSV datasync. WIP uncommitted. | 2026-05-20 |
 
 ## Papers
 *Formal published research summaries.*
@@ -164,6 +174,13 @@ Master catalog of all wiki pages. Updated automatically.
 | [Responsible Disclosure — Shared Integrator Endpoint 216.67.73.166 (Anchorage AK)](open-questions/acsalaska-216-67-73-166-2026-04-21.md) | A single public IP — `216.67.73.166` — appears as a persistent BACnet Foreign Device Table (FDT) entry on two different internet-facing Delta Contr... | 2026-04-21 |
 | [Responsible Disclosure — Walker Medical Building BACnet BBMD](open-questions/walkermedical-disclosure-2026-04-19.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at the Walker Medical Building, 12855 North Forty Drive, Town and Count... | 2026-04-20 |
 | [Scottsboro Electric Power Board — Internet-Exposed JCI NAE Controllers (Deep Dive)](open-questions/scottsboro-electric-power-board-2026-04-20.md) | | Layer | Evidence | Source | | 2026-04-20 |
+
+## Work Log
+*Period summaries of activity across Jira, git, and local repos.*
+
+| Page | Summary | Updated |
+|------|---------|---------|
+| [Work Period Summary — May 2026](work-log/2026-05-period-summary.md) | Catch-up ingest 2026-05-01→20: Inventory Lookup, pilot DB migration, Dedicated Agent, FLSM-20 spec, auto-harness, git/repo activity table. | 2026-05-20 |
 
 ## Methodology
 *How this wiki system works.*
