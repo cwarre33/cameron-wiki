@@ -1,0 +1,284 @@
+{
+  "timestamp": "2026-04-21T18:40:37.817560",
+  "discoveries": [
+    {
+      "timestamp": "2026-04-21T18:40:36.079720",
+      "repo": "totaljs/superadmin",
+      "file": "private/superadmin.key",
+      "url": "https://github.com/totaljs/superadmin/blob/46d7d59e3a834bdeee9a6436d0c82bfb50e74294/private/superadmin.key",
+      "search_target": "extension:key path:private",
+      "secrets": [
+        {
+          "type": "AWS Secret",
+          "secret": "MIIEvgIBADANBgkqhkiG...",
+          "line": 2
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "ExTmQiP+AH66Q4q+e+V+...",
+          "line": 3
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "7inXzcON+r2ZRVqud0yR...",
+          "line": 4
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "SesCGC37UuDyCuRpybpl...",
+          "line": 5
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "6aN6pGzvaQuv6IkrXce0...",
+          "line": 6
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "Mk9ZDuUvMYssonycw8nG...",
+          "line": 7
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "bFVvuAv9AgMBAAECggEA...",
+          "line": 8
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "DKaAmIbVOOy1efTZyZhz...",
+          "line": 9
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "IXIkX16SAcXnM9wn3XTY...",
+          "line": 10
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "83P9TiQwCKXtgdiEoyP8...",
+          "line": 11
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "rOx8qyA0RKxcIH7yiibn...",
+          "line": 12
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "ZJivvR277WY5X+QiygGz...",
+          "line": 13
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "8HQ4FNpPzDxicW2ojmB4...",
+          "line": 14
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "4lipGexvjC4g2jIgJNuI...",
+          "line": 15
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "ZYRsykS6i6439Rr7M5wc...",
+          "line": 16
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "SABnuS4/jjMaJog1JCcl...",
+          "line": 17
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "NilVfyLvXZsVtTYjhiNK...",
+          "line": 18
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "EFKwQYC/VwKBgQCRP2rH...",
+          "line": 19
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "kLuJNRwHClBloLosebV5...",
+          "line": 20
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "flsFKyQ64YAbqp8eF9j+...",
+          "line": 21
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "su6GzNdJksUz2Sy4G1VY...",
+          "line": 22
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "UP12G+zx+TTSvovSHPoC...",
+          "line": 23
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "fgsz6ZVGVcfKlOodIVR3...",
+          "line": 24
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "qkbyMzz/GruVRiaAuMAp...",
+          "line": 25
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "nuGSpvvi+2B94IV6k6vT...",
+          "line": 26
+        },
+        {
+          "type": "Private Key",
+          "secret": "-----BEGIN PRIVATE K...",
+          "line": 1
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-04-21T18:40:36.635910",
+      "repo": "ettfemnio/dbd-server",
+      "file": "private/privatekey.key",
+      "url": "https://github.com/ettfemnio/dbd-server/blob/cf53a58aa8b145d423c2f2255c70f9660b876ed9/private/privatekey.key",
+      "search_target": "extension:key path:private",
+      "secrets": [
+        {
+          "type": "AWS Secret",
+          "secret": "MIIEvQIBADANBgkqhkiG...",
+          "line": 2
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "x2lMrZR5f9dXsbsrxVSt...",
+          "line": 3
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "yUz+RDw3mW40QcEWoZau...",
+          "line": 4
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "EyN/5IMy1s7o82DIF9A0...",
+          "line": 5
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "YmH6uyYwAhvM7EXJO6Dw...",
+          "line": 6
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "OIO+EDejy2I2TywbPOn/...",
+          "line": 7
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "cgTVWM4lAgMBAAECggEA...",
+          "line": 8
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "sZV5uHLUHg6fAmJ0Hn1h...",
+          "line": 9
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "3kmOUKqXjL2c1ZShpTeM...",
+          "line": 10
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "Vunks5uLtK9dZAO6d9OX...",
+          "line": 11
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "IBFltfrvKLxwZtkgmp4Y...",
+          "line": 12
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "0TZGk7M7YlA9ETtMDkZu...",
+          "line": 13
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "SDsXlKDK4FI3V/AAzCvn...",
+          "line": 14
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "kKnVZF8dWHL6H09n+WB/...",
+          "line": 15
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "+yffDxdw3Yxtc9fMP78a...",
+          "line": 16
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "Lh/KA6bUGiGIi/GNhA6v...",
+          "line": 17
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "qWa2m5NXU6QGlo4r+dzv...",
+          "line": 18
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "f2WdRp+l1QKBgQC+sr7Z...",
+          "line": 19
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "Cj57y/kg+hgGA7JVRGS0...",
+          "line": 20
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "kK0uMYAjXW5NhqatJy1d...",
+          "line": 21
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "tc+1wbUA0Rdm3fE6MTGx...",
+          "line": 22
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "P7O4SGy5R8vzzCbQr4SY...",
+          "line": 23
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "UeBRUjYENg5YlDnM4yFn...",
+          "line": 24
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "GomBvZ5B/a1Tm/g+gSzq...",
+          "line": 25
+        },
+        {
+          "type": "AWS Secret",
+          "secret": "5DdOm6ZRr3Gc2NJ6ytVx...",
+          "line": 26
+        },
+        {
+          "type": "Private Key",
+          "secret": "-----BEGIN PRIVATE K...",
+          "line": 1
+        }
+      ]
+    }
+  ],
+  "files_checked": 5
+}

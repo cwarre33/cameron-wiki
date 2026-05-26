@@ -8,7 +8,12 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Status | Visibility | Updated |
 |------|---------|--------|------------|---------|
+| [Dedicated Agent Assignment — Zendesk CCS Automation](production-systems/dedicated-agent-assignment.md) | Automatically assigns incoming CCS and Vendor Care tickets to the dedicated agent stored on the requester's user field (`dedicated_agent`), using A... | active | fls-internal | 2026-05-20 |
+| [Inventory Lookup (ClearView) — NetSuite Barcode Intelligence](production-systems/inventory-lookup-clearview.md) | Modern replacement and extension of the NetSuite Review All Barcodes suitelet. Scan or enter a barcode to retrieve full inventory context: item det... | active | fls-internal | 2026-05-20 |
+| [Pilot Database Migration — NetSuite + Legacy → Postgres](production-systems/pilot-database-migration.md) | One-time ETL pipeline to populate a non-prod Postgres pilot database with NetSuite customer/transaction/inventory data plus legacy notes from iSeri... | active | fls-internal | 2026-05-20 |
+| [SellSmart Copilot Studio Tools](production-systems/sellsmart-copilot.md) | Tooling for the SellSmart Microsoft Copilot Studio bot at FLS — syncing NetSuite product data into the knowledge base, diagnosing conversations, ge... | active | fls-internal | 2026-05-20 |
 | [SofaScope — AI-Powered Furniture Visual Search](production-systems/sofascope.md) | Live pilot at Furnitureland South (FLS). Dual-modality search over a 200,000-product catalog: fast metadata-weighted text search and CLIP + FAISS i... | active | public | 2026-04-17 |
+| [Zendesk Returns Reporting (D2K + Choros)](production-systems/zendesk-returns-reporting.md) | Epic delivering standardized returns/concessions reporting by joining Zendesk CI tickets with NetSuite financial data. | active | fls-internal | 2026-05-20 |
 
 ## Architectures
 *Serverless patterns, agent systems, transformer family, retrieval systems.*
@@ -16,6 +21,9 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Agentic Trading System Architecture](architectures/agentic-trading-system.md) | Pattern for a containerized, scheduled LLM-driven trading agent with persistent memory and a self-improvement feedback loop. Implemented in wiki/tr... | 2026-04-17 |
+| [Kimi-K2.6 Agentic Harness (auto-harness)](architectures/kimi-agentic-harness.md) | Personal research project: a Test-Verify-Correct (TVC) agent loop with benchmark gate evaluation, skill memory, and Ollama-backed model execution. ... | 2026-05-20 |
+| [LifeCycle — Self-Sustaining AI Agent](architectures/lifecycle-self-sustaining-agent.md) | Experimental harness where an AI agent accrues "rent" as debt, earns on-chain balance via tool calls, and tier-upgrades from local Ollama to cloud ... | 2026-05-20 |
+| [MAI Harness — Reusable Kaggle Competition Framework](architectures/mai-kaggle-harness.md) | Package: `mai-harness` v0.1.0 · CLI: `kaggle-harness` | 2026-05-20 |
 | [Provider Adapter Pattern (Multi-LLM)](architectures/provider-adapter-pattern.md) | A strategy pattern for abstracting LLM provider APIs behind a uniform interface. Each provider (OpenAI, Anthropic, Gemini, Grok) gets its own adapt... | 2026-04-17 |
 
 ## Techniques
@@ -23,7 +31,10 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| ["Pre-Disclosure Validation Protocol"](techniques/pre-disclosure-validation-protocol.md) | Preventing "ai-slop" dismissals through rigorous evidence collection. | 2026-04-21 |
+| ["Tier 6: External OSINT Validation"](techniques/tier-6-external-osint-validation.md) | Beyond the repository: confirming credentials are actively deployed in production environments. | 2026-04-21 |
 | [CLIP + FAISS Visual Search Pipeline](techniques/clip-faiss-visual-search.md) | Pattern for production image similarity search: encode images with CLIP, index embeddings with FAISS, retrieve nearest neighbors. | 2026-04-17 |
+| [GitHub OSINT Credential Discovery](techniques/github-osint-credential-discovery.md) | Summary: Systematic approach to discovering exposed cryptographic credentials in public GitHub repositories using the Code Search API combined with... | 2026-04-21 |
 | [Hybrid Search Routing (Text + Image)](techniques/hybrid-search-routing.md) | Pattern for multi-modal search: route queries to the optimal search engine based on modality rather than using one unified approach. | 2026-04-17 |
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
@@ -36,6 +47,8 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Alpaca API Integration](integrations/alpaca-api.md) | Alpaca is a commission-free stock trading API. Offers separate paper trading and live trading environments with identical API interfaces — swap cre... | 2026-04-17 |
+| [NetSuite → Zendesk Customer Sync (Task Server)](integrations/netsuite-zendesk-customer-sync.md) | Spec for replacing SmartConnect "NS CUSTOMER TO ZENDESK USERS" with a Task Server job, standardizing alongside existing vendor sync, case creation,... | 2026-05-20 |
+| [SellSmart NetSuite REST Tool (Copilot Studio)](integrations/sellsmart-netsuite-rest-tool.md) | OpenAPI 3 specification enabling the SellSmart Copilot agent to query live NetSuite data — complementing the static CSV knowledge base from datasync. | 2026-05-20 |
 
 ## Papers
 *Formal published research summaries.*
@@ -88,7 +101,7 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Competition | Updated |
 |------|---------|-------------|---------|
-| ["Deep Past: Akkadian Translation"](kaggle/deep-past-akkadian-translation.md) | Competition: Deep Past Initiative — Translate Akkadian to English | "Deep Past: Akkadian Translation" | 2026-04-17 |
+| ["Deep Past: Akkadian Translation"](kaggle/deep-past-akkadian-translation.md) | Competition: Deep Past Initiative — Translate Akkadian to English | "Deep Past: Akkadian Translation" | 2026-05-20 |
 | ["Motion-S: Text-to-Sign Motion Generation"](kaggle/motion-s-text-to-sign.md) | Competition: Motion-S: Hierarchical Text-to-Motion Generation for Sign Language (Signvrse) | "Motion-S: Text-to-Sign Motion Generation" | 2026-04-17 |
 | [AI Mathematical Olympiad — Progress Prize 3](kaggle/aimo-progress-prize-3.md) | Competition: AI Mathematical Olympiad - Progress Prize 3 | AI Mathematical Olympiad — Progress Prize 3 | 2026-04-17 |
 | [ARC Prize 2025](kaggle/arc-prize-2025.md) | Competition: ARC Prize 2025 | ARC Prize 2025 | 2026-04-17 |
@@ -123,9 +136,11 @@ Master catalog of all wiki pages. Updated automatically.
 | ["ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI Harness"](decisions/arc-agi-adapters-vs-litellm.md) | The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches: | 2026-04-17 |
 | ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Treat the AutoTrader dual-gate signal architecture as the conceptual frame for interpreting Hull Tactical's anonymized features, then train a gradi... | 2026-04-18 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
+| ["ADR: OSINT Pattern Filtering Strategy"](decisions/osint-pattern-filtering.md) | Accepted | High Confidence | 2026-04-21 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
 | ["ADR: Persistent Python Service via stdin/stdout vs. HTTP (SofaScope)"](decisions/sofascope-persistent-service-stdin-stdout.md) | Run the persistent CLIP/FAISS Python service as a long-lived subprocess communicating with the Next.js host via stdin/stdout JSON, rather than as a... | 2026-04-17 |
 | ["ADR: Wiki Retention Policy — When to Archive vs. Prune Speculative Pages"](decisions/wiki-retention-policy.md) | Apply the same retain-outcomes-rotate-reasoning principle from wiki/decisions/autotrader-decisions-log-retention.md to this wiki itself: | 2026-04-17 |
+| [Disclosure Communication Humanization — The atuinsh/atuin Incident](decisions/disclosure-communication-humanization.md) | On 2026-04-21, a disclosure was submitted to `atuinsh/atuin` (20k+ stars) via GitHub Issue #3438: | 2026-04-22 |
 
 ## Interview Prep
 
@@ -137,6 +152,8 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| ["Maintainer Response Log: April 2026 Security Disclosures"](comparisons/maintainer-response-log.md) | Documenting how open-source maintainers responded to security disclosures for exposed credentials discovered via OSINT. | 2026-04-21 |
+| [Credential Exposure Patterns Comparison](comparisons/credential-exposure-patterns.md) | Comparative analysis of different credential types discovered via OSINT, their risk profiles, and detection strategies. | 2026-04-21 |
 | [LLM Wiki vs. RAG — Architectural Comparison](comparisons/llm-wiki-vs-rag.md) | Two fundamentally different approaches to LLM + documents. Cameron has built production systems using both. | 2026-04-17 |
 
 ## Open Questions

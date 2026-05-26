@@ -1,0 +1,40 @@
+{
+  "hunt_session": "Bulk Discovery",
+  "timestamp": "20260421_183709",
+  "rounds_completed": 2,
+  "files_checked": 8,
+  "discoveries_count": 1,
+  "discoveries": [
+    {
+      "timestamp": "2026-04-21T18:37:09.788146",
+      "pattern": "PostgreSQL URL",
+      "repo": "serenorg/database-replicator",
+      "file": "src/utils.rs",
+      "url": "https://github.com/serenorg/database-replicator/blob/main/src/utils.rs",
+      "secrets": [
+        {
+          "type": "Database URL",
+          "line": 1743,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "\"postgres://user:pass@host:5432/db\","
+        },
+        {
+          "type": "Database URL",
+          "line": 1809,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "let parts = parse_postgres_url(\"postgres://user:pass@host/db\").unwrap();"
+        },
+        {
+          "type": "Database URL",
+          "line": 1975,
+          "redacted": "***gres",
+          "length": 8,
+          "snippet": "\"postgres://u:p@x.serendb.com:5432/db?sslmode=require\""
+        }
+      ],
+      "secret_count": 3
+    }
+  ]
+}

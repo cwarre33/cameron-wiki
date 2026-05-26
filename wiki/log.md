@@ -5,6 +5,71 @@ Format: `## [YYYY-MM-DD] operation | description`
 
 ---
 
+## [2026-05-20] ingest | Full remaining work sweep before commit
+
+Source: SellSmartTools, KaggleCompetition/harness, LifeCycle, Jira FLSP-102/132/133
+Pages created:
+  - wiki/production-systems/sellsmart-copilot.md
+  - wiki/integrations/sellsmart-netsuite-rest-tool.md
+  - wiki/production-systems/zendesk-returns-reporting.md
+  - wiki/architectures/mai-kaggle-harness.md
+  - wiki/architectures/lifecycle-self-sustaining-agent.md
+Pages updated:
+  - wiki/kaggle/deep-past-akkadian-translation.md (link to mai-harness)
+  - wiki/work-log/2026-05-period-summary.md (additional ingests table)
+  - wiki/overview.md, wiki/index.md
+
+---
+
+## [2026-05-20] ingest | May 2026 catch-up — Jira + git sweep across FLS production work
+
+Source: Atlassian MCP (Jira assignee/reporter queries, Confluence CQL) + local git history across CleanDevEnvironment repos
+Pages created:
+  - wiki/work-log/2026-05-period-summary.md
+  - wiki/production-systems/inventory-lookup-clearview.md
+  - wiki/production-systems/pilot-database-migration.md
+  - wiki/production-systems/dedicated-agent-assignment.md
+  - wiki/integrations/netsuite-zendesk-customer-sync.md
+  - wiki/architectures/kimi-agentic-harness.md
+Pages updated:
+  - wiki/overview.md (knowledge state, strongest areas, May highlights, gaps)
+  - wiki/index.md (new Production Systems, Architectures, Integrations, Work Log sections)
+
+Key Jira items captured:
+  - FLSP-159/221 — Inventory Lookup / ClearView, sales feedback (Carmen Wilkins)
+  - FLSP-232 — Pilot database migration spec (NetSuite + iSeries → Postgres)
+  - FLSP-163/162 — Dedicated Agent Assignment (Zendesk Lambda)
+  - FLSM-20 — NetSuite→Zendesk customer sync Task Server spec
+  - FLSP-160 — Vendor-specific ticket routing scoping
+  - FLSP-111 Done, FLSP-102/134 Done
+
+Git findings:
+  - No commits in tracked repos during 2026-05-01→20
+  - Active local edits: NetSuite/Inventory-Lookup (2026-05-20), Zendesk/DedicatedAgentAssignment
+  - Uncommitted WIP: SellSmartTools/sellsmart-netsuite-rest-tool
+  - auto-harness last commit 2026-04-25 (feature/kimi-harness, 52/52 tests)
+
+Contradictions: None.
+
+---
+
+## [2026-04-21] decision | Disclosure communication humanization — atuinsh/atuin incident
+
+Source: GitHub Issue #3438 + maintainer response emails + block notification
+Pages created:
+  - wiki/decisions/disclosure-communication-humanization.md
+Pages updated:
+  - DISCLOSURE_TRACKER.md (atuin status → BLOCKED, lessons learned added)
+
+Incident summary:
+  - Disclosure: atuinsh/atuin Issue #3438 — `ghp_R2***2muH` in `crates/atuin-client/src/secrets.rs`
+  - Maintainer response: "lol what?", "just no dude", "tell your claude to stand down"
+  - Consequence: Blocked from atuinsh organization on GitHub
+  - Root cause: Test token in test file + templated AI-recognizable disclosure format + "security researcher" self-framing
+  - Key decision: Bulk disclosure templates banned for repos >1k stars; human rewrite required; max 3 sentences for GitHub issues; first-name-only sign-off
+
+---
+
 ## [2026-04-20] osint | ICS exploitability assessment — full evidence chain with attack surface documentation
 
 Source: raw/osint/2026-04-19-scan-enriched.json + NIST NISTIR 7956 + CVE NVD + CISA advisories + vendor docs
@@ -1903,3 +1968,17360 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+
+## [2026-04-21] osint | GitHub credential discovery — 7 live credentials found, responsible disclosure
+
+Source: GitHub Code Search API + local verification
+Pages created:
+  - wiki/techniques/github-osint-credential-discovery.md
+  - wiki/decisions/osint-pattern-filtering.md
+  - wiki/comparisons/credential-exposure-patterns.md
+Pages updated: wiki/index.md, wiki/log.md
+
+Key findings:
+  - Total live credentials discovered: 7
+  - Disclosures posted: 6/7 (86%)
+  - Critical severity: 3 (private keys, combo exposures)
+  - High severity: 3 (database URIs)
+  - Medium severity: 1 (GitHub PAT pattern in 29.4k star project)
+
+Production impacts verified:
+  - ettfemnio/dbd-server: Production TLS key hardcoded in HTTPS server (CRITICAL)
+  - totaljs/superadmin: SSL key for server admin panel, ~100 deployments (CRITICAL)
+  - codename-co/devs: GitHub PAT + PostgreSQL combo (CRITICAL)
+
+Pattern filtering strategy validated:
+  - Layer 1: Entropy threshold (3.5+)
+  - Layer 2: Keyword filtering (test/example markers)
+  - Layer 3: Format validation
+  - Layer 4: Local verification (clone + source analysis)
+  - Result: 85% reduction in false positives vs single-layer filtering
+
+Disclosure issues posted:
+  - https://github.com/ettfemnio/dbd-server/issues/23
+  - https://github.com/totaljs/superadmin/issues/53
+  - https://github.com/codename-co/devs/issues/1
+  - https://github.com/openworkflowdev/openworkflow/issues/482
+  - https://github.com/pplcallmesatz/svgtofont/issues/1
+  - https://github.com/atuinsh/atuin/issues/3438
+
+
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 23:26 UTC
+Wiki pages: 66 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 2
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 7
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+  [2026-04-21] open-questions/bacnet-bbmd-exposure-2026-04-19.md
+  [2026-04-21] open-questions/acsalaska-216-67-73-166-2026-04-21.md
+
+Orphan pages (9):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 23:31 UTC
+Wiki pages: 67 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 7
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+  [2026-04-21] open-questions/bacnet-bbmd-exposure-2026-04-19.md
+  [2026-04-21] open-questions/acsalaska-216-67-73-166-2026-04-21.md
+
+Orphan pages (9):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 23:35 UTC
+Wiki pages: 68 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 8
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+  [2026-04-21] open-questions/bacnet-bbmd-exposure-2026-04-19.md
+
+Orphan pages (10):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+  techniques/pre-disclosure-validation-protocol.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 23:39 UTC
+Wiki pages: 69 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+  techniques/tier-6-external-osint-validation.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-21] maintenance | Automated daily check
+
+Run: 2026-04-21 23:54 UTC
+Wiki pages: 71 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 03:34 UTC
+Wiki pages: 71 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 06:07 UTC
+Wiki pages: 71 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 09:44 UTC
+Wiki pages: 71 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 14:03 UTC
+Wiki pages: 71 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 9
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+  [2026-04-21] open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 15:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 17:12 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-22] maintenance | Automated daily check
+
+Run: 2026-04-22 21:04 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 03:37 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 06:13 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 09:53 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 14:05 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 17:40 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-23] maintenance | Automated daily check
+
+Run: 2026-04-23 21:01 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 03:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 06:17 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 09:52 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 13:59 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 17:09 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-24] maintenance | Automated daily check
+
+Run: 2026-04-24 21:00 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 03:24 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 05:54 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 09:04 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 13:23 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 16:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-25] maintenance | Automated daily check
+
+Run: 2026-04-25 20:51 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 03:48 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 06:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 09:10 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 13:24 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 16:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-26] maintenance | Automated daily check
+
+Run: 2026-04-26 20:51 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 03:52 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 06:37 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 10:25 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 14:20 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 17:38 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-27] maintenance | Automated daily check
+
+Run: 2026-04-27 21:12 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 03:57 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 06:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 10:24 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 14:35 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 17:54 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-28] maintenance | Automated daily check
+
+Run: 2026-04-28 21:14 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+  [2026-04-21] techniques/tier-6-external-osint-validation.md
+  [2026-04-21] techniques/pre-disclosure-validation-protocol.md
+  [2026-04-21] techniques/github-osint-credential-discovery.md
+  [2026-04-21] open-questions/homanit-disclosure-2026-04-20.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 03:53 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 06:31 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 10:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 14:24 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 17:29 UTC
+Wiki pages: 73 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 15
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-29] open-questions/research-queue.md
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (12):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 18:19 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-29] maintenance | Automated daily check
+
+Run: 2026-04-29 21:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Recently updated (last 7 days):
+  [2026-04-22] decisions/disclosure-communication-humanization.md
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 03:54 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 06:34 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 10:16 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 14:19 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 17:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-04-30] maintenance | Automated daily check
+
+Run: 2026-04-30 21:11 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-01] maintenance | Automated daily check
+
+Run: 2026-05-01 04:06 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-01] maintenance | Automated daily check
+
+Run: 2026-05-01 09:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-01] maintenance | Automated daily check
+
+Run: 2026-05-01 14:02 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-01] maintenance | Automated daily check
+
+Run: 2026-05-01 17:07 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-01] maintenance | Automated daily check
+
+Run: 2026-05-01 21:03 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 03:38 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 06:17 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 09:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 13:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 17:00 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-02] maintenance | Automated daily check
+
+Run: 2026-05-02 20:53 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-03] maintenance | Automated daily check
+
+Run: 2026-05-03 04:01 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-03] maintenance | Automated daily check
+
+Run: 2026-05-03 09:27 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-03] maintenance | Automated daily check
+
+Run: 2026-05-03 13:41 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-03] maintenance | Automated daily check
+
+Run: 2026-05-03 17:01 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-03] maintenance | Automated daily check
+
+Run: 2026-05-03 20:56 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 03:59 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 06:49 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 10:21 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 14:23 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 17:48 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-04] maintenance | Automated daily check
+
+Run: 2026-05-04 21:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 03:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 06:25 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 10:10 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 14:16 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 17:44 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-05] maintenance | Automated daily check
+
+Run: 2026-05-05 21:10 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 03:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 06:38 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 10:25 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 14:34 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 17:49 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-06] maintenance | Automated daily check
+
+Run: 2026-05-06 21:18 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 03:53 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 06:45 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 10:32 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 14:39 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 17:56 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-07] maintenance | Automated daily check
+
+Run: 2026-05-07 21:11 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 03:45 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 06:05 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 09:47 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 14:08 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 17:27 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-08] maintenance | Automated daily check
+
+Run: 2026-05-08 21:11 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 03:46 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 06:23 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 09:27 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 13:44 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 17:04 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-09] maintenance | Automated daily check
+
+Run: 2026-05-09 20:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-10] maintenance | Automated daily check
+
+Run: 2026-05-10 04:03 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-10] maintenance | Automated daily check
+
+Run: 2026-05-10 09:45 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-10] maintenance | Automated daily check
+
+Run: 2026-05-10 13:47 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-10] maintenance | Automated daily check
+
+Run: 2026-05-10 17:04 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-10] maintenance | Automated daily check
+
+Run: 2026-05-10 20:58 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-11] maintenance | Automated daily check
+
+Run: 2026-05-11 04:14 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-11] maintenance | Automated daily check
+
+Run: 2026-05-11 11:33 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-11] maintenance | Automated daily check
+
+Run: 2026-05-11 15:31 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-11] maintenance | Automated daily check
+
+Run: 2026-05-11 18:00 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.319
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-11] maintenance | Automated daily check
+
+Run: 2026-05-11 21:24 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 03:58 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 06:45 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 10:40 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 14:43 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 18:08 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-12] maintenance | Automated daily check
+
+Run: 2026-05-12 21:25 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-13] maintenance | Automated daily check
+
+Run: 2026-05-13 04:06 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-13] maintenance | Automated daily check
+
+Run: 2026-05-13 10:38 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-13] maintenance | Automated daily check
+
+Run: 2026-05-13 14:53 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-13] maintenance | Automated daily check
+
+Run: 2026-05-13 18:08 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-13] maintenance | Automated daily check
+
+Run: 2026-05-13 21:41 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-14] maintenance | Automated daily check
+
+Run: 2026-05-14 04:05 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-14] maintenance | Automated daily check
+
+Run: 2026-05-14 10:28 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-14] maintenance | Automated daily check
+
+Run: 2026-05-14 14:33 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-14] maintenance | Automated daily check
+
+Run: 2026-05-14 18:03 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-14] maintenance | Automated daily check
+
+Run: 2026-05-14 21:17 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-15] maintenance | Automated daily check
+
+Run: 2026-05-15 04:10 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-15] maintenance | Automated daily check
+
+Run: 2026-05-15 10:34 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-15] maintenance | Automated daily check
+
+Run: 2026-05-15 14:27 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-15] maintenance | Automated daily check
+
+Run: 2026-05-15 17:49 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-15] maintenance | Automated daily check
+
+Run: 2026-05-15 21:15 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 03:52 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 06:29 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 09:48 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 13:50 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 17:08 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-16] maintenance | Automated daily check
+
+Run: 2026-05-16 20:59 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-17] maintenance | Automated daily check
+
+Run: 2026-05-17 04:11 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-17] maintenance | Automated daily check
+
+Run: 2026-05-17 09:55 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-17] maintenance | Automated daily check
+
+Run: 2026-05-17 13:50 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-17] maintenance | Automated daily check
+
+Run: 2026-05-17 17:06 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-17] maintenance | Automated daily check
+
+Run: 2026-05-17 21:04 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-18] maintenance | Automated daily check
+
+Run: 2026-05-18 04:23 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-18] maintenance | Automated daily check
+
+Run: 2026-05-18 11:51 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-18] maintenance | Automated daily check
+
+Run: 2026-05-18 15:52 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-18] maintenance | Automated daily check
+
+Run: 2026-05-18 18:06 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-18] maintenance | Automated daily check
+
+Run: 2026-05-18 21:20 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-19] maintenance | Automated daily check
+
+Run: 2026-05-19 04:19 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-19] maintenance | Automated daily check
+
+Run: 2026-05-19 11:29 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-19] maintenance | Automated daily check
+
+Run: 2026-05-19 15:43 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-19] maintenance | Automated daily check
+
+Run: 2026-05-19 18:11 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-19] maintenance | Automated daily check
+
+Run: 2026-05-19 21:40 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 04:19 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 11:14 UTC
+Wiki pages: 72 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 2
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 1
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 1
+  techniques: 9
+  tools: 3
+  trading: 2
+
+Orphan pages (11):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  kaggle/portfolio-overview.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+  decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 15:48 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 15:50 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 18:26 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-20] maintenance | Automated daily check
+
+Run: 2026-05-20 22:02 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-21] maintenance | Automated daily check
+
+Run: 2026-05-21 04:27 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-21] maintenance | Automated daily check
+
+Run: 2026-05-21 11:33 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-21] maintenance | Automated daily check
+
+Run: 2026-05-21 15:47 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-21] maintenance | Automated daily check
+
+Run: 2026-05-21 18:07 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-21] maintenance | Automated daily check
+
+Run: 2026-05-21 21:43 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-22] maintenance | Automated daily check
+
+Run: 2026-05-22 04:22 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-22] maintenance | Automated daily check
+
+Run: 2026-05-22 11:12 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-22] maintenance | Automated daily check
+
+Run: 2026-05-22 14:56 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-22] maintenance | Automated daily check
+
+Run: 2026-05-22 17:59 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-22] maintenance | Automated daily check
+
+Run: 2026-05-22 21:18 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-23] maintenance | Automated daily check
+
+Run: 2026-05-23 04:00 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-23] maintenance | Automated daily check
+
+Run: 2026-05-23 10:01 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-23] maintenance | Automated daily check
+
+Run: 2026-05-23 13:56 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-23] maintenance | Automated daily check
+
+Run: 2026-05-23 21:03 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-24] maintenance | Automated daily check
+
+Run: 2026-05-24 04:21 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-24] maintenance | Automated daily check
+
+Run: 2026-05-24 10:02 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-24] maintenance | Automated daily check
+
+Run: 2026-05-24 13:53 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-24] maintenance | Automated daily check
+
+Run: 2026-05-24 17:12 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-24] maintenance | Automated daily check
+
+Run: 2026-05-24 21:06 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-25] maintenance | Automated daily check
+
+Run: 2026-05-25 04:43 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-25] maintenance | Automated daily check
+
+Run: 2026-05-25 11:58 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-25] maintenance | Automated daily check
+
+Run: 2026-05-25 15:27 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-25] maintenance | Automated daily check
+
+Run: 2026-05-25 17:50 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-25] maintenance | Automated daily check
+
+Run: 2026-05-25 21:18 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-26] maintenance | Automated daily check
+
+Run: 2026-05-26 04:18 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+---
+## [2026-05-26] maintenance | Automated daily check
+
+Run: 2026-05-26 16:02 UTC
+Wiki pages: 83 | Raw sources: 7
+Graph Fragmentation: 0.310
+
+Broken Links (🔴 CRITICAL):
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[database-uri-security]]
+  comparisons/credential-exposure-patterns.md: [[osint-credential-discovery-case-study]]
+  comparisons/credential-exposure-patterns.md: [[osint-security-toolkit]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/credential-exposure-patterns.md: [[private-key-crypto]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[disclosure-timeline-2026]]
+  comparisons/maintainer-response-log.md: [[responsible-disclosure-process]]
+  decisions/osint-pattern-filtering.md: [[shodan-ics-discovery]]
+  methodology/llm-wiki-pattern.md: [[wikilink]]
+  techniques/github-osint-credential-discovery.md: [[commit-history-analysis]]
+  techniques/github-osint-credential-discovery.md: [[credential-entropy-analysis]]
+  techniques/github-osint-credential-discovery.md: [[disclosure-timeline-2026]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[github-code-search-api]]
+  techniques/github-osint-credential-discovery.md: [[osint-credential-discovery-case-study]]
+  techniques/github-osint-credential-discovery.md: [[osint-security-toolkit]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[responsible-disclosure-process]]
+  techniques/github-osint-credential-discovery.md: [[shodan-ics-discovery]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^ghp_ ]]
+  techniques/pre-disclosure-validation-protocol.md: [[ "$TOKEN" =~ ^sk_live_ ]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[certificate-transparency-logs]]
+  techniques/tier-6-external-osint-validation.md: [[git-history-forensics]]
+  techniques/tier-6-external-osint-validation.md: [[shodan-service-validation]]
+
+Pages by section:
+  architectures: 5
+  benchmarks: 1
+  case-studies: 2
+  comparisons: 3
+  decisions: 10
+  integrations: 3
+  interview-prep: 1
+  kaggle: 17
+  methodology: 2
+  models: 3
+  open-questions: 14
+  people: 1
+  production-systems: 6
+  techniques: 9
+  tools: 3
+  trading: 2
+  work-log: 1
+
+Recently updated (last 7 days):
+  [2026-05-20] work-log/2026-05-period-summary.md
+  [2026-05-20] production-systems/zendesk-returns-reporting.md
+  [2026-05-20] production-systems/sellsmart-copilot.md
+  [2026-05-20] production-systems/pilot-database-migration.md
+  [2026-05-20] production-systems/inventory-lookup-clearview.md
+
+Orphan pages (10):
+  case-studies/complete-6-tier-assessment-april-2026.md
+  decisions/disclosure-communication-humanization.md
+  models/llama-3-3-70b.md
+  open-questions/acsalaska-216-67-73-166-2026-04-21.md
+  open-questions/cve-2019-9569-confirmed-hosts-2026-04-20.md
+  open-questions/disclosure-letters-2026-04-20.md
+  open-questions/exploitability-assessment-2026-04-20.md
+  open-questions/municipal-ics-cluster-2026-04-20.md
+  open-questions/niagara-admin-capabilities-2026-04-20.md
+  open-questions/scottsboro-electric-power-board-2026-04-20.md
+
+Suggested Links (Unlinked Mentions):
+  architectures/agentic-trading-system.md: mention of 'alpaca-api'
+  architectures/agentic-trading-system.md: mention of 'autotrader'
+  architectures/agentic-trading-system.md: mention of 'autotrader-decisions-log-retention'
+  architectures/agentic-trading-system.md: mention of 'autotrader-open-model-vs-frontier'
+  architectures/agentic-trading-system.md: mention of 'llm-review-pass-before-rotation'
+  architectures/agentic-trading-system.md: mention of 'provider-adapter-pattern'
+  architectures/agentic-trading-system.md: mention of 'rsi-llm-signal-strategy'
+  architectures/lifecycle-self-sustaining-agent.md: mention of 'litellm'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi'
+  architectures/provider-adapter-pattern.md: mention of 'arc-agi-benchmarking'
+  benchmarks/arc-agi.md: mention of 'arc-agi-benchmarking'
+  comparisons/llm-wiki-vs-rag.md: mention of 'clip-faiss-visual-search'
+  comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
+  comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
+  comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'

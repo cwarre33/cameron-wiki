@@ -44,13 +44,25 @@ jobs:
 
       - name: Commit and push if changes exist
         run: |
-          git config user.name "Cameron Warren"
-          git config user.email "cwarren@example.com" # Placeholder email, update if needed
+          git config user.name "cwarre33"
+          git config user.email "cwarre33@alumni.uncc.edu"
           git add wiki/overview.md wiki/log.md wiki/index.md graphify-out/ .graph/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
             git commit -m "chore(wiki): automated maintenance run [skip ci]"
-            git push
+            # Retry push with rebase-on-conflict to handle races with concurrent
+            # workflow runs that may have pushed to main since checkout.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "Push succeeded on attempt ${attempt}."
+                exit 0
+              fi
+              echo "Push attempt ${attempt} failed; rebasing on origin/main and retrying..."
+              git pull --rebase --autostash origin main
+              sleep $((attempt * 2))
+            done
+            echo "Push failed after multiple retries." >&2
+            exit 1
           fi
 
