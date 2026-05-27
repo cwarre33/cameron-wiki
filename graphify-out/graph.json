@@ -1537,20 +1537,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
-      "source_location": "graphify section: 'graphify \u2192 wiki' workflow",
+      "source_location": "graphify skill section",
       "weight": 1.0,
       "source": "doc_claudemd",
-      "target": "concept_llm_wiki_pattern"
+      "target": "concept_graphify"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
-      "source_location": "graphify skill section",
+      "source_location": "graphify section: 'graphify \u2192 wiki' workflow",
       "weight": 1.0,
       "source": "doc_claudemd",
-      "target": "concept_graphify"
+      "target": "concept_llm_wiki_pattern"
     },
     {
       "relation": "references",
@@ -1583,6 +1583,16 @@
       "target": "concept_obsidian"
     },
     {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/jaguar-re-identification.md",
+      "source_location": "Domain context \u2014 explicit wikilink to sofascope.md",
+      "weight": 1.0,
+      "source": "kaggle_jaguar_reidentification",
+      "target": "production_sofascope"
+    },
+    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -1597,30 +1607,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
-      "source_location": "Domain context section",
-      "weight": 1.0,
-      "source": "kaggle_jaguar_reidentification",
-      "target": "technique_metric_learning"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/jaguar-re-identification.md",
       "source_location": "Domain context \u2014 CLIP-style vision encoders as backbone",
       "weight": 1.0,
       "source": "kaggle_jaguar_reidentification",
       "target": "technique_clip_faiss"
     },
     {
-      "relation": "conceptually_related_to",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/jaguar-re-identification.md",
-      "source_location": "Domain context \u2014 explicit wikilink to sofascope.md",
+      "source_location": "Domain context section",
       "weight": 1.0,
       "source": "kaggle_jaguar_reidentification",
-      "target": "production_sofascope"
+      "target": "technique_metric_learning"
     },
     {
       "relation": "conceptually_related_to",
@@ -1631,16 +1631,6 @@
       "weight": 1.0,
       "source": "technique_clip_faiss",
       "target": "production_sofascope"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Context: [[wiki/kaggle/deep-past-akkadian-translation.md|Deep Past]]",
-      "weight": 1.0,
-      "source": "concept_deep_past",
-      "target": "doc_consensus_memory_adr"
     },
     {
       "relation": "conceptually_related_to",
@@ -1657,9 +1647,9 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
+      "source_location": "Context: [[wiki/kaggle/deep-past-akkadian-translation.md|Deep Past]]",
       "weight": 1.0,
-      "source": "concept_agentic_memory_retention",
+      "source": "concept_deep_past",
       "target": "doc_consensus_memory_adr"
     },
     {
@@ -1671,6 +1661,16 @@
       "weight": 0.85,
       "source": "concept_agentic_memory_retention",
       "target": "concept_agentic_drift"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Related: [[wiki/open-questions/agentic-memory-retention-strategies.md]]",
+      "weight": 1.0,
+      "source": "concept_agentic_memory_retention",
+      "target": "doc_consensus_memory_adr"
     },
     {
       "relation": "references",
@@ -1703,24 +1703,14 @@
       "target": "doc_consensus_memory_adr"
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Decision: MBR selection used for consensus memory distillation",
-      "weight": 1.0,
-      "source": "doc_consensus_memory_adr",
-      "target": "concept_mbr_decoding"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "frontmatter related + Context + Related section",
+      "source_location": "Context section: 'Agentic Drift' introduced as concept",
       "weight": 1.0,
       "source": "doc_consensus_memory_adr",
-      "target": "concept_llm_review_pass"
+      "target": "concept_agentic_drift"
     },
     {
       "relation": "references",
@@ -1737,10 +1727,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
-      "source_location": "Context section: 'Agentic Drift' introduced as concept",
+      "source_location": "frontmatter related + Context + Related section",
       "weight": 1.0,
       "source": "doc_consensus_memory_adr",
-      "target": "concept_agentic_drift"
+      "target": "concept_llm_review_pass"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/decisions/consensus-based-memory-distillation.md",
+      "source_location": "Decision: MBR selection used for consensus memory distillation",
+      "weight": 1.0,
+      "source": "doc_consensus_memory_adr",
+      "target": "concept_mbr_decoding"
     },
     {
       "relation": "rationale_for",
@@ -1785,10 +1785,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/overview.md",
-      "source_location": "Strongest areas section",
+      "source_location": "related field",
       "weight": 1.0,
       "source": "overview_cameron_wiki",
-      "target": "overview_sofascope_system"
+      "target": "index_master_catalog"
     },
     {
       "relation": "references",
@@ -1821,16 +1821,6 @@
       "target": "overview_kaggle_portfolio"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/overview.md",
-      "source_location": "related field",
-      "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "index_master_catalog"
-    },
-    {
       "relation": "conceptually_related_to",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -1839,6 +1829,16 @@
       "weight": 1.0,
       "source": "overview_cameron_wiki",
       "target": "overview_second_brain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/overview.md",
+      "source_location": "Strongest areas section",
+      "weight": 1.0,
+      "source": "overview_cameron_wiki",
+      "target": "overview_sofascope_system"
     },
     {
       "relation": "semantically_similar_to",
@@ -1868,7 +1868,7 @@
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
       "source": "log_wiki_activity",
-      "target": "log_ingest_sofascope"
+      "target": "log_ingest_arc_agi"
     },
     {
       "relation": "references",
@@ -1878,7 +1878,7 @@
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
       "source": "log_wiki_activity",
-      "target": "log_ingest_karpathy"
+      "target": "log_ingest_autotrader"
     },
     {
       "relation": "references",
@@ -1898,7 +1898,7 @@
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
       "source": "log_wiki_activity",
-      "target": "log_ingest_arc_agi"
+      "target": "log_ingest_karpathy"
     },
     {
       "relation": "references",
@@ -1908,7 +1908,7 @@
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
       "source": "log_wiki_activity",
-      "target": "log_ingest_autotrader"
+      "target": "log_ingest_sofascope"
     },
     {
       "relation": "references",
@@ -1928,77 +1928,7 @@
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
       "source": "log_ingest_kaggle",
-      "target": "kaggle_motion_s"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_urban_flood"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_stanford_rna"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_mabe"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_house_prices"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
       "target": "kaggle_aimo"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_google_tunix"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/log.md",
-      "source_location": "Pages created in kaggle ingest",
-      "weight": 1.0,
-      "source": "log_ingest_kaggle",
-      "target": "kaggle_march_mania"
     },
     {
       "relation": "references",
@@ -2018,7 +1948,77 @@
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
       "source": "log_ingest_kaggle",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
       "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_house_prices"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/log.md",
+      "source_location": "Pages created in kaggle ingest",
+      "weight": 1.0,
+      "source": "log_ingest_kaggle",
+      "target": "kaggle_urban_flood"
     },
     {
       "relation": "references",
@@ -2038,7 +2038,7 @@
       "source_location": "Pages created in lint",
       "weight": 1.0,
       "source": "log_lint_pass",
-      "target": "llama_3_3_70b"
+      "target": "kaggle_portfolio_overview"
     },
     {
       "relation": "references",
@@ -2048,57 +2048,7 @@
       "source_location": "Pages created in lint",
       "weight": 1.0,
       "source": "log_lint_pass",
-      "target": "kaggle_portfolio_overview"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Production Systems section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_sofascope_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Trading section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_autotrader_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Benchmarks section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_arc_agi_benchmark_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Methodology section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_llm_wiki_pattern_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_kaggle_portfolio_page"
+      "target": "llama_3_3_70b"
     },
     {
       "relation": "references",
@@ -2115,10 +2065,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/index.md",
-      "source_location": "Models section",
+      "source_location": "Benchmarks section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "llama_3_3_70b"
+      "target": "index_arc_agi_benchmark_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Trading section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "index_autotrader_page"
     },
     {
       "relation": "references",
@@ -2128,7 +2088,27 @@
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "kaggle_portfolio_overview"
+      "target": "index_kaggle_portfolio_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Methodology section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "index_llm_wiki_pattern_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Production Systems section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "index_sofascope_page"
     },
     {
       "relation": "references",
@@ -2138,7 +2118,7 @@
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "kaggle_motion_s"
+      "target": "kaggle_aimo"
     },
     {
       "relation": "references",
@@ -2148,7 +2128,27 @@
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "kaggle_urban_flood"
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "kaggle_heart_disease"
     },
     {
       "relation": "references",
@@ -2178,6 +2178,36 @@
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
       "source": "index_master_catalog",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
+      "target": "kaggle_portfolio_overview"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "index_master_catalog",
       "target": "kaggle_stanford_rna"
     },
     {
@@ -2188,57 +2218,17 @@
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "kaggle_csiro"
+      "target": "kaggle_urban_flood"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
+      "source_location": "Models section",
       "weight": 1.0,
       "source": "index_master_catalog",
-      "target": "kaggle_heart_disease"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_aimo"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_google_tunix"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_march_mania"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0,
-      "source": "groq_tool",
-      "target": "groq_lpu_hardware"
+      "target": "llama_3_3_70b"
     },
     {
       "relation": "references",
@@ -2258,7 +2248,7 @@
       "source_location": "Key properties section",
       "weight": 1.0,
       "source": "groq_tool",
-      "target": "groq_openai_compat"
+      "target": "groq_latency_prop"
     },
     {
       "relation": "references",
@@ -2268,7 +2258,17 @@
       "source_location": "Key properties section",
       "weight": 1.0,
       "source": "groq_tool",
-      "target": "groq_latency_prop"
+      "target": "groq_lpu_hardware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "source": "groq_tool",
+      "target": "groq_openai_compat"
     },
     {
       "relation": "references",
@@ -2295,10 +2295,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Why this model section",
+      "source_location": "Key capabilities section",
       "weight": 1.0,
       "source": "llama_3_3_70b",
-      "target": "llama_sentiment_use"
+      "target": "llama_128k_context"
     },
     {
       "relation": "rationale_for",
@@ -2315,16 +2315,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/models/llama-3-3-70b.md",
-      "source_location": "Key capabilities section",
-      "weight": 1.0,
-      "source": "llama_3_3_70b",
-      "target": "llama_128k_context"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Model family context section",
       "weight": 1.0,
       "source": "llama_3_3_70b",
@@ -2334,21 +2324,51 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "Confirmed Results table",
+      "source_file": "wiki/models/llama-3-3-70b.md",
+      "source_location": "Why this model section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_motion_s"
+      "source": "llama_3_3_70b",
+      "target": "llama_sentiment_use"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "Confirmed Results table",
+      "source_location": "All Competitions section",
       "weight": 1.0,
       "source": "kaggle_portfolio_overview",
-      "target": "kaggle_urban_flood"
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_heart_disease"
     },
     {
       "relation": "references",
@@ -2378,6 +2398,26 @@
       "source_location": "All Competitions section",
       "weight": 1.0,
       "source": "kaggle_portfolio_overview",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "Confirmed Results table",
+      "weight": 1.0,
+      "source": "kaggle_portfolio_overview",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/portfolio-overview.md",
+      "source_location": "All Competitions section",
+      "weight": 1.0,
+      "source": "kaggle_portfolio_overview",
       "target": "kaggle_stanford_rna"
     },
     {
@@ -2385,70 +2425,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
+      "source_location": "Confirmed Results table",
       "weight": 1.0,
       "source": "kaggle_portfolio_overview",
-      "target": "kaggle_csiro"
+      "target": "kaggle_urban_flood"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Related competitions",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_heart_disease"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_aimo"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "kaggle_motion_s",
       "target": "kaggle_google_tunix"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/portfolio-overview.md",
-      "source_location": "All Competitions section",
-      "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
-      "target": "kaggle_march_mania"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Cameron's approach section",
-      "weight": 1.0,
-      "source": "kaggle_motion_s",
-      "target": "technique_tfidf_knn"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Key insight section",
-      "weight": 1.0,
-      "source": "kaggle_motion_s",
-      "target": "technique_retrieval_vs_generation"
     },
     {
       "relation": "references",
@@ -2465,20 +2455,20 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Related competitions",
+      "source_location": "Key insight section",
       "weight": 1.0,
       "source": "kaggle_motion_s",
-      "target": "kaggle_google_tunix"
+      "target": "technique_retrieval_vs_generation"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Cameron's approach section",
       "weight": 1.0,
-      "source": "kaggle_urban_flood",
-      "target": "kaggle_stanford_rna"
+      "source": "kaggle_motion_s",
+      "target": "technique_tfidf_knn"
     },
     {
       "relation": "references",
@@ -2504,11 +2494,11 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/house-prices-regression.md",
-      "source_location": "Cameron's approach section",
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
       "weight": 1.0,
-      "source": "kaggle_house_prices",
-      "target": "technique_tfdf"
+      "source": "kaggle_urban_flood",
+      "target": "kaggle_stanford_rna"
     },
     {
       "relation": "references",
@@ -2534,6 +2524,16 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/house-prices-regression.md",
+      "source_location": "Cameron's approach section",
+      "weight": 1.0,
+      "source": "kaggle_house_prices",
+      "target": "technique_tfdf"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "wiki/kaggle/mabe-mouse-behavior.md",
       "source_location": "What it is section",
       "weight": 1.0,
@@ -2545,10 +2545,30 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Techniques explored section",
+      "source_location": "Domain notes section",
       "weight": 1.0,
       "source": "kaggle_stanford_rna",
-      "target": "technique_pseudo_labeling"
+      "target": "concept_rna_folding"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
+      "source_location": null,
+      "weight": 0.65,
+      "source": "kaggle_stanford_rna",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
+      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
+      "weight": 1.0,
+      "source": "kaggle_stanford_rna",
+      "target": "kaggle_csiro"
     },
     {
       "relation": "references",
@@ -2565,30 +2585,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Domain notes section",
+      "source_location": "Techniques explored section",
       "weight": 1.0,
       "source": "kaggle_stanford_rna",
-      "target": "concept_rna_folding"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/stanford-rna-3d-folding.md",
-      "source_location": "Related competitions \u2014 Scientific/environmental ML cluster",
-      "weight": 1.0,
-      "source": "kaggle_stanford_rna",
-      "target": "kaggle_csiro"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.65,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": null,
-      "weight": 0.65,
-      "source": "kaggle_stanford_rna",
-      "target": "kaggle_aimo"
+      "target": "technique_pseudo_labeling"
     },
     {
       "relation": "references",
@@ -2599,6 +2599,16 @@
       "weight": 1.0,
       "source": "kaggle_csiro",
       "target": "concept_biomass_prediction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
+      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
+      "weight": 1.0,
+      "source": "kaggle_heart_disease",
+      "target": "kaggle_march_mania"
     },
     {
       "relation": "references",
@@ -2624,16 +2634,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/march-machine-learning-mania-2026.md",
-      "source_location": "Related competitions \u2014 Tabular/prediction cluster",
-      "weight": 1.0,
-      "source": "kaggle_heart_disease",
-      "target": "kaggle_march_mania"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
       "source_location": "What it is section",
       "weight": 1.0,
@@ -2644,21 +2644,21 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
-      "source_location": "Context \u2014 top teams used extended chain-of-thought",
-      "weight": 1.0,
-      "source": "kaggle_aimo",
-      "target": "technique_chain_of_thought"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "wiki/kaggle/google-tunix-hackathon.md",
       "source_location": "Related competitions",
       "weight": 1.0,
       "source": "kaggle_aimo",
       "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/aimo-progress-prize-3.md",
+      "source_location": "Context \u2014 top teams used extended chain-of-thought",
+      "weight": 1.0,
+      "source": "kaggle_aimo",
+      "target": "technique_chain_of_thought"
     },
     {
       "relation": "references",
@@ -2698,7 +2698,7 @@
       "source_location": "Communities section",
       "weight": 1.0,
       "source": "graph_report",
-      "target": "graph_community_kaggle"
+      "target": "graph_community_autotrader"
     },
     {
       "relation": "references",
@@ -2708,7 +2708,7 @@
       "source_location": "Communities section",
       "weight": 1.0,
       "source": "graph_report",
-      "target": "graph_community_autotrader"
+      "target": "graph_community_kaggle"
     },
     {
       "relation": "references",
@@ -2735,10 +2735,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "God Nodes section",
+      "source_location": "Knowledge Gaps section",
       "weight": 1.0,
       "source": "graph_report",
-      "target": "graph_god_node_index"
+      "target": "graph_fragmentation"
     },
     {
       "relation": "references",
@@ -2755,20 +2755,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Knowledge Gaps section",
+      "source_location": "God Nodes section",
       "weight": 1.0,
       "source": "graph_report",
-      "target": "graph_fragmentation"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "graphify-out/GRAPH_REPORT.md",
-      "source_location": "Hyperedges section",
-      "weight": 1.0,
-      "source": "graph_report",
-      "target": "graph_hyperedge_tabular"
+      "target": "graph_god_node_index"
     },
     {
       "relation": "references",
@@ -2781,14 +2771,14 @@
       "target": "graph_hyperedge_frontier_reasoning"
     },
     {
-      "relation": "rationale_for",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
-      "source_location": "Key insight section",
+      "source_file": "graphify-out/GRAPH_REPORT.md",
+      "source_location": "Hyperedges section",
       "weight": 1.0,
-      "source": "technique_tfidf_knn",
-      "target": "technique_retrieval_vs_generation"
+      "source": "graph_report",
+      "target": "graph_hyperedge_tabular"
     },
     {
       "relation": "semantically_similar_to",
@@ -2799,6 +2789,16 @@
       "weight": 0.62,
       "source": "technique_tfidf_knn",
       "target": "technique_pseudo_labeling"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/kaggle/motion-s-text-to-sign.md",
+      "source_location": "Key insight section",
+      "weight": 1.0,
+      "source": "technique_tfidf_knn",
+      "target": "technique_retrieval_vs_generation"
     },
     {
       "relation": "semantically_similar_to",
@@ -2908,5 +2908,5 @@
       "source_file": "wiki/tools/groq.md"
     }
   ],
-  "built_at_commit": "ed7805135b7a9f496f4c8ac3361a77606f022d19"
+  "built_at_commit": "f059e3a9da4c309aff389eb8a49f6a0966622856"
 }
