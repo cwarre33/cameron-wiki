@@ -1,4 +1,4 @@
-# Graph Report - .  (2026-06-02)
+# Graph Report - .  (2026-06-03)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -9,7 +9,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `68014bee`
+- Built from commit: `0a834934`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -88,8 +88,8 @@
 ## Communities (35 total, 27 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.16
-Nodes (25): Above-Ground Biomass Prediction from Satellite Imagery, Geospatial Flood Modelling (DEM, SAR, Physics-informed ML), IMO-Level Mathematical Reasoning (AIMO), Social Action Recognition in Mice (Behavioral Ethology), RNA 3D Structure Prediction (Structural Biology), ARC-AGI Benchmark Page, AutoTrader Trading Bot Page, Kaggle Portfolio Overview Page (+17 more)
+Cohesion: 0.20
+Nodes (19): Above-Ground Biomass Prediction from Satellite Imagery, Geospatial Flood Modelling (DEM, SAR, Physics-informed ML), IMO-Level Mathematical Reasoning (AIMO), Social Action Recognition in Mice (Behavioral Ethology), RNA 3D Structure Prediction (Structural Biology), AI Mathematical Olympiad — Progress Prize 3 ($2.2M), CSIRO — Image2Biomass Prediction, Google Tunix Hackathon — Train a Model to Show Its Work (+11 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.18
@@ -108,8 +108,8 @@ Cohesion: 0.31
 Nodes (10): Agentic Drift (hallucination compounding in memory), Open Question — Agentic Memory Retention Strategies, ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI, AutoTrader — Autonomous Paper Trading Bot, Deep Past — Akkadian Translation (Kaggle), LLM Review Pass Before Rotation, MBR Decoding (Minimum Bayes Risk), Provider Adapter Pattern (Multi-LLM) (+2 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.32
-Nodes (8): NCAA Bracket Prediction (March Mania), Log Loss and Calibration in Probabilistic Prediction, Predicting Heart Disease — Playground S6E2, House Prices — Advanced Regression Techniques (Rank ~19), March Machine Learning Mania 2026, RealMLP + CatBoost + XGBoost Ensemble, SHAP Analysis for Feature Importance, TensorFlow Decision Forests (TFDF)
+Cohesion: 0.19
+Nodes (14): NCAA Bracket Prediction (March Mania), Log Loss and Calibration in Probabilistic Prediction, ARC-AGI Benchmark Page, AutoTrader Trading Bot Page, Kaggle Portfolio Overview Page, LLM Wiki Pattern (Karpathy) Page, Wiki Index — Master Catalog, SofaScope Production System Page (+6 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.60
@@ -127,9 +127,9 @@ Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Came
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Wiki Index — Master Catalog` connect `Community 0` to `Community 1`, `Community 2`, `Community 5`?**
+- **Why does `Wiki Index — Master Catalog` connect `Community 5` to `Community 0`, `Community 1`, `Community 2`?**
   _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **Why does `Groq — LLM Inference API` connect `Community 2` to `Community 0`, `Community 1`?**
+- **Why does `Groq — LLM Inference API` connect `Community 2` to `Community 1`, `Community 5`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 1`, `Community 5`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._

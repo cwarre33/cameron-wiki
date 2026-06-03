@@ -853,7 +853,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "wiki index \u2014 master catalog",
       "id": "index_master_catalog"
     },
@@ -866,7 +866,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "sofascope production system page",
       "id": "index_sofascope_page"
     },
@@ -879,7 +879,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "autotrader trading bot page",
       "id": "index_autotrader_page"
     },
@@ -892,7 +892,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "arc-agi benchmark page",
       "id": "index_arc_agi_benchmark_page"
     },
@@ -905,7 +905,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "llm wiki pattern (karpathy) page",
       "id": "index_llm_wiki_pattern_page"
     },
@@ -918,7 +918,7 @@
       "captured_at": null,
       "author": "Cameron Warren",
       "contributor": null,
-      "community": 0,
+      "community": 5,
       "norm_label": "kaggle portfolio overview page",
       "id": "index_kaggle_portfolio_page"
     },
@@ -2908,5 +2908,5 @@
       "source_file": "wiki/tools/groq.md"
     }
   ],
-  "built_at_commit": "68014bee1012736a3ff493f9bf12b1b2b1267540"
+  "built_at_commit": "0a8349341309f1b1a7fadc0ce94ab031a862fa32"
 }
