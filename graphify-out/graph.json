@@ -112,8 +112,8 @@
       "contributor": null,
       "community": 6,
       "norm_label": "readme \u2014 cameron-wiki",
-      "id": "doc_readme",
-      "community_name": "Community 6"
+      "community_name": "Community 6",
+      "id": "doc_readme"
     },
     {
       "label": "CLAUDE.md \u2014 Wiki Schema & Workflows",
@@ -126,8 +126,8 @@
       "contributor": null,
       "community": 6,
       "norm_label": "claude.md \u2014 wiki schema & workflows",
-      "id": "doc_claudemd",
-      "community_name": "Community 6"
+      "community_name": "Community 6",
+      "id": "doc_claudemd"
     },
     {
       "label": "Graphify \u2014 Knowledge Graph Skill",
@@ -140,8 +140,8 @@
       "contributor": null,
       "community": 6,
       "norm_label": "graphify \u2014 knowledge graph skill",
-      "id": "concept_graphify",
-      "community_name": "Community 6"
+      "community_name": "Community 6",
+      "id": "concept_graphify"
     },
     {
       "label": "Obsidian Integration",
@@ -154,8 +154,8 @@
       "contributor": null,
       "community": 6,
       "norm_label": "obsidian integration",
-      "id": "concept_obsidian",
-      "community_name": "Community 6"
+      "community_name": "Community 6",
+      "id": "concept_obsidian"
     },
     {
       "label": "LiteLLM",
@@ -163,8 +163,8 @@
       "source_file": "wiki/tools/litellm.md",
       "community": 9,
       "norm_label": "litellm",
-      "id": "tool_litellm",
-      "community_name": "Community 9"
+      "community_name": "Community 9",
+      "id": "tool_litellm"
     },
     {
       "label": "FAISS Vector Search Tool",
@@ -177,8 +177,8 @@
       "contributor": null,
       "community": 10,
       "norm_label": "faiss vector search tool",
-      "id": "tool_faiss",
-      "community_name": "Community 10"
+      "community_name": "Community 10",
+      "id": "tool_faiss"
     },
     {
       "label": "ARC Prize 2025",
@@ -186,8 +186,8 @@
       "source_file": "wiki/kaggle/arc-prize-2025.md",
       "community": 11,
       "norm_label": "arc prize 2025",
-      "id": "kaggle_arc_prize_2025",
-      "community_name": "Community 11"
+      "community_name": "Community 11",
+      "id": "kaggle_arc_prize_2025"
     },
     {
       "label": "Jaguar Re-Identification Challenge",
@@ -200,8 +200,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "jaguar re-identification challenge",
-      "id": "kaggle_jaguar_reidentification",
-      "community_name": "Community 7"
+      "community_name": "Community 7",
+      "id": "kaggle_jaguar_reidentification"
     },
     {
       "label": "Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)",
@@ -214,8 +214,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "metric learning / re-identification (contrastive/triplet/arcface)",
-      "id": "technique_metric_learning",
-      "community_name": "Community 7"
+      "community_name": "Community 7",
+      "id": "technique_metric_learning"
     },
     {
       "label": "CLIP+FAISS Embedding Retrieval",
@@ -228,8 +228,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "clip+faiss embedding retrieval",
-      "id": "technique_clip_faiss",
-      "community_name": "Community 7"
+      "community_name": "Community 7",
+      "id": "technique_clip_faiss"
     },
     {
       "label": "Deep Past \u2014 Akkadian Translation (Kaggle)",
@@ -242,8 +242,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "deep past \u2014 akkadian translation (kaggle)",
-      "id": "concept_deep_past",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_deep_past"
     },
     {
       "label": "Hull Tactical \u2014 Market Prediction",
@@ -251,8 +251,8 @@
       "source_file": "wiki/kaggle/hull-tactical-market-prediction.md",
       "community": 12,
       "norm_label": "hull tactical \u2014 market prediction",
-      "id": "kaggle_hull_tactical",
-      "community_name": "Community 12"
+      "community_name": "Community 12",
+      "id": "kaggle_hull_tactical"
     },
     {
       "label": "ARC-AGI Benchmarking Harness",
@@ -260,8 +260,8 @@
       "source_file": "wiki/kaggle/arc-agi-benchmarking.md",
       "community": 13,
       "norm_label": "arc-agi benchmarking harness",
-      "id": "kaggle_arc_agi_harness",
-      "community_name": "Community 13"
+      "community_name": "Community 13",
+      "id": "kaggle_arc_agi_harness"
     },
     {
       "label": "Retrieval-Augmented Generation (RAG)",
@@ -274,8 +274,8 @@
       "contributor": null,
       "community": 14,
       "norm_label": "retrieval-augmented generation (rag)",
-      "id": "concept_rag",
-      "community_name": "Community 14"
+      "community_name": "Community 14",
+      "id": "concept_rag"
     },
     {
       "label": "LLM Wiki Pattern (Karpathy)",
@@ -288,8 +288,8 @@
       "contributor": null,
       "community": 6,
       "norm_label": "llm wiki pattern (karpathy)",
-      "id": "concept_llm_wiki_pattern",
-      "community_name": "Community 6"
+      "community_name": "Community 6",
+      "id": "concept_llm_wiki_pattern"
     },
     {
       "label": "Cameron's Wiki Setup",
@@ -302,8 +302,8 @@
       "contributor": null,
       "community": 15,
       "norm_label": "cameron's wiki setup",
-      "id": "method_cameron_wiki_setup",
-      "community_name": "Community 15"
+      "community_name": "Community 15",
+      "id": "method_cameron_wiki_setup"
     },
     {
       "label": "Open Question \u2014 Agentic Memory Retention Strategies",
@@ -316,8 +316,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "open question \u2014 agentic memory retention strategies",
-      "id": "concept_agentic_memory_retention",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_agentic_memory_retention"
     },
     {
       "label": "Agentic Trading System Architecture",
@@ -325,8 +325,8 @@
       "source_file": "wiki/architectures/agentic-trading-system.md",
       "community": 16,
       "norm_label": "agentic trading system architecture",
-      "id": "arch_agentic_trading",
-      "community_name": "Community 16"
+      "community_name": "Community 16",
+      "id": "arch_agentic_trading"
     },
     {
       "label": "Provider Adapter Pattern (Multi-LLM)",
@@ -339,8 +339,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "provider adapter pattern (multi-llm)",
-      "id": "concept_provider_adapter_pattern",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_provider_adapter_pattern"
     },
     {
       "label": "CLIP \u2014 Contrastive Language-Image Pretraining",
@@ -348,8 +348,8 @@
       "source_file": "wiki/models/clip.md",
       "community": 17,
       "norm_label": "clip \u2014 contrastive language-image pretraining",
-      "id": "model_clip",
-      "community_name": "Community 17"
+      "community_name": "Community 17",
+      "id": "model_clip"
     },
     {
       "label": "ByT5 (Byte-Level T5)",
@@ -357,8 +357,8 @@
       "source_file": "wiki/models/byt5.md",
       "community": 18,
       "norm_label": "byt5 (byte-level t5)",
-      "id": "model_byt5",
-      "community_name": "Community 18"
+      "community_name": "Community 18",
+      "id": "model_byt5"
     },
     {
       "label": "ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI",
@@ -371,8 +371,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "adr: custom provider adapters vs. litellm for arc-agi",
-      "id": "concept_arc_agi_adapters_adr",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_arc_agi_adapters_adr"
     },
     {
       "label": "ADR: Wiki Retention Policy \u2014 Archive vs. Prune Speculative Pages",
@@ -385,8 +385,8 @@
       "contributor": null,
       "community": 19,
       "norm_label": "adr: wiki retention policy \u2014 archive vs. prune speculative pages",
-      "id": "concept_wiki_retention_policy",
-      "community_name": "Community 19"
+      "community_name": "Community 19",
+      "id": "concept_wiki_retention_policy"
     },
     {
       "label": "ADR: Metadata Scoring vs. Embeddings for Text Search",
@@ -399,8 +399,8 @@
       "contributor": null,
       "community": 20,
       "norm_label": "adr: metadata scoring vs. embeddings for text search",
-      "id": "decision_sofascope_metadata_vs_embeddings",
-      "community_name": "Community 20"
+      "community_name": "Community 20",
+      "id": "decision_sofascope_metadata_vs_embeddings"
     },
     {
       "label": "ADR: Consensus-Based Memory Distillation",
@@ -413,8 +413,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "adr: consensus-based memory distillation",
-      "id": "doc_consensus_memory_adr",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "doc_consensus_memory_adr"
     },
     {
       "label": "Agentic Drift (hallucination compounding in memory)",
@@ -427,8 +427,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "agentic drift (hallucination compounding in memory)",
-      "id": "concept_agentic_drift",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_agentic_drift"
     },
     {
       "label": "Rationale: Anti-Hallucination via Consensus (Consensus Memory ADR)",
@@ -441,8 +441,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "rationale: anti-hallucination via consensus (consensus memory adr)",
-      "id": "rationale_consensus_anti_hallucination",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "rationale_consensus_anti_hallucination"
     },
     {
       "label": "ADR: Persistent Service stdin/stdout vs. HTTP",
@@ -455,8 +455,8 @@
       "contributor": null,
       "community": 21,
       "norm_label": "adr: persistent service stdin/stdout vs. http",
-      "id": "decision_sofascope_stdin_stdout",
-      "community_name": "Community 21"
+      "community_name": "Community 21",
+      "id": "decision_sofascope_stdin_stdout"
     },
     {
       "label": "ADR: 90-Day Rotating Retention for Trading Decisions Log",
@@ -469,8 +469,8 @@
       "contributor": null,
       "community": 22,
       "norm_label": "adr: 90-day rotating retention for trading decisions log",
-      "id": "concept_adr_log_retention",
-      "community_name": "Community 22"
+      "community_name": "Community 22",
+      "id": "concept_adr_log_retention"
     },
     {
       "label": "ADR: Open Model vs. Frontier for Trading Sentiment",
@@ -483,8 +483,8 @@
       "contributor": null,
       "community": 23,
       "norm_label": "adr: open model vs. frontier for trading sentiment",
-      "id": "decision_autotrader_open_model_vs_frontier",
-      "community_name": "Community 23"
+      "community_name": "Community 23",
+      "id": "decision_autotrader_open_model_vs_frontier"
     },
     {
       "label": "Alpaca API Integration",
@@ -497,8 +497,8 @@
       "contributor": null,
       "community": 24,
       "norm_label": "alpaca api integration",
-      "id": "integration_alpaca_api",
-      "community_name": "Community 24"
+      "community_name": "Community 24",
+      "id": "integration_alpaca_api"
     },
     {
       "label": "System Design \u2014 Visual Search at Scale",
@@ -511,8 +511,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "system design \u2014 visual search at scale",
-      "id": "interview_visual_search_system_design",
-      "community_name": "Community 25"
+      "community_name": "Community 25",
+      "id": "interview_visual_search_system_design"
     },
     {
       "label": "SofaScope \u2014 AI-Powered Furniture Visual Search",
@@ -525,8 +525,8 @@
       "contributor": null,
       "community": 26,
       "norm_label": "sofascope \u2014 ai-powered furniture visual search",
-      "id": "concept_sofascope",
-      "community_name": "Community 26"
+      "community_name": "Community 26",
+      "id": "concept_sofascope"
     },
     {
       "label": "SofaScope Production System",
@@ -539,8 +539,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "sofascope production system",
-      "id": "production_sofascope",
-      "community_name": "Community 7"
+      "community_name": "Community 7",
+      "id": "production_sofascope"
     },
     {
       "label": "ARC-AGI Benchmark",
@@ -553,8 +553,8 @@
       "contributor": null,
       "community": 27,
       "norm_label": "arc-agi benchmark",
-      "id": "concept_arc_agi",
-      "community_name": "Community 27"
+      "community_name": "Community 27",
+      "id": "concept_arc_agi"
     },
     {
       "label": "Andrej Karpathy",
@@ -567,8 +567,8 @@
       "contributor": null,
       "community": 28,
       "norm_label": "andrej karpathy",
-      "id": "person_andrej_karpathy",
-      "community_name": "Community 28"
+      "community_name": "Community 28",
+      "id": "person_andrej_karpathy"
     },
     {
       "label": "RSI + LLM Signal Strategy",
@@ -581,8 +581,8 @@
       "contributor": null,
       "community": 29,
       "norm_label": "rsi + llm signal strategy",
-      "id": "trading_rsi_llm_signal_strategy",
-      "community_name": "Community 29"
+      "community_name": "Community 29",
+      "id": "trading_rsi_llm_signal_strategy"
     },
     {
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
@@ -595,8 +595,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "autotrader \u2014 autonomous paper trading bot",
-      "id": "concept_autotrader",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_autotrader"
     },
     {
       "label": "Hybrid Search Routing (Text + Image)",
@@ -604,8 +604,8 @@
       "source_file": "wiki/techniques/hybrid-search-routing.md",
       "community": 30,
       "norm_label": "hybrid search routing (text + image)",
-      "id": "tech_hybrid_routing",
-      "community_name": "Community 30"
+      "community_name": "Community 30",
+      "id": "tech_hybrid_routing"
     },
     {
       "label": "LLM Review Pass Before Rotation",
@@ -618,8 +618,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "llm review pass before rotation",
-      "id": "concept_llm_review_pass",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_llm_review_pass"
     },
     {
       "label": "Persistent Model Loading Pattern",
@@ -627,8 +627,8 @@
       "source_file": "wiki/techniques/persistent-model-loading.md",
       "community": 8,
       "norm_label": "persistent model loading pattern",
-      "id": "tech_persistent_model",
-      "community_name": "Community 8"
+      "community_name": "Community 8",
+      "id": "tech_persistent_model"
     },
     {
       "label": "MBR Decoding (Minimum Bayes Risk)",
@@ -641,8 +641,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "mbr decoding (minimum bayes risk)",
-      "id": "concept_mbr_decoding",
-      "community_name": "Community 4"
+      "community_name": "Community 4",
+      "id": "concept_mbr_decoding"
     },
     {
       "label": "CLIP + FAISS Visual Search Pipeline",
@@ -650,8 +650,8 @@
       "source_file": "wiki/techniques/clip-faiss-visual-search.md",
       "community": 8,
       "norm_label": "clip + faiss visual search pipeline",
-      "id": "tech_clip_faiss",
-      "community_name": "Community 8"
+      "community_name": "Community 8",
+      "id": "tech_clip_faiss"
     },
     {
       "label": "AutoTrader README (raw)",
@@ -664,8 +664,8 @@
       "contributor": null,
       "community": 31,
       "norm_label": "autotrader readme (raw)",
-      "id": "raw_autotrader_readme",
-      "community_name": "Community 31"
+      "community_name": "Community 31",
+      "id": "raw_autotrader_readme"
     },
     {
       "label": "ARC-AGI Benchmarking README (raw)",
@@ -678,8 +678,8 @@
       "contributor": null,
       "community": 32,
       "norm_label": "arc-agi benchmarking readme (raw)",
-      "id": "raw_arc_agi_benchmarking_readme",
-      "community_name": "Community 32"
+      "community_name": "Community 32",
+      "id": "raw_arc_agi_benchmarking_readme"
     },
     {
       "label": "SofaScope README (raw)",
@@ -692,8 +692,8 @@
       "contributor": null,
       "community": 33,
       "norm_label": "sofascope readme (raw)",
-      "id": "raw_sofascope_readme",
-      "community_name": "Community 33"
+      "community_name": "Community 33",
+      "id": "raw_sofascope_readme"
     },
     {
       "label": "Karpathy LLM Wiki Gist (raw)",
@@ -706,8 +706,8 @@
       "contributor": null,
       "community": 34,
       "norm_label": "karpathy llm wiki gist (raw)",
-      "id": "raw_karpathy_llm_wiki",
-      "community_name": "Community 34"
+      "community_name": "Community 34",
+      "id": "raw_karpathy_llm_wiki"
     },
     {
       "label": "Cameron Kaggle Profile (raw source)",
@@ -720,8 +720,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "cameron kaggle profile (raw source)",
-      "id": "source_cameron_kaggle_profile",
-      "community_name": "Community 7"
+      "community_name": "Community 7",
+      "id": "source_cameron_kaggle_profile"
     },
     {
       "label": "Cameron's Second Brain \u2014 Overview",
@@ -734,8 +734,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "cameron's second brain \u2014 overview",
-      "id": "overview_cameron_wiki",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_cameron_wiki"
     },
     {
       "label": "Second Brain Knowledge System",
@@ -748,8 +748,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "second brain knowledge system",
-      "id": "overview_second_brain",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_second_brain"
     },
     {
       "label": "SofaScope Visual Search System",
@@ -762,8 +762,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "sofascope visual search system",
-      "id": "overview_sofascope_system",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_sofascope_system"
     },
     {
       "label": "ARC-AGI Async LLM Test Harness",
@@ -776,8 +776,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "arc-agi async llm test harness",
-      "id": "overview_arc_agi_harness",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_arc_agi_harness"
     },
     {
       "label": "AutoTrader RSI+LLM Strategy",
@@ -790,8 +790,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "autotrader rsi+llm strategy",
-      "id": "overview_autotrader_system",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_autotrader_system"
     },
     {
       "label": "Kaggle Competition Portfolio (14 competitions)",
@@ -804,8 +804,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "kaggle competition portfolio (14 competitions)",
-      "id": "overview_kaggle_portfolio",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "overview_kaggle_portfolio"
     },
     {
       "label": "Wiki Activity Log \u2014 Append-Only",
@@ -818,8 +818,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "wiki activity log \u2014 append-only",
-      "id": "log_wiki_activity",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_wiki_activity"
     },
     {
       "label": "Ingest: SofaScope AI-Powered Furniture Visual Search",
@@ -832,8 +832,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ingest: sofascope ai-powered furniture visual search",
-      "id": "log_ingest_sofascope",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_ingest_sofascope"
     },
     {
       "label": "Ingest: Karpathy LLM Wiki Gist",
@@ -846,8 +846,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ingest: karpathy llm wiki gist",
-      "id": "log_ingest_karpathy",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_ingest_karpathy"
     },
     {
       "label": "Ingest: Cameron's Kaggle Profile \u2014 14 Competitions",
@@ -860,8 +860,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ingest: cameron's kaggle profile \u2014 14 competitions",
-      "id": "log_ingest_kaggle",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "log_ingest_kaggle"
     },
     {
       "label": "Ingest: ARC-AGI Benchmarking Harness",
@@ -874,8 +874,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ingest: arc-agi benchmarking harness",
-      "id": "log_ingest_arc_agi",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_ingest_arc_agi"
     },
     {
       "label": "Ingest: AutoTrader Autonomous Paper Trading Bot",
@@ -888,8 +888,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ingest: autotrader autonomous paper trading bot",
-      "id": "log_ingest_autotrader",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_ingest_autotrader"
     },
     {
       "label": "Lint Pass: First Full Lint + Remediation",
@@ -902,8 +902,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "lint pass: first full lint + remediation",
-      "id": "log_lint_pass",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "log_lint_pass"
     },
     {
       "label": "Wiki Index \u2014 Master Catalog",
@@ -916,8 +916,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "wiki index \u2014 master catalog",
-      "id": "index_master_catalog",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_master_catalog"
     },
     {
       "label": "SofaScope Production System Page",
@@ -930,8 +930,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "sofascope production system page",
-      "id": "index_sofascope_page",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_sofascope_page"
     },
     {
       "label": "AutoTrader Trading Bot Page",
@@ -944,8 +944,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "autotrader trading bot page",
-      "id": "index_autotrader_page",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_autotrader_page"
     },
     {
       "label": "ARC-AGI Benchmark Page",
@@ -958,8 +958,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "arc-agi benchmark page",
-      "id": "index_arc_agi_benchmark_page",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_arc_agi_benchmark_page"
     },
     {
       "label": "LLM Wiki Pattern (Karpathy) Page",
@@ -972,8 +972,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "llm wiki pattern (karpathy) page",
-      "id": "index_llm_wiki_pattern_page",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_llm_wiki_pattern_page"
     },
     {
       "label": "Kaggle Portfolio Overview Page",
@@ -986,8 +986,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "kaggle portfolio overview page",
-      "id": "index_kaggle_portfolio_page",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "index_kaggle_portfolio_page"
     },
     {
       "label": "Groq \u2014 LLM Inference API",
@@ -1000,8 +1000,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "groq \u2014 llm inference api",
-      "id": "groq_tool",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "groq_tool"
     },
     {
       "label": "Groq LPU (Language Processing Unit) Hardware",
@@ -1014,8 +1014,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "groq lpu (language processing unit) hardware",
-      "id": "groq_lpu_hardware",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "groq_lpu_hardware"
     },
     {
       "label": "Groq Usage in AutoTrader 15-Min Sentiment Loop",
@@ -1028,8 +1028,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "groq usage in autotrader 15-min sentiment loop",
-      "id": "groq_autotrader_use",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "groq_autotrader_use"
     },
     {
       "label": "Groq OpenAI-Compatible Chat Completions Endpoint",
@@ -1042,8 +1042,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "groq openai-compatible chat completions endpoint",
-      "id": "groq_openai_compat",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "groq_openai_compat"
     },
     {
       "label": "Groq Ultra-Low Latency Token Generation",
@@ -1056,8 +1056,8 @@
       "contributor": null,
       "community": 2,
       "norm_label": "groq ultra-low latency token generation",
-      "id": "groq_latency_prop",
-      "community_name": "Community 2"
+      "community_name": "Community 2",
+      "id": "groq_latency_prop"
     },
     {
       "label": "Llama 3.3 70B \u2014 Meta Open-Weights LLM",
@@ -1070,8 +1070,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "llama 3.3 70b \u2014 meta open-weights llm",
-      "id": "llama_3_3_70b",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "llama_3_3_70b"
     },
     {
       "label": "Llama 3.3 70B Sentiment Classification for AutoTrader",
@@ -1084,8 +1084,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "llama 3.3 70b sentiment classification for autotrader",
-      "id": "llama_sentiment_use",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "llama_sentiment_use"
     },
     {
       "label": "Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader",
@@ -1098,8 +1098,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "rationale: llama 70b ~10x cheaper than gpt-4o for autotrader",
-      "id": "llama_cost_rationale",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "llama_cost_rationale"
     },
     {
       "label": "Llama 3.3 70B 128K Context Window",
@@ -1112,8 +1112,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "llama 3.3 70b 128k context window",
-      "id": "llama_128k_context",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "llama_128k_context"
     },
     {
       "label": "Llama Model Family (1B/3B/8B/70B/405B)",
@@ -1126,8 +1126,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "llama model family (1b/3b/8b/70b/405b)",
-      "id": "llama_model_family",
-      "community_name": "Community 1"
+      "community_name": "Community 1",
+      "id": "llama_model_family"
     },
     {
       "label": "Cameron's Kaggle Portfolio Overview \u2014 14 Competitions",
@@ -1140,8 +1140,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cameron's kaggle portfolio overview \u2014 14 competitions",
-      "id": "kaggle_portfolio_overview",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_portfolio_overview"
     },
     {
       "label": "Motion-S: Text-to-Sign Motion Generation (Rank 25)",
@@ -1154,8 +1154,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "motion-s: text-to-sign motion generation (rank 25)",
-      "id": "kaggle_motion_s",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_motion_s"
     },
     {
       "label": "UrbanFloodBench \u2014 Flood Modelling (Rank 117)",
@@ -1168,8 +1168,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "urbanfloodbench \u2014 flood modelling (rank 117)",
-      "id": "kaggle_urban_flood",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_urban_flood"
     },
     {
       "label": "House Prices \u2014 Advanced Regression Techniques (Rank ~19)",
@@ -1182,8 +1182,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "house prices \u2014 advanced regression techniques (rank ~19)",
-      "id": "kaggle_house_prices",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "kaggle_house_prices"
     },
     {
       "label": "MABe \u2014 Social Action Recognition in Mice",
@@ -1196,8 +1196,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "mabe \u2014 social action recognition in mice",
-      "id": "kaggle_mabe",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_mabe"
     },
     {
       "label": "Stanford RNA 3D Folding (Part 2)",
@@ -1210,8 +1210,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "stanford rna 3d folding (part 2)",
-      "id": "kaggle_stanford_rna",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_stanford_rna"
     },
     {
       "label": "CSIRO \u2014 Image2Biomass Prediction",
@@ -1224,8 +1224,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "csiro \u2014 image2biomass prediction",
-      "id": "kaggle_csiro",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_csiro"
     },
     {
       "label": "Predicting Heart Disease \u2014 Playground S6E2",
@@ -1238,8 +1238,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "predicting heart disease \u2014 playground s6e2",
-      "id": "kaggle_heart_disease",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "kaggle_heart_disease"
     },
     {
       "label": "AI Mathematical Olympiad \u2014 Progress Prize 3 ($2.2M)",
@@ -1252,8 +1252,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai mathematical olympiad \u2014 progress prize 3 ($2.2m)",
-      "id": "kaggle_aimo",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_aimo"
     },
     {
       "label": "Google Tunix Hackathon \u2014 Train a Model to Show Its Work",
@@ -1266,8 +1266,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "google tunix hackathon \u2014 train a model to show its work",
-      "id": "kaggle_google_tunix",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "kaggle_google_tunix"
     },
     {
       "label": "March Machine Learning Mania 2026",
@@ -1280,8 +1280,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "march machine learning mania 2026",
-      "id": "kaggle_march_mania",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "kaggle_march_mania"
     },
     {
       "label": "Graphify Graph Report",
@@ -1294,8 +1294,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "graphify graph report",
-      "id": "graph_report",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_report"
     },
     {
       "label": "Community: Kaggle Portfolio",
@@ -1308,8 +1308,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "community: kaggle portfolio",
-      "id": "graph_community_kaggle",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_community_kaggle"
     },
     {
       "label": "Community: AutoTrader Infrastructure",
@@ -1322,8 +1322,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "community: autotrader infrastructure",
-      "id": "graph_community_autotrader",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_community_autotrader"
     },
     {
       "label": "Community: Language & NLP Kaggle",
@@ -1336,8 +1336,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "community: language & nlp kaggle",
-      "id": "graph_community_language_nlp",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_community_language_nlp"
     },
     {
       "label": "Community: Wiki Core",
@@ -1350,8 +1350,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "community: wiki core",
-      "id": "graph_community_wiki_core",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_community_wiki_core"
     },
     {
       "label": "TF-IDF + kNN Retrieval (Motion-S approach)",
@@ -1364,8 +1364,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "tf-idf + knn retrieval (motion-s approach)",
-      "id": "technique_tfidf_knn",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "technique_tfidf_knn"
     },
     {
       "label": "Pseudo-Labeling (Semi-Supervised, Stanford RNA)",
@@ -1378,8 +1378,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "pseudo-labeling (semi-supervised, stanford rna)",
-      "id": "technique_pseudo_labeling",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "technique_pseudo_labeling"
     },
     {
       "label": "Multi-GPU Embedding Separation",
@@ -1392,8 +1392,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "multi-gpu embedding separation",
-      "id": "technique_multigpu_embeddings",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "technique_multigpu_embeddings"
     },
     {
       "label": "TensorFlow Decision Forests (TFDF)",
@@ -1406,8 +1406,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "tensorflow decision forests (tfdf)",
-      "id": "technique_tfdf",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "technique_tfdf"
     },
     {
       "label": "RealMLP + CatBoost + XGBoost Ensemble",
@@ -1420,8 +1420,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "realmlp + catboost + xgboost ensemble",
-      "id": "technique_realmlp_catboost_xgb",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "technique_realmlp_catboost_xgb"
     },
     {
       "label": "SHAP Analysis for Feature Importance",
@@ -1434,8 +1434,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "shap analysis for feature importance",
-      "id": "technique_shap_analysis",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "technique_shap_analysis"
     },
     {
       "label": "Chain-of-Thought / Show Your Work (Tunix)",
@@ -1448,8 +1448,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "chain-of-thought / show your work (tunix)",
-      "id": "technique_chain_of_thought",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "technique_chain_of_thought"
     },
     {
       "label": "Rationale: Retrieval vs Generation Trade-off (Motion-S insight)",
@@ -1462,8 +1462,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "rationale: retrieval vs generation trade-off (motion-s insight)",
-      "id": "technique_retrieval_vs_generation",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "technique_retrieval_vs_generation"
     },
     {
       "label": "Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)",
@@ -1476,8 +1476,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "geospatial flood modelling (dem, sar, physics-informed ml)",
-      "id": "concept_flood_geospatial",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "concept_flood_geospatial"
     },
     {
       "label": "RNA 3D Structure Prediction (Structural Biology)",
@@ -1490,8 +1490,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "rna 3d structure prediction (structural biology)",
-      "id": "concept_rna_folding",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "concept_rna_folding"
     },
     {
       "label": "Social Action Recognition in Mice (Behavioral Ethology)",
@@ -1504,8 +1504,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "social action recognition in mice (behavioral ethology)",
-      "id": "concept_mouse_behavior",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "concept_mouse_behavior"
     },
     {
       "label": "Above-Ground Biomass Prediction from Satellite Imagery",
@@ -1518,8 +1518,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "above-ground biomass prediction from satellite imagery",
-      "id": "concept_biomass_prediction",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "concept_biomass_prediction"
     },
     {
       "label": "IMO-Level Mathematical Reasoning (AIMO)",
@@ -1532,8 +1532,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "imo-level mathematical reasoning (aimo)",
-      "id": "concept_math_olympiad_reasoning",
-      "community_name": "Community 0"
+      "community_name": "Community 0",
+      "id": "concept_math_olympiad_reasoning"
     },
     {
       "label": "NCAA Bracket Prediction (March Mania)",
@@ -1546,8 +1546,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "ncaa bracket prediction (march mania)",
-      "id": "concept_bracket_prediction",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "concept_bracket_prediction"
     },
     {
       "label": "Log Loss and Calibration in Probabilistic Prediction",
@@ -1560,8 +1560,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "log loss and calibration in probabilistic prediction",
-      "id": "concept_log_loss_calibration",
-      "community_name": "Community 5"
+      "community_name": "Community 5",
+      "id": "concept_log_loss_calibration"
     },
     {
       "label": "God Node: wiki/index.md (14 edges \u2014 most connected)",
@@ -1574,8 +1574,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "god node: wiki/index.md (14 edges \u2014 most connected)",
-      "id": "graph_god_node_index",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_god_node_index"
     },
     {
       "label": "God Node: Agentic Trading System Architecture (13 edges)",
@@ -1588,8 +1588,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "god node: agentic trading system architecture (13 edges)",
-      "id": "graph_god_node_agentic_trading",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_god_node_agentic_trading"
     },
     {
       "label": "Hyperedge: Tabular ML Kaggle Cluster (House Prices + Heart Disease)",
@@ -1602,8 +1602,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "hyperedge: tabular ml kaggle cluster (house prices + heart disease)",
-      "id": "graph_hyperedge_tabular",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_hyperedge_tabular"
     },
     {
       "label": "Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT)",
@@ -1616,8 +1616,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "hyperedge: frontier reasoning benchmarks (aimo + arc-agi + cot)",
-      "id": "graph_hyperedge_frontier_reasoning",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_hyperedge_frontier_reasoning"
     },
     {
       "label": "Graph Fragmentation Metric (0.400 \u2014 53 isolated nodes)",
@@ -1630,8 +1630,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "graph fragmentation metric (0.400 \u2014 53 isolated nodes)",
-      "id": "graph_fragmentation",
-      "community_name": "Community 3"
+      "community_name": "Community 3",
+      "id": "graph_fragmentation"
     }
   ],
   "links": [
@@ -3021,5 +3021,5 @@
       "source_file": "wiki/tools/groq.md"
     }
   ],
-  "built_at_commit": "b977f3ab7eb5905341c04ebd44ef3cef6618e997"
+  "built_at_commit": "1015c9f253c1e2ef88e92debf11be09a23171611"
 }
