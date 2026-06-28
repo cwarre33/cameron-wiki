@@ -86,12 +86,12 @@
         "id": "groq_autotrader_llama_loop",
         "label": "Groq + Llama 3.3 70B form the sentiment inference backbone of AutoTrader's 15-min scan loop",
         "nodes": [
-          "groq_tool",
-          "llama_3_3_70b",
-          "groq_autotrader_use",
+          "wiki_tools_groq_tool",
+          "wiki_models_llama_3_3_70b",
+          "wiki_tools_groq_autotrader_use",
           "llama_sentiment_use",
           "llama_cost_rationale",
-          "groq_latency_prop"
+          "wiki_tools_groq_latency_prop"
         ],
         "relation": "implement",
         "confidence": "EXTRACTED",
@@ -187,7 +187,7 @@
       "community": 11,
       "norm_label": "arc prize 2025",
       "community_name": "Community 11",
-      "id": "kaggle_arc_prize_2025"
+      "id": "wiki_kaggle_arc_prize_2025"
     },
     {
       "label": "Jaguar Re-Identification Challenge",
@@ -582,7 +582,7 @@
       "community": 29,
       "norm_label": "rsi + llm signal strategy",
       "community_name": "Community 29",
-      "id": "trading_rsi_llm_signal_strategy"
+      "id": "wiki_trading_rsi_llm_signal_strategy"
     },
     {
       "label": "AutoTrader \u2014 Autonomous Paper Trading Bot",
@@ -735,7 +735,7 @@
       "community": 2,
       "norm_label": "cameron's second brain \u2014 overview",
       "community_name": "Community 2",
-      "id": "overview_cameron_wiki"
+      "id": "wiki_overview_cameron_wiki"
     },
     {
       "label": "Second Brain Knowledge System",
@@ -749,7 +749,7 @@
       "community": 2,
       "norm_label": "second brain knowledge system",
       "community_name": "Community 2",
-      "id": "overview_second_brain"
+      "id": "wiki_overview_second_brain"
     },
     {
       "label": "SofaScope Visual Search System",
@@ -763,7 +763,7 @@
       "community": 2,
       "norm_label": "sofascope visual search system",
       "community_name": "Community 2",
-      "id": "overview_sofascope_system"
+      "id": "wiki_overview_sofascope_system"
     },
     {
       "label": "ARC-AGI Async LLM Test Harness",
@@ -777,7 +777,7 @@
       "community": 2,
       "norm_label": "arc-agi async llm test harness",
       "community_name": "Community 2",
-      "id": "overview_arc_agi_harness"
+      "id": "wiki_overview_arc_agi_harness"
     },
     {
       "label": "AutoTrader RSI+LLM Strategy",
@@ -791,7 +791,7 @@
       "community": 2,
       "norm_label": "autotrader rsi+llm strategy",
       "community_name": "Community 2",
-      "id": "overview_autotrader_system"
+      "id": "wiki_overview_autotrader_system"
     },
     {
       "label": "Kaggle Competition Portfolio (14 competitions)",
@@ -805,7 +805,7 @@
       "community": 2,
       "norm_label": "kaggle competition portfolio (14 competitions)",
       "community_name": "Community 2",
-      "id": "overview_kaggle_portfolio"
+      "id": "wiki_overview_kaggle_portfolio"
     },
     {
       "label": "Wiki Activity Log \u2014 Append-Only",
@@ -819,7 +819,7 @@
       "community": 1,
       "norm_label": "wiki activity log \u2014 append-only",
       "community_name": "Community 1",
-      "id": "log_wiki_activity"
+      "id": "wiki_log_wiki_activity"
     },
     {
       "label": "Ingest: SofaScope AI-Powered Furniture Visual Search",
@@ -833,7 +833,7 @@
       "community": 1,
       "norm_label": "ingest: sofascope ai-powered furniture visual search",
       "community_name": "Community 1",
-      "id": "log_ingest_sofascope"
+      "id": "wiki_log_ingest_sofascope"
     },
     {
       "label": "Ingest: Karpathy LLM Wiki Gist",
@@ -847,7 +847,7 @@
       "community": 1,
       "norm_label": "ingest: karpathy llm wiki gist",
       "community_name": "Community 1",
-      "id": "log_ingest_karpathy"
+      "id": "wiki_log_ingest_karpathy"
     },
     {
       "label": "Ingest: Cameron's Kaggle Profile \u2014 14 Competitions",
@@ -861,7 +861,7 @@
       "community": 0,
       "norm_label": "ingest: cameron's kaggle profile \u2014 14 competitions",
       "community_name": "Community 0",
-      "id": "log_ingest_kaggle"
+      "id": "wiki_log_ingest_kaggle"
     },
     {
       "label": "Ingest: ARC-AGI Benchmarking Harness",
@@ -875,7 +875,7 @@
       "community": 1,
       "norm_label": "ingest: arc-agi benchmarking harness",
       "community_name": "Community 1",
-      "id": "log_ingest_arc_agi"
+      "id": "wiki_log_ingest_arc_agi"
     },
     {
       "label": "Ingest: AutoTrader Autonomous Paper Trading Bot",
@@ -889,7 +889,7 @@
       "community": 1,
       "norm_label": "ingest: autotrader autonomous paper trading bot",
       "community_name": "Community 1",
-      "id": "log_ingest_autotrader"
+      "id": "wiki_log_ingest_autotrader"
     },
     {
       "label": "Lint Pass: First Full Lint + Remediation",
@@ -903,7 +903,7 @@
       "community": 1,
       "norm_label": "lint pass: first full lint + remediation",
       "community_name": "Community 1",
-      "id": "log_lint_pass"
+      "id": "wiki_log_lint_pass"
     },
     {
       "label": "Wiki Index \u2014 Master Catalog",
@@ -917,7 +917,7 @@
       "community": 5,
       "norm_label": "wiki index \u2014 master catalog",
       "community_name": "Community 5",
-      "id": "index_master_catalog"
+      "id": "wiki_index_master_catalog"
     },
     {
       "label": "SofaScope Production System Page",
@@ -931,7 +931,7 @@
       "community": 5,
       "norm_label": "sofascope production system page",
       "community_name": "Community 5",
-      "id": "index_sofascope_page"
+      "id": "wiki_index_sofascope_page"
     },
     {
       "label": "AutoTrader Trading Bot Page",
@@ -945,7 +945,7 @@
       "community": 5,
       "norm_label": "autotrader trading bot page",
       "community_name": "Community 5",
-      "id": "index_autotrader_page"
+      "id": "wiki_index_autotrader_page"
     },
     {
       "label": "ARC-AGI Benchmark Page",
@@ -959,7 +959,7 @@
       "community": 5,
       "norm_label": "arc-agi benchmark page",
       "community_name": "Community 5",
-      "id": "index_arc_agi_benchmark_page"
+      "id": "wiki_index_arc_agi_benchmark_page"
     },
     {
       "label": "LLM Wiki Pattern (Karpathy) Page",
@@ -973,7 +973,7 @@
       "community": 5,
       "norm_label": "llm wiki pattern (karpathy) page",
       "community_name": "Community 5",
-      "id": "index_llm_wiki_pattern_page"
+      "id": "wiki_index_llm_wiki_pattern_page"
     },
     {
       "label": "Kaggle Portfolio Overview Page",
@@ -987,7 +987,7 @@
       "community": 5,
       "norm_label": "kaggle portfolio overview page",
       "community_name": "Community 5",
-      "id": "index_kaggle_portfolio_page"
+      "id": "wiki_index_kaggle_portfolio_page"
     },
     {
       "label": "Groq \u2014 LLM Inference API",
@@ -1001,7 +1001,7 @@
       "community": 2,
       "norm_label": "groq \u2014 llm inference api",
       "community_name": "Community 2",
-      "id": "groq_tool"
+      "id": "wiki_tools_groq_tool"
     },
     {
       "label": "Groq LPU (Language Processing Unit) Hardware",
@@ -1015,7 +1015,7 @@
       "community": 2,
       "norm_label": "groq lpu (language processing unit) hardware",
       "community_name": "Community 2",
-      "id": "groq_lpu_hardware"
+      "id": "wiki_tools_groq_lpu_hardware"
     },
     {
       "label": "Groq Usage in AutoTrader 15-Min Sentiment Loop",
@@ -1029,7 +1029,7 @@
       "community": 2,
       "norm_label": "groq usage in autotrader 15-min sentiment loop",
       "community_name": "Community 2",
-      "id": "groq_autotrader_use"
+      "id": "wiki_tools_groq_autotrader_use"
     },
     {
       "label": "Groq OpenAI-Compatible Chat Completions Endpoint",
@@ -1043,7 +1043,7 @@
       "community": 2,
       "norm_label": "groq openai-compatible chat completions endpoint",
       "community_name": "Community 2",
-      "id": "groq_openai_compat"
+      "id": "wiki_tools_groq_openai_compat"
     },
     {
       "label": "Groq Ultra-Low Latency Token Generation",
@@ -1057,7 +1057,7 @@
       "community": 2,
       "norm_label": "groq ultra-low latency token generation",
       "community_name": "Community 2",
-      "id": "groq_latency_prop"
+      "id": "wiki_tools_groq_latency_prop"
     },
     {
       "label": "Llama 3.3 70B \u2014 Meta Open-Weights LLM",
@@ -1071,7 +1071,7 @@
       "community": 1,
       "norm_label": "llama 3.3 70b \u2014 meta open-weights llm",
       "community_name": "Community 1",
-      "id": "llama_3_3_70b"
+      "id": "wiki_models_llama_3_3_70b"
     },
     {
       "label": "Llama 3.3 70B Sentiment Classification for AutoTrader",
@@ -1141,7 +1141,7 @@
       "community": 0,
       "norm_label": "cameron's kaggle portfolio overview \u2014 14 competitions",
       "community_name": "Community 0",
-      "id": "kaggle_portfolio_overview"
+      "id": "wiki_kaggle_portfolio_overview"
     },
     {
       "label": "Motion-S: Text-to-Sign Motion Generation (Rank 25)",
@@ -1295,7 +1295,7 @@
       "community": 3,
       "norm_label": "graphify graph report",
       "community_name": "Community 3",
-      "id": "graph_report"
+      "id": "graphify_out_graph_report"
     },
     {
       "label": "Community: Kaggle Portfolio",
@@ -1900,8 +1900,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "related field",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "index_master_catalog"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_index_master_catalog"
     },
     {
       "relation": "references",
@@ -1910,8 +1910,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "overview_arc_agi_harness"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_overview_arc_agi_harness"
     },
     {
       "relation": "references",
@@ -1920,8 +1920,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "overview_autotrader_system"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_overview_autotrader_system"
     },
     {
       "relation": "references",
@@ -1930,8 +1930,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "overview_kaggle_portfolio"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_overview_kaggle_portfolio"
     },
     {
       "relation": "conceptually_related_to",
@@ -1940,8 +1940,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Title and intro",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "overview_second_brain"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_overview_second_brain"
     },
     {
       "relation": "references",
@@ -1950,8 +1950,8 @@
       "source_file": "wiki/overview.md",
       "source_location": "Strongest areas section",
       "weight": 1.0,
-      "source": "overview_cameron_wiki",
-      "target": "overview_sofascope_system"
+      "source": "wiki_overview_cameron_wiki",
+      "target": "wiki_overview_sofascope_system"
     },
     {
       "relation": "semantically_similar_to",
@@ -1960,7 +1960,7 @@
       "source_file": "wiki/kaggle/csiro-image2biomass.md",
       "source_location": "Image embedding cluster note",
       "weight": 0.65,
-      "source": "overview_sofascope_system",
+      "source": "wiki_overview_sofascope_system",
       "target": "kaggle_csiro"
     },
     {
@@ -1970,8 +1970,8 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "related field",
       "weight": 1.0,
-      "source": "overview_autotrader_system",
-      "target": "groq_tool"
+      "source": "wiki_overview_autotrader_system",
+      "target": "wiki_tools_groq_tool"
     },
     {
       "relation": "references",
@@ -1980,8 +1980,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_ingest_arc_agi"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_ingest_arc_agi"
     },
     {
       "relation": "references",
@@ -1990,8 +1990,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_ingest_autotrader"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_ingest_autotrader"
     },
     {
       "relation": "references",
@@ -2000,8 +2000,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_ingest_kaggle"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_ingest_kaggle"
     },
     {
       "relation": "references",
@@ -2010,8 +2010,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_ingest_karpathy"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_ingest_karpathy"
     },
     {
       "relation": "references",
@@ -2020,8 +2020,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 ingest entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_ingest_sofascope"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_ingest_sofascope"
     },
     {
       "relation": "references",
@@ -2030,8 +2030,8 @@
       "source_file": "wiki/log.md",
       "source_location": "2026-04-17 lint entry",
       "weight": 1.0,
-      "source": "log_wiki_activity",
-      "target": "log_lint_pass"
+      "source": "wiki_log_wiki_activity",
+      "target": "wiki_log_lint_pass"
     },
     {
       "relation": "references",
@@ -2040,7 +2040,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_aimo"
     },
     {
@@ -2050,7 +2050,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_csiro"
     },
     {
@@ -2060,7 +2060,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_google_tunix"
     },
     {
@@ -2070,7 +2070,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_heart_disease"
     },
     {
@@ -2080,7 +2080,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_house_prices"
     },
     {
@@ -2090,7 +2090,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_mabe"
     },
     {
@@ -2100,7 +2100,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_march_mania"
     },
     {
@@ -2110,7 +2110,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_motion_s"
     },
     {
@@ -2120,7 +2120,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_stanford_rna"
     },
     {
@@ -2130,7 +2130,7 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in kaggle ingest",
       "weight": 1.0,
-      "source": "log_ingest_kaggle",
+      "source": "wiki_log_ingest_kaggle",
       "target": "kaggle_urban_flood"
     },
     {
@@ -2140,8 +2140,8 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "source": "log_lint_pass",
-      "target": "groq_tool"
+      "source": "wiki_log_lint_pass",
+      "target": "wiki_kaggle_portfolio_overview"
     },
     {
       "relation": "references",
@@ -2150,8 +2150,8 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "source": "log_lint_pass",
-      "target": "kaggle_portfolio_overview"
+      "source": "wiki_log_lint_pass",
+      "target": "wiki_models_llama_3_3_70b"
     },
     {
       "relation": "references",
@@ -2160,18 +2160,108 @@
       "source_file": "wiki/log.md",
       "source_location": "Pages created in lint",
       "weight": 1.0,
-      "source": "log_lint_pass",
-      "target": "llama_3_3_70b"
+      "source": "wiki_log_lint_pass",
+      "target": "wiki_tools_groq_tool"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "wiki/index.md",
-      "source_location": "Tools section",
+      "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "groq_tool"
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_aimo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_csiro"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_google_tunix"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_heart_disease"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_house_prices"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_mabe"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_march_mania"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_motion_s"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_stanford_rna"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/index.md",
+      "source_location": "Kaggle Competitions section",
+      "weight": 1.0,
+      "source": "wiki_index_master_catalog",
+      "target": "kaggle_urban_flood"
     },
     {
       "relation": "references",
@@ -2180,8 +2270,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Benchmarks section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_arc_agi_benchmark_page"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_index_arc_agi_benchmark_page"
     },
     {
       "relation": "references",
@@ -2190,8 +2280,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Trading section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_autotrader_page"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_index_autotrader_page"
     },
     {
       "relation": "references",
@@ -2200,8 +2290,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_kaggle_portfolio_page"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_index_kaggle_portfolio_page"
     },
     {
       "relation": "references",
@@ -2210,8 +2300,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Methodology section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_llm_wiki_pattern_page"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_index_llm_wiki_pattern_page"
     },
     {
       "relation": "references",
@@ -2220,8 +2310,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Production Systems section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "index_sofascope_page"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_index_sofascope_page"
     },
     {
       "relation": "references",
@@ -2230,108 +2320,8 @@
       "source_file": "wiki/index.md",
       "source_location": "Kaggle Competitions section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_aimo"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_csiro"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_google_tunix"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_heart_disease"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_house_prices"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_mabe"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_march_mania"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_motion_s"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_portfolio_overview"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_stanford_rna"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/index.md",
-      "source_location": "Kaggle Competitions section",
-      "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "kaggle_urban_flood"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_kaggle_portfolio_overview"
     },
     {
       "relation": "references",
@@ -2340,48 +2330,18 @@
       "source_file": "wiki/index.md",
       "source_location": "Models section",
       "weight": 1.0,
-      "source": "index_master_catalog",
-      "target": "llama_3_3_70b"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_models_llama_3_3_70b"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Where used section",
+      "source_file": "wiki/index.md",
+      "source_location": "Tools section",
       "weight": 1.0,
-      "source": "groq_tool",
-      "target": "groq_autotrader_use"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0,
-      "source": "groq_tool",
-      "target": "groq_latency_prop"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0,
-      "source": "groq_tool",
-      "target": "groq_lpu_hardware"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "wiki/tools/groq.md",
-      "source_location": "Key properties section",
-      "weight": 1.0,
-      "source": "groq_tool",
-      "target": "groq_openai_compat"
+      "source": "wiki_index_master_catalog",
+      "target": "wiki_tools_groq_tool"
     },
     {
       "relation": "references",
@@ -2390,8 +2350,48 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "related field + Why this model Speed via Groq",
       "weight": 1.0,
-      "source": "groq_tool",
-      "target": "llama_3_3_70b"
+      "source": "wiki_tools_groq_tool",
+      "target": "wiki_models_llama_3_3_70b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Where used section",
+      "weight": 1.0,
+      "source": "wiki_tools_groq_tool",
+      "target": "wiki_tools_groq_autotrader_use"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "source": "wiki_tools_groq_tool",
+      "target": "wiki_tools_groq_latency_prop"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "source": "wiki_tools_groq_tool",
+      "target": "wiki_tools_groq_lpu_hardware"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "wiki/tools/groq.md",
+      "source_location": "Key properties section",
+      "weight": 1.0,
+      "source": "wiki_tools_groq_tool",
+      "target": "wiki_tools_groq_openai_compat"
     },
     {
       "relation": "rationale_for",
@@ -2400,8 +2400,8 @@
       "source_file": "wiki/tools/groq.md",
       "source_location": "Key properties section",
       "weight": 1.0,
-      "source": "groq_lpu_hardware",
-      "target": "groq_latency_prop"
+      "source": "wiki_tools_groq_lpu_hardware",
+      "target": "wiki_tools_groq_latency_prop"
     },
     {
       "relation": "references",
@@ -2410,7 +2410,7 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Key capabilities section",
       "weight": 1.0,
-      "source": "llama_3_3_70b",
+      "source": "wiki_models_llama_3_3_70b",
       "target": "llama_128k_context"
     },
     {
@@ -2420,7 +2420,7 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Why this model section",
       "weight": 1.0,
-      "source": "llama_3_3_70b",
+      "source": "wiki_models_llama_3_3_70b",
       "target": "llama_cost_rationale"
     },
     {
@@ -2430,7 +2430,7 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Model family context section",
       "weight": 1.0,
-      "source": "llama_3_3_70b",
+      "source": "wiki_models_llama_3_3_70b",
       "target": "llama_model_family"
     },
     {
@@ -2440,7 +2440,7 @@
       "source_file": "wiki/models/llama-3-3-70b.md",
       "source_location": "Why this model section",
       "weight": 1.0,
-      "source": "llama_3_3_70b",
+      "source": "wiki_models_llama_3_3_70b",
       "target": "llama_sentiment_use"
     },
     {
@@ -2450,7 +2450,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_aimo"
     },
     {
@@ -2460,7 +2460,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_csiro"
     },
     {
@@ -2470,7 +2470,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_google_tunix"
     },
     {
@@ -2480,7 +2480,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_heart_disease"
     },
     {
@@ -2490,7 +2490,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_house_prices"
     },
     {
@@ -2500,7 +2500,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_mabe"
     },
     {
@@ -2510,7 +2510,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_march_mania"
     },
     {
@@ -2520,7 +2520,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_motion_s"
     },
     {
@@ -2530,7 +2530,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "All Competitions section",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_stanford_rna"
     },
     {
@@ -2540,7 +2540,7 @@
       "source_file": "wiki/kaggle/portfolio-overview.md",
       "source_location": "Confirmed Results table",
       "weight": 1.0,
-      "source": "kaggle_portfolio_overview",
+      "source": "wiki_kaggle_portfolio_overview",
       "target": "kaggle_urban_flood"
     },
     {
@@ -2810,7 +2810,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_community_autotrader"
     },
     {
@@ -2820,7 +2820,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_community_kaggle"
     },
     {
@@ -2830,7 +2830,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_community_language_nlp"
     },
     {
@@ -2840,7 +2840,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Communities section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_community_wiki_core"
     },
     {
@@ -2850,7 +2850,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Knowledge Gaps section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_fragmentation"
     },
     {
@@ -2860,7 +2860,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "God Nodes section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_god_node_agentic_trading"
     },
     {
@@ -2870,7 +2870,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "God Nodes section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_god_node_index"
     },
     {
@@ -2880,7 +2880,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Hyperedges section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_hyperedge_frontier_reasoning"
     },
     {
@@ -2890,7 +2890,7 @@
       "source_file": "graphify-out/GRAPH_REPORT.md",
       "source_location": "Hyperedges section",
       "weight": 1.0,
-      "source": "graph_report",
+      "source": "graphify_out_graph_report",
       "target": "graph_hyperedge_tabular"
     },
     {
@@ -3008,12 +3008,12 @@
       "id": "groq_autotrader_llama_loop",
       "label": "Groq + Llama 3.3 70B form the sentiment inference backbone of AutoTrader's 15-min scan loop",
       "nodes": [
-        "groq_tool",
-        "llama_3_3_70b",
-        "groq_autotrader_use",
+        "wiki_tools_groq_tool",
+        "wiki_models_llama_3_3_70b",
+        "wiki_tools_groq_autotrader_use",
         "llama_sentiment_use",
         "llama_cost_rationale",
-        "groq_latency_prop"
+        "wiki_tools_groq_latency_prop"
       ],
       "relation": "implement",
       "confidence": "EXTRACTED",
@@ -3021,5 +3021,5 @@
       "source_file": "wiki/tools/groq.md"
     }
   ],
-  "built_at_commit": "67f1fc31df914cbeeb83c65a56adacf74c2f6cfb"
+  "built_at_commit": "92576041336b91b66ef197166bd64539a78a2a2b"
 }
