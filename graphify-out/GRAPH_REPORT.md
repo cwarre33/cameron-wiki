@@ -9,46 +9,46 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b362c0fe`
+- Built from commit: `db85403b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Community 0|Community 0]]
-- [[_COMMUNITY_Community 1|Community 1]]
-- [[_COMMUNITY_Community 2|Community 2]]
-- [[_COMMUNITY_Community 3|Community 3]]
-- [[_COMMUNITY_Community 4|Community 4]]
-- [[_COMMUNITY_Community 5|Community 5]]
-- [[_COMMUNITY_Community 6|Community 6]]
-- [[_COMMUNITY_Community 7|Community 7]]
-- [[_COMMUNITY_Community 8|Community 8]]
-- [[_COMMUNITY_Community 9|Community 9]]
-- [[_COMMUNITY_Community 10|Community 10]]
-- [[_COMMUNITY_Community 11|Community 11]]
-- [[_COMMUNITY_Community 12|Community 12]]
-- [[_COMMUNITY_Community 13|Community 13]]
-- [[_COMMUNITY_Community 14|Community 14]]
-- [[_COMMUNITY_Community 15|Community 15]]
-- [[_COMMUNITY_Community 16|Community 16]]
-- [[_COMMUNITY_Community 17|Community 17]]
-- [[_COMMUNITY_Community 18|Community 18]]
-- [[_COMMUNITY_Community 19|Community 19]]
-- [[_COMMUNITY_Community 20|Community 20]]
-- [[_COMMUNITY_Community 21|Community 21]]
-- [[_COMMUNITY_Community 22|Community 22]]
-- [[_COMMUNITY_Community 23|Community 23]]
-- [[_COMMUNITY_Community 24|Community 24]]
-- [[_COMMUNITY_Community 25|Community 25]]
-- [[_COMMUNITY_Community 26|Community 26]]
-- [[_COMMUNITY_Community 27|Community 27]]
-- [[_COMMUNITY_Community 28|Community 28]]
-- [[_COMMUNITY_Community 29|Community 29]]
-- [[_COMMUNITY_Community 30|Community 30]]
-- [[_COMMUNITY_Community 31|Community 31]]
-- [[_COMMUNITY_Community 32|Community 32]]
-- [[_COMMUNITY_Community 33|Community 33]]
-- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Cameron's Kaggle Portfolio Overview — 14 Competitions|Cameron's Kaggle Portfolio Overview — 14 Competitions]]
+- [[_COMMUNITY_Llama 3.3 70B — Meta Open-Weights LLM|Llama 3.3 70B — Meta Open-Weights LLM]]
+- [[_COMMUNITY_Groq — LLM Inference API|Groq — LLM Inference API]]
+- [[_COMMUNITY_Graphify Graph Report|Graphify Graph Report]]
+- [[_COMMUNITY_ADR Consensus-Based Memory Distillation|ADR: Consensus-Based Memory Distillation]]
+- [[_COMMUNITY_Wiki Index — Master Catalog|Wiki Index — Master Catalog]]
+- [[_COMMUNITY_CLAUDE.md — Wiki Schema & Workflows|CLAUDE.md — Wiki Schema & Workflows]]
+- [[_COMMUNITY_Jaguar Re-Identification Challenge|Jaguar Re-Identification Challenge]]
+- [[_COMMUNITY_CLIP + FAISS Visual Search Pipeline|CLIP + FAISS Visual Search Pipeline]]
+- [[_COMMUNITY_LiteLLM|LiteLLM]]
+- [[_COMMUNITY_FAISS Vector Search Tool|FAISS Vector Search Tool]]
+- [[_COMMUNITY_ARC Prize 2025|ARC Prize 2025]]
+- [[_COMMUNITY_Hull Tactical — Market Prediction|Hull Tactical — Market Prediction]]
+- [[_COMMUNITY_ARC-AGI Benchmarking Harness|ARC-AGI Benchmarking Harness]]
+- [[_COMMUNITY_Retrieval-Augmented Generation (RAG)|Retrieval-Augmented Generation (RAG)]]
+- [[_COMMUNITY_Cameron's Wiki Setup|Cameron's Wiki Setup]]
+- [[_COMMUNITY_Agentic Trading System Architecture|Agentic Trading System Architecture]]
+- [[_COMMUNITY_CLIP — Contrastive Language-Image Pretraining|CLIP — Contrastive Language-Image Pretraining]]
+- [[_COMMUNITY_ByT5 (Byte-Level T5)|ByT5 (Byte-Level T5)]]
+- [[_COMMUNITY_ADR Wiki Retention Policy — Archive vs. Prune Speculative Pages|ADR: Wiki Retention Policy — Archive vs. Prune Speculative Pages]]
+- [[_COMMUNITY_ADR Metadata Scoring vs. Embeddings for Text Search|ADR: Metadata Scoring vs. Embeddings for Text Search]]
+- [[_COMMUNITY_ADR Persistent Service stdinstdout vs. HTTP|ADR: Persistent Service stdin/stdout vs. HTTP]]
+- [[_COMMUNITY_ADR 90-Day Rotating Retention for Trading Decisions Log|ADR: 90-Day Rotating Retention for Trading Decisions Log]]
+- [[_COMMUNITY_ADR Open Model vs. Frontier for Trading Sentiment|ADR: Open Model vs. Frontier for Trading Sentiment]]
+- [[_COMMUNITY_Alpaca API Integration|Alpaca API Integration]]
+- [[_COMMUNITY_System Design — Visual Search at Scale|System Design — Visual Search at Scale]]
+- [[_COMMUNITY_SofaScope — AI-Powered Furniture Visual Search|SofaScope — AI-Powered Furniture Visual Search]]
+- [[_COMMUNITY_ARC-AGI Benchmark|ARC-AGI Benchmark]]
+- [[_COMMUNITY_Andrej Karpathy|Andrej Karpathy]]
+- [[_COMMUNITY_RSI + LLM Signal Strategy|RSI + LLM Signal Strategy]]
+- [[_COMMUNITY_Hybrid Search Routing (Text + Image)|Hybrid Search Routing (Text + Image)]]
+- [[_COMMUNITY_AutoTrader README (raw)|AutoTrader README (raw)]]
+- [[_COMMUNITY_ARC-AGI Benchmarking README (raw)|ARC-AGI Benchmarking README (raw)]]
+- [[_COMMUNITY_SofaScope README (raw)|SofaScope README (raw)]]
+- [[_COMMUNITY_Karpathy LLM Wiki Gist (raw)|Karpathy LLM Wiki Gist (raw)]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `Wiki Index — Master Catalog` - 19 edges
@@ -87,35 +87,35 @@
 
 ## Communities (35 total, 27 thin omitted)
 
-### Community 0 - "Community 0"
+### Community 0 - "Cameron's Kaggle Portfolio Overview — 14 Competitions"
 Cohesion: 0.20
 Nodes (19): Above-Ground Biomass Prediction from Satellite Imagery, Geospatial Flood Modelling (DEM, SAR, Physics-informed ML), IMO-Level Mathematical Reasoning (AIMO), Social Action Recognition in Mice (Behavioral Ethology), RNA 3D Structure Prediction (Structural Biology), AI Mathematical Olympiad — Progress Prize 3 ($2.2M), CSIRO — Image2Biomass Prediction, Google Tunix Hackathon — Train a Model to Show Its Work (+11 more)
 
-### Community 1 - "Community 1"
+### Community 1 - "Llama 3.3 70B — Meta Open-Weights LLM"
 Cohesion: 0.18
 Nodes (11): Llama 3.3 70B 128K Context Window, Rationale: Llama 70B ~10x Cheaper than GPT-4o for AutoTrader, Llama Model Family (1B/3B/8B/70B/405B), Llama 3.3 70B Sentiment Classification for AutoTrader, Ingest: ARC-AGI Benchmarking Harness, Ingest: AutoTrader Autonomous Paper Trading Bot, Ingest: Karpathy LLM Wiki Gist, Ingest: SofaScope AI-Powered Furniture Visual Search (+3 more)
 
-### Community 2 - "Community 2"
+### Community 2 - "Groq — LLM Inference API"
 Cohesion: 0.20
 Nodes (11): ARC-AGI Async LLM Test Harness, AutoTrader RSI+LLM Strategy, Cameron's Second Brain — Overview, Kaggle Competition Portfolio (14 competitions), Second Brain Knowledge System, SofaScope Visual Search System, Groq Usage in AutoTrader 15-Min Sentiment Loop, Groq Ultra-Low Latency Token Generation (+3 more)
 
-### Community 3 - "Community 3"
+### Community 3 - "Graphify Graph Report"
 Cohesion: 0.20
 Nodes (10): Community: AutoTrader Infrastructure, Community: Kaggle Portfolio, Community: Language & NLP Kaggle, Community: Wiki Core, Graph Fragmentation Metric (0.400 — 53 isolated nodes), God Node: Agentic Trading System Architecture (13 edges), God Node: wiki/index.md (14 edges — most connected), Hyperedge: Frontier Reasoning Benchmarks (AIMO + ARC-AGI + CoT) (+2 more)
 
-### Community 4 - "Community 4"
+### Community 4 - "ADR: Consensus-Based Memory Distillation"
 Cohesion: 0.31
 Nodes (10): Agentic Drift (hallucination compounding in memory), Open Question — Agentic Memory Retention Strategies, ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI, AutoTrader — Autonomous Paper Trading Bot, Deep Past — Akkadian Translation (Kaggle), LLM Review Pass Before Rotation, MBR Decoding (Minimum Bayes Risk), Provider Adapter Pattern (Multi-LLM) (+2 more)
 
-### Community 5 - "Community 5"
+### Community 5 - "Wiki Index — Master Catalog"
 Cohesion: 0.19
 Nodes (14): NCAA Bracket Prediction (March Mania), Log Loss and Calibration in Probabilistic Prediction, Predicting Heart Disease — Playground S6E2, House Prices — Advanced Regression Techniques (Rank ~19), March Machine Learning Mania 2026, RealMLP + CatBoost + XGBoost Ensemble, SHAP Analysis for Feature Importance, TensorFlow Decision Forests (TFDF) (+6 more)
 
-### Community 6 - "Community 6"
+### Community 6 - "CLAUDE.md — Wiki Schema & Workflows"
 Cohesion: 0.60
 Nodes (5): Graphify — Knowledge Graph Skill, LLM Wiki Pattern (Karpathy), Obsidian Integration, CLAUDE.md — Wiki Schema & Workflows, README — cameron-wiki
 
-### Community 7 - "Community 7"
+### Community 7 - "Jaguar Re-Identification Challenge"
 Cohesion: 0.50
 Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Cameron Kaggle Profile (raw source), CLIP+FAISS Embedding Retrieval, Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)
 
@@ -127,11 +127,11 @@ Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Came
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Wiki Index — Master Catalog` connect `Community 5` to `Community 0`, `Community 1`, `Community 2`?**
+- **Why does `Wiki Index — Master Catalog` connect `Wiki Index — Master Catalog` to `Cameron's Kaggle Portfolio Overview — 14 Competitions`, `Llama 3.3 70B — Meta Open-Weights LLM`, `Groq — LLM Inference API`?**
   _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **Why does `Groq — LLM Inference API` connect `Community 2` to `Community 1`, `Community 5`?**
+- **Why does `Groq — LLM Inference API` connect `Groq — LLM Inference API` to `Llama 3.3 70B — Meta Open-Weights LLM`, `Wiki Index — Master Catalog`?**
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Community 0` to `Community 1`, `Community 5`?**
+- **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Cameron's Kaggle Portfolio Overview — 14 Competitions` to `Llama 3.3 70B — Meta Open-Weights LLM`, `Wiki Index — Master Catalog`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
 - **What connects `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
