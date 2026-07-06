@@ -1,4 +1,4 @@
-# Graph Report - .  (2026-07-05)
+# Graph Report - .  (2026-07-06)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
@@ -9,7 +9,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `048f24c3`
+- Built from commit: `bafd4e4a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -73,9 +73,6 @@
   CLAUDE.md → wiki/methodology/llm-wiki-pattern.md
 - `Jaguar Re-Identification Challenge` --references--> `Cameron Kaggle Profile (raw source)`  [EXTRACTED]
   wiki/kaggle/jaguar-re-identification.md → raw/kaggle/cameron-kaggle-profile.md
-
-## Import Cycles
-- None detected.
 
 ## Hyperedges (group relationships)
 - **LLM Wiki System: index + log + overview form the maintenance backbone of the wiki** — doc_index, doc_log, doc_overview, concept_llm_wiki_pattern, doc_claudemd [EXTRACTED 0.92]
