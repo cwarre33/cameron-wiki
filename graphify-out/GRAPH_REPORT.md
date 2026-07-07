@@ -9,46 +9,46 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bd18d43a`
+- Built from commit: `dde6add5`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Cameron's Kaggle Portfolio Overview — 14 Competitions|Cameron's Kaggle Portfolio Overview — 14 Competitions]]
-- [[_COMMUNITY_Llama 3.3 70B — Meta Open-Weights LLM|Llama 3.3 70B — Meta Open-Weights LLM]]
-- [[_COMMUNITY_Groq — LLM Inference API|Groq — LLM Inference API]]
-- [[_COMMUNITY_Graphify Graph Report|Graphify Graph Report]]
-- [[_COMMUNITY_ADR Consensus-Based Memory Distillation|ADR: Consensus-Based Memory Distillation]]
-- [[_COMMUNITY_Wiki Index — Master Catalog|Wiki Index — Master Catalog]]
-- [[_COMMUNITY_CLAUDE.md — Wiki Schema & Workflows|CLAUDE.md — Wiki Schema & Workflows]]
-- [[_COMMUNITY_Jaguar Re-Identification Challenge|Jaguar Re-Identification Challenge]]
-- [[_COMMUNITY_CLIP + FAISS Visual Search Pipeline|CLIP + FAISS Visual Search Pipeline]]
-- [[_COMMUNITY_LiteLLM|LiteLLM]]
-- [[_COMMUNITY_FAISS Vector Search Tool|FAISS Vector Search Tool]]
-- [[_COMMUNITY_ARC Prize 2025|ARC Prize 2025]]
-- [[_COMMUNITY_Hull Tactical — Market Prediction|Hull Tactical — Market Prediction]]
-- [[_COMMUNITY_ARC-AGI Benchmarking Harness|ARC-AGI Benchmarking Harness]]
-- [[_COMMUNITY_Retrieval-Augmented Generation (RAG)|Retrieval-Augmented Generation (RAG)]]
-- [[_COMMUNITY_Cameron's Wiki Setup|Cameron's Wiki Setup]]
-- [[_COMMUNITY_Agentic Trading System Architecture|Agentic Trading System Architecture]]
-- [[_COMMUNITY_CLIP — Contrastive Language-Image Pretraining|CLIP — Contrastive Language-Image Pretraining]]
-- [[_COMMUNITY_ByT5 (Byte-Level T5)|ByT5 (Byte-Level T5)]]
-- [[_COMMUNITY_ADR Wiki Retention Policy — Archive vs. Prune Speculative Pages|ADR: Wiki Retention Policy — Archive vs. Prune Speculative Pages]]
-- [[_COMMUNITY_ADR Metadata Scoring vs. Embeddings for Text Search|ADR: Metadata Scoring vs. Embeddings for Text Search]]
-- [[_COMMUNITY_ADR Persistent Service stdinstdout vs. HTTP|ADR: Persistent Service stdin/stdout vs. HTTP]]
-- [[_COMMUNITY_ADR 90-Day Rotating Retention for Trading Decisions Log|ADR: 90-Day Rotating Retention for Trading Decisions Log]]
-- [[_COMMUNITY_ADR Open Model vs. Frontier for Trading Sentiment|ADR: Open Model vs. Frontier for Trading Sentiment]]
-- [[_COMMUNITY_Alpaca API Integration|Alpaca API Integration]]
-- [[_COMMUNITY_System Design — Visual Search at Scale|System Design — Visual Search at Scale]]
-- [[_COMMUNITY_SofaScope — AI-Powered Furniture Visual Search|SofaScope — AI-Powered Furniture Visual Search]]
-- [[_COMMUNITY_ARC-AGI Benchmark|ARC-AGI Benchmark]]
-- [[_COMMUNITY_Andrej Karpathy|Andrej Karpathy]]
-- [[_COMMUNITY_RSI + LLM Signal Strategy|RSI + LLM Signal Strategy]]
-- [[_COMMUNITY_Hybrid Search Routing (Text + Image)|Hybrid Search Routing (Text + Image)]]
-- [[_COMMUNITY_AutoTrader README (raw)|AutoTrader README (raw)]]
-- [[_COMMUNITY_ARC-AGI Benchmarking README (raw)|ARC-AGI Benchmarking README (raw)]]
-- [[_COMMUNITY_SofaScope README (raw)|SofaScope README (raw)]]
-- [[_COMMUNITY_Karpathy LLM Wiki Gist (raw)|Karpathy LLM Wiki Gist (raw)]]
+- Cameron's Kaggle Portfolio Overview — 14 Competitions
+- Llama 3.3 70B — Meta Open-Weights LLM
+- Groq — LLM Inference API
+- Graphify Graph Report
+- ADR: Consensus-Based Memory Distillation
+- Wiki Index — Master Catalog
+- CLAUDE.md — Wiki Schema & Workflows
+- Jaguar Re-Identification Challenge
+- CLIP + FAISS Visual Search Pipeline
+- LiteLLM
+- FAISS Vector Search Tool
+- ARC Prize 2025
+- Hull Tactical — Market Prediction
+- ARC-AGI Benchmarking Harness
+- Retrieval-Augmented Generation (RAG)
+- Cameron's Wiki Setup
+- Agentic Trading System Architecture
+- CLIP — Contrastive Language-Image Pretraining
+- ByT5 (Byte-Level T5)
+- ADR: Wiki Retention Policy — Archive vs. Prune Speculative Pages
+- ADR: Metadata Scoring vs. Embeddings for Text Search
+- ADR: Persistent Service stdin/stdout vs. HTTP
+- ADR: 90-Day Rotating Retention for Trading Decisions Log
+- ADR: Open Model vs. Frontier for Trading Sentiment
+- Alpaca API Integration
+- System Design — Visual Search at Scale
+- SofaScope — AI-Powered Furniture Visual Search
+- ARC-AGI Benchmark
+- Andrej Karpathy
+- RSI + LLM Signal Strategy
+- Hybrid Search Routing (Text + Image)
+- AutoTrader README (raw)
+- ARC-AGI Benchmarking README (raw)
+- SofaScope README (raw)
+- Karpathy LLM Wiki Gist (raw)
 
 ## God Nodes (most connected - your core abstractions)
 1. `Wiki Index — Master Catalog` - 19 edges
