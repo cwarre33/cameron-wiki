@@ -38201,3 +38201,27 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+## [2026-07-11] ingest | Goodwin Recruiting outreach + ClearView CRM/scale context
+
+Source: raw/job-search/goodwin-recruiting-backend-engineer-2026-07-11.md (new), direct dictation from Cameron
+Pages created: wiki/interview-prep/goodwin-recruiting-call-prep.md
+Pages updated: wiki/production-systems/inventory-lookup-clearview.md
+Contradictions: pilot-database-migration.md (2026-05-20) documents the NetSuite→Postgres sync as a **one-time, on-demand ETL** for a non-prod pilot DB, explicitly "not continuous bi-directional sync." Cameron's new description of ClearView (1.3M serials, 200K+ products, synced every 15 minutes) implies a recurring/continuous sync in the current/production state. Flagged to Cameron for clarification — not yet reconciled; pilot-database-migration.md left as-is pending his answer.
+Key additions:
+  - Recruiter email + Backend Engineer JD saved as raw source
+  - Legitimacy assessment (likely genuine, low-risk to take call) and call-prep talking points tying JD requirements to Cameron's real production work
+  - ClearView reframed as base groundwork for a serial-level CRM tracked through NetSuite ERP; added scale (1.3M serials / 200K+ products), 15-min sync cadence, AWS hosting, Microsoft Entra ID gating, internal-network-only exposure
+
+---
+
+## [2026-07-11] update | Pilot Database Migration — resolved contradiction, RDS now live
+
+Source: direct verbal update from Cameron
+Pages updated: wiki/production-systems/pilot-database-migration.md, wiki/production-systems/inventory-lookup-clearview.md, wiki/index.md
+Contradictions: resolved. The 2026-05-20 "one-time ETL, not continuous sync" design principle was stale — project has evolved: AWS RDS is live and continuously synced with NetSuite every 15 minutes, and frontend hosting/deployment is imminent. Original design section kept for historical record, marked superseded in place rather than deleted.
+Key additions:
+  - "Current state (2026-07-11)" section on pilot-database-migration.md documenting RDS live, continuous sync, imminent frontend deploy
+  - Cross-links tightened between pilot-database-migration.md and inventory-lookup-clearview.md to point at the same current-state facts instead of conflicting ones
+
+---
