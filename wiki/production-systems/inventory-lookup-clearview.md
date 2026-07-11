@@ -21,8 +21,8 @@ Modern replacement and extension of the NetSuite **Review All Barcodes** suitele
 
 - **Catalogue:** ~1.3 million tracked serials across 200,000+ distinct products
 - **Related records:** transactions, sales orders, returns, and all other activity tied to a given serial are captured and made queryable from a single lookup
-- **Sync:** NetSuite → pilot store sync runs every 15 minutes, trading strict real-time consistency for query speed and lower NetSuite/SuiteQL load — reads at these volumes hit the synced store rather than SuiteQL directly (see [[production-systems/pilot-database-migration.md]])
-- **Hosting:** AWS
+- **Sync:** NetSuite → AWS RDS (Postgres) sync runs every 15 minutes, trading strict real-time consistency for query speed and lower NetSuite/SuiteQL load — reads at these volumes hit RDS rather than SuiteQL directly (see [[production-systems/pilot-database-migration.md]] — RDS is now live and continuously synced, superseding that page's original one-time-ETL design)
+- **Hosting:** AWS (RDS live; frontend hosting/deployment imminent as of 2026-07-11)
 - **Auth:** Microsoft Entra ID (Azure AD) gating in front of the app
 - **Network exposure:** internal-network only — never exposed to the public internet
 
