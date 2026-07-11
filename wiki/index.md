@@ -9,7 +9,7 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Status | Visibility | Updated |
 |------|---------|--------|------------|---------|
 | [Dedicated Agent Assignment — Zendesk CCS Automation](production-systems/dedicated-agent-assignment.md) | Automatically assigns incoming CCS and Vendor Care tickets to the dedicated agent stored on the requester's user field (`dedicated_agent`), using A... | active | fls-internal | 2026-05-20 |
-| [Inventory Lookup (ClearView) — NetSuite Barcode Intelligence](production-systems/inventory-lookup-clearview.md) | Modern replacement and extension of the NetSuite Review All Barcodes suitelet. Scan or enter a barcode to retrieve full inventory context: item det... | active | fls-internal | 2026-05-20 |
+| [Inventory Lookup (ClearView) — NetSuite Barcode Intelligence](production-systems/inventory-lookup-clearview.md) | Modern replacement and extension of the NetSuite Review All Barcodes suitelet; base groundwork for a serial-level CRM tracked through NetSuite ERP. 1.3M serials, 200K+ products, synced every 15 min, AWS-hosted, Entra ID-gated, internal-network only. | active | fls-internal | 2026-07-11 |
 | [Pilot Database Migration — NetSuite + Legacy → Postgres](production-systems/pilot-database-migration.md) | One-time ETL pipeline to populate a non-prod Postgres pilot database with NetSuite customer/transaction/inventory data plus legacy notes from iSeri... | active | fls-internal | 2026-05-20 |
 | [SellSmart Copilot Studio Tools](production-systems/sellsmart-copilot.md) | Tooling for the SellSmart Microsoft Copilot Studio bot at FLS — syncing NetSuite product data into the knowledge base, diagnosing conversations, ge... | active | fls-internal | 2026-05-20 |
 | [SofaScope — AI-Powered Furniture Visual Search](production-systems/sofascope.md) | Live pilot at Furnitureland South (FLS). Dual-modality search over a 200,000-product catalog: fast metadata-weighted text search and CLIP + FAISS i... | active | public | 2026-04-17 |
@@ -147,6 +147,7 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [System Design — Visual Search at Scale (SofaScope)](interview-prep/system-design-visual-search.md) | Interview preparation grounded in real production work at FLS. | 2026-04-17 |
+| [Goodwin Recruiting — Backend Engineer Call Prep](interview-prep/goodwin-recruiting-call-prep.md) | Legitimacy assessment and call prep for inbound recruiter outreach re: remote Backend Engineer role (LLM pipelines, recruiting automation). | 2026-07-11 |
 
 ## Comparisons
 

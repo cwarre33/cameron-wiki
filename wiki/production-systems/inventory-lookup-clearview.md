@@ -6,14 +6,25 @@ visibility: fls-internal
 sources: [jira:FLSP-159, jira:FLSP-221, repo:NetSuite/Inventory-Lookup]
 related: [[production-systems/pilot-database-migration.md]], [[integrations/netsuite-zendesk-customer-sync.md]], [[work-log/2026-05-period-summary.md]]
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 confidence: high
-tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-south, production]
+tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-south, production, crm, aws, entra-id]
 ---
 
 # Inventory Lookup (ClearView) — NetSuite Barcode Intelligence
 
 Modern replacement and extension of the NetSuite **Review All Barcodes** suitelet. Scan or enter a barcode to retrieve full inventory context: item details, receipt history, sales orders, return inventory, RtnAuth lines, support-case notes, optional damage/pricing fields, and a transaction timeline.
+
+**Strategic framing:** ClearView is the base groundwork for a serial-level CRM layer tracked through FLS's NetSuite ERP — every serial number's full lifecycle (receipt, sale, transfer, return, service activity) is a customer/product touchpoint, not just an inventory record.
+
+## Scale & infrastructure
+
+- **Catalogue:** ~1.3 million tracked serials across 200,000+ distinct products
+- **Related records:** transactions, sales orders, returns, and all other activity tied to a given serial are captured and made queryable from a single lookup
+- **Sync:** NetSuite → pilot store sync runs every 15 minutes, trading strict real-time consistency for query speed and lower NetSuite/SuiteQL load — reads at these volumes hit the synced store rather than SuiteQL directly (see [[production-systems/pilot-database-migration.md]])
+- **Hosting:** AWS
+- **Auth:** Microsoft Entra ID (Azure AD) gating in front of the app
+- **Network exposure:** internal-network only — never exposed to the public internet
 
 **Jira:** [FLSP-159 Review All Barcodes Suitelet](https://furniturelandsouth.atlassian.net/browse/FLSP-159) (Epic, Testing) · [FLSP-221 Sales feedback](https://furniturelandsouth.atlassian.net/browse/FLSP-221)
 

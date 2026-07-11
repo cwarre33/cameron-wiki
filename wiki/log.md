@@ -38201,3 +38201,16 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+## [2026-07-11] ingest | Goodwin Recruiting outreach + ClearView CRM/scale context
+
+Source: raw/job-search/goodwin-recruiting-backend-engineer-2026-07-11.md (new), direct dictation from Cameron
+Pages created: wiki/interview-prep/goodwin-recruiting-call-prep.md
+Pages updated: wiki/production-systems/inventory-lookup-clearview.md
+Contradictions: pilot-database-migration.md (2026-05-20) documents the NetSuite→Postgres sync as a **one-time, on-demand ETL** for a non-prod pilot DB, explicitly "not continuous bi-directional sync." Cameron's new description of ClearView (1.3M serials, 200K+ products, synced every 15 minutes) implies a recurring/continuous sync in the current/production state. Flagged to Cameron for clarification — not yet reconciled; pilot-database-migration.md left as-is pending his answer.
+Key additions:
+  - Recruiter email + Backend Engineer JD saved as raw source
+  - Legitimacy assessment (likely genuine, low-risk to take call) and call-prep talking points tying JD requirements to Cameron's real production work
+  - ClearView reframed as base groundwork for a serial-level CRM tracked through NetSuite ERP; added scale (1.3M serials / 200K+ products), 15-min sync cadence, AWS hosting, Microsoft Entra ID gating, internal-network-only exposure
+
+---
