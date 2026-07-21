@@ -8,12 +8,20 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Status | Visibility | Updated |
 |------|---------|--------|------------|---------|
-| [Dedicated Agent Assignment — Zendesk CCS Automation](production-systems/dedicated-agent-assignment.md) | Automatically assigns incoming CCS and Vendor Care tickets to the dedicated agent stored on the requester's user field (`dedicated_agent`), using A... | active | fls-internal | 2026-05-20 |
-| [Inventory Lookup (ClearView) — NetSuite Barcode Intelligence](production-systems/inventory-lookup-clearview.md) | Modern replacement and extension of the NetSuite Review All Barcodes suitelet. Scan or enter a barcode to retrieve full inventory context: item det... | active | fls-internal | 2026-07-11 |
-| [Pilot Database Migration — NetSuite + Legacy → Postgres](production-systems/pilot-database-migration.md) | > ⚠️ Stale design, current state below. This page originally described a one-time, on-demand ETL for a non-prod pilot DB (2026-05-20). As of 2026-0... | active | fls-internal | 2026-07-11 |
-| [SellSmart Copilot Studio Tools](production-systems/sellsmart-copilot.md) | Tooling for the SellSmart Microsoft Copilot Studio bot at FLS — syncing NetSuite product data into the knowledge base, diagnosing conversations, ge... | active | fls-internal | 2026-05-20 |
-| [SofaScope — AI-Powered Furniture Visual Search](production-systems/sofascope.md) | Live pilot at Furnitureland South (FLS). Dual-modality search over a 200,000-product catalog: fast metadata-weighted text search and CLIP + FAISS i... | active | public | 2026-04-17 |
-| [Zendesk Returns Reporting (D2K + Choros)](production-systems/zendesk-returns-reporting.md) | Epic delivering standardized returns/concessions reporting by joining Zendesk CI tickets with NetSuite financial data. | active | fls-internal | 2026-05-20 |
+| [Approach Reporting (ClearView Export)](production-systems/approach-reporting.md) | ClearView's successor to FLS's legacy Approach inventory-reporting tool: filtered CSV/XLSX export from `/items` with role-gated pricing columns. | active | fls-internal | 2026-07-21 |
+| [CRR — CCS/VCS Custom Round Robin](production-systems/crr-round-robin.md) | Custom Round Robin (CRR) is the Task Server–backed ticket assignment stack for CCS (Customer Care / Client Relations) and VCS (Vendor Care), with d... | active | fls-internal | 2026-07-21 |
+| [ClearView AWS Hosting (FLSP-403)](production-systems/clearview-aws-hosting.md) | ECS/Fargate hosting for ClearView behind a shared ALB — staging + prod — under Build Phase epic initiatives/flsp-103-inventory-lookup.md. | active | fls-internal | 2026-07-21 |
+| [ClearView RDS Delta Sync](production-systems/clearview-rds-delta-sync.md) | Shared Postgres RDS is ClearView's read plane: full ~23-year inventory history (~5GB), kept fresh by multi-lane SuiteQL delta sync from on-prem tas... | active | fls-internal | 2026-07-21 |
+| [Dedicated Agent Assignment — Zendesk CCS Automation](production-systems/dedicated-agent-assignment.md) | Automatically assigns incoming CCS and Vendor Care tickets to the dedicated agent stored on the requester's user field (`dedicated_agent`), using A... | active | fls-internal | 2026-07-21 |
+| [Digital-to-Store Copilot Agents (FLSP-247)](production-systems/digital-to-store-copilot.md) | [FLSP-247](https://furniturelandsouth.atlassian.net/browse/FLSP-247) is the epic for Furnitureland South's Digital-to-Store Guided Shopping Experie... | active | fls-internal | 2026-07-21 |
+| [Inventory Lookup (ClearView) — Hosted NetSuite Inventory Intelligence](production-systems/inventory-lookup-clearview.md) | ClearView is Furnitureland South's modern Inventory Lookup product for Sales, Merchandising, and Operations: barcode scan, inventory browse, orders... | active | fls-internal | 2026-07-21 |
+| [Pilot Database Migration — NetSuite + Legacy → Postgres](production-systems/pilot-database-migration.md) | > ⚠️ Stale design, current state below. This page originally described a one-time, on-demand ETL for a non-prod pilot DB (2026-05-20). As of 2026-0... | active | fls-internal | 2026-07-21 |
+| [SellSmart Copilot Studio Tools](production-systems/sellsmart-copilot.md) | Tooling for the SellSmart Microsoft Copilot Studio bot at FLS — syncing NetSuite product data into the knowledge base, diagnosing conversations, ge... | active | fls-internal | 2026-07-21 |
+| [SofaScope — AI-Powered Furniture Visual Search](production-systems/sofascope.md) | Live pilot at Furnitureland South (FLS). Dual-modality search over a 200,000-product catalog: fast metadata-weighted text search and CLIP + FAISS i... | active | public | 2026-07-21 |
+| [Zendesk Call Auto-Transcript Pipeline](production-systems/zendesk-call-transcripts.md) | Production pipeline that attaches call transcripts (and summaries) to Zendesk tickets: download MiCollab recordings, preprocess audio, transcribe, ... | active | fls-internal | 2026-07-21 |
+| [Zendesk Due Dates Calendar App](production-systems/zendesk-ticket-calendar.md) | Private Zendesk Support app (ZAF) showing a calendar of the current agent's tickets by Due Date (Task tickets). | active | fls-internal | 2026-07-21 |
+| [Zendesk Returns Reporting (D2K + Choros)](production-systems/zendesk-returns-reporting.md) | Epic delivering standardized returns/concessions reporting by joining Zendesk CI tickets with NetSuite financial data. | active | fls-internal | 2026-07-21 |
+| [Zendesk Shared Views Cleanup](production-systems/zendesk-shared-views.md) | Reorganization of org-wide Zendesk shared views so agents stop relying on personal views. Delivered under [FLSI-2968](https://furniturelandsouth.at... | active | fls-internal | 2026-07-21 |
 
 ## Architectures
 *Serverless patterns, agent systems, transformer family, retrieval systems.*
@@ -39,7 +47,9 @@ Master catalog of all wiki pages. Updated automatically.
 | [LLM Review Pass Before Rotation](techniques/llm-review-pass-before-rotation.md) | A technique for extracting durable signal from time-bounded context before it's purged. Run an LLM over a rolling log or stale document corpus, dis... | 2026-04-17 |
 | [MBR Decoding (Minimum Bayes Risk)](techniques/mbr-decoding.md) | A sequence generation decoding strategy that selects the output with highest expected utility across a sample of candidates, rather than the single... | 2026-04-17 |
 | [Persistent Model Loading Pattern](techniques/persistent-model-loading.md) | Rule: Load ML models once at service startup. Never reload per request. | 2026-04-17 |
+| [RDS Delta Sync Watermarks (Drain-Safe Capping)](techniques/rds-delta-sync-watermarks.md) | How ClearView delta lanes advance `sync_state` watermarks under burst caps without permanently wedging — crystallized in [FLSP-547](https://furnitu... | 2026-07-21 |
 | [Shodan ICS OSINT — Methodology](techniques/shodan-ics-osint.md) | Purpose: Systematically enumerate publicly exposed industrial control system (ICS) endpoints via Shodan's passive index. No active scanning — read-... | 2026-04-19 |
+| [VMPN Serial Snapshot (Grouped Browse)](techniques/vmpn-serial-snapshot.md) | Technique for making ClearView's grouped-by-VMPN `/items` browse fast on a large Postgres serial table: materialized snapshots + forced CTE materia... | 2026-07-21 |
 
 ## Integrations
 *Zendesk API, NetSuite/SuiteQL, AWS, MiCollab, Groq, Copilot Studio.*
@@ -47,8 +57,11 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Alpaca API Integration](integrations/alpaca-api.md) | Alpaca is a commission-free stock trading API. Offers separate paper trading and live trading environments with identical API interfaces — swap cre... | 2026-04-17 |
-| [NetSuite → Zendesk Customer Sync (Task Server)](integrations/netsuite-zendesk-customer-sync.md) | Spec for replacing SmartConnect "NS CUSTOMER TO ZENDESK USERS" with a Task Server job, standardizing alongside existing vendor sync, case creation,... | 2026-05-20 |
-| [SellSmart NetSuite REST Tool (Copilot Studio)](integrations/sellsmart-netsuite-rest-tool.md) | OpenAPI 3 specification enabling the SellSmart Copilot agent to query live NetSuite data — complementing the static CSV knowledge base from datasync. | 2026-05-20 |
+| [ClearView Entra SSO (Auth.js v5)](integrations/clearview-entra-sso.md) | Microsoft Entra ID single sign-on for hosted ClearView staging/prod, with session roles driving pricing visibility and export column gating. | 2026-07-21 |
+| [FLS AWS Topology Conventions](integrations/fls-aws-topology.md) | House patterns for Furnitureland South's AWS estate — match these when designing new infra; do not invent parallel networks or auth styles. | 2026-07-21 |
+| [NetSuite SuiteTalk JWT (ClearView Pattern)](integrations/netsuite-suitetalk-jwt.md) | ClearView talks to NetSuite via SuiteTalk REST + SuiteQL authenticated with OAuth 2.0 JWT (PS256) — not ODBC — so the same client runs in local Nod... | 2026-07-21 |
+| [NetSuite → Zendesk Customer Sync (Task Server)](integrations/netsuite-zendesk-customer-sync.md) | Replacing SmartConnect "NS CUSTOMER TO ZENDESK USERS" with a Task Server job, standardizing alongside existing vendor sync, case creation, and comm... | 2026-07-21 |
+| [SellSmart NetSuite REST Tool (Copilot Studio)](integrations/sellsmart-netsuite-rest-tool.md) | OpenAPI 3 specification enabling the SellSmart Copilot agent to query live NetSuite data — complementing the static CSV knowledge base from datasync. | 2026-07-21 |
 
 ## Papers
 *Formal published research summaries.*
@@ -132,9 +145,13 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | ["ADR: 90-Day Rotating Retention for Trading Decisions Log"](decisions/autotrader-decisions-log-retention.md) | Rotate `logs/decisions.jsonl` on a 90-day window. Keep `logs/outcomes.jsonl` and `logs/daily_review.jsonl` indefinitely. | 2026-04-17 |
+| ["ADR: Auth.js v5 Authorized Callback Trap"](decisions/authjs-v5-authorized-callback.md) | When using Auth.js v5 wrapped middleware `auth((req) => { … })`, always gate with an explicit `req.auth` check (redirect to sign-in). Do not rely o... | 2026-07-21 |
+| ["ADR: ClearView Approach Export Scope (FLSP-508)"](decisions/clearview-approach-export-scope.md) | Close FLSP-508 with CSV/XLSX flat + grouped-by-VMPN export, column picker, and a shared role-based pricing gate — without PDF export or multi-pivot... | 2026-07-21 |
+| ["ADR: ClearView Location Movement Deferred (FLSP-401)"](decisions/clearview-location-movement-deferred.md) | Revert the interim NetSuite location-level Item History movement build and defer campus/building-level movement until Oracle DW (or iSeries interim... | 2026-07-21 |
 | ["ADR: Consensus-Based Memory Distillation"](decisions/consensus-based-memory-distillation.md) | Current agentic systems (e.g., wiki/trading/autotrader.md|AutoTrader) rely on a single-pass wiki/techniques/llm-review-pass-before-rotation.md|LLM ... | 2026-04-17 |
 | ["ADR: Custom Provider Adapters vs. LiteLLM for ARC-AGI Harness"](decisions/arc-agi-adapters-vs-litellm.md) | The ARC-AGI benchmarking harness needs to run tasks against models from OpenAI, Anthropic, Google, and Grok. Two obvious approaches: | 2026-04-17 |
 | ["ADR: Hull Tactical Strategy — AutoTrader Signal Stack as Feature Pipeline"](decisions/hull-tactical-strategy.md) | Treat the AutoTrader dual-gate signal architecture as the conceptual frame for interpreting Hull Tactical's anonymized features, then train a gradi... | 2026-04-18 |
+| ["ADR: Keep FLSP-384 Open as Umbrella"](decisions/clearview-flsp384-umbrella.md) | Originally: keep [FLSP-384](https://furniturelandsouth.atlassian.net/browse/FLSP-384) ("Search and lookup core") In Progress as a deliberate umbrel... | 2026-07-21 |
 | ["ADR: Metadata Scoring vs. Embeddings for Text Search (SofaScope)"](decisions/sofascope-metadata-vs-embeddings.md) | Use custom field-weighted metadata scoring for text search instead of embedding-based semantic search. | 2026-04-17 |
 | ["ADR: OSINT Pattern Filtering Strategy"](decisions/osint-pattern-filtering.md) | Accepted | High Confidence | 2026-04-21 |
 | ["ADR: Open Model (Llama 3.3 70B) vs. Frontier Model for Trading Sentiment"](decisions/autotrader-open-model-vs-frontier.md) | Use Llama 3.3 70B via HuggingFace Inference API for news sentiment analysis rather than a frontier model (GPT-4o, Claude Sonnet). | 2026-04-17 |
@@ -146,7 +163,9 @@ Master catalog of all wiki pages. Updated automatically.
 
 | Page | Summary | Updated |
 |------|---------|---------|
+| [Behavioral Stories — FLS Delivery](interview-prep/behavioral-fls-delivery.md) | STAR-ready stories from Furnitureland South delivery: spec-driven Jira, stakeholder loops, production incidents, Zendesk automation. Technical dept... | 2026-07-21 |
 | [Goodwin Recruiting — Backend Engineer Call Prep](interview-prep/goodwin-recruiting-call-prep.md) | Inbound outreach from "Hunter," a virtual recruiter at Goodwin Recruiting, for a remote Backend Engineer role building LLM-powered recruiting autom... | 2026-07-11 |
+| [System Design — ClearView (Hosted Inventory Lookup)](interview-prep/system-design-clearview.md) | Interview preparation grounded in real ClearView production work at Furnitureland South. Hub page: production-systems/inventory-lookup-clearview.md... | 2026-07-21 |
 | [System Design — Visual Search at Scale (SofaScope)](interview-prep/system-design-visual-search.md) | Interview preparation grounded in real production work at FLS. | 2026-04-17 |
 
 ## Comparisons
@@ -169,6 +188,7 @@ Master catalog of all wiki pages. Updated automatically.
 | [Municipal ICS Cluster — Water Tank, Fire Station, School Network (Deep Dive)](open-questions/municipal-ics-cluster-2026-04-20.md) | Three municipal critical-infrastructure devices identified in the 2026-04-19 BACnet scan with confirmed facility identities and full evidence chain... | 2026-04-20 |
 | [Niagara Admin Access — What CVE-2017-16748 Actually Gives (Lahey Medical)](open-questions/niagara-admin-capabilities-2026-04-20.md) | CVE-2017-16748 — Tridium Niagara 4 Improper Authentication | 2026-04-20 |
 | [Open Question — Agentic Memory Retention Strategies](open-questions/agentic-memory-retention-strategies.md) | Surfaced from AutoTrader's 90-day rotating `decisions.jsonl`. The general problem: what should an agentic system remember vs. forget, and for how l... | 2026-04-17 |
+| [Open Question — Zendesk OAuth Token Refresh (Oct 2026)](open-questions/zendesk-oauth-refresh-2026-10.md) | Hard deadline: October 27, 2026 — Zendesk enforces OAuth access-token expiration for custom apps (email #14829284). Apps must handle refresh tokens... | 2026-07-21 |
 | [Responsible Disclosure Letters — All Targets 2026-04-20](open-questions/disclosure-letters-2026-04-20.md) | All letters follow the same structure: specific findings, no exploitation details, concrete immediate actions, clear offer of technical follow-up. ... | 2026-04-20 |
 | [Responsible Disclosure — Homanit Lietuva BACnet Exposure (Pagiriai)](open-questions/homanit-disclosure-2026-04-20.md) | An internet-facing BACnet device (`Homanit.VAS_LNS_1`, WAGO controller) at IP `85.206.88.54` in Lithuania bridges the public internet to the buildi... | 2026-04-21 |
 | [Responsible Disclosure — KIPP St. Louis BACnet BBMD ("Mitchell")](open-questions/kipp-mitchell-disclosure-2026-04-20.md) | An internet-facing BACnet Broadcast Management Device (BBMD) was identified at IP `12.5.26.10` (device name `Mitchell`) via passive Shodan OSINT. T... | 2026-04-20 |
@@ -182,4 +202,6 @@ Master catalog of all wiki pages. Updated automatically.
 | Page | Summary | Updated |
 |------|---------|---------|
 | [Cameron's Wiki — Setup and Adaptations](methodology/cameron-wiki-setup.md) | How this wiki instantiates Karpathy's LLM Wiki pattern, and what was adapted for Cameron's broader context. | 2026-04-17 |
+| [Neutral History Framing](methodology/neutral-history-framing.md) | When documenting who-did-what history (Jira comments, timelines, closeout notes, PR descriptions, handoffs), keep it factual and neutral — never fr... | 2026-07-21 |
 | [The LLM Wiki Pattern (Karpathy, April 2026)](methodology/llm-wiki-pattern.md) | A pattern for building persistent, compounding personal knowledge bases using LLMs. Published April 4, 2026 as a GitHub gist by Andrej Karpathy. 5,... | 2026-04-17 |
+| [Verify Against Source Docs Before Closing](methodology/verify-against-source-docs.md) | Before recommending a ticket be closed, check actual requirement/discovery docs (Confluence, SharePoint, attached PDFs) rather than judging complet... | 2026-07-21 |

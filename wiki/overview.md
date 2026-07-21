@@ -37,9 +37,9 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Current knowledge state
 
-- Sources ingested: 8+ (plus 2026-07-21 FLS Jira freeze under `raw/fls-work/`, gitignored)
-- Wiki pages: 84+ (ClearView / Zendesk / SellSmart catch-up hubs added 2026-07-21)
-- Last maintenance: 2026-07-21 21:20 UTC
+- Sources ingested: 8
+- Wiki pages: 110
+- Last maintenance: 2026-07-21 21:39 UTC
 
 
 ## Strongest areas (so far)
