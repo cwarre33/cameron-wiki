@@ -3,32 +3,56 @@ title: Pilot Database Migration — NetSuite + Legacy → Postgres
 type: production-system
 status: active
 visibility: fls-internal
-sources: [jira:FLSP-232, jira:FLSP-111, repo:NetSuite/Inventory-Lookup/migration, cameron:2026-07-11-verbal-update]
-related: [[production-systems/inventory-lookup-clearview.md]], [[work-log/2026-05-period-summary.md]]
+sources:
+  - jira:FLSP-232
+  - jira:FLSP-111
+  - repo:NetSuite/Inventory-Lookup/migration
+  - cameron:2026-07-11-verbal-update
+  - raw/fls-work/clearview-memory/2026-07-21/project_full_scale_parity.md
+  - raw/fls-work/clearview-memory/2026-07-21/project_shared_rds_dev_db.md
+related:
+  - "[[production-systems/inventory-lookup-clearview.md]]"
+  - "[[initiatives/flsp-103-inventory-lookup.md]]"
+  - "[[production-systems/clearview-rds-delta-sync.md]]"
+  - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-05-20
-updated: 2026-07-11
+updated: 2026-07-21
 confidence: high
 tags: [netsuite, postgres, rds, migration, etl, pilot, flsp-232, furnitureland-south, aws]
 ---
 
 # Pilot Database Migration — NetSuite + Legacy → Postgres
 
-> **⚠️ Stale design, current state below.** This page originally described a one-time, on-demand ETL for a non-prod pilot DB (2026-05-20). As of 2026-07-11 the project has moved well past that: an AWS RDS instance is live and being **continuously synced with NetSuite** (every 15 minutes — see [[production-systems/inventory-lookup-clearview.md]]), and the frontend is about to be hosted/deployed. The "one-time load" principle below is **superseded**; keeping the original section for historical record of the design evolution.
+> **⚠️ Stale design, current state below.** This page originally described a one-time, on-demand ETL for a non-prod pilot DB (2026-05-20). As of 2026-07-21 the project has moved well past that: shared AWS RDS is live with full-history parity + multi-lane delta sync (see [[production-systems/clearview-rds-delta-sync.md]]), and ClearView is hosted on ECS/Fargate ([[production-systems/clearview-aws-hosting.md]]). The "one-time load" principle below is **superseded**; keeping the original section for historical record of the design evolution.
 
-## Current state (2026-07-11)
+## Current state (2026-07-21)
 
-- **RDS is up** — the pilot Postgres target has become a real AWS RDS instance, not a throwaway non-prod DB
-- **Sync is continuous, not one-time** — NetSuite → RDS runs on a 15-minute cadence in production use, superseding the original "on-demand ETL" design principle
-- **Frontend deployment imminent** — ClearView's frontend is about to be hosted, moving this from pilot/dev tooling to a deployed production system
+- **RDS is up** — shared AWS RDS Postgres (~5GB full ~23-yr history), not a throwaway windowed pilot
+- **Sync is continuous, not one-time** — NetSuite → RDS multi-lane delta sync (prod ~15 min); see [[production-systems/clearview-rds-delta-sync.md]]
+- **Frontend hosted** — ClearView on ECS/Fargate + ALB (staging + prod); see [[production-systems/clearview-aws-hosting.md]]
 - Original one-time migration tooling (`scripts/migrate.ts`) may still exist for backfills/re-seeds, but it is no longer the primary data-refresh mechanism
+
+## Status note (Task 10)
+
+**FLSP-232** is **Done** in Jira (closed 2026-05-28). Deep keep-fresh work continues under FLSP-391 / delta-sync stories.
 
 ## Original design (2026-05-20, historical)
 
 One-time ETL pipeline to populate a **non-prod Postgres pilot database** with NetSuite customer/transaction/inventory data plus legacy notes from iSeries/Memphian — enabling v1 development without live NetSuite sync.
 
-**Jira:** [FLSP-232 Define Testing Database](https://furniturelandsouth.atlassian.net/browse/FLSP-232) (In Progress) · depends on [FLSP-111](https://furniturelandsouth.atlassian.net/browse/FLSP-111) (Done)
+**Jira:** [FLSP-232 Define Testing Database](https://furniturelandsouth.atlassian.net/browse/FLSP-232) (**Done**, live 2026-07-21; closed 2026-05-28) · depends on [FLSP-111](https://furniturelandsouth.atlassian.net/browse/FLSP-111) (Done)
 
 **Repo:** `NetSuite/Inventory-Lookup/` — `migration/`, `scripts/migrate.ts`, `lib/migration/`, `docs/migration/`
+
+Parent product hub: [[production-systems/inventory-lookup-clearview.md]] · Initiative: [[initiatives/flsp-103-inventory-lookup.md]]
+
+## Status note (2026-07-21)
+
+⚠️ **Contradiction fixed (Task 10 lint):** This page previously listed FLSP-232 as **In Progress** while [[initiatives/flsp-103-inventory-lookup.md]] and live Jira both show **Done**. Header status now matches Jira.
+
+**Contradiction / supersession (data plane):** This page's body still documents the original **date-windowed pilot** design (default March 2025 extract). Frozen ClearView memory says **full-scale parity completed and verified 2026-06-22**: the shared AWS RDS Postgres holds **~5GB full ~23-year history**, not a windowed subset; the DB thereafter grows via delta sync only (see ClearView hub data plane and [[production-systems/clearview-rds-delta-sync.md]]).
+
+Do **not** delete the pilot framing below — it remains the historical ETL design record. Treat windowed-pilot claims as **superseded for current ClearView/RDS reality** by this dated note and [[production-systems/inventory-lookup-clearview.md]].
 
 ## Design principles
 

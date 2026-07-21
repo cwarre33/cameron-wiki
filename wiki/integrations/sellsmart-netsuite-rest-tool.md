@@ -3,10 +3,17 @@ title: SellSmart NetSuite REST Tool (Copilot Studio)
 type: integration
 status: active
 visibility: fls-internal
-sources: [repo:SellSmartTools/sellsmart-netsuite-rest-tool]
-related: [[production-systems/sellsmart-copilot.md]], [[production-systems/inventory-lookup-clearview.md]]
+sources:
+  - repo:SellSmartTools/sellsmart-netsuite-rest-tool
+  - raw/fls-work/jira/2026-07-21/cluster-map.md
+related:
+  - "[[initiatives/sellsmart-program.md]]"
+  - "[[production-systems/sellsmart-copilot.md]]"
+  - "[[production-systems/digital-to-store-copilot.md]]"
+  - "[[production-systems/inventory-lookup-clearview.md]]"
+  - "[[integrations/netsuite-suitetalk-jwt.md]]"
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-21
 confidence: high
 tags: [sellsmart, copilot-studio, netsuite, openapi, suiteql, rest, live-inventory]
 ---
@@ -17,7 +24,9 @@ OpenAPI 3 specification enabling the SellSmart Copilot agent to query **live Net
 
 **Repo:** `SellSmartTools/sellsmart-netsuite-rest-tool/`
 
-**Status:** Local WIP (uncommitted, May 2026)
+**Program hub:** [[initiatives/sellsmart-program.md]] · parent tooling [[production-systems/sellsmart-copilot.md]]
+
+**Status:** Local WIP (uncommitted as of May 2026 work-log). July 2026 Jira freeze does not show a dedicated epic closing this package — treat as still WIP until repo/Jira says otherwise.
 
 ## Three REST operations
 
@@ -39,7 +48,7 @@ OpenAPI 3 specification enabling the SellSmart Copilot agent to query **live Net
 2. Validate OpenAPI: `npx @apidevtools/swagger-cli validate openapi/sellsmart-netsuite-copilot.yaml`
 3. Prototype OAuth in **PROTOTYPE_REST.md** (curl/Postman)
 4. Upload spec to Copilot Studio REST API tool (max 5 MB)
-5. Configure OAuth 2.0 Bearer token (NetSuite JWT client credentials)
+5. Configure OAuth 2.0 Bearer token (NetSuite JWT client credentials) — see [[integrations/netsuite-suitetalk-jwt.md]]
 6. Run DC acceptance scenarios from **COPILOT_STUDIO_SETUP.md**
 
 ## DATA_AUDIT focus areas
@@ -55,9 +64,13 @@ OpenAPI 3 specification enabling the SellSmart Copilot agent to query **live Net
 
 If Copilot Studio cannot perform NetSuite JWT client-credentials flow, deploy a backend-for-frontend holding secrets and exposing the same three operation IDs unchanged.
 
-## Relationship to Inventory Lookup
+## Relationship to Inventory Lookup / Digital-to-Store
 
-Both projects use SuiteQL against the same NetSuite tenant. Inventory Lookup is stakeholder-facing barcode intelligence; this tool is Copilot-facing product/inventory queries for Design Consultants.
+- **Inventory Lookup (ClearView):** stakeholder-facing barcode intelligence — [[production-systems/inventory-lookup-clearview.md]]
+- **This tool:** Copilot-facing product/inventory queries for Design Consultants
+- **Digital-to-Store:** customer Copilot via Popdock SuiteQL lists — [[production-systems/digital-to-store-copilot.md]] (same tenant, different deploy path)
+
+All three hit the same NetSuite tenant with SuiteQL/JWT patterns; do not conflate the products.
 
 ## Interview angles
 

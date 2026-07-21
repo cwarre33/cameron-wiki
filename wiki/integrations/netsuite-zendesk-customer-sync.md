@@ -1,21 +1,30 @@
 ---
 title: NetSuite → Zendesk Customer Sync (Task Server)
 type: integration
-status: planned
+status: active
 visibility: fls-internal
-sources: [jira:FLSM-20]
-related: [[production-systems/dedicated-agent-assignment.md]], [[work-log/2026-05-period-summary.md]]
+sources:
+  - jira:FLSM-20
+  - raw/fls-work/jira/2026-07-21/cameron-assignee-catalog.md
+related:
+  - "[[initiatives/zendesk-automation-platform.md]]"
+  - "[[production-systems/dedicated-agent-assignment.md]]"
+  - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-21
 confidence: high
 tags: [netsuite, zendesk, smartconnect, task-server, integration, sync]
 ---
 
 # NetSuite → Zendesk Customer Sync (Task Server)
 
-Spec for replacing SmartConnect **"NS CUSTOMER TO ZENDESK USERS"** with a Task Server job, standardizing alongside existing vendor sync, case creation, and comment processing.
+Replacing SmartConnect **"NS CUSTOMER TO ZENDESK USERS"** with a Task Server job, standardizing alongside existing vendor sync, case creation, and comment processing.
 
-**Jira:** [FLSM-20 Replace SmartConnect Customer Sync](https://furniturelandsouth.atlassian.net/browse/FLSM-20) (Backlog, spec authored 2026-05-20)
+⚠️ **Status refresh (2026-07-21):** May-2026 wiki listed this as **Backlog / planned**. Live Jira [FLSM-20](https://furniturelandsouth.atlassian.net/browse/FLSM-20) is **Post Prod Validation** (catalog updated 2026-07-13). Frontmatter `status` moved from `planned` → `active` to match.
+
+**Jira:** [FLSM-20](https://furniturelandsouth.atlassian.net/browse/FLSM-20) Replace SmartConnect Customer Sync (**Post Prod Validation**). Parent epic FLSM-6 Zendesk.
+
+Umbrella: [[initiatives/zendesk-automation-platform.md]].
 
 ## Objective
 

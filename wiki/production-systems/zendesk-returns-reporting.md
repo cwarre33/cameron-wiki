@@ -4,9 +4,12 @@ type: production-system
 status: active
 visibility: fls-internal
 sources: [jira:FLSP-102, jira:FLSP-133, jira:FLSP-132]
-related: [[production-systems/dedicated-agent-assignment.md]], [[integrations/netsuite-zendesk-customer-sync.md]]
+related:
+  - "[[initiatives/zendesk-automation-platform.md]]"
+  - "[[production-systems/dedicated-agent-assignment.md]]"
+  - "[[integrations/netsuite-zendesk-customer-sync.md]]"
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-21
 confidence: high
 tags: [zendesk, netsuite, reporting, d2k, choros, returns, fls]
 ---

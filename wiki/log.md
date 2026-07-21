@@ -21,7 +21,7 @@ Pages updated:
 
 ---
 
-## [2026-05-20] ingest | May 2026 catch-up — Jira + git sweep across FLS production work
+## [2026-05-20] ingest | May 2026 catch-up ? Jira + git sweep across FLS production work
 
 Source: Atlassian MCP (Jira assignee/reporter queries, Confluence CQL) + local git history across CleanDevEnvironment repos
 Pages created:
@@ -36,15 +36,15 @@ Pages updated:
   - wiki/index.md (new Production Systems, Architectures, Integrations, Work Log sections)
 
 Key Jira items captured:
-  - FLSP-159/221 — Inventory Lookup / ClearView, sales feedback (Carmen Wilkins)
-  - FLSP-232 — Pilot database migration spec (NetSuite + iSeries → Postgres)
-  - FLSP-163/162 — Dedicated Agent Assignment (Zendesk Lambda)
-  - FLSM-20 — NetSuite→Zendesk customer sync Task Server spec
-  - FLSP-160 — Vendor-specific ticket routing scoping
+  - FLSP-159/221 ? Inventory Lookup / ClearView, sales feedback (Carmen Wilkins)
+  - FLSP-232 ? Pilot database migration spec (NetSuite + iSeries ? Postgres)
+  - FLSP-163/162 ? Dedicated Agent Assignment (Zendesk Lambda)
+  - FLSM-20 ? NetSuite?Zendesk customer sync Task Server spec
+  - FLSP-160 ? Vendor-specific ticket routing scoping
   - FLSP-111 Done, FLSP-102/134 Done
 
 Git findings:
-  - No commits in tracked repos during 2026-05-01→20
+  - No commits in tracked repos during 2026-05-01?20
   - Active local edits: NetSuite/Inventory-Lookup (2026-05-20), Zendesk/DedicatedAgentAssignment
   - Uncommitted WIP: SellSmartTools/sellsmart-netsuite-rest-tool
   - auto-harness last commit 2026-04-25 (feature/kimi-harness, 52/52 tests)
@@ -53,16 +53,16 @@ Contradictions: None.
 
 ---
 
-## [2026-04-21] decision | Disclosure communication humanization — atuinsh/atuin incident
+## [2026-04-21] decision | Disclosure communication humanization ? atuinsh/atuin incident
 
 Source: GitHub Issue #3438 + maintainer response emails + block notification
 Pages created:
   - wiki/decisions/disclosure-communication-humanization.md
 Pages updated:
-  - DISCLOSURE_TRACKER.md (atuin status → BLOCKED, lessons learned added)
+  - DISCLOSURE_TRACKER.md (atuin status ? BLOCKED, lessons learned added)
 
 Incident summary:
-  - Disclosure: atuinsh/atuin Issue #3438 — `ghp_R2***2muH` in `crates/atuin-client/src/secrets.rs`
+  - Disclosure: atuinsh/atuin Issue #3438 ? `ghp_R2***2muH` in `crates/atuin-client/src/secrets.rs`
   - Maintainer response: "lol what?", "just no dude", "tell your claude to stand down"
   - Consequence: Blocked from atuinsh organization on GitHub
   - Root cause: Test token in test file + templated AI-recognizable disclosure format + "security researcher" self-framing
@@ -70,7 +70,7 @@ Incident summary:
 
 ---
 
-## [2026-04-20] osint | ICS exploitability assessment — full evidence chain with attack surface documentation
+## [2026-04-20] osint | ICS exploitability assessment ? full evidence chain with attack surface documentation
 
 Source: raw/osint/2026-04-19-scan-enriched.json + NIST NISTIR 7956 + CVE NVD + CISA advisories + vendor docs
 Pages created:
@@ -80,14 +80,14 @@ Pages updated: wiki/log.md
 Key evidence confirmed:
   - BACnet WriteProperty: unauthenticated by ASHRAE 135 design (NIST NISTIR 7956)
   - CVE-2019-9569: buffer overflow in dactetra, RCE, build 571848 confirmed, McAfee/Trellix HVACking paper
-  - CVE-2017-16748: Tridium Niagara ≤4.4 admin bypass via disabled account + blank password (Lahey Medical at 4.4.73.24 CONFIRMED vulnerable)
+  - CVE-2017-16748: Tridium Niagara ?4.4 admin bypass via disabled account + blank password (Lahey Medical at 4.4.73.24 CONFIRMED vulnerable)
   - CVE-2018-12594: Reliable Controls MACH-ProWebCom unauthenticated GET to fileinfo.xml returns Master Password (v7.80 confirmed; v2.19.1 status uncertain)
   - Fortinet research confirmed: "full command and control without username/password" demonstrated against live boiler equipment
-  - Attack difficulty: TRIVIAL for all devices — bacpypes pip install, 15 lines of Python, free BDT tool
+  - Attack difficulty: TRIVIAL for all devices ? bacpypes pip install, 15 lines of Python, free BDT tool
 
 ---
 
-## [2026-04-20] osint | ICS OSINT deep-dive — evidence verification pass (ARIN RDAP + web)
+## [2026-04-20] osint | ICS OSINT deep-dive ? evidence verification pass (ARIN RDAP + web)
 
 Source: raw/osint/2026-04-19-scan-enriched.json (re-analysis) + ARIN RDAP + web sources
 Pages updated:
@@ -96,20 +96,20 @@ Pages updated:
   - wiki/open-questions/municipal-ics-cluster-2026-04-20.md (full evidence chain added)
 
 Evidence confirmed via ARIN RDAP API and web sources (all passive):
-  - 104.36.136.27 → City of Cartersville, CARTERSVILLE-FIBERCOM (AS64261)
+  - 104.36.136.27 ? City of Cartersville, CARTERSVILLE-FIBERCOM (AS64261)
     Contact: sgrier@cartersvillega.gov | Device = ClarenceBrownAHUs = Clarence Brown Conference Center (40,000 sq ft civic venue, 5450 GA Hwy 20)
-  - 173.242.239.157/.158 → Scottsboro Electric Power Board (AS26809)
+  - 173.242.239.157/.158 ? Scottsboro Electric Power Board (AS26809)
     Contact: sharp@sepb.net (ARIN unvalidated since Feb 2025) | TVA member utility, Survalent SCADA, 7 substations
-  - 54.234.107.205 → AWS EC2 us-east-1, hostname ec2-54-234-107-205.compute-1.amazonaws.com (vanilla, no custom domain)
+  - 54.234.107.205 ? AWS EC2 us-east-1, hostname ec2-54-234-107-205.compute-1.amazonaws.com (vanilla, no custom domain)
     Live BACnet FDT tunnel from this EC2 into Chicago boiler room (216.80.86.155, firmware 571848 = CVE-2019-9569 confirmed)
-  - 12.5.26.10 → KIPP INSPIRED ACADEMY (AS, ARIN POC unvalidated since Oct 2016)
+  - 12.5.26.10 ? KIPP INSPIRED ACADEMY (AS, ARIN POC unvalidated since Oct 2016)
     Device Mitchell (DSC_1616E) aggregates 13 KIPP school building BACnet zones through one BBMD
-  - 24.240.179.78 → Metro North Fire Protection District, 1815 Chambers Rd, St. Louis MO 63136 (name match confirmed)
-  - 24.103.25.90 → City of Liberty MO water distribution tank (DSC_633E), peer BBMD at 24.39.116.210
+  - 24.240.179.78 ? Metro North Fire Protection District, 1815 Chambers Rd, St. Louis MO 63136 (name match confirmed)
+  - 24.103.25.90 ? City of Liberty MO water distribution tank (DSC_633E), peer BBMD at 24.39.116.210
 
 ---
 
-## [2026-04-20] osint | ICS OSINT deep-dive — new critical infrastructure findings
+## [2026-04-20] osint | ICS OSINT deep-dive ? new critical infrastructure findings
 
 Source: raw/osint/2026-04-19-scan-enriched.json (re-analysis)
 Pages created:
@@ -122,30 +122,30 @@ Contradictions: None. These are new findings not previously profiled.
 Key findings:
   - 4 hosts with Delta Controls firmware build 571848 = CONFIRMED CVE-2019-9569 vulnerable (CVSS 9.8)
     - 216.80.86.155 Chicago boiler room + AWS EC2 FDT tunnel (54.234.107.205, us-east-1)
-    - 104.36.136.27 City of Cartersville, GA (municipal govt ASN AS64261) — ClarenceBrownAHUs
-    - 64.62.4.194 Seattle — PT Elevator Access Control MASTER (physical security infrastructure)
-    - 91.126.135.34 Barcelona — commercial building
-  - AWS EC2 instance (54.234.107.205) maintaining live BACnet FDT tunnel into Chicago HVAC — possible remote mgmt or unauthorized C2
-  - Scottsboro Electric Power Board (AS26809) — municipal electric utility's own ASN, 2x JCI NAE controllers internet-facing
-  - 1700 Woodbourne Tank (Liberty, MO) — water distribution tank controller, peer BBMD on second Charter IP
-  - Chambers Firehouse (Florissant, MO) — fire station HVAC on internet, same St. Louis metro as WalkerMedical
+    - 104.36.136.27 City of Cartersville, GA (municipal govt ASN AS64261) ? ClarenceBrownAHUs
+    - 64.62.4.194 Seattle ? PT Elevator Access Control MASTER (physical security infrastructure)
+    - 91.126.135.34 Barcelona ? commercial building
+  - AWS EC2 instance (54.234.107.205) maintaining live BACnet FDT tunnel into Chicago HVAC ? possible remote mgmt or unauthorized C2
+  - Scottsboro Electric Power Board (AS26809) ? municipal electric utility's own ASN, 2x JCI NAE controllers internet-facing
+  - 1700 Woodbourne Tank (Liberty, MO) ? water distribution tank controller, peer BBMD on second Charter IP
+  - Chambers Firehouse (Florissant, MO) ? fire station HVAC on internet, same St. Louis metro as WalkerMedical
   - St. Louis metro cluster now 4 sectors: medical, commercial, emergency services, education
 
 ---
 
-## [2026-04-18] ingest | Hull Tactical competition data — Kaggle API pull
+## [2026-04-18] ingest | Hull Tactical competition data ? Kaggle API pull
 
 Source: raw/kaggle/hull-tactical-base-gateway.py, raw/kaggle/hull-tactical-relay.py, raw/kaggle/hull-tactical-data-schema.txt
 Pages created: wiki/decisions/hull-tactical-strategy.md
-Pages updated: wiki/kaggle/hull-tactical-market-prediction.md (confidence: low → high), wiki/index.md
+Pages updated: wiki/kaggle/hull-tactical-market-prediction.md (confidence: low ? high), wiki/index.md
 Contradictions: none
 Key findings:
   - Competition uses gRPC interactive evaluation API (not static CSV submission)
-  - 94 anonymized features: D1–D9 (binary 0/1 regime flags) + E/I/M/P/S/V (continuous)
+  - 94 anonymized features: D1?D9 (binary 0/1 regime flags) + E/I/M/P/S/V (continuous)
   - D features are structurally identical to AutoTrader's RSI threshold gate
-  - Test set reveals lagged_forward_returns (yesterday's outcome) — enables online adaptation
+  - Test set reveals lagged_forward_returns (yesterday's outcome) ? enables online adaptation
   - 9,049 training days; test starts at date_id=8980
-  - Early rows (date_id 0–~200): only D features are non-NaN (warm-up period)
+  - Early rows (date_id 0?~200): only D features are non-NaN (warm-up period)
 
 ---
 
@@ -161,7 +161,7 @@ Pages created (to resolve orphans and missing concepts):
   - wiki/tools/groq.md (Groq mentioned 4+ times, no page)
   - wiki/models/llama-3-3-70b.md (Llama 3.3 70B mentioned 4+ times, no page)
 Pages updated: wiki/index.md
-Orphans resolved: 11 of 12 (consensus-based-memory-distillation still weakly linked — acceptable)
+Orphans resolved: 11 of 12 (consensus-based-memory-distillation still weakly linked ? acceptable)
 Remaining moderate issues: consensus ADR weakly connected; Hull Tactical approach undocumented
 Next lint recommended: after FLS ingests
 
@@ -169,7 +169,7 @@ Next lint recommended: after FLS ingests
 
 ## [2026-04-17] init | Wiki scaffold created
 
-Source: N/A — initial setup
+Source: N/A ? initial setup
 Pages created: wiki/index.md, wiki/log.md, wiki/overview.md
 Pages updated: none
 Notes: Full directory scaffold created. CLAUDE.md, .mcp.json, .gitignore, README.md written.
@@ -177,11 +177,11 @@ Taxonomy: raw/{papers,blogs,repos,models,videos,datasets,fls-work,kaggle,trading
          wiki/{methodology,production-systems,architectures,techniques,integrations,papers,models,
                benchmarks,datasets,tools,labs,people,kaggle,trading,decisions,interview-prep,
                comparisons,open-questions}
-Next: Ingest CRR documentation (source 1 of 5). FLS ingests deferred — gathering properly.
+Next: Ingest CRR documentation (source 1 of 5). FLS ingests deferred ? gathering properly.
 
 ---
 
-## [2026-04-17] ingest | SofaScope — AI-Powered Furniture Visual Search
+## [2026-04-17] ingest | SofaScope ? AI-Powered Furniture Visual Search
 
 Source: raw/repos/sofascope-ai-powered-product-match-finder.md
 Pages created:
@@ -195,7 +195,7 @@ Pages created:
   - wiki/models/clip.md
   - wiki/interview-prep/system-design-visual-search.md
 Pages updated: wiki/index.md
-Contradictions: None. Note: docs cite "10,000+ products" but actual production scale is 200,000 — corrected in wiki, flagged in sofascope.md.
+Contradictions: None. Note: docs cite "10,000+ products" but actual production scale is 200,000 ? corrected in wiki, flagged in sofascope.md.
 
 ---
 
@@ -212,7 +212,7 @@ Contradictions: None.
 
 ---
 
-## [2026-04-17] ingest | Cameron's Kaggle Profile — all 14 competitions
+## [2026-04-17] ingest | Cameron's Kaggle Profile ? all 14 competitions
 
 Source: raw/kaggle/cameron-kaggle-profile.md (Kaggle API v1, Bearer token)
 Pages created:
@@ -239,7 +239,7 @@ Known rankings (from leaderboard API):
   - House Prices: rank ~19, RMSLE 0.00044 (perpetual competition, inflated leaderboard)
   - Motion-S: rank 25, score 0.43263 (2% below #1; active until 2026-05-10)
   - Urban Flood: rank 117, score 0.5304
-  - Deep Past: outside top 200 (legit score 34.7); leakage exploit → 1st place (documented separately)
+  - Deep Past: outside top 200 (legit score 34.7); leakage exploit ? 1st place (documented separately)
   - All others: outside top 200 or leaderboard unavailable
 
 Notes:
@@ -259,9 +259,9 @@ Pages updated: wiki/index.md, wiki/overview.md
 Contradictions: None.
 Notes:
   - 14 competitions entered, 47 notebooks. Confirmed ranks: Motion-S rank 25 (top 2%), Urban Flood rank 117.
-  - Deep Past: ByT5+MBR legitimate score 34.7; separately found+documented data leakage → first place.
+  - Deep Past: ByT5+MBR legitimate score 34.7; separately found+documented data leakage ? first place.
   - Hull Tactical ($100k) still active as of 2026-04-17.
-  - Stanford RNA, AIMO, March Mania, Heart Disease, CSIRO, Jaguar Re-ID, MABe — entered but not yet fully documented.
+  - Stanford RNA, AIMO, March Mania, Heart Disease, CSIRO, Jaguar Re-ID, MABe ? entered but not yet fully documented.
   - Individual notebook content not available via API (SPA-rendered); stubs based on notebook titles + leaderboard data.
 
 ---
@@ -276,11 +276,11 @@ Pages created:
   - wiki/decisions/arc-agi-adapters-vs-litellm.md
 Pages updated: wiki/index.md, wiki/overview.md
 Contradictions: None.
-Note: Harness is a fork of arcprizeorg/model_baseline. Supports ARC-AGI-1 and ARC-AGI-2. Actual benchmark scores not yet recorded — harness infrastructure documented only.
+Note: Harness is a fork of arcprizeorg/model_baseline. Supports ARC-AGI-1 and ARC-AGI-2. Actual benchmark scores not yet recorded ? harness infrastructure documented only.
 
 ---
 
-## [2026-04-17] ingest | AutoTrader — Autonomous Paper Trading Bot
+## [2026-04-17] ingest | AutoTrader ? Autonomous Paper Trading Bot
 
 Source: raw/repos/autotrader-readme.md
 Pages created:
@@ -293,13 +293,13 @@ Pages created:
   - wiki/open-questions/agentic-memory-retention-strategies.md
 Pages updated: wiki/index.md
 Contradictions: None.
-Note: Self-improvement loop partially implemented — logging infrastructure exists, LLM review pass is a future enhancement.
+Note: Self-improvement loop partially implemented ? logging infrastructure exists, LLM review pass is a future enhancement.
 
 ---
 
 ## [2026-04-17] session | Obsidian + graphify setup; retention thread analysis; wiki optimization
 
-Source: N/A — session synthesis
+Source: N/A ? session synthesis
 Pages created:
   - wiki/decisions/wiki-retention-policy.md
   - wiki/techniques/llm-review-pass-before-rotation.md
@@ -308,17 +308,17 @@ Pages updated:
   - wiki/decisions/autotrader-decisions-log-retention.md (added retention cluster wikilinks)
   - wiki/interview-prep/system-design-visual-search.md (added arc-agi + arc-agi-benchmarking wikilinks)
   - wiki/index.md (added 2 new pages)
-Graphify run: first full graph build — 54 nodes, 112 edges, 8 communities, 8.2× token reduction
+Graphify run: first full graph build ? 54 nodes, 112 edges, 8 communities, 8.2� token reduction
 Tools configured: graphify installed + symlinked to Claude Code; Obsidian vault opened with Git + Dataview plugins
 Contradictions: None.
 Notes:
   Graphify analysis surfaced: (1) wiki/log.md is the stealth hub (15 edges, bridges all 8 communities);
-  (2) ARC-AGI community was orphaned in graph — 4 pages missed by detect (provider-adapter-pattern,
+  (2) ARC-AGI community was orphaned in graph ? 4 pages missed by detect (provider-adapter-pattern,
   benchmarks/arc-agi, arc-agi-adapters-vs-litellm, kaggle/arc-agi-benchmarking). Wikilinks added to
   connect ARC-AGI cluster into main body. Graphify --update needed to incorporate missing pages.
   (3) Retention thread: AutoTrader's retain-outcomes/rotate-reasoning principle applies directly to
-  this wiki's own speculative page lifecycle — formalized as wiki-retention-policy ADR.
-  (4) LLM review pass before rotation is the missing half of AutoTrader's self-improvement loop —
+  this wiki's own speculative page lifecycle ? formalized as wiki-retention-policy ADR.
+  (4) LLM review pass before rotation is the missing half of AutoTrader's self-improvement loop ?
   documented as reusable technique.
 
 ---
@@ -330,7 +330,7 @@ Run: 2026-04-19 01:11 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -385,7 +385,7 @@ Run: 2026-04-19 03:41 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -440,7 +440,7 @@ Run: 2026-04-19 06:05 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -495,7 +495,7 @@ Run: 2026-04-19 09:03 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -550,7 +550,7 @@ Run: 2026-04-19 13:20 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -605,7 +605,7 @@ Run: 2026-04-19 16:53 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -660,7 +660,7 @@ Run: 2026-04-19 20:49 UTC
 Wiki pages: 49 | Raw sources: 6
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -715,7 +715,7 @@ Run: 2026-04-20 00:31 UTC
 Wiki pages: 49 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -780,8 +780,8 @@ Key findings:
   - KIPP Academy (12.5.26.10): single BBMD routing 13 school campuses
   - WalkerMedical (108.252.186.105): Delta Controls DSM_RTR V3.40 BBMD with active FDT entry at scan time, bridging internet to medical building BAS (surgery center, cancer center, DaVita dialysis). CVE-2019-9569 (CVSS 9.8) version-family match. Responsible disclosure report drafted.
   - Shriners Children's Hospital Charlotte (70.63.96.202): Tridium 4.11 on Charter residential ISP, three confirmed CVEs by version
-  - Modbus CVE cluster: 39 Aliyun cloud VMs running SSH on port 502 — likely honeypots, not real ICS
-  - DNP3 sample: 603/1000 hosts returned HTTP — mostly CDN/web false positives, not SCADA
+  - Modbus CVE cluster: 39 Aliyun cloud VMs running SSH on port 502 ? likely honeypots, not real ICS
+  - DNP3 sample: 603/1000 hosts returned HTTP ? mostly CDN/web false positives, not SCADA
 
 ---
 ## [2026-04-20] maintenance | Automated daily check
@@ -790,7 +790,7 @@ Run: 2026-04-20 01:47 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -847,7 +847,7 @@ Run: 2026-04-20 03:43 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -904,7 +904,7 @@ Run: 2026-04-20 06:24 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -961,7 +961,7 @@ Run: 2026-04-20 10:06 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -1018,7 +1018,7 @@ Run: 2026-04-20 14:05 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -1075,7 +1075,7 @@ Run: 2026-04-20 17:16 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -1132,7 +1132,7 @@ Run: 2026-04-20 20:58 UTC
 Wiki pages: 51 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
   open-questions/bacnet-bbmd-exposure-2026-04-19.md: [[ics-exposure-2026-04-19]]
 
@@ -1189,7 +1189,7 @@ Run: 2026-04-21 00:05 UTC
 Wiki pages: 56 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1248,7 +1248,7 @@ Run: 2026-04-21 00:40 UTC
 Wiki pages: 59 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1310,7 +1310,7 @@ Run: 2026-04-21 03:36 UTC
 Wiki pages: 59 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1372,7 +1372,7 @@ Run: 2026-04-21 06:09 UTC
 Wiki pages: 59 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1434,7 +1434,7 @@ Run: 2026-04-21 09:47 UTC
 Wiki pages: 59 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1496,7 +1496,7 @@ Run: 2026-04-21 12:22 UTC
 Wiki pages: 59 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1558,14 +1558,14 @@ Suggested Links (Unlinked Mentions):
 Source: raw/osint/2026-04-19-scan-enriched.json
 Pages created: wiki/open-questions/kipp-mitchell-disclosure-2026-04-20.md
 Pages updated: wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md
-Contradictions: corrected prior wiki entry — "KIPP Inspired Academy / 13-campus" → KIPP Inspire Academy (KIPP St. Louis network: 6 schools / ~2,700 students). Subnet count (13) is BACnet network segments, not 1:1 with campuses.
+Contradictions: corrected prior wiki entry ? "KIPP Inspired Academy / 13-campus" ? KIPP Inspire Academy (KIPP St. Louis network: 6 schools / ~2,700 students). Subnet count (13) is BACnet network segments, not 1:1 with campuses.
 Key findings:
   - 12.5.26.10 (Delta Controls DSC-1616E "Mitchell") routes 13 internal BACnet subnets through one internet-facing BBMD
   - Single point of failure for 6-campus K-12 charter network (~2,700 students)
-  - Wow framing: blast-radius — one internet action affects every campus simultaneously
+  - Wow framing: blast-radius ? one internet action affects every campus simultaneously
   - K-12 building automation is asthma/heat/CO2-relevant safety infrastructure, not "comfort only"
   - Disclosure target: KIPP St. Louis (1310 Papin St Suite 203, 314-349-1388)
-  - "Mitchell" is not a known KIPP campus name — likely integrator or building name; open question
+  - "Mitchell" is not a known KIPP campus name ? likely integrator or building name; open question
 
 ---
 
@@ -1578,9 +1578,9 @@ Contradictions: none
 Key findings:
   - 85.206.88.54 (WAGO controller "Homanit.VAS_LNS_1") in Pagiriai, Vilniaus rajonas, Lithuania
   - Operator attribution high-confidence: device name carries operator name
-  - MDF/HDF wood-fiberboard plant, 260,000 m³/yr capacity, ~€175M investment
+  - MDF/HDF wood-fiberboard plant, 260,000 m�/yr capacity, ~?175M investment
   - Wow framing: combustible-dust regime (NFPA 664 / ATEX 2014/34/EU + 1999/92/EC)
-  - Cannot confirm passively whether process-safety actuators are integrated to this BAS network — that distinction sets the impact ceiling
+  - Cannot confirm passively whether process-safety actuators are integrated to this BAS network ? that distinction sets the impact ceiling
   - Disclosure path: Homanit Lietuva (info@homanit.lt) + German parent + WAGO PSIRT + NKSC (CERT-LT)
 
 ---
@@ -1590,15 +1590,15 @@ Key findings:
 Source: web verification (oasisshriners.org, shrinerschildrens.org/locations)
 Pages updated: wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md
 Contradictions: previous entry "Shriners Children's Hospital Charlotte" was incorrect. Device "Shriners_Oasis_10001" at 70.63.96.202 is the Oasis Shrine Temple (fraternal lodge / event venue, 604 Doug Mayes Pl, Charlotte NC 28262). Shriners Children's operates no hospital in Charlotte; nearest is Greenville SC. Pediatric patient-safety framing originally attached to this finding does not apply.
-Resolution: in-place correction with explicit "Correction note" block in the BACnet survey page. No separate disclosure page filed for the Oasis exposure (downgraded — Niagara 4.11/Log4Shell exposure is real but lower severity than originally framed).
+Resolution: in-place correction with explicit "Correction note" block in the BACnet survey page. No separate disclosure page filed for the Oasis exposure (downgraded ? Niagara 4.11/Log4Shell exposure is real but lower severity than originally framed).
 
 ---
 
-## [2026-04-20] update | Walker Medical disclosure — follow-up investigation plan appended
+## [2026-04-20] update | Walker Medical disclosure ? follow-up investigation plan appended
 
 Source: existing wiki/open-questions/walkermedical-disclosure-2026-04-19.md
 Pages updated: wiki/open-questions/walkermedical-disclosure-2026-04-19.md
-Contradictions: flagged the unverified "same AT&T block" adjacency claim in the BACnet survey page (WalkerMedical 108.252.186.105 vs KIPP 12.5.26.10 — different address spaces; "same AS7018" is too weak a claim to repeat as "adjacent").
+Contradictions: flagged the unverified "same AT&T block" adjacency claim in the BACnet survey page (WalkerMedical 108.252.186.105 vs KIPP 12.5.26.10 ? different address spaces; "same AS7018" is too weak a claim to repeat as "adjacent").
 Key additions:
   - 6 follow-up investigation threads: identify 192.168.53.36, verify AT&T adjacency, Delta Controls firmware build cross-reference, Shodan history pivot, Wayback Machine pivot, BMS integrator identification
   - Cross-references to kipp-mitchell-disclosure-2026-04-20 and homanit-disclosure-2026-04-20
@@ -1606,22 +1606,22 @@ Key additions:
 ---
 
 
-## [2026-04-21] analysis | Path B longitudinal — 12 external-FDT tunnel cases identified
+## [2026-04-21] analysis | Path B longitudinal ? 12 external-FDT tunnel cases identified
 
-Source: raw/osint/2026-04-20-scan-raw.json → raw/osint/2026-04-20-scan-enriched.json → raw/osint/2026-04-20-longitudinal.json
+Source: raw/osint/2026-04-20-scan-raw.json ? raw/osint/2026-04-20-scan-enriched.json ? raw/osint/2026-04-20-longitudinal.json
 Pages created: wiki/open-questions/bacnet-fdt-external-tunnels-2026-04-21.md
 Pages updated:
   - wiki/open-questions/homanit-disclosure-2026-04-20.md (cross-ref to aggregate page; "Homanit is not unique" note added)
   - wiki/open-questions/bacnet-bbmd-exposure-2026-04-19.md (2026-04-21 update block answering original open question about FDT prevalence; 94%/71% prevalence stats added)
-Contradictions: none — extends prior findings.
+Contradictions: none ? extends prior findings.
 Key additions:
-  - Ran path B full Shodan collect → enrich → longitudinal. S7 credits exhausted (no S7 hosts); Modbus 1000 + BACnet 1000 + DNP3 300 collected.
+  - Ran path B full Shodan collect ? enrich ? longitudinal. S7 credits exhausted (no S7 hosts); Modbus 1000 + BACnet 1000 + DNP3 300 collected.
   - Longitudinal seeded 17 BBMDs with any FDT entry; 16 had persistent tunnels (scan_count >= 3); 12 had external-public-IP FDT entries (the Homanit pattern).
   - Shared integrator endpoint discovered: 216.67.73.166 registered as Foreign Device for both 66.58.248.125 and 24.237.132.230, with identical 13-port rotation pattern over overlapping dates. Likely a single integrator bridging two client buildings.
-  - Cloud-hosted BACnet clients observed across DigitalOcean (Homanit), AWS ca-central-1 (184.69.115.182), Azure East US (208.104.56.247) — an emerging class of cloud-VM-to-BACnet-building exposure.
-  - Most-persistent case: 166.144.189.152 → 108.190.193.44, 275 scans across 37 rotating source ports. Most-scanned (internal-FDT): 104.36.136.27 → 10.21.175.238, 930 scans.
+  - Cloud-hosted BACnet clients observed across DigitalOcean (Homanit), AWS ca-central-1 (184.69.115.182), Azure East US (208.104.56.247) ? an emerging class of cloud-VM-to-BACnet-building exposure.
+  - Most-persistent case: 166.144.189.152 ? 108.190.193.44, 275 scans across 37 rotating source ports. Most-scanned (internal-FDT): 104.36.136.27 ? 10.21.175.238, 930 scans.
   - Queued 5 candidate per-target disclosures; not written yet pending Cameron review (per CLAUDE.md "never batch-write pages Cameron hasn't seen").
-  - Fixed a Unicode/cp1252 crash in scripts/osint/longitudinal.py print statement (→ -> -->).
+  - Fixed a Unicode/cp1252 crash in scripts/osint/longitudinal.py print statement (? -> -->).
 
 ---
 
@@ -1629,7 +1629,7 @@ Key additions:
 
 Source: raw/osint/2026-04-20-longitudinal.json
 Pages updated:
-  - wiki/open-questions/kipp-mitchell-disclosure-2026-04-20.md (FDT history section: 4 controllers registered over 47 days; .181 → .175 handoff on 2026-04-07 documented; FDT-vs-BDT distinction clarified; updated timeline)
+  - wiki/open-questions/kipp-mitchell-disclosure-2026-04-20.md (FDT history section: 4 controllers registered over 47 days; .181 ? .175 handoff on 2026-04-07 documented; FDT-vs-BDT distinction clarified; updated timeline)
   - wiki/open-questions/homanit-disclosure-2026-04-20.md (cross-reference to aggregate external-FDT findings page; broader-pattern note added without downgrading Homanit urgency)
 Contradictions: none.
 
@@ -1638,7 +1638,7 @@ Contradictions: none.
 ## [2026-04-21] security | Shodan API key rotation + history rewrite
 
 Source: GitGuardian alert (secret detected in push to public repo)
-Pages updated: (none — this is a repo-level incident, not a wiki content change)
+Pages updated: (none ? this is a repo-level incident, not a wiki content change)
 Incident:
   - Commit 56bcdd2 "Add OSINT secret monitoring suite" (2026-04-20 21:19 from the other machine) hardcoded the Shodan API key in OSINT_README.md:100 as an `export SHODAN_API_KEY="..."` usage example.
   - Key was public on GitHub for ~12 hours before GitGuardian flagged it.
@@ -1647,11 +1647,11 @@ Response:
   - Redacted the literal key from OSINT_README.md HEAD; placeholder "your_shodan_api_key_here" substituted.
   - Added .claude/settings.local.json and *.local.json to .gitignore (settings.local.json can capture command-line args passed through Claude Code permission prompts).
   - Untracked .claude/settings.local.json from the index (kept on disk).
-  - Scanned all incoming commits for other leaked secrets; only AWS's well-known dummy example AKIAIOSFODNN7EXAMPLE present — no additional real credentials.
+  - Scanned all incoming commits for other leaked secrets; only AWS's well-known dummy example AKIAIOSFODNN7EXAMPLE present ? no additional real credentials.
   - `git filter-repo --replace-text` rewrote all history replacing the literal key with REDACTED_SHODAN_KEY.
   - `git push --force origin main` published the rewritten history. All commit SHAs on main rebuilt. The other machine(s) with clones of this repo must re-clone before their next push.
 Lessons / preventive actions queued:
-  - Enable GitHub's native secret scanning + push protection in repo Settings → Security.
+  - Enable GitHub's native secret scanning + push protection in repo Settings ? Security.
   - Consider a pre-commit hook that runs gitleaks or trufflehog against staged content.
   - Document in CLAUDE.md: never pass secrets as command-line arguments to Claude Code (they are captured in .claude/settings.local.json via permission prompts).
   - Document: when wiring a new Shodan-using script, always source from .env, never hardcode in docs, examples, or tests.
@@ -1669,7 +1669,7 @@ Run: 2026-04-21 12:27 UTC
 Wiki pages: 62 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1730,7 +1730,7 @@ Run: 2026-04-21 14:03 UTC
 Wiki pages: 62 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1791,7 +1791,7 @@ Run: 2026-04-21 17:13 UTC
 Wiki pages: 62 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1852,7 +1852,7 @@ Run: 2026-04-21 19:09 UTC
 Wiki pages: 63 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1914,7 +1914,7 @@ Run: 2026-04-21 21:01 UTC
 Wiki pages: 63 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   methodology/llm-wiki-pattern.md: [[wikilink]]
 
 Pages by section:
@@ -1970,7 +1970,7 @@ Suggested Links (Unlinked Mentions):
   decisions/arc-agi-adapters-vs-litellm.md: mention of 'arc-agi'
 
 
-## [2026-04-21] osint | GitHub credential discovery — 7 live credentials found, responsible disclosure
+## [2026-04-21] osint | GitHub credential discovery ? 7 live credentials found, responsible disclosure
 
 Source: GitHub Code Search API + local verification
 Pages created:
@@ -2015,7 +2015,7 @@ Run: 2026-04-21 23:26 UTC
 Wiki pages: 66 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2096,7 +2096,7 @@ Run: 2026-04-21 23:31 UTC
 Wiki pages: 67 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2180,7 +2180,7 @@ Run: 2026-04-21 23:35 UTC
 Wiki pages: 68 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2267,7 +2267,7 @@ Run: 2026-04-21 23:39 UTC
 Wiki pages: 69 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2358,7 +2358,7 @@ Run: 2026-04-21 23:54 UTC
 Wiki pages: 71 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2450,7 +2450,7 @@ Run: 2026-04-22 03:34 UTC
 Wiki pages: 71 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2542,7 +2542,7 @@ Run: 2026-04-22 06:07 UTC
 Wiki pages: 71 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2634,7 +2634,7 @@ Run: 2026-04-22 09:44 UTC
 Wiki pages: 71 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2726,7 +2726,7 @@ Run: 2026-04-22 14:03 UTC
 Wiki pages: 71 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2818,7 +2818,7 @@ Run: 2026-04-22 15:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -2910,7 +2910,7 @@ Run: 2026-04-22 17:12 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3002,7 +3002,7 @@ Run: 2026-04-22 21:04 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3094,7 +3094,7 @@ Run: 2026-04-23 03:37 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3186,7 +3186,7 @@ Run: 2026-04-23 06:13 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3278,7 +3278,7 @@ Run: 2026-04-23 09:53 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3370,7 +3370,7 @@ Run: 2026-04-23 14:05 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3462,7 +3462,7 @@ Run: 2026-04-23 17:40 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3554,7 +3554,7 @@ Run: 2026-04-23 21:01 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3646,7 +3646,7 @@ Run: 2026-04-24 03:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3738,7 +3738,7 @@ Run: 2026-04-24 06:17 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3830,7 +3830,7 @@ Run: 2026-04-24 09:52 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -3922,7 +3922,7 @@ Run: 2026-04-24 13:59 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4014,7 +4014,7 @@ Run: 2026-04-24 17:09 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4106,7 +4106,7 @@ Run: 2026-04-24 21:00 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4198,7 +4198,7 @@ Run: 2026-04-25 03:24 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4290,7 +4290,7 @@ Run: 2026-04-25 05:54 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4382,7 +4382,7 @@ Run: 2026-04-25 09:04 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4474,7 +4474,7 @@ Run: 2026-04-25 13:23 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4566,7 +4566,7 @@ Run: 2026-04-25 16:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4658,7 +4658,7 @@ Run: 2026-04-25 20:51 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4750,7 +4750,7 @@ Run: 2026-04-26 03:48 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4842,7 +4842,7 @@ Run: 2026-04-26 06:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -4934,7 +4934,7 @@ Run: 2026-04-26 09:10 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5026,7 +5026,7 @@ Run: 2026-04-26 13:24 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5118,7 +5118,7 @@ Run: 2026-04-26 16:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5210,7 +5210,7 @@ Run: 2026-04-26 20:51 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5302,7 +5302,7 @@ Run: 2026-04-27 03:52 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5394,7 +5394,7 @@ Run: 2026-04-27 06:37 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5486,7 +5486,7 @@ Run: 2026-04-27 10:25 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5578,7 +5578,7 @@ Run: 2026-04-27 14:20 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5670,7 +5670,7 @@ Run: 2026-04-27 17:38 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5762,7 +5762,7 @@ Run: 2026-04-27 21:12 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5854,7 +5854,7 @@ Run: 2026-04-28 03:57 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -5946,7 +5946,7 @@ Run: 2026-04-28 06:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6038,7 +6038,7 @@ Run: 2026-04-28 10:24 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6130,7 +6130,7 @@ Run: 2026-04-28 14:35 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6222,7 +6222,7 @@ Run: 2026-04-28 17:54 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6314,7 +6314,7 @@ Run: 2026-04-28 21:14 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6406,7 +6406,7 @@ Run: 2026-04-29 03:53 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6494,7 +6494,7 @@ Run: 2026-04-29 06:31 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6582,7 +6582,7 @@ Run: 2026-04-29 10:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6670,7 +6670,7 @@ Run: 2026-04-29 14:24 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6758,7 +6758,7 @@ Run: 2026-04-29 17:29 UTC
 Wiki pages: 73 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6847,7 +6847,7 @@ Run: 2026-04-29 18:19 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -6935,7 +6935,7 @@ Run: 2026-04-29 21:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7023,7 +7023,7 @@ Run: 2026-04-30 03:54 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7108,7 +7108,7 @@ Run: 2026-04-30 06:34 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7193,7 +7193,7 @@ Run: 2026-04-30 10:16 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7278,7 +7278,7 @@ Run: 2026-04-30 14:19 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7363,7 +7363,7 @@ Run: 2026-04-30 17:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7448,7 +7448,7 @@ Run: 2026-04-30 21:11 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7533,7 +7533,7 @@ Run: 2026-05-01 04:06 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7618,7 +7618,7 @@ Run: 2026-05-01 09:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7703,7 +7703,7 @@ Run: 2026-05-01 14:02 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7788,7 +7788,7 @@ Run: 2026-05-01 17:07 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7873,7 +7873,7 @@ Run: 2026-05-01 21:03 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -7958,7 +7958,7 @@ Run: 2026-05-02 03:38 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8043,7 +8043,7 @@ Run: 2026-05-02 06:17 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8128,7 +8128,7 @@ Run: 2026-05-02 09:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8213,7 +8213,7 @@ Run: 2026-05-02 13:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8298,7 +8298,7 @@ Run: 2026-05-02 17:00 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8383,7 +8383,7 @@ Run: 2026-05-02 20:53 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8468,7 +8468,7 @@ Run: 2026-05-03 04:01 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8553,7 +8553,7 @@ Run: 2026-05-03 09:27 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8638,7 +8638,7 @@ Run: 2026-05-03 13:41 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8723,7 +8723,7 @@ Run: 2026-05-03 17:01 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8808,7 +8808,7 @@ Run: 2026-05-03 20:56 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8893,7 +8893,7 @@ Run: 2026-05-04 03:59 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -8978,7 +8978,7 @@ Run: 2026-05-04 06:49 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9063,7 +9063,7 @@ Run: 2026-05-04 10:21 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9148,7 +9148,7 @@ Run: 2026-05-04 14:23 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9233,7 +9233,7 @@ Run: 2026-05-04 17:48 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9318,7 +9318,7 @@ Run: 2026-05-04 21:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9403,7 +9403,7 @@ Run: 2026-05-05 03:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9488,7 +9488,7 @@ Run: 2026-05-05 06:25 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9573,7 +9573,7 @@ Run: 2026-05-05 10:10 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9658,7 +9658,7 @@ Run: 2026-05-05 14:16 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9743,7 +9743,7 @@ Run: 2026-05-05 17:44 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9828,7 +9828,7 @@ Run: 2026-05-05 21:10 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9913,7 +9913,7 @@ Run: 2026-05-06 03:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -9998,7 +9998,7 @@ Run: 2026-05-06 06:38 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10083,7 +10083,7 @@ Run: 2026-05-06 10:25 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10168,7 +10168,7 @@ Run: 2026-05-06 14:34 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10253,7 +10253,7 @@ Run: 2026-05-06 17:49 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10338,7 +10338,7 @@ Run: 2026-05-06 21:18 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10423,7 +10423,7 @@ Run: 2026-05-07 03:53 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10508,7 +10508,7 @@ Run: 2026-05-07 06:45 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10593,7 +10593,7 @@ Run: 2026-05-07 10:32 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10678,7 +10678,7 @@ Run: 2026-05-07 14:39 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10763,7 +10763,7 @@ Run: 2026-05-07 17:56 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10848,7 +10848,7 @@ Run: 2026-05-07 21:11 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -10933,7 +10933,7 @@ Run: 2026-05-08 03:45 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11018,7 +11018,7 @@ Run: 2026-05-08 06:05 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11103,7 +11103,7 @@ Run: 2026-05-08 09:47 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11188,7 +11188,7 @@ Run: 2026-05-08 14:08 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11273,7 +11273,7 @@ Run: 2026-05-08 17:27 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11358,7 +11358,7 @@ Run: 2026-05-08 21:11 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11443,7 +11443,7 @@ Run: 2026-05-09 03:46 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11528,7 +11528,7 @@ Run: 2026-05-09 06:23 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11613,7 +11613,7 @@ Run: 2026-05-09 09:27 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11698,7 +11698,7 @@ Run: 2026-05-09 13:44 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11783,7 +11783,7 @@ Run: 2026-05-09 17:04 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11868,7 +11868,7 @@ Run: 2026-05-09 20:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -11953,7 +11953,7 @@ Run: 2026-05-10 04:03 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12038,7 +12038,7 @@ Run: 2026-05-10 09:45 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12123,7 +12123,7 @@ Run: 2026-05-10 13:47 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12208,7 +12208,7 @@ Run: 2026-05-10 17:04 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12293,7 +12293,7 @@ Run: 2026-05-10 20:58 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12378,7 +12378,7 @@ Run: 2026-05-11 04:14 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12463,7 +12463,7 @@ Run: 2026-05-11 11:33 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12548,7 +12548,7 @@ Run: 2026-05-11 15:31 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12633,7 +12633,7 @@ Run: 2026-05-11 18:00 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.319
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12718,7 +12718,7 @@ Run: 2026-05-11 21:24 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12803,7 +12803,7 @@ Run: 2026-05-12 03:58 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12888,7 +12888,7 @@ Run: 2026-05-12 06:45 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -12973,7 +12973,7 @@ Run: 2026-05-12 10:40 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13058,7 +13058,7 @@ Run: 2026-05-12 14:43 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13143,7 +13143,7 @@ Run: 2026-05-12 18:08 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13228,7 +13228,7 @@ Run: 2026-05-12 21:25 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13313,7 +13313,7 @@ Run: 2026-05-13 04:06 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13398,7 +13398,7 @@ Run: 2026-05-13 10:38 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13483,7 +13483,7 @@ Run: 2026-05-13 14:53 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13568,7 +13568,7 @@ Run: 2026-05-13 18:08 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13653,7 +13653,7 @@ Run: 2026-05-13 21:41 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13738,7 +13738,7 @@ Run: 2026-05-14 04:05 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13823,7 +13823,7 @@ Run: 2026-05-14 10:28 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13908,7 +13908,7 @@ Run: 2026-05-14 14:33 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -13993,7 +13993,7 @@ Run: 2026-05-14 18:03 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14078,7 +14078,7 @@ Run: 2026-05-14 21:17 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14163,7 +14163,7 @@ Run: 2026-05-15 04:10 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14248,7 +14248,7 @@ Run: 2026-05-15 10:34 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14333,7 +14333,7 @@ Run: 2026-05-15 14:27 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14418,7 +14418,7 @@ Run: 2026-05-15 17:49 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14503,7 +14503,7 @@ Run: 2026-05-15 21:15 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14588,7 +14588,7 @@ Run: 2026-05-16 03:52 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14673,7 +14673,7 @@ Run: 2026-05-16 06:29 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14758,7 +14758,7 @@ Run: 2026-05-16 09:48 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14843,7 +14843,7 @@ Run: 2026-05-16 13:50 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -14928,7 +14928,7 @@ Run: 2026-05-16 17:08 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15013,7 +15013,7 @@ Run: 2026-05-16 20:59 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15098,7 +15098,7 @@ Run: 2026-05-17 04:11 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15183,7 +15183,7 @@ Run: 2026-05-17 09:55 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15268,7 +15268,7 @@ Run: 2026-05-17 13:50 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15353,7 +15353,7 @@ Run: 2026-05-17 17:06 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15438,7 +15438,7 @@ Run: 2026-05-17 21:04 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15523,7 +15523,7 @@ Run: 2026-05-18 04:23 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15608,7 +15608,7 @@ Run: 2026-05-18 11:51 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15693,7 +15693,7 @@ Run: 2026-05-18 15:52 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15778,7 +15778,7 @@ Run: 2026-05-18 18:06 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15863,7 +15863,7 @@ Run: 2026-05-18 21:20 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -15948,7 +15948,7 @@ Run: 2026-05-19 04:19 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16033,7 +16033,7 @@ Run: 2026-05-19 11:29 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16118,7 +16118,7 @@ Run: 2026-05-19 15:43 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16203,7 +16203,7 @@ Run: 2026-05-19 18:11 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16288,7 +16288,7 @@ Run: 2026-05-19 21:40 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16373,7 +16373,7 @@ Run: 2026-05-20 04:19 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16458,7 +16458,7 @@ Run: 2026-05-20 11:14 UTC
 Wiki pages: 72 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16543,7 +16543,7 @@ Run: 2026-05-20 15:48 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16636,7 +16636,7 @@ Run: 2026-05-20 15:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16729,7 +16729,7 @@ Run: 2026-05-20 18:26 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16822,7 +16822,7 @@ Run: 2026-05-20 22:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -16915,7 +16915,7 @@ Run: 2026-05-21 04:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17008,7 +17008,7 @@ Run: 2026-05-21 11:33 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17101,7 +17101,7 @@ Run: 2026-05-21 15:47 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17194,7 +17194,7 @@ Run: 2026-05-21 18:07 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17287,7 +17287,7 @@ Run: 2026-05-21 21:43 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17380,7 +17380,7 @@ Run: 2026-05-22 04:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17473,7 +17473,7 @@ Run: 2026-05-22 11:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17566,7 +17566,7 @@ Run: 2026-05-22 14:56 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17659,7 +17659,7 @@ Run: 2026-05-22 17:59 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17752,7 +17752,7 @@ Run: 2026-05-22 21:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17845,7 +17845,7 @@ Run: 2026-05-23 04:00 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -17938,7 +17938,7 @@ Run: 2026-05-23 10:01 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18031,7 +18031,7 @@ Run: 2026-05-23 13:56 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18124,7 +18124,7 @@ Run: 2026-05-23 21:03 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18217,7 +18217,7 @@ Run: 2026-05-24 04:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18310,7 +18310,7 @@ Run: 2026-05-24 10:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18403,7 +18403,7 @@ Run: 2026-05-24 13:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18496,7 +18496,7 @@ Run: 2026-05-24 17:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18589,7 +18589,7 @@ Run: 2026-05-24 21:06 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18682,7 +18682,7 @@ Run: 2026-05-25 04:43 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18775,7 +18775,7 @@ Run: 2026-05-25 11:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18868,7 +18868,7 @@ Run: 2026-05-25 15:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -18961,7 +18961,7 @@ Run: 2026-05-25 17:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19054,7 +19054,7 @@ Run: 2026-05-25 21:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19147,7 +19147,7 @@ Run: 2026-05-26 04:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19240,7 +19240,7 @@ Run: 2026-05-26 16:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19333,7 +19333,7 @@ Run: 2026-05-26 16:29 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19426,7 +19426,7 @@ Run: 2026-05-26 21:54 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19519,7 +19519,7 @@ Run: 2026-05-27 04:41 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19612,7 +19612,7 @@ Run: 2026-05-27 11:46 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19705,7 +19705,7 @@ Run: 2026-05-27 16:04 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19798,7 +19798,7 @@ Run: 2026-05-27 22:04 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19891,7 +19891,7 @@ Run: 2026-05-28 04:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -19977,7 +19977,7 @@ Run: 2026-05-28 11:46 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20063,7 +20063,7 @@ Run: 2026-05-28 16:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20149,7 +20149,7 @@ Run: 2026-05-28 22:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20235,7 +20235,7 @@ Run: 2026-05-29 04:24 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20321,7 +20321,7 @@ Run: 2026-05-29 11:36 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20407,7 +20407,7 @@ Run: 2026-05-29 16:03 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20493,7 +20493,7 @@ Run: 2026-05-29 21:59 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20579,7 +20579,7 @@ Run: 2026-05-30 04:09 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20665,7 +20665,7 @@ Run: 2026-05-30 10:08 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20751,7 +20751,7 @@ Run: 2026-05-30 13:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20837,7 +20837,7 @@ Run: 2026-05-30 17:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -20923,7 +20923,7 @@ Run: 2026-05-30 21:10 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21009,7 +21009,7 @@ Run: 2026-05-31 04:44 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21095,7 +21095,7 @@ Run: 2026-05-31 10:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21181,7 +21181,7 @@ Run: 2026-05-31 14:04 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21267,7 +21267,7 @@ Run: 2026-05-31 17:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21353,7 +21353,7 @@ Run: 2026-05-31 21:10 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21439,7 +21439,7 @@ Run: 2026-06-01 05:06 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21525,7 +21525,7 @@ Run: 2026-06-01 13:45 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21611,7 +21611,7 @@ Run: 2026-06-01 20:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21697,7 +21697,7 @@ Run: 2026-06-02 04:52 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21783,7 +21783,7 @@ Run: 2026-06-02 12:13 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21869,7 +21869,7 @@ Run: 2026-06-02 19:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -21955,7 +21955,7 @@ Run: 2026-06-02 22:26 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22041,7 +22041,7 @@ Run: 2026-06-03 05:03 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22127,7 +22127,7 @@ Run: 2026-06-03 12:48 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22213,7 +22213,7 @@ Run: 2026-06-03 19:55 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22299,7 +22299,7 @@ Run: 2026-06-03 22:31 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22385,7 +22385,7 @@ Run: 2026-06-04 04:56 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22471,7 +22471,7 @@ Run: 2026-06-04 11:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22557,7 +22557,7 @@ Run: 2026-06-04 15:35 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22643,7 +22643,7 @@ Run: 2026-06-04 18:25 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22729,7 +22729,7 @@ Run: 2026-06-04 21:49 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22815,7 +22815,7 @@ Run: 2026-06-05 04:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22901,7 +22901,7 @@ Run: 2026-06-05 11:35 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -22987,7 +22987,7 @@ Run: 2026-06-05 15:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23073,7 +23073,7 @@ Run: 2026-06-05 18:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23159,7 +23159,7 @@ Run: 2026-06-05 21:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23245,7 +23245,7 @@ Run: 2026-06-06 04:13 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23331,7 +23331,7 @@ Run: 2026-06-06 10:14 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23417,7 +23417,7 @@ Run: 2026-06-06 14:01 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23503,7 +23503,7 @@ Run: 2026-06-06 17:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23589,7 +23589,7 @@ Run: 2026-06-06 21:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23675,7 +23675,7 @@ Run: 2026-06-07 04:49 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23761,7 +23761,7 @@ Run: 2026-06-07 10:34 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23847,7 +23847,7 @@ Run: 2026-06-07 14:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -23933,7 +23933,7 @@ Run: 2026-06-07 17:26 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24019,7 +24019,7 @@ Run: 2026-06-07 21:20 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24105,7 +24105,7 @@ Run: 2026-06-08 04:54 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24191,7 +24191,7 @@ Run: 2026-06-08 12:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24277,7 +24277,7 @@ Run: 2026-06-08 18:30 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24363,7 +24363,7 @@ Run: 2026-06-08 21:57 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24449,7 +24449,7 @@ Run: 2026-06-09 04:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24535,7 +24535,7 @@ Run: 2026-06-09 11:25 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24621,7 +24621,7 @@ Run: 2026-06-09 15:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24707,7 +24707,7 @@ Run: 2026-06-09 18:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24793,7 +24793,7 @@ Run: 2026-06-09 21:55 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24879,7 +24879,7 @@ Run: 2026-06-10 04:38 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -24965,7 +24965,7 @@ Run: 2026-06-10 11:45 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25051,7 +25051,7 @@ Run: 2026-06-10 15:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25137,7 +25137,7 @@ Run: 2026-06-10 18:38 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25223,7 +25223,7 @@ Run: 2026-06-10 22:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25309,7 +25309,7 @@ Run: 2026-06-11 04:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25395,7 +25395,7 @@ Run: 2026-06-11 12:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25481,7 +25481,7 @@ Run: 2026-06-11 18:52 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25567,7 +25567,7 @@ Run: 2026-06-11 22:08 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25653,7 +25653,7 @@ Run: 2026-06-12 04:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25739,7 +25739,7 @@ Run: 2026-06-12 11:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25825,7 +25825,7 @@ Run: 2026-06-12 15:33 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25911,7 +25911,7 @@ Run: 2026-06-12 18:14 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -25997,7 +25997,7 @@ Run: 2026-06-12 21:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26083,7 +26083,7 @@ Run: 2026-06-13 04:41 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26169,7 +26169,7 @@ Run: 2026-06-13 10:35 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26255,7 +26255,7 @@ Run: 2026-06-13 14:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26341,7 +26341,7 @@ Run: 2026-06-13 17:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26427,7 +26427,7 @@ Run: 2026-06-13 21:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26513,7 +26513,7 @@ Run: 2026-06-14 04:59 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26599,7 +26599,7 @@ Run: 2026-06-14 10:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26685,7 +26685,7 @@ Run: 2026-06-14 14:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26771,7 +26771,7 @@ Run: 2026-06-14 17:38 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26857,7 +26857,7 @@ Run: 2026-06-14 21:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -26943,7 +26943,7 @@ Run: 2026-06-15 05:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27029,7 +27029,7 @@ Run: 2026-06-15 14:31 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27115,7 +27115,7 @@ Run: 2026-06-15 19:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27201,7 +27201,7 @@ Run: 2026-06-15 22:24 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27287,7 +27287,7 @@ Run: 2026-06-16 05:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27373,7 +27373,7 @@ Run: 2026-06-16 13:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27459,7 +27459,7 @@ Run: 2026-06-16 19:44 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27545,7 +27545,7 @@ Run: 2026-06-16 22:20 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27631,7 +27631,7 @@ Run: 2026-06-17 05:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27717,7 +27717,7 @@ Run: 2026-06-17 12:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27803,7 +27803,7 @@ Run: 2026-06-17 18:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27889,7 +27889,7 @@ Run: 2026-06-17 22:07 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -27975,7 +27975,7 @@ Run: 2026-06-18 04:51 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28061,7 +28061,7 @@ Run: 2026-06-18 11:56 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28147,7 +28147,7 @@ Run: 2026-06-18 15:48 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28233,7 +28233,7 @@ Run: 2026-06-18 18:31 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28319,7 +28319,7 @@ Run: 2026-06-18 22:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28405,7 +28405,7 @@ Run: 2026-06-19 05:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28491,7 +28491,7 @@ Run: 2026-06-19 12:15 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28577,7 +28577,7 @@ Run: 2026-06-19 18:04 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28663,7 +28663,7 @@ Run: 2026-06-19 21:15 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28749,7 +28749,7 @@ Run: 2026-06-20 04:24 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28835,7 +28835,7 @@ Run: 2026-06-20 10:38 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -28921,7 +28921,7 @@ Run: 2026-06-20 14:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29007,7 +29007,7 @@ Run: 2026-06-20 17:41 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29093,7 +29093,7 @@ Run: 2026-06-20 21:24 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29179,7 +29179,7 @@ Run: 2026-06-21 05:08 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29265,7 +29265,7 @@ Run: 2026-06-21 11:22 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29351,7 +29351,7 @@ Run: 2026-06-21 14:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29437,7 +29437,7 @@ Run: 2026-06-21 17:45 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29523,7 +29523,7 @@ Run: 2026-06-21 21:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29609,7 +29609,7 @@ Run: 2026-06-22 05:20 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29695,7 +29695,7 @@ Run: 2026-06-22 13:42 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29781,7 +29781,7 @@ Run: 2026-06-22 19:37 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29867,7 +29867,7 @@ Run: 2026-06-22 22:10 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -29953,7 +29953,7 @@ Run: 2026-06-23 04:13 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30039,7 +30039,7 @@ Run: 2026-06-23 11:25 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30125,7 +30125,7 @@ Run: 2026-06-23 15:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30211,7 +30211,7 @@ Run: 2026-06-23 18:06 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30297,7 +30297,7 @@ Run: 2026-06-23 21:47 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30383,7 +30383,7 @@ Run: 2026-06-24 04:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30469,7 +30469,7 @@ Run: 2026-06-24 11:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30555,7 +30555,7 @@ Run: 2026-06-24 14:49 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30641,7 +30641,7 @@ Run: 2026-06-24 18:02 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30727,7 +30727,7 @@ Run: 2026-06-24 21:38 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30813,7 +30813,7 @@ Run: 2026-06-25 04:17 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30899,7 +30899,7 @@ Run: 2026-06-25 10:50 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -30985,7 +30985,7 @@ Run: 2026-06-25 14:48 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31071,7 +31071,7 @@ Run: 2026-06-25 18:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31157,7 +31157,7 @@ Run: 2026-06-25 21:49 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31243,7 +31243,7 @@ Run: 2026-06-26 04:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31329,7 +31329,7 @@ Run: 2026-06-26 11:11 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31415,7 +31415,7 @@ Run: 2026-06-26 14:41 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31501,7 +31501,7 @@ Run: 2026-06-26 17:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31587,7 +31587,7 @@ Run: 2026-06-26 21:25 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31673,7 +31673,7 @@ Run: 2026-06-27 04:09 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31759,7 +31759,7 @@ Run: 2026-06-27 10:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31845,7 +31845,7 @@ Run: 2026-06-27 14:00 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -31931,7 +31931,7 @@ Run: 2026-06-27 17:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32017,7 +32017,7 @@ Run: 2026-06-27 21:13 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32103,7 +32103,7 @@ Run: 2026-06-28 04:43 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32189,7 +32189,7 @@ Run: 2026-06-28 10:32 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32275,7 +32275,7 @@ Run: 2026-06-28 14:06 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32361,7 +32361,7 @@ Run: 2026-06-28 17:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32447,7 +32447,7 @@ Run: 2026-06-28 21:11 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32533,7 +32533,7 @@ Run: 2026-06-29 04:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32619,7 +32619,7 @@ Run: 2026-06-29 12:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32705,7 +32705,7 @@ Run: 2026-06-29 18:17 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32791,7 +32791,7 @@ Run: 2026-06-29 21:40 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32877,7 +32877,7 @@ Run: 2026-06-30 04:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -32963,7 +32963,7 @@ Run: 2026-06-30 11:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33049,7 +33049,7 @@ Run: 2026-06-30 14:37 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33135,7 +33135,7 @@ Run: 2026-06-30 18:05 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33221,7 +33221,7 @@ Run: 2026-06-30 21:43 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33307,7 +33307,7 @@ Run: 2026-07-01 04:46 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33393,7 +33393,7 @@ Run: 2026-07-01 11:31 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33479,7 +33479,7 @@ Run: 2026-07-01 14:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33565,7 +33565,7 @@ Run: 2026-07-01 18:05 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33651,7 +33651,7 @@ Run: 2026-07-01 21:43 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33737,7 +33737,7 @@ Run: 2026-07-02 04:13 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33823,7 +33823,7 @@ Run: 2026-07-02 10:49 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33909,7 +33909,7 @@ Run: 2026-07-02 14:23 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -33995,7 +33995,7 @@ Run: 2026-07-02 17:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34081,7 +34081,7 @@ Run: 2026-07-02 21:18 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34167,7 +34167,7 @@ Run: 2026-07-03 03:59 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34253,7 +34253,7 @@ Run: 2026-07-03 07:32 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34339,7 +34339,7 @@ Run: 2026-07-03 10:46 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34425,7 +34425,7 @@ Run: 2026-07-03 14:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34511,7 +34511,7 @@ Run: 2026-07-03 17:41 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34597,7 +34597,7 @@ Run: 2026-07-03 21:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34683,7 +34683,7 @@ Run: 2026-07-04 03:53 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34769,7 +34769,7 @@ Run: 2026-07-04 06:54 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34855,7 +34855,7 @@ Run: 2026-07-04 10:20 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -34941,7 +34941,7 @@ Run: 2026-07-04 13:52 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35027,7 +35027,7 @@ Run: 2026-07-04 17:15 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35113,7 +35113,7 @@ Run: 2026-07-04 21:07 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35199,7 +35199,7 @@ Run: 2026-07-05 04:12 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35285,7 +35285,7 @@ Run: 2026-07-05 10:24 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35371,7 +35371,7 @@ Run: 2026-07-05 13:58 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35457,7 +35457,7 @@ Run: 2026-07-05 17:21 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35543,7 +35543,7 @@ Run: 2026-07-05 21:11 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35629,7 +35629,7 @@ Run: 2026-07-06 04:20 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35715,7 +35715,7 @@ Run: 2026-07-06 12:11 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35801,7 +35801,7 @@ Run: 2026-07-06 18:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35887,7 +35887,7 @@ Run: 2026-07-06 21:42 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -35973,7 +35973,7 @@ Run: 2026-07-07 04:09 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36059,7 +36059,7 @@ Run: 2026-07-07 11:16 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36145,7 +36145,7 @@ Run: 2026-07-07 14:55 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36231,7 +36231,7 @@ Run: 2026-07-07 18:08 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36317,7 +36317,7 @@ Run: 2026-07-07 21:36 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36403,7 +36403,7 @@ Run: 2026-07-08 03:34 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36489,7 +36489,7 @@ Run: 2026-07-08 06:35 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36575,7 +36575,7 @@ Run: 2026-07-08 10:27 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36661,7 +36661,7 @@ Run: 2026-07-08 14:33 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36747,7 +36747,7 @@ Run: 2026-07-08 17:46 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36833,7 +36833,7 @@ Run: 2026-07-08 21:17 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -36919,7 +36919,7 @@ Run: 2026-07-09 04:03 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -37005,7 +37005,7 @@ Run: 2026-07-09 11:19 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -37091,7 +37091,7 @@ Run: 2026-07-09 15:28 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -37177,7 +37177,7 @@ Run: 2026-07-09 18:04 UTC
 Wiki pages: 83 | Raw sources: 7
 Graph Fragmentation: 0.310
 
-Broken Links (🔴 CRITICAL):
+Broken Links (?? CRITICAL):
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[api-token-lifecycle]]
   comparisons/credential-exposure-patterns.md: [[database-uri-security]]
@@ -43839,3 +43839,71 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+
+## [2026-07-21] ingest | FLS Jira catch-up ? raw source freeze + full audit
+Source: Atlassian Jira (assignee/reporter exports) + Claude project memories
+Pages created: [none - raw only]
+Pages updated: [none]
+Raw artifacts: raw/fls-work/jira/2026-07-21/* (assignee/reporter catalogs, cluster-map, AUDIT_REPORT, flsp-103/*, flsp-247/*), raw/fls-work/clearview-memory/2026-07-21/* (49 files), raw/fls-work/zendesk-tools/2026-07-21-memory.md, raw/fls-work/transcripts/2026-07-21-memory.md, raw/fls-work/sellsmart/2026-07-21/*
+Contradictions: wiki FLSP-159 Testing vs Jira Post Prod Validation; wiki FLSP-163 Testing vs Jira Done; ClearView May SuiteTalk framing vs hosted ECS/RDS/Entra Build Phase - see raw/fls-work/jira/2026-07-21/AUDIT_REPORT.md
+
+## [2026-07-21] ingest | FLSP-103 initiative index (Tier B)
+Source: raw/fls-work/jira/2026-07-21/flsp-103/*
+Pages created: [wiki/initiatives/flsp-103-inventory-lookup.md]
+Pages updated: [none]
+Contradictions: [none ? indexes only; ClearView hub rewrite is Task 2]
+
+## [2026-07-21] ingest | ClearView hub rewrite (hosted product)
+Source: raw/fls-work/jira/2026-07-21/flsp-103/*, raw/fls-work/clearview-memory/2026-07-21/*, AUDIT_REPORT
+Pages created: [none]
+Pages updated: [wiki/production-systems/inventory-lookup-clearview.md, wiki/production-systems/pilot-database-migration.md]
+Contradictions: [FLSP-159 Testing?Post Prod Validation flagged; pilot windowed?full-scale parity noted]
+
+## [2026-07-21] ingest | ClearView subsystem deep pages + ADRs
+Source: raw/fls-work/clearview-memory/2026-07-21/*, flsp-103 build index
+Pages created: [wiki/production-systems/clearview-aws-hosting.md, wiki/production-systems/clearview-rds-delta-sync.md, wiki/production-systems/approach-reporting.md, wiki/integrations/clearview-entra-sso.md, wiki/integrations/fls-aws-topology.md, wiki/integrations/netsuite-suitetalk-jwt.md, wiki/techniques/vmpn-serial-snapshot.md, wiki/techniques/rds-delta-sync-watermarks.md, wiki/decisions/clearview-approach-export-scope.md, wiki/decisions/clearview-location-movement-deferred.md, wiki/decisions/clearview-flsp384-umbrella.md, wiki/decisions/authjs-v5-authorized-callback.md]
+Pages updated: [inventory-lookup-clearview.md, flsp-103-inventory-lookup.md, pilot-database-migration.md]
+Contradictions: [FLSP-384 tree bullet lists Done while deliberate decision + Jira keep In Progress ? documented in clearview-flsp384-umbrella ADR; no new product contradictions]
+
+## [2026-07-21] ingest | Zendesk automation platform (Tier A+B)
+Source: raw/fls-work/zendesk-tools/*, transcripts/*, cluster-map Zendesk section, Jira keys
+Pages created: [wiki/initiatives/zendesk-automation-platform.md, wiki/production-systems/crr-round-robin.md, wiki/production-systems/zendesk-call-transcripts.md, wiki/production-systems/zendesk-shared-views.md, wiki/production-systems/zendesk-ticket-calendar.md]
+Pages updated: [wiki/production-systems/dedicated-agent-assignment.md, wiki/integrations/netsuite-zendesk-customer-sync.md, wiki/production-systems/zendesk-returns-reporting.md]
+Contradictions: [FLSP-163 Testing?Done; FLSM-20 Backlog/planned?Post Prod Validation]
+
+## [2026-07-21] ingest | Copilot / SellSmart / Digital-to-Store (Tier A+B)
+Source: raw/fls-work/jira/2026-07-21/flsp-247/*, raw/fls-work/sellsmart/2026-07-21/*, cluster-map, assignee catalog, live Jira
+Pages created: [wiki/production-systems/digital-to-store-copilot.md, wiki/initiatives/sellsmart-program.md]
+Pages updated: [wiki/production-systems/sellsmart-copilot.md, wiki/integrations/sellsmart-netsuite-rest-tool.md]
+Contradictions: [FLSP-248/249/251 frontier memory DONE vs live Jira Ready for Deployment; epic FLSP-247 still Testing ? flagged on digital-to-store page]
+
+## [2026-07-21] ingest | FLSM OAuth refresh open question (Task 7)
+Source: jira:FLSM-24, jira:FLSM-27, raw/fls-work/jira/2026-07-21/cameron-reporter-catalog.md
+Pages created: [wiki/open-questions/zendesk-oauth-refresh-2026-10.md]
+Pages updated: [wiki/initiatives/zendesk-automation-platform.md]
+Contradictions: [none - FLSM-24 Jira duedate 2026-06-05 noted as stale vs Zendesk Oct 27, 2026 enforcement]
+
+## [2026-07-21] ingest | SofaScope + FLSI catch-up (Tier A refresh)
+Source: raw/repos/sofascope-ai-powered-product-match-finder.md, raw/fls-work/jira/2026-07-21/cameron-assignee-catalog.md, raw/fls-work/jira/2026-07-21/cluster-map.md, live Jira FLSI-2103/2593/2826/3004
+Pages created: [none]
+Pages updated: [wiki/production-systems/sofascope.md]
+Contradictions: [live pilot framing retained - epic FLSI-2103 still Testing; FLSI-2593 Ready for Deployment not Deployed/Done; FLSI-2599 Familiar Banner still Backlog]
+
+## [2026-07-21] ingest | Methodology + interview prep (Task 8)
+Source: raw/fls-work/clearview-memory/2026-07-21/feedback_neutral_history_framing.md, feedback_verify_against_source_docs.md, ClearView hub + AWS/RDS/Entra/Approach pages, Zendesk automation hub
+Pages created: [wiki/methodology/neutral-history-framing.md, wiki/methodology/verify-against-source-docs.md, wiki/interview-prep/system-design-clearview.md, wiki/interview-prep/behavioral-fls-delivery.md]
+Pages updated: [none]
+Contradictions: [none]
+
+## [2026-07-21] ingest | Period work-log + overview synthesis (Task 9)
+Source: raw/fls-work/jira/2026-07-21/AUDIT_REPORT.md, cluster-map.md, cameron-assignee-catalog.md; Tasks 1-8 hubs
+Pages created: [wiki/work-log/2026-06-07-fls-catchup.md]
+Pages updated: [wiki/overview.md, wiki/work-log/2026-05-period-summary.md]
+Contradictions: [none new - May ClearView/Zendesk status superseded by July hubs; flagged via supersession note only]
+
+## [2026-07-21] lint | FLS Jira catch-up complete (Task 10)
+Source: wiki lint of catch-up FLS pages (initiatives, production-systems, decisions, integrations, work-log, overview); live Jira FLSP-232 / FLSP-384 / FLSP-163
+Pages created: [.superpowers/sdd/task-10-lint-report.md, .superpowers/sdd/task-10-report.md]
+Pages updated: [pilot-database-migration.md, clearview-flsp384-umbrella.md, flsp-103-inventory-lookup.md, inventory-lookup-clearview.md, overview.md, 2026-06-07-fls-catchup.md, .superpowers/sdd/progress.md]
+Contradictions fixed: [FLSP-232 In Progress vs Done; FLSP-384 keep-open In Progress vs live Jira Done]
+Catch-up status: COMPLETE (Tasks 0-10)
