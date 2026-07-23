@@ -1,0 +1,215 @@
+% Consensus-Based Memory Distillation: Preventing Agentic Drift in Autonomous LLM Systems
+% cs.AI: Applying Minimum Bayes Risk to LLM memory systems
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{hyperref,url,booktabs,graphicx}
+\usepackage[margin=1in]{geometry}
+
+\hypersetup{
+  pdfauthor={Cameron Warren},
+  pdftitle={Consensus-Based Memory Distillation for LLM Agents},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue
+}
+
+\title{Consensus-Based Memory Distillation: \\[0.3em]
+       Preventing Agentic Drift in Autonomous LLM Systems}
+\author{Cameron Warren\\
+  \texttt{cwarre33@uncc.edu}\\[0.5em]
+  Department of Computer Science\\
+  University of North Carolina at Charlotte
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Agentic systems that autonomously update their own memory suffer from 
+\emph{agentic drift}: a single hallucinated or biased interpretation
+can be permanently committed, compounding into cascading failures. 
+We propose \textbf{Consensus-Based Memory Distillation}---applying 
+Minimum Bayes Risk (MBR) decoding to memory formation by generating 
+multi-model consensus before committing lessons to long-term storage. 
+Our methodology creates a \emph{memory confidence score} from candidate 
+agreement, enabling risk-adjusted agent behavior when memory signal 
+is unreliable. We formalize the approach mathematically and discuss 
+implementation for autonomous trading and decision-making systems.
+\end{abstract}
+
+\section{Introduction}
+
+Autonomous agentic systems must learn from experience. Standard practice 
+uses single-pass LLM distillation: feed logs to a model, extract lessons, 
+commit to knowledge base. This is vulnerable.
+
+\subsection{Agentic Drift}
+
+When a single LLM generation---potentially hallucinated or biased---
+is committed as \emph{long-term memory}, subsequent decisions build 
+on this corrupted foundation. Errors compound. The agent's "world 
+model" drifts from reality.
+
+\textbf{Example}: A trading agent observes an anomalous market event 
+after a news spike. Single-pass distillation concludes: \emph{``News 
+spikes predict reversals.''} This false pattern is committed to memory. 
+Future positions sized according to confidence in this ``lesson'' 
+underperform---but the agent cannot diagnose why: the corrupted memory 
+is now part of its decision substrate.
+
+\subsection{Consensus-Based Approach}
+
+We apply \textbf{Minimum Bayes Risk (MBR) decoding} to memory formation:
+
+\begin{enumerate}
+  \item Generate $N$ independent distillation candidates from diverse models
+  \item Compute semantic similarity between candidates
+  \item Select the \emph{consensus summary} with maximum expected utility
+  \item Commit to memory only if disagreement score is below threshold
+\end{enumerate}
+
+This creates a principled \emph{memory confidence score}:
+\[
+\mathcal{C}(\text{memory}) = 1 - \frac{1}{N}\sum_{i=1}^N \text{dist}(s_i, s^*)
+\]
+
+where $s^*$ is the consensus and $\text{dist}$ measures semantic divergence.
+
+\section{Related Work}
+
+\textbf{MBR Decoding}: Originally for machine translation, selecting 
+output with highest expected BLEU against sample candidates. We 
+generalize to semantic agreement for memory distillation.
+
+\textbf{LLM Memory Systems}: Previous work on retrieval-augmented 
+generation, memory-augmented networks, and continual learning. No 
+prior work applies consensus mechanisms to prevent single-model 
+hallucination in agent memory.
+
+\textbf{Multi-Model Ensembles}: Existing approaches for classification 
+and generation tasks. We specifically target \emph{agentic} applications 
+where memory permanence amplifies single-model errors.
+
+\section{Methodology}
+
+\subsection{Consensus Memory Formation}
+
+Given log batch $L$, generate candidates:
+\[
+\mathcal{S} = \{s_1, s_2, \ldots, s_N\}, \quad s_i \sim P_{\text{model}_i}(\cdot | L)
+\]
+
+Using diverse providers (OpenAI GPT-4, Anthropic Claude, Meta Llama) 
+to maximize independence.
+
+\subsection{Semantic Agreement}
+
+Embed each candidate:
+\[
+e_i = \text{Embed}(s_i) \in \mathbb{R}^d
+\]
+
+Compute similarity matrix:
+\[
+M_{ij} = \cos(e_i, e_j)
+\]
+
+The \textbf{consensus} is:
+\[
+s^* = \arg\max_{s_i} \sum_{j=1}^N M_{ij}
+\]
+
+\subsection{Memory Confidence}
+
+\[
+\mathcal{C} = \frac{1}{N}\sum_{i=1}^N M_{i*}
+\]
+
+where $M_{i*}$ is similarity to consensus.
+
+\textbf{Threshold}: Commit memory only if $\mathcal{C} \geq \tau$ 
+(typically $0.75$).
+
+\subsection{Risk-Adjusted Agent Behavior}
+
+Memory confidence modulates agent risk-taking:
+
+\begin{itemize}
+  \item $\mathcal{C} \geq 0.9$: Full confidence---normal position sizing
+  \item $0.75 \leq \mathcal{C} < 0.9$: Reduced confidence---smaller positions
+  \item $\mathcal{C} < 0.75$: No commitment---human review required
+\end{itemize}
+
+\section{Theoretical Properties}
+
+\subsection{Anti-Hallucination}
+
+If a single model hallucinates pattern $p$ not present in ground truth:
+\[
+P(p \text{ in } s^*) \leq \frac{1}{N} \ll 1 \text{ for } N \geq 5
+\]
+
+\subsection{Bounded Drift}
+
+With confidence threshold $\tau$, the maximum rate of false memory 
+commitment is bounded by:
+\[
+P(\text{false commit}) \leq P(\text{consensus hallucinates})
+\]
+
+which decreases exponentially with $N$ assuming model independence.
+
+\section{Implementation Considerations}
+
+\subsection{Cost-Latency Tradeoff}
+
+$N$ candidates implies $N \times$ inference cost. Mitigations:
+\begin{itemize}
+  \item Use cheaper models (Llama 3.3 70B) for candidates
+  \item Reserve frontier models (GPT-4, Claude) for final selection
+  \item Batch process daily rather than real-time
+\end{itemize}
+
+\subsection{Provider Independence}
+
+true independence requires diverse:\
+\begin{itemize}
+  \item Training data (different corpora)
+  \item Architectures (transformer variants)
+  \item Organizations (different alignment approaches)
+\end{itemize}
+
+\section{Applications}
+
+\subsection{Autonomous Trading}
+The original motivation: preventing corrupted market regime models 
+from persisting in agent memory across trading cycles.
+
+\subsection{Research Agents}
+Scientific literature review agents where hallucinated paper 
+summaries could propagate through citation chains.
+
+\subsection{Decision Support}
+Any agentic system learning from logged outcomes over extended 
+operation periods.
+
+\section{Conclusion}
+
+Consensus-Based Memory Distillation extends MBR decoding to agentic 
+memory formation, providing a principled defense against agentic 
+drift. The confidence score $\mathcal{C}$ enables quantified 
+risk-adjusted behavior when memory signal is uncertain.
+
+Future work: empirical validation in production agentic systems, 
+oracle studies comparing single-pass vs. consensus memory quality 
+over extended operation windows.
+
+\end{document}

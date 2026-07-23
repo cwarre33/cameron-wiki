@@ -1,0 +1,103 @@
+% arXiv-compatible LaTeX - Minimal version
+% Can run with BasicTeX
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+
+\hypersetup{
+  pdfauthor={Cameron Warren},
+  pdftitle={OSINT Methods for ICS Security Discovery},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue
+}
+
+\title{Open Source Intelligence Methods for Discovering\\
+       Internet-Exposed Industrial Control Systems}
+\author{
+  Cameron Warren\\
+  \texttt{cwarre33@uncc.edu}\\[0.5em]
+  Department of Computer Science\\
+  University of North Carolina at Charlotte
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Industrial Control Systems (ICS) increasingly connect to public networks, 
+creating attack surfaces that threat actors exploit. This paper presents an 
+Open Source Intelligence (OSINT) methodology for discovering exposed ICS assets. 
+We describe a pipeline comprising automated discovery, service enumeration, and 
+vulnerability correlation. Our approach uses targeted scanning for protocols 
+including Modbus, BACnet, DNP3, and S7. We discuss ethical frameworks governing 
+this research and propose responsible disclosure practices.
+\end{abstract}
+
+\section{Introduction}
+
+The convergence of Operational Technology (OT) and Information Technology (IT) 
+has expanded the attack surface available to adversaries. Unlike traditional IT, 
+ICS were not designed with security as a primary consideration.
+
+\textbf{Contribution.} This work presents: (1) a reproducible OSINT framework 
+for ICS asset discovery; (2) analysis of exposure patterns across protocols; 
+(3) responsible disclosure recommendations.
+
+\section{Background}
+
+\subsection{ICS Protocols}
+
+Industrial control systems rely on several specialized protocols:
+
+\begin{itemize}
+  \item \textbf{Modbus (TCP/502):} No built-in authentication; function codes 
+    control read/write operations.
+  \item \textbf{BACnet (UDP/47808):} Building automation via Who-Is/I-Am discovery.
+  \item \textbf{DNP3 (TCP/20000):} Utility industry standard.
+  \item \textbf{S7 (TCP/102):} Siemens proprietary protocol.
+\end{itemize}
+
+\section{Methodology}
+
+Our pipeline consists of four stages:
+
+\begin{enumerate}
+  \item \textbf{Discovery:} Shodan queries for known ICS ports
+  \item \textbf{Enrichment:} Banner analysis and fingerprinting
+  \item \textbf{Validation:} Non-intrusive connectivity checks
+  \item \textbf{Analysis:} Geographic and sector mapping
+\end{enumerate}
+
+\section{Results}
+
+Preliminary analysis reveals exposure patterns across critical infrastructure 
+sectors. Specific findings have been redacted pending responsible disclosure.
+
+\section{Ethical Considerations}
+
+We adhere to: (1) Passive-only reconnaissance; (2) Minimal network footprint; 
+(3) Structured reporting to US-CERT.
+
+\section{Conclusion}
+
+This paper presents a replicable OSINT methodology for ICS security research.
+
+\bibliography{bibliography/references}
+
+\end{document}

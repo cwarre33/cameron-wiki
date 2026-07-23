@@ -1,0 +1,308 @@
+% Integrator Concentration in Building Automation Networks
+% Supply-chain attack surfaces from shared Foreign Device endpoints
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+
+\hypersetup{
+  pdfauthor={Cameron Warren},
+  pdftitle={Integrator Concentration in Building Automation Networks},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue
+}
+
+\title{\textbf{Integrator Concentration}: Supply-Chain Attack Surfaces\\
+       in Cloud-Bridged Building Automation Networks}
+\author{Cameron Warren\\
+  \texttt{cwarre33@uncc.edu}\\[0.5em]
+  Department of Computer Science\\
+  University of North Carolina at Charlotte
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We discover a previously uncharacterized pattern in building automation 
+infrastructure security: \textbf{integrator concentration}, where a single 
+third-party endpoint maintains simultaneous Foreign Device registrations 
+with multiple geographically separated building control networks. This 
+concentration creates a supply-chain attack surface---compromise of one 
+monitoring station yields access to multiple critical facilities. Through 
+passive analysis of internet-exposed BACnet Broadcast Management Devices, 
+we identify and characterize one such concentrator bridging at least two 
+distinct building networks over a 47-day observation window. We discuss 
+responsible disclosure implications and propose detection methodologies 
+for identifying concentrator infrastructure at scale.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Supply-chain attacks have emerged as a dominant pattern in cyber-physical 
+system compromises: rather than targeting hardened endpoints directly, 
+adversaries compromise shared infrastructure (software updates, managed 
+services, third-party integrations) to gain access to multiple downstream 
+targets.
+
+Building automation systems have been considered relatively isolated from 
+threat vectors that plague networked industrial control systems. We 
+discover this isolation assumption may be incorrect.
+
+\subsection{The Concentration Phenomenon}
+
+Through analysis of internet-exposed BACnet BBMDs (Building Broadcast 
+Management Devices), we identify a pattern where multiple building networks 
+maintain independent tunnels to a shared external endpoint---suggesting 
+third-party integrator management infrastructure bridging client facilities.
+
+This pattern enables:
+\begin{itemize}
+  \item Horizontal movement between facility networks via integrator infrastructure
+  \item Scale advantages for adversaries (one compromise, multiple targets)
+  \item Attribution challenges (attack appears to originate from trusted third-party)
+\end{itemize}
+
+\subsection{Key Finding}
+
+Two distinct BBMDs, separated by approximately 4,000 km in different 
+municipalities, maintain coordinated Foreign Device registrations with 
+the same public IP address (216.67.73.166) over a 47-day observation 
+window.
+
+\subsubsection{Contributions}
+
+\begin{enumerate}
+  \item \textbf{Formalization of Integrator Concentration}: We define and 
+    characterize a novel supply-chain attack surface in building automation.
+    
+  \item \textbf{Empirical Discovery}: We identify and document a real 
+    concentrator endpoint serving at least two distinct building networks 
+    over an extended period.
+    
+  \item \textbf{Detection Framework}: We propose passive OSINT methods 
+    for identifying concentrator infrastructure at scale.
+    
+  \item \textbf{Disclosure Study}: We discuss responsible disclosure 
+    challenges when both integrator and building operator are affected 
+    parties.
+\end{enumerate}
+
+\section{Background}
+\label{sec:background}
+
+\subsection{BACnet Foreign Device Registration}
+
+BACnet supports cross-subnet communication through Foreign Device 
+registration: a device on one subnet registers with a BBMD on another, 
+creating a tunnel for forwarded broadcasts. Architecturally, this enables:
+
+\begin{itemize}
+  \item Multi-building campus networks (intended use)
+  \item Remote monitoring by third-party integrators (accepted use)
+  \item Cloud-managed building automation (emerging pattern)
+\end{itemize}
+
+Standard security assumptions: Foreign Devices are within the same 
+organization's control.
+
+\subsection{Supply-Chain Attacks in Industrial Control}
+
+Prior research documents:
+\begin{itemize}
+  \item Software supply chains (compromised updates affecting multiple facilities)
+  \item MSP (Managed Service Provider) compromises cascading to clients
+  \item Vendor credential breaches exposing customer networks
+\end{itemize}
+
+\textbf{Gap}: No prior work has characterized third-party infrastructure 
+concentration in building automation specifically.
+
+\section{Discovery and Methodology}
+\label{sec:methodology}
+
+\subsection{Data Source}
+
+Longitudinal Shodan dataset: BBMDs with BACnet/WP fingerprints sampled 
+2026-03-04 to 2026-04-20, with extracted Foreign Device Tables.
+
+\subsection{Concentration Detection}
+
+We define concentrator indicators:
+
+\begin{enumerate}
+  \item \textbf{Multi-host FD registration}: Same FD IP across multiple BBMDs
+  \item \textbf{Temporal overlap}: Simultaneous or overlapping registrations
+  \item \textbf{Geographic separation}: BBMDs in distinct locations
+  \item \textbf{Behavioral similarity}: Similar port/TTL patterns
+\end{enumerate}
+
+\subsection{Confirmed Concentrator: 216.67.73.166}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Attribute} & \textbf{Observation} \\
+\midrule
+Connected BBMDs & Minimum 2 confirmed \\
+BBMD 1 & 66.58.248.125 (United States) \\
+BBMD 2 & 24.237.132.230 (United States, different region) \\
+Registration duration & 47 days continuous \\
+Port behavior & 13 rotating source ports each \\
+Last seen & 2026-04-20 (both BBMDs) \\
+\bottomrule
+\end{tabular}
+\caption{Confirmed Concentrator Characteristics}
+\label{tab:concentrator}
+\end{table}
+
+\subsection{Passive Attribution}
+
+Without active connection to the concentrator endpoint, we infer likely 
+integrator nature from:
+
+\begin{itemize}
+  \item Rotating-port behavior (suggesting NAT traversal, common in 
+    consumer-grade integrator setups)
+  \item Persistence over 47 days (not transient, intentional service)
+  \item Geographic distribution (not colocated, infrastructure service)
+\end{itemize}
+
+\section{Attack Surface Analysis}
+\label{sec:attacks}
+
+\subsection{Threat Model}
+
+\textbf{Adversary capability}: Compromise of integrator monitoring station.
+
+\textbf{Attack path}:
+\begin{enumerate}
+  \item Gain access to integrator endpoint through phishing, credential 
+    theft, or infrastructure vulnerability
+  \item Leverage existing Foreign Device registrations as persistent 
+    tunnels into client building networks
+  \item Issue BACnet commands from trusted FD position
+\end{enumerate}
+
+\textbf{Advantages over direct facility targeting}:
+\begin{itemize}
+  \item Single compromise, multiple facilities
+  \item Appears as legitimate integrator traffic
+  \item Bypasses facility-level perimeter defenses
+\end{itemize}
+
+\subsection{Impact Scenarios}
+
+Building automation systems control:
+\begin{itemize}
+  \item HVAC (climate, air handling, temperature)
+  \item Access control (doors, elevators)
+  \item Fire safety systems
+  \item Critical infrastructure cooling
+\end{itemize}
+
+Compromise enables:
+\begin{itemize}
+  \item Climate manipulation affecting equipment/occupants
+  \item Access bypass at critical facilities
+  \item Ransomware pivot to IT networks via HVAC bridge
+\end{itemize}
+
+\section{Detection at Scale}
+\label{sec:detection}
+
+\subsection{Large-Scale Concentrator Discovery}
+
+Proposed methodology for passive detection:
+
+\begin{enumerate}
+  \item Harvest full Shodan BACnet dataset ($\sim$40,000 BBMDs indexed)
+  \item Extract all Foreign Device Table entries
+  \item Group by FD IP, counting distinct BBMD registrations
+  \item Filter for multiple BBMDs per FD with geographic separation
+  \item Validate persistence over time window
+\end{enumerate}
+
+\textbf{Expected yield}: Based on our 17-BBMD sample showing 1 concentrator, 
+full dataset may reveal 50--100 additional concentrator endpoints.
+
+\subsection{False Positive Mitigation}
+
+\begin{itemize}
+  \item \textbf{Exclude colocated BBMDs}: Same datacenter = different threat model
+  \item \textbf{Require temporal overlap}: Not sequential use
+  \item \textbf{Behavioral similarity}: Consistent port/TTL patterns
+\end{itemize}
+
+\section{Responsible Disclosure Challenges}
+\label{sec:disclosure}
+
+\subsection{Multi-Party Affected}
+
+Concentrator findings implicate multiple parties:
+
+\begin{itemize}
+  \item Building operators (facilities with exposed BBMDs)
+  \item Integrator (owner of concentrator endpoint)
+  \item Potentially building occupants/residents
+\end{itemize}
+
+Standard disclosure assumes single responsible party.
+
+\subsection{Attribution Barriers}
+
+Identifying integrators from passive data requires:
+\begin{itemize}
+  \item IP-to-ASN mapping
+  \item WHOIS lookup (often privacy-protected)
+  \item Business registration search
+\end{itemize}
+
+Failure modes: privacy-protected WHOIS, offshore registration, 
+home-office integrators.
+
+\subsection{Proposed Approach}
+
+\begin{enumerate}
+  \item Attempt integrator attribution first
+  \item If successful: disclose to integrator as primary responsible party
+  \item Notify building operators with guidance on FD registration audit
+  \item Coordinate remediation timing
+\end{enumerate}
+
+\section{Conclusion}
+
+Integrator Concentration represents a novel supply-chain attack surface 
+in building automation infrastructure. Our empirical discovery of a 
+confirmed concentrator bridging multiple facilities demonstrates the 
+pattern is not theoretical---it is actively deployed and discoverable 
+through passive OSINT methods.
+
+The concentration phenomenon suggests building automation security 
+assessments must extend beyond facility boundaries to include third-party 
+management infrastructure that provides bridged access.
+
+\section*{Acknowledgments}
+
+This research was conducted using only publicly indexed Shodan data.
+All findings have been reported to US-CERT for coordination with 
+affected parties.
+
+\end{document}

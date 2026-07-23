@@ -1,0 +1,44 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{ASHRAE}(2016)]{ashrae2016bacnet}
+{ASHRAE}.
+\newblock \emph{ANSI/ASHRAE Standard 135-2016: BACnet -- A Data Communication
+  Protocol for Building Automation and Control Networks}.
+\newblock ASHRAE, 2016.
+
+\bibitem[Newman(2009)]{newman2009bacnet}
+H.~Michael Newman.
+\newblock \emph{BACnet: The Global Standard for Building Automation}.
+\newblock Knovel, 2009.
+
+\bibitem[Tank et~al.(2017)Tank, Kallitsis, and Stavrakakis]{tank2017sok}
+Jared Tank, Michalis Kallitsis, and Ioannis Stavrakakis.
+\newblock Sok: Cyber-physical systems on the internet - analysis and
+  assessment.
+\newblock In \emph{IEEE Conference on Communications and Network Security
+  (CNS)}, pages 1--9, 2017.
+
+\bibitem[Bradley and Sayer(2020)]{bradley2020industrial}
+Eddie Bradley and Chris Sayer.
+\newblock Industrial control systems breaches: Lessons and insights.
+\newblock In \emph{European Symposium on Research in Computer Security}, 2020.
+
+\bibitem[Guzzo and Beresford(2018)]{shodanics}
+David Guzzo and Alastair~R. Beresford.
+\newblock A large-scale analysis of the internet exposure of industrial control
+  systems.
+\newblock \emph{IEEE Communications Magazine}, 56\penalty0 (6):\penalty0
+  40--46, 2018.
+
+\bibitem[Gamage and Ou(2018)]{gamage2018security}
+Thoshitha Gamage and Xuming Ou.
+\newblock Security challenges in building automation systems.
+\newblock In \emph{ACM Conference on Computer and Communications Security},
+  2018.
+
+\end{thebibliography}

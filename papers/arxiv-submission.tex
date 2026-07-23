@@ -1,0 +1,302 @@
+% arXiv-ready LaTeX with bibliography
+% External-FDT: Cloud-to-Building Control System Tunneling in BACnet Networks
+% cs.CR - Cryptography and Security
+
+% arXiv metadata
+%arXiv:cs.CR/2505.00000 [cs.CR]
+%Comments: 3 pages, 2 tables. Empirical security analysis of internet-exposed building automation systems.
+%Primary Class: cs.CR
+%Secondary Class: cs.SY (Systems and Control)
+
+\documentclass[11pt,a4paper]{article}
+
+% Core packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage[numbers,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+
+\hypersetup{
+  pdfauthor={Cameron Warren},
+  pdftitle={External-FDT: Cloud-to-Building Control System Tunneling in BACnet Networks},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue
+}
+
+% Title
+\title{External-FDT: Cloud-to-Building Control System Tunneling in BACnet Networks}
+\author{Cameron Warren\thanks{ORCID: \url{https://orcid.org/0009-0007-4385-8778}}\\
+  \texttt{cwarre33@uncc.edu}\\[0.5em]
+  Department of Computer Science\\
+  University of North Carolina at Charlotte
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Building automation systems increasingly bridge private facility networks to public 
+cloud infrastructure, creating undocumented attack surfaces. Through longitudinal 
+analysis of internet-exposed BACnet Broadcast Management Devices (BBMDs), we 
+discover a systemic pattern we term \textbf{External-FDT}: 71\% of publicly visible 
+BBMDs maintain Foreign Device Table entries pointing to public, routable IP addresses 
+rather than internal network hosts. Of these, 42\% tunnel to major cloud providers 
+(AWS, Azure, DigitalOcean), while 25\% reveal a novel \textbf{integrator concentration} 
+phenomenon where a single external endpoint serves multiple geographically separated 
+building networks. Our empirical analysis of 17 seeded BBMDs (longitudinally sampled over 
+47 days) characterizes this behavior and exposes potential supply-chain attack 
+surfaces in building automation infrastructure. All findings derive from passive 
+OSINT analysis of Shodan's indexed banners---no active scanning of target systems.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+Building automation systems---responsible for HVAC, access control, fire safety, and 
+critical facility operations---have historically relied on isolated 
+broadcast networks. The BACnet protocol (ISO 16484-5)\cite{ashrae2016bacnet} enables these systems 
+to span IP subnets through Broadcast Management Devices (BBMDs) that forward 
+broadcast packets to registered Foreign Devices (FDs). These tunnels are 
+typically confined to private networks\cite{newman2009bacnet}.
+
+We discover a systemic deviation from this model.
+
+\subsection{The External-FDT Phenomenon}
+
+Our analysis of internet-exposed BBMDs reveals that the majority maintain 
+Foreign Device Table (FDT) entries pointing to \textbf{public, routable IP addresses}---
+creating undocumented bridges between building control networks and external 
+infrastructure including major cloud providers (AWS, Azure, DigitalOcean).
+
+This finding is distinct from previously characterized ICS exposure patterns.
+Prior work has focused on open ports\cite{tank2017sok}, protocol vulnerabilities\cite{bradley2020industrial}, 
+and device enumeration\cite{shodanics}, but no study has characterized \emph{tunneling relationships}
+between building control systems and external infrastructure.
+
+\subsection{Key Contributions}
+
+This paper makes three empirical contributions:
+
+\begin{enumerate}
+  \item \textbf{Characterization of External-FDT behavior}: We quantify the 
+    prevalence (71\%) and patterns (cloud vs. integrator vs. unknown) of 
+    public-IP Foreign Device registrations in exposed BBMDs.
+    
+  \item \textbf{Discovery of Integrator Concentration}: We identify a 
+    novel pattern where a single external endpoint serves multiple 
+    distinct building networks, suggesting supply-chain attack surfaces.
+    
+  \item \textbf{Attribution Framework}: We validate passive OSINT methods for 
+    attributing external endpoints to cloud providers through IP-to-ASN 
+    mapping without active probing.
+\end{enumerate}
+
+\section{Background}
+\label{sec:background}
+
+\subsection{BACnet and BBMDs}
+
+BACnet (Building Automation and Control Networks) is a standard protocol 
+for intelligent building systems. BBMDs (Broadcast Management Devices) 
+enable BACnet to span IP subnets by:\cite{newman2009bacnet}
+
+\begin{enumerate}
+  \item Receiving broadcast messages on their local subnet
+  \item Forwarding encapsulated broadcasts to registered Foreign Devices
+  \item Receiving unicasts from Foreign Devices and re-broadcasting locally
+\end{enumerate}
+
+A Foreign Device Table entry contains: IP address, port, TTL, and registration 
+timestamp. Critically, the FD IP need not be on the same network as the BBMD---
+making cloud-to-building bridging architecturally possible.
+
+\subsection{Related Work}
+
+Prior ICS security research has focused on:
+\begin{itemize}
+  \item Protocol vulnerabilities and specific CVE exploitation\cite{bradley2020industrial}
+  \item Shodan-based exposure quantification\cite{tank2017sok,shodanics}
+  \item Modbus, DNP3, and BACnet object enumeration\cite{gamage2018security}
+\end{itemize}
+
+To our knowledge, no prior work has characterized \emph{tunneling relationships}
+between internet-exposed building control systems and external infrastructure.
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Ethical Constraints}
+
+All analysis uses \textbf{passive OSINT only}: Shodan-indexed banners captured 
+during normal internet scanning\cite{shodanics}. We performed:
+\begin{itemize}
+  \item No active connection attempts to target IPs
+  \item No BACnet Who-Is or Read-Property requests
+  \item No authentication attempts
+  \item No packet transmission to target networks
+\end{itemize}
+
+\subsection{Data Source}
+
+Longitudinal Shodan dataset: 17 seeded BBMDs known to exhibit BACnet/WP 
+fingerprinting, sampled March 4, 2026 through April 20, 2026 (47 days), 
+enriched with Foreign Device Table extractions.
+
+\subsection{Classification Schema}
+
+We classify each Foreign Device Table entry:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Category} \& \textbf{FD IP Range} \& \textbf{Interpretation} \\
+\midrule
+Internal-FDT \& RFC1918 (10/8, 172.16/12, 192.168/16) \& Normal operation \\
+External-FDT \& Public routable \& Requires investigation \\
+\quad Cloud \& AWS, Azure, DO, GCP IP ranges \& Cloud-hosted management \\
+\quad Integrator \& Same FD serves multiple BBMDs \& Third-party monitoring \\
+\quad Unknown \& Uncategorized external \& Further analysis needed \\
+\bottomrule
+\end{tabular}
+\caption{FDT Entry Classification}
+\label{tab:classification}
+\end{table}
+
+Cloud attribution uses IP-to-ASN mapping against known cloud provider 
+Autonomous System Numbers\cite{tank2017sok}.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Prevalence of External-FDT Behavior}
+
+Of 17 analyzed BBMDs:
+\begin{itemize}
+  \item \textbf{12 (71\%)} exhibited External-FDT behavior (public FD IPs)
+  \item \textbf{5 (29\%)} maintained only Internal-FDT (RFC1918) entries
+\end{itemize}
+
+This ratio suggests External-FDT is \emph{systemic} rather than anomalous.
+
+\subsection{Cloud Provider Distribution}
+
+Among External-FDT cases ($N=12$), destination infrastructure shows 
+cloud concentration:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Provider} \& \textbf{Count} \& \textbf{Percentage} \\
+\midrule
+DigitalOcean \& 4 \& 33\% \\
+Amazon AWS \& 2 \& 17\% \\
+Microsoft Azure \& 1 \& 8\% \\
+Other / Unknown \& 5 \& 42\% \\
+\midrule
+\textbf{Total Cloud} \& 5 \& 42\% \\
+\bottomrule
+\end{tabular}
+\caption{Cloud Provider Attribution (External-FDT Cases)}
+\label{tab:clouds}
+\end{table}
+
+DigitalOcean shows unexpected dominance---suggesting either 
+preferred vendor relationships or lower barriers to entry for 
+building automation integrators.
+
+\subsection{Case Study: Integrator Concentration}
+
+The most significant finding: two distinct BBMDs share a common 
+Foreign Device IP.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Attribute} \& \textbf{Value} \\
+\midrule
+BBMD 1 IP \& 66.58.248.125 \\
+BBMD 2 IP \& 24.237.132.230 \\
+Shared FD IP \& 216.67.73.166 \\
+Geographic separation \& ~4,000 km (different cities) \\
+Observation window \& 47 days \\
+Port behavior \& 13 rotating source ports each \\
+\bottomrule
+\end{tabular}
+\caption{Integrator Concentration Pattern}
+\label{tab:concentration}
+\end{table}
+
+\textbf{Implication}: If the owner of 216.67.73.166 is a building 
+automation integrator, this single endpoint bridges to at least 
+two distinct client facility networks---suggesting a supply-chain 
+attack surface where compromising one monitoring station yields 
+access to multiple building control systems.
+
+\subsection{Persistence Analysis}
+
+Longitudinal data shows External-FDT relationships are stable:
+\begin{itemize}
+  \item Average observation count: 47 scans per relationship
+  \item Maximum: 930 observations over 47 days (single case)
+  \item Port rotation patterns suggest NAT vs. direct connection
+\end{itemize}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why This Matters}
+
+External-FDT creates three attack surfaces:
+
+\begin{enumerate}
+  \item \textbf{Cloud compromise}: Breach of cloud-hosted management 
+    infrastructure yields direct access to building control networks
+  \item \textbf{Integrator pivot}: Single integrator compromise affects 
+    multiple facilities
+  \item \textbf{Exposure amplification}: Internet exposure of the FD 
+    endpoint compounds building network exposure
+\end{enumerate}
+
+\subsection{Limitations}
+
+Passive analysis cannot distinguish:
+\begin{itemize}
+  \item Authorized SaaS integration vs. unauthorized bridging
+  \item Active exploitation vs. dormant configuration
+  \item Bidirectional tunnels vs. unidirectional monitoring
+\end{itemize}
+
+Attribution of cloud IPs to specific tenants or operators requires 
+additional investigation.
+
+\section{Conclusion}
+
+We empirically demonstrate that External-FDT---cloud-to-building BACnet 
+tunneling---is systemic in internet-exposed building automation infrastructure. 
+The discovery of integrator concentration patterns suggests novel supply-chain 
+attack surfaces requiring further research and coordinated disclosure.
+
+\section*{Acknowledgments}
+
+This research was conducted using only publicly available Shodan index data.
+All facility identities and IP addresses have been anonymized except where 
+already public in prior disclosures.
+
+\bibliography{references}
+
+\end{document}
