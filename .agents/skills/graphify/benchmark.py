@@ -1,8 +1,10 @@
 """Token-reduction benchmark - measures how much context graphify saves vs naive full-corpus approach."""
 
 from __future__ import annotations
+
 import json
 from pathlib import Path
+
 import networkx as nx
 from networkx.readwrite import json_graph
 

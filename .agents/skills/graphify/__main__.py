@@ -1,6 +1,7 @@
 """graphify CLI - `graphify install` sets up the Claude Code skill."""
 
 from __future__ import annotations
+
 import json
 import platform
 import re
@@ -1187,8 +1188,12 @@ def main() -> None:
     elif cmd == "hook":
         from graphify.hooks import (
             install as hook_install,
-            uninstall as hook_uninstall,
+        )
+        from graphify.hooks import (
             status as hook_status,
+        )
+        from graphify.hooks import (
+            uninstall as hook_uninstall,
         )
 
         subcmd = sys.argv[2] if len(sys.argv) > 2 else ""
@@ -1208,8 +1213,9 @@ def main() -> None:
                 file=sys.stderr,
             )
             sys.exit(1)
-        from graphify.serve import _score_nodes, _bfs, _dfs, _subgraph_to_text
         from networkx.readwrite import json_graph
+
+        from graphify.serve import _bfs, _dfs, _score_nodes, _subgraph_to_text
 
         question = sys.argv[2]
         use_dfs = "--dfs" in sys.argv
@@ -1246,6 +1252,7 @@ def main() -> None:
             sys.exit(1)
         try:
             import json as _json
+
             import networkx as _nx
 
             _raw = _json.loads(gp.read_text(encoding="utf-8"))
@@ -1292,9 +1299,10 @@ def main() -> None:
                 file=sys.stderr,
             )
             sys.exit(1)
-        from graphify.serve import _score_nodes
-        from networkx.readwrite import json_graph
         import networkx as _nx
+        from networkx.readwrite import json_graph
+
+        from graphify.serve import _score_nodes
 
         source_label = sys.argv[2]
         target_label = sys.argv[3]
@@ -1343,8 +1351,9 @@ def main() -> None:
         if len(sys.argv) < 3:
             print('Usage: graphify explain "<node>" [--graph path]', file=sys.stderr)
             sys.exit(1)
-        from graphify.serve import _find_node
         from networkx.readwrite import json_graph
+
+        from graphify.serve import _find_node
 
         label = sys.argv[2]
         graph_path = "graphify-out/graph.json"
@@ -1443,15 +1452,15 @@ def main() -> None:
                 file=sys.stderr,
             )
             sys.exit(1)
-        from graphify.build import build_from_json
-        from graphify.cluster import cluster, score_all
         from graphify.analyze import (
             god_nodes,
-            surprising_connections,
             suggest_questions,
+            surprising_connections,
         )
+        from graphify.build import build_from_json
+        from graphify.cluster import cluster, score_all
+        from graphify.export import to_html, to_json
         from graphify.report import generate
-        from graphify.export import to_json, to_html
 
         print("Loading existing graph...")
         _raw = json.loads(graph_json.read_text(encoding="utf-8"))
@@ -1508,7 +1517,7 @@ def main() -> None:
             sys.exit(1)
 
     elif cmd == "benchmark":
-        from graphify.benchmark import run_benchmark, print_benchmark
+        from graphify.benchmark import print_benchmark, run_benchmark
 
         graph_path = sys.argv[2] if len(sys.argv) > 2 else "graphify-out/graph.json"
         # Try to load corpus_words from detect output

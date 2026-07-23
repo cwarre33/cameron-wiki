@@ -1,10 +1,13 @@
 # MCP stdio server - exposes graph query tools to Claude and other agents
 from __future__ import annotations
+
 import json
 import sys
 from pathlib import Path
+
 import networkx as nx
 from networkx.readwrite import json_graph
+
 from graphify.security import sanitize_label
 
 
@@ -174,9 +177,9 @@ def _filter_blank_stdin() -> None:
 def serve(graph_path: str = "graphify-out/graph.json") -> None:
     """Start the MCP server. Requires pip install mcp."""
     try:
+        from mcp import types
         from mcp.server import Server
         from mcp.server.stdio import stdio_server
-        from mcp import types
     except ImportError as e:
         raise ImportError("mcp not installed. Run: pip install mcp") from e
 

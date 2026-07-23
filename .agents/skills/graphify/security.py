@@ -1,14 +1,13 @@
 # Security helpers - URL validation, safe fetch, path guards, label sanitisation
 from __future__ import annotations
 
+import ipaddress
 import re
+import socket
 import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-
-import ipaddress
-import socket
 
 _ALLOWED_SCHEMES = {"http", "https"}
 _MAX_FETCH_BYTES = 52_428_800  # 50 MB hard cap for binary downloads

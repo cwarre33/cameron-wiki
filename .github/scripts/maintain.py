@@ -13,12 +13,12 @@ What it does:
   9. Runs graphify update and structural drift detection
 """
 
-import re
 import json
+import re
 import subprocess
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
-from collections import defaultdict
 
 WIKI_DIR = Path("wiki")
 RAW_DIR = Path("raw")

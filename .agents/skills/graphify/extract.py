@@ -1,14 +1,17 @@
 """Deterministic structural extraction from source code using tree-sitter. Outputs nodes+edges dicts."""
 
 from __future__ import annotations
+
 import importlib
 import json
 import os
 import re
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Any
+from typing import Any
+
 from .cache import load_cached, save_cached
 
 
@@ -3981,7 +3984,7 @@ def collect_files(
         ".m",
         ".mm",
     }
-    from graphify.detect import _load_graphifyignore, _is_ignored
+    from graphify.detect import _is_ignored, _load_graphifyignore
 
     ignore_root = root if root is not None else target
     patterns = _load_graphifyignore(ignore_root)

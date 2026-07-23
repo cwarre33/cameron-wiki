@@ -1,16 +1,16 @@
 # monitor a folder and auto-trigger --update when files change
 from __future__ import annotations
+
 import json
 import sys
 import time
 from pathlib import Path
 
-
 from graphify.detect import (
     CODE_EXTENSIONS,
     DOC_EXTENSIONS,
-    PAPER_EXTENSIONS,
     IMAGE_EXTENSIONS,
+    PAPER_EXTENSIONS,
 )
 
 _WATCHED_EXTENSIONS = (
@@ -26,17 +26,17 @@ def _rebuild_code(watch_path: Path, *, follow_symlinks: bool = False) -> bool:
     """
     watch_path = watch_path.resolve()
     try:
-        from graphify.extract import extract
-        from graphify.detect import detect
-        from graphify.build import build_from_json
-        from graphify.cluster import cluster, score_all
         from graphify.analyze import (
             god_nodes,
-            surprising_connections,
             suggest_questions,
+            surprising_connections,
         )
+        from graphify.build import build_from_json
+        from graphify.cluster import cluster, score_all
+        from graphify.detect import detect
+        from graphify.export import to_html, to_json
+        from graphify.extract import extract
         from graphify.report import generate
-        from graphify.export import to_json, to_html
 
         detected = detect(watch_path, follow_symlinks=follow_symlinks)
         code_files = [Path(f) for f in detected["files"]["code"]]
@@ -170,9 +170,9 @@ def watch(watch_path: Path, debounce: float = 3.0) -> None:
     running on every keystroke when many files are saved at once).
     """
     try:
+        from watchdog.events import FileSystemEventHandler
         from watchdog.observers import Observer
         from watchdog.observers.polling import PollingObserver
-        from watchdog.events import FileSystemEventHandler
     except ImportError as e:
         raise ImportError("watchdog not installed. Run: pip install watchdog") from e
 

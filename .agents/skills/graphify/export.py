@@ -1,15 +1,18 @@
 # write graph to HTML, JSON, SVG, GraphML, Obsidian vault, and Neo4j Cypher
 from __future__ import annotations
+
 import html as _html
 import json
 import math
 import re
 from collections import Counter
 from pathlib import Path
+
 import networkx as nx
 from networkx.readwrite import json_graph
-from graphify.security import sanitize_label
+
 from graphify.analyze import _node_community_map
+from graphify.security import sanitize_label
 
 
 def _strip_diacritics(text: str) -> str:
@@ -1029,8 +1032,8 @@ def to_svg(
         import matplotlib
 
         matplotlib.use("Agg")
-        import matplotlib.pyplot as plt
         import matplotlib.patches as mpatches
+        import matplotlib.pyplot as plt
     except ImportError as e:
         raise ImportError(
             "matplotlib not installed. Run: pip install matplotlib"

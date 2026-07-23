@@ -1,6 +1,7 @@
 """Graph analysis: god nodes (most connected), surprising connections (cross-community), suggested questions."""
 
 from __future__ import annotations
+
 import networkx as nx
 
 
@@ -113,7 +114,7 @@ def _is_concept_node(G: nx.Graph, node_id: str) -> bool:
     return False
 
 
-from graphify.detect import CODE_EXTENSIONS, PAPER_EXTENSIONS, IMAGE_EXTENSIONS
+from graphify.detect import CODE_EXTENSIONS, IMAGE_EXTENSIONS, PAPER_EXTENSIONS
 
 
 def _file_category(path: str) -> str:

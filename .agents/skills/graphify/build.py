@@ -21,9 +21,12 @@
 #    before any graph construction happens.
 #
 from __future__ import annotations
+
 import re
 import sys
+
 import networkx as nx
+
 from .validate import validate_extraction
 
 
