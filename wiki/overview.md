@@ -56,21 +56,20 @@ The pattern is Andrej Karpathy's LLM Wiki (April 2026) — see [[wiki/people/and
 
 ## Recent work (July 2026)
 
-See [[work-log/2026-06-07-fls-catchup.md]] for the full May 21 → July 21 catch-up (AUDIT_REPORT + cluster-map). Highlights:
+See [[work-log/2026-06-07-fls-catchup.md]] (May 21 → Jul 21) and [[work-log/2026-07-30-four-week-lookback.md]] (Jul 21 → Jul 30). Highlights:
 
-- **ClearView Build Phase** — hosted product rewrite: AWS hosting, RDS full-history parity, Entra SSO, Approach export, ADRs ([[production-systems/clearview-aws-hosting.md]], [[production-systems/clearview-rds-delta-sync.md]])
-- **Zendesk automation platform** — Tier A pages for CRR, transcripts, shared views, calendar; dedicated agent **Done**; FLSM-20 **Post Prod Validation**
-- **SellSmart + Digital-to-Store** — program hub + FLSP-247 Copilot agents; monthly KB refreshes catalogued
-- **SofaScope refresh** — FLSI status table; epic still Testing / tweaks Ready for Deployment
-- **OAuth deadline** — BusyLight refresh open question through Oct 27, 2026 ([[open-questions/zendesk-oauth-refresh-2026-10.md]])
-
-Prior May snapshot (historical only): [[work-log/2026-05-period-summary.md]].
+- **ClearView Build Phase** — hosted product: AWS hosting, RDS parity, Entra SSO, Approach export
+- **Public ClearView** — public ALB + WAF; Cloudflare CNAMEs verified ([[production-systems/clearview-public-alb-waf.md]])
+- **Clarity + Admin Users + Mobile** — [[production-systems/clearview-clarity-telemetry.md]], [[production-systems/clearview-admin-users.md]], [[production-systems/clearview-mobile-ipad.md]]
+- **Ops health** — parity PASS; ~$159/mo ([[production-systems/clearview-ops-health.md]])
+- **Zendesk automation** — CRR, dedicated agent, supervisor exclusion
 
 ## Known gaps
 
-- SellSmart NetSuite REST tool — still local WIP (uncommitted); not a Jira epic closeout
-- ClearView open Build items — FLSP-390 mobile Backlog; FLSP-391/403 Testing; bugs 565/784; FLSP-384 Done in Jira (umbrella keep-open superseded)
-- SofaScope epic FLSI-2103 still Testing (90/93 cluster Done-ish) — do not claim full production closeout
+- SellSmart NetSuite REST tool — still local WIP (uncommitted); not a tracker epic closeout
+- ClearView open items — camera scan In Progress; ops-health parent Testing; Chrome-extension / Akeneo bugs; ECS autoscaling + post-launch hardening + order-list query
+- SofaScope epic still Testing (most cluster Done-ish) — do not claim full production closeout
 - Labs, datasets, people — mostly empty; will populate through future ingests
 - Hull Tactical ($100k, deadline 2026-06-16) — outcome TBD
 - Most Kaggle stubs lack notebook-level detail (Kaggle SPA blocks API content access)
+- BusyLight OAuth refresh still open toward Oct 27, 2026

@@ -16,7 +16,7 @@ related:
   - "[[integrations/netsuite-zendesk-customer-sync.md]]"
   - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-05-20
-updated: 2026-07-21
+updated: 2026-07-30
 confidence: high
 tags: [zendesk, aws-lambda, ccs, automation, webhook, furnitureland-south]
 ---
@@ -25,13 +25,17 @@ tags: [zendesk, aws-lambda, ccs, automation, webhook, furnitureland-south]
 
 Automatically assigns incoming **CCS** and **Vendor Care** tickets to the dedicated agent stored on the requester's user field (`dedicated_agent`), using AWS Lambda triggered by Zendesk webhooks — with CRR round-robin as fallback when empty.
 
-⚠️ **Contradiction (resolved 2026-07-21):** May-2026 wiki listed [FLSP-163](https://furniturelandsouth.atlassian.net/browse/FLSP-163) as **Testing**. Live Jira + assignee catalog show **Done** (updated 2026-06-29). This page now matches Jira.
+⚠️ **Contradiction (resolved 2026-07-21):** May-2026 wiki listed dedicated-agent implementation as **Testing**. Live tracker shows **Done**.
 
-**Jira:** [FLSP-163](https://furniturelandsouth.atlassian.net/browse/FLSP-163) Implement Organization Dedicated Agent Logic in CRR (**Done**) · prerequisite [FLSP-162](https://furniturelandsouth.atlassian.net/browse/FLSP-162) Create Dedicated Agent Organization Field (**Done**) · launch parent [FLSI-2066](https://furniturelandsouth.atlassian.net/browse/FLSI-2066) (**Done**) · post-launch [FLSI-2965](https://furniturelandsouth.atlassian.net/browse/FLSI-2965) (**Ready for Deployment**).
+**Status:** Dedicated-agent organization field + CRR logic **Done** · launch parent **Done** · post-launch follow-up **Ready for Deployment** · exclude supervisors from CCS dedicated-agent assignment **Post Prod Validation** · shared exclusion module **Done**.
 
 **Repo:** `CleanDevEnvironment/Zendesk/ZendeskTools/DedicatedAgentAssignment/`
 
-Umbrella: [[initiatives/zendesk-automation-platform.md]]. CRR / capacity / agent-status: [[production-systems/crr-round-robin.md]].
+Umbrella: [[initiatives/zendesk-automation-platform.md]]. CRR: [[production-systems/crr-round-robin.md]].
+
+## Late-July note — supervisor exclusion
+
+Supervisors must be excluded from CCS dedicated-agent assignment in **both** the nightly sync path and CRR — shared exclusion module keeps the two paths consistent.
 
 ## Problem
 

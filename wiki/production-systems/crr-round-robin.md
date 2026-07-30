@@ -15,18 +15,22 @@ related:
   - "[[production-systems/dedicated-agent-assignment.md]]"
   - "[[integrations/netsuite-zendesk-customer-sync.md]]"
 created: 2026-07-21
-updated: 2026-07-21
+updated: 2026-07-30
 confidence: high
 tags: [zendesk, crr, round-robin, ccs, vcs, task-server, furnitureland-south]
 ---
 
 # CRR — CCS/VCS Custom Round Robin
 
-**Custom Round Robin (CRR)** is the Task Server–backed ticket assignment stack for **CCS** (Customer Care / Client Relations) and **VCS** (Vendor Care), with dedicated-agent preference before fair-share fallback.
+**Custom Round Robin (CRR)** is the Task Server–backed ticket assignment stack for **CCS** and **VCS**, with dedicated-agent preference before fair-share fallback.
 
-**Anchor stories:** [FLSI-2066](https://furniturelandsouth.atlassian.net/browse/FLSI-2066) (**Done**) · [FLSI-3032](https://furniturelandsouth.atlassian.net/browse/FLSI-3032) Custom Round Robin R&D (**Done**) · [FLSM-33](https://furniturelandsouth.atlassian.net/browse/FLSM-33) vendor RR toward daily cap (**Done**) · post-launch [FLSI-2965](https://furniturelandsouth.atlassian.net/browse/FLSI-2965) (**Ready for Deployment**).
+**Anchor status:** Custom Round Robin R&D **Done** · vendor RR toward daily cap **Done** · post-launch follow-up **Ready for Deployment** · exclude supervisors **Post Prod Validation** · shared exclusion module **Done**.
 
-Umbrella: [[initiatives/zendesk-automation-platform.md]]. Dedicated-agent Lambda path: [[production-systems/dedicated-agent-assignment.md]].
+Umbrella: [[initiatives/zendesk-automation-platform.md]]. Dedicated-agent Lambda: [[production-systems/dedicated-agent-assignment.md]].
+
+## Late-July — supervisor exclusion
+
+Supervisors excluded from CCS dedicated-agent assignment in sync **and** CRR via a shared exclusion module so the two paths cannot drift.
 
 ## Assignment flow
 

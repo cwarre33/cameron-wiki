@@ -27,7 +27,7 @@ related:
   - "[[decisions/authjs-v5-authorized-callback.md]]"
   - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-07-21
-updated: 2026-07-21
+updated: 2026-07-30
 confidence: high
 tags: [initiative, jira-index, clearview, inventory-lookup, furnitureland-south, fls-internal]
 ---
@@ -137,11 +137,11 @@ Active production-build epic. Almost everything Done; open remainder listed belo
   - FLSP-401 Done — Show location movement clearly *(building-level version deferred; not what shipped)*
 - **FLSP-389** Done (Jaylon) — Orders Lookup (Separate from Inventory Search)
   - FLSP-420–421, FLSP-485–487, FLSP-525, FLSP-532 (Cameron), FLSP-648 Done — order page, filters, financials, location, bugs, item type
-- **FLSP-390** Backlog (Cameron) — Mobile/iPad Experience — not started
-- **FLSP-391** Testing (Cameron) — Data Sync and Performance
+- **FLSP-390** Post Prod Validation (Cameron) — Mobile/iPad — [[production-systems/clearview-mobile-ipad.md]] (camera scan still In Progress)
+- **FLSP-391** Post Prod Validation (Cameron) — Data Sync and Performance
   - FLSP-446, FLSP-511, FLSP-551, FLSP-585, FLSP-587–588, FLSP-646 Done — shared RDS, delta runner, browse query, back-nav, cached results, concurrent capacity, per-serial snapshot
   - FLSP-783 In Progress — Optimize order-list query
-- **FLSP-403** Testing (Cameron) — AWS Hosting and Deployment
+- **FLSP-403** Post Prod Validation (Cameron) — AWS Hosting — [[production-systems/clearview-aws-hosting.md]] · [[production-systems/clearview-public-alb-waf.md]]
   - FLSP-405–411, FLSP-413 Done — ALB, ECS/Fargate, cost, RDS, connectivity, CI/CD, logging, env strategy
   - FLSP-412 In Progress — Configure Auto Scaling for ECS
   - FLSP-728 In Progress — Post-launch hardening follow-ups
@@ -158,18 +158,21 @@ Active production-build epic. Almost everything Done; open remainder listed belo
 - **FLSP-781** Bug, Done (Cameron) — clearview-staging crash-loop (RDS password / SSM drift)
 - **FLSP-784** Bug, In Progress (Cameron) — Hosted ClearView: Akeneo images 503 + missing sign-in video
 
-## Open items as of 2026-07-21
+## Open items as of 2026-07-30
 
-| Key | Status | Notes |
-|-----|--------|-------|
-| FLSP-390 | Backlog | Mobile/iPad — not started |
-| FLSP-391 | Testing | Data Sync and Performance |
-| FLSP-403 | Testing | AWS Hosting and Deployment |
-| FLSP-565 | In Progress | Bug (Jaylon) — Chrome extension breaking front page |
-| FLSP-784 | In Progress | Bug (Cameron) — Akeneo 503 + sign-in video |
-| FLSP-412 | In Progress | Sub-task — ECS Auto Scaling |
-| FLSP-728 | In Progress | Sub-task — Post-launch hardening |
-| FLSP-783 | In Progress | Sub-task — Optimize order-list query |
+Ticket keys omitted from this public vault (join in private tracker / local `raw/fls-work/`).
+
+| Item | Status | Notes |
+|------|--------|-------|
+| Mobile/iPad | Post Prod Validation | [[production-systems/clearview-mobile-ipad.md]]; camera scan In Progress |
+| Data Sync and Performance | Post Prod Validation | |
+| AWS Hosting | Post Prod Validation | Public ALB live |
+| Ops health | Testing | Parent — [[production-systems/clearview-ops-health.md]] |
+| Chrome extension front-page break | In Progress | Bug (Jaylon) |
+| Akeneo 503 + sign-in video | In Progress | Bug (Cameron) |
+| ECS Auto Scaling | In Progress | Sub-task |
+| Post-launch hardening | In Progress | Sub-task |
+| Optimize order-list query | In Progress | Sub-task |
 
 ## Cameron footprint
 
@@ -182,8 +185,13 @@ Assignee ClearView / FLSP-103 cluster: **~79 issues** (22 stories+/non-subtasks,
 | **B** | Initiative navigation (this page) | `wiki/initiatives/flsp-103-inventory-lookup.md` |
 | **A** | Product hub | [[production-systems/inventory-lookup-clearview.md]] |
 | **A** | AWS hosting | [[production-systems/clearview-aws-hosting.md]] |
+| **A** | Public ALB + WAF | [[production-systems/clearview-public-alb-waf.md]] |
 | **A** | RDS delta sync | [[production-systems/clearview-rds-delta-sync.md]] |
 | **A** | Approach reporting | [[production-systems/approach-reporting.md]] |
+| **A** | Clarity telemetry | [[production-systems/clearview-clarity-telemetry.md]] |
+| **A** | Ops health | [[production-systems/clearview-ops-health.md]] |
+| **A** | Admin users | [[production-systems/clearview-admin-users.md]] |
+| **A** | Mobile / iPad | [[production-systems/clearview-mobile-ipad.md]] |
 | **A** | Entra SSO | [[integrations/clearview-entra-sso.md]] |
 | **A** | AWS topology | [[integrations/fls-aws-topology.md]] |
 | **A** | SuiteTalk JWT | [[integrations/netsuite-suitetalk-jwt.md]] |

@@ -27,10 +27,16 @@ related:
   - "[[decisions/clearview-location-movement-deferred.md]]"
   - "[[decisions/clearview-flsp384-umbrella.md]]"
   - "[[decisions/authjs-v5-authorized-callback.md]]"
+  - "[[production-systems/clearview-public-alb-waf.md]]"
+  - "[[production-systems/clearview-clarity-telemetry.md]]"
+  - "[[production-systems/clearview-ops-health.md]]"
+  - "[[production-systems/clearview-admin-users.md]]"
+  - "[[production-systems/clearview-mobile-ipad.md]]"
+  - "[[work-log/2026-07-30-four-week-lookback.md]]"
   - "[[production-systems/sofascope.md]]"
   - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-05-20
-updated: 2026-07-21
+updated: 2026-07-30
 confidence: high
 tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-south, production, crm, aws, entra, rds]
 ---
@@ -46,7 +52,7 @@ tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-
 - **Catalogue:** ~1.3 million tracked serials across 200,000+ distinct products
 - **Related records:** transactions, sales orders, returns, and other serial-tied activity queryable from a single lookup
 - **Sync:** NetSuite → AWS RDS (Postgres) multi-lane delta sync (prod ~15 min cadence) — reads at volume hit RDS rather than SuiteQL; see [[production-systems/clearview-rds-delta-sync.md]]
-- **Hosting:** ECS/Fargate + ALB (staging + prod); internal-network only — see [[production-systems/clearview-aws-hosting.md]]
+- **Hosting:** ECS/Fargate + **internal and public** ALBs (staging + prod); public path WAF-protected — [[production-systems/clearview-aws-hosting.md]] · [[production-systems/clearview-public-alb-waf.md]]
 - **Auth:** Microsoft Entra ID (Azure AD) SSO — see [[integrations/clearview-entra-sso.md]]
 
 **Repo:** `CleanDevEnvironment/NetSuite/Inventory-Lookup/`
@@ -120,12 +126,14 @@ Deep subsystem pages: [[production-systems/clearview-aws-hosting.md]], [[product
 
 ## Ops
 
-| Area | Status (2026-07-21) |
+| Area | Status (2026-07-30) |
 |------|---------------------|
-| CI quality gate | `verify:ci` (PGlite-safe) on PRs + main — FLSP-474 Done |
-| AWS hosting | FLSP-403 **Testing** — staging + prod ECS live; DNS CNAMEs live (`clearview` / `clearview-staging`); final no-hosts-file browser check remains — [[production-systems/clearview-aws-hosting.md]] |
-| Sync runner | Task-server multi-target delta (`dev` / `staging` / `prod`); on-prem, not in-cluster — [[production-systems/clearview-rds-delta-sync.md]] |
-| Cost posture | Incremental hosting ~$141/mo approved; total steady-state ~$171/mo incl. pre-existing ~$30 dev RDS |
+| CI quality gate | `verify:ci` (PGlite-safe) on PRs + main — Done |
+| AWS hosting | **Post Prod Validation** — internal + public ALBs; Cloudflare CNAMEs live — [[production-systems/clearview-aws-hosting.md]] · [[production-systems/clearview-public-alb-waf.md]] |
+| Sync runner | Task-server multi-target delta; ops health parity PASS — [[production-systems/clearview-rds-delta-sync.md]] · [[production-systems/clearview-ops-health.md]] |
+| Cost posture | Ops health ~**$159/mo** steady-state (under prior ~$201–216 expectation) |
+| UAT telemetry | Microsoft Clarity on prod — [[production-systems/clearview-clarity-telemetry.md]] |
+| Admin / RBAC | Users override page shipped — [[production-systems/clearview-admin-users.md]] |
 
 ## Approach reporting
 
@@ -133,33 +141,41 @@ Deep subsystem pages: [[production-systems/clearview-aws-hosting.md]], [[product
 
 **Explicitly deferred:** PDF export; multi-pivot Approach report templates (grand totals, DC-stock-by-manufacturer, location exception reports). Revisit from that deferred list — do not re-scope from scratch.
 
-## Open work (2026-07-21)
+## Open work (2026-07-30)
 
-| Key | Status | Notes |
-|-----|--------|-------|
-| [FLSP-390](https://furniturelandsouth.atlassian.net/browse/FLSP-390) | Backlog | Mobile/iPad — not started |
-| [FLSP-391](https://furniturelandsouth.atlassian.net/browse/FLSP-391) | Testing | Data Sync and Performance |
-| [FLSP-403](https://furniturelandsouth.atlassian.net/browse/FLSP-403) | Testing | AWS Hosting — DNS live; final browser check |
-| [FLSP-565](https://furniturelandsouth.atlassian.net/browse/FLSP-565) | In Progress | Bug (Jaylon) — Chrome extension breaking front page |
-| [FLSP-784](https://furniturelandsouth.atlassian.net/browse/FLSP-784) | In Progress | Bug — Akeneo images 503 (SSM) + missing sign-in video |
-| [FLSP-412](https://furniturelandsouth.atlassian.net/browse/FLSP-412) | In Progress | ECS Auto Scaling |
-| [FLSP-728](https://furniturelandsouth.atlassian.net/browse/FLSP-728) | In Progress | Post-launch hardening |
-| [FLSP-783](https://furniturelandsouth.atlassian.net/browse/FLSP-783) | In Progress | Optimize order-list query |
-| [FLSP-785](https://furniturelandsouth.atlassian.net/browse/FLSP-785) | Backlog | Grouped Available/Serials count can disagree with expanded serial rows |
+| Item | Status | Notes |
+|------|--------|-------|
+| Mobile/iPad | Post Prod Validation | [[production-systems/clearview-mobile-ipad.md]]; camera scan still In Progress |
+| Data Sync and Performance | Post Prod Validation | |
+| AWS Hosting | Post Prod Validation | Public ALB live |
+| Ops health | Testing | Parent open; sub-tasks Done — [[production-systems/clearview-ops-health.md]] |
+| Chrome extension front-page break | In Progress | Bug (Jaylon) |
+| Akeneo images 503 + missing sign-in video | In Progress | Bug (SSM) |
+| ECS Auto Scaling | In Progress | |
+| Post-launch hardening | In Progress | |
+| Optimize order-list query | In Progress | |
+
+Late-July lookback: [[work-log/2026-07-30-four-week-lookback.md]]. Ticket keys live in private tracker / local `raw/fls-work/` (not this public vault).
 
 ## Interview angles
 
 - **Performance guards** — browse APIs require filters before unbounded SuiteQL/RDS load; grouped browse uses matview snapshot + statement timeouts for concurrent capacity.
 - **Hybrid NetSuite + RDS** — live SuiteTalk for some paths; full-history Postgres read plane kept fresh by multi-lane delta sync.
 - **RBAC export gating** — pricing columns stripped for restricted roles on both flat and grouped Excel/CSV (Approach successor).
+- **Public + Entra** — internet-reachable inventory app with WAF + SSO, not VPN-only.
 - **Stakeholder loop** — discovery → design → Build Phase demos → Jira feedback → ship; FLSP-384 closed Done in Jira after umbrella period.
 
 ## Deep pages
 
 ### Production systems
 - [[production-systems/clearview-aws-hosting.md]]
+- [[production-systems/clearview-public-alb-waf.md]]
 - [[production-systems/clearview-rds-delta-sync.md]]
 - [[production-systems/approach-reporting.md]]
+- [[production-systems/clearview-clarity-telemetry.md]]
+- [[production-systems/clearview-ops-health.md]]
+- [[production-systems/clearview-admin-users.md]]
+- [[production-systems/clearview-mobile-ipad.md]]
 
 ### Integrations
 - [[integrations/clearview-entra-sso.md]]

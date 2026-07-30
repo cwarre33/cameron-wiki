@@ -48925,3 +48925,22 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+## [2026-07-30] ingest | Late-July ClearView lookback (public ALB, Clarity, ops, mobile)
+
+Source: raw/fls-work/clearview-memory/2026-07-30/* + tracker assignee updates since 2026-07-21 (Claude artifact URL not publicly readable). Ticket keys omitted from committed wiki pages (public vault); join in private tracker / local raw/.
+Pages created:
+  - wiki/work-log/2026-07-30-four-week-lookback.md
+  - wiki/production-systems/clearview-public-alb-waf.md
+  - wiki/production-systems/clearview-clarity-telemetry.md
+  - wiki/production-systems/clearview-ops-health.md
+  - wiki/production-systems/clearview-admin-users.md
+  - wiki/production-systems/clearview-mobile-ipad.md
+Pages updated:
+  - wiki/production-systems/inventory-lookup-clearview.md
+  - wiki/production-systems/clearview-aws-hosting.md
+  - wiki/initiatives/flsp-103-inventory-lookup.md
+  - wiki/open-questions/zendesk-oauth-refresh-2026-10.md
+  - wiki/production-systems/dedicated-agent-assignment.md
+  - wiki/production-systems/crr-round-robin.md
+  - wiki/overview.md
+Contradictions: internal-only hosting superseded by public ALB+WAF; hosting/sync/mobile Testing|Backlog -> Post Prod Validation; grouped serial count Backlog -> Done; mobile memory stale vs tracker on tablet/render-budget items
