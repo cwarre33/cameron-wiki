@@ -1,4 +1,4 @@
-# Graph Report - .  (2026-08-08)
+# Graph Report - .  (2026-08-09)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
