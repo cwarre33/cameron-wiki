@@ -54,25 +54,25 @@
 1. `Wiki Index — Master Catalog` - 19 edges
 2. `Cameron's Kaggle Portfolio Overview — 14 Competitions` - 12 edges
 3. `Ingest: Cameron's Kaggle Profile — 14 Competitions` - 11 edges
-4. `ADR: Consensus-Based Memory Distillation` - 9 edges
-5. `Stanford RNA 3D Folding (Part 2)` - 9 edges
-6. `Graphify Graph Report` - 9 edges
+4. `Stanford RNA 3D Folding (Part 2)` - 9 edges
+5. `Graphify Graph Report` - 9 edges
+6. `ADR: Consensus-Based Memory Distillation` - 9 edges
 7. `Groq — LLM Inference API` - 8 edges
-8. `Llama 3.3 70B — Meta Open-Weights LLM` - 7 edges
-9. `Motion-S: Text-to-Sign Motion Generation (Rank 25)` - 7 edges
-10. `CSIRO — Image2Biomass Prediction` - 7 edges
+8. `AI Mathematical Olympiad — Progress Prize 3 ($2.2M)` - 7 edges
+9. `CSIRO — Image2Biomass Prediction` - 7 edges
+10. `Motion-S: Text-to-Sign Motion Generation (Rank 25)` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Graphify — Knowledge Graph Skill` --semantically_similar_to--> `LLM Wiki Pattern (Karpathy)`  [INFERRED] [semantically similar]
   CLAUDE.md → wiki/methodology/llm-wiki-pattern.md
 - `SofaScope Visual Search System` --semantically_similar_to--> `CSIRO — Image2Biomass Prediction`  [INFERRED] [semantically similar]
   wiki/overview.md → wiki/kaggle/csiro-image2biomass.md
-- `README — cameron-wiki` --references--> `CLAUDE.md — Wiki Schema & Workflows`  [EXTRACTED]
-  README.md → CLAUDE.md
-- `CLAUDE.md — Wiki Schema & Workflows` --references--> `LLM Wiki Pattern (Karpathy)`  [EXTRACTED]
-  CLAUDE.md → wiki/methodology/llm-wiki-pattern.md
-- `Jaguar Re-Identification Challenge` --references--> `Cameron Kaggle Profile (raw source)`  [EXTRACTED]
-  wiki/kaggle/jaguar-re-identification.md → raw/kaggle/cameron-kaggle-profile.md
+- `Stanford RNA 3D Folding (Part 2)` --semantically_similar_to--> `AI Mathematical Olympiad — Progress Prize 3 ($2.2M)`  [INFERRED] [semantically similar]
+  wiki/kaggle/stanford-rna-3d-folding.md → wiki/kaggle/aimo-progress-prize-3.md
+- `TF-IDF + kNN Retrieval (Motion-S approach)` --semantically_similar_to--> `Pseudo-Labeling (Semi-Supervised, Stanford RNA)`  [INFERRED] [semantically similar]
+  wiki/kaggle/motion-s-text-to-sign.md → wiki/kaggle/stanford-rna-3d-folding.md
+- `RealMLP + CatBoost + XGBoost Ensemble` --semantically_similar_to--> `Log Loss and Calibration in Probabilistic Prediction`  [INFERRED] [semantically similar]
+  wiki/kaggle/playground-s6e2-heart-disease.md → wiki/kaggle/march-machine-learning-mania-2026.md
 
 ## Hyperedges (group relationships)
 - **Scientific/Environmental ML Kaggle Cluster — Stanford RNA, Urban Flood, CSIRO Biomass** — kaggle_stanford_rna, kaggle_urban_flood, kaggle_csiro, technique_pseudo_labeling, concept_rna_folding, concept_flood_geospatial, concept_biomass_prediction [EXTRACTED 0.88]
@@ -117,7 +117,7 @@ Cohesion: 0.50
 Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Cameron Kaggle Profile (raw source), CLIP+FAISS Embedding Retrieval, Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)
 
 ## Knowledge Gaps
-- **69 isolated node(s):** `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool`, `ARC Prize 2025`, `Metric Learning / Re-Identification (Contrastive/Triplet/ArcFace)` (+64 more)
+- **69 isolated node(s):** `Karpathy LLM Wiki Gist (raw)`, `Above-Ground Biomass Prediction from Satellite Imagery`, `Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)`, `IMO-Level Mathematical Reasoning (AIMO)`, `Social Action Recognition in Mice (Behavioral Ethology)` (+64 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -130,5 +130,5 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Why does `Ingest: Cameron's Kaggle Profile — 14 Competitions` connect `Cameron's Kaggle Portfolio Overview — 14 Competitions` to `Llama 3.3 70B — Meta Open-Weights LLM`, `Wiki Index — Master Catalog`?**
   _High betweenness centrality (0.038) - this node is a cross-community bridge._
-- **What connects `README — cameron-wiki`, `LiteLLM`, `FAISS Vector Search Tool` to the rest of the system?**
+- **What connects `Karpathy LLM Wiki Gist (raw)`, `Above-Ground Biomass Prediction from Satellite Imagery`, `Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
