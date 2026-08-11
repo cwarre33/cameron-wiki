@@ -75,12 +75,12 @@
   wiki/kaggle/jaguar-re-identification.md → raw/kaggle/cameron-kaggle-profile.md
 
 ## Hyperedges (group relationships)
-- **LLM Wiki System: index + log + overview form the maintenance backbone of the wiki** — concept_llm_wiki_pattern, doc_claudemd [EXTRACTED 0.92]
-- **Computer vision wildlife competitions cluster — Jaguar Re-ID and MABe both involve animal visual recognition with embedding/contrastive methods** — kaggle_jaguar_reidentification, technique_metric_learning, technique_clip_faiss [INFERRED 0.75]
-- **Consensus-Based Memory Distillation: MBR + LLM Review + Provider Adapters applied to agentic memory** — doc_consensus_memory_adr, concept_mbr_decoding, concept_llm_review_pass, concept_provider_adapter_pattern, concept_autotrader, concept_agentic_memory_retention [EXTRACTED 0.95]
 - **Scientific/Environmental ML Kaggle Cluster — Stanford RNA, Urban Flood, CSIRO Biomass** — kaggle_stanford_rna, kaggle_urban_flood, kaggle_csiro, technique_pseudo_labeling, concept_rna_folding, concept_flood_geospatial, concept_biomass_prediction [EXTRACTED 0.88]
-- **Tabular ML Kaggle Cluster — House Prices + Heart Disease + March Mania use gradient boosting on structured data** — kaggle_house_prices, kaggle_heart_disease, kaggle_march_mania, technique_tfdf, technique_realmlp_catboost_xgb, concept_log_loss_calibration [INFERRED 0.85]
+- **LLM Wiki System: index + log + overview form the maintenance backbone of the wiki** — concept_llm_wiki_pattern, doc_claudemd [EXTRACTED 0.92]
 - **Groq + Llama 3.3 70B form the sentiment inference backbone of AutoTrader's 15-min scan loop** — wiki_tools_groq_tool, wiki_models_llama_3_3_70b, wiki_tools_groq_autotrader_use, llama_sentiment_use, llama_cost_rationale, wiki_tools_groq_latency_prop [EXTRACTED 0.95]
+- **Consensus-Based Memory Distillation: MBR + LLM Review + Provider Adapters applied to agentic memory** — doc_consensus_memory_adr, concept_mbr_decoding, concept_llm_review_pass, concept_provider_adapter_pattern, concept_autotrader, concept_agentic_memory_retention [EXTRACTED 0.95]
+- **Computer vision wildlife competitions cluster — Jaguar Re-ID and MABe both involve animal visual recognition with embedding/contrastive methods** — kaggle_jaguar_reidentification, technique_metric_learning, technique_clip_faiss [INFERRED 0.75]
+- **Tabular ML Kaggle Cluster — House Prices + Heart Disease + March Mania use gradient boosting on structured data** — kaggle_house_prices, kaggle_heart_disease, kaggle_march_mania, technique_tfdf, technique_realmlp_catboost_xgb, concept_log_loss_calibration [INFERRED 0.85]
 
 ## Communities (35 total, 27 thin omitted)
 
