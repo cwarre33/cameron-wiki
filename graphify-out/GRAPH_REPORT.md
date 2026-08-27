@@ -1,4 +1,4 @@
-# Graph Report - cameron-wiki  (2026-08-26)
+# Graph Report - cameron-wiki  (2026-08-27)
 
 ## Corpus Check
 - cluster-only mode — file stats not available
