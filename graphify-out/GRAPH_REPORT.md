@@ -118,7 +118,7 @@ Nodes (5): Jaguar Re-Identification Challenge, SofaScope Production System, Came
 
 ## Knowledge Gaps
 - **69 isolated node(s):** `Karpathy LLM Wiki Gist (raw)`, `Above-Ground Biomass Prediction from Satellite Imagery`, `Geospatial Flood Modelling (DEM, SAR, Physics-informed ML)`, `IMO-Level Mathematical Reasoning (AIMO)`, `Social Action Recognition in Mice (Behavioral Ethology)` (+64 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 69 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **27 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
