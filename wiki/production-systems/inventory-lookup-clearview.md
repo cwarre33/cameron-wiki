@@ -32,20 +32,27 @@ related:
   - "[[production-systems/clearview-ops-health.md]]"
   - "[[production-systems/clearview-admin-users.md]]"
   - "[[production-systems/clearview-mobile-ipad.md]]"
+  - "[[initiatives/pie-shop-replacement.md]]"
+  - "[[production-systems/clearview-shop-rmf-requests.md]]"
+  - "[[production-systems/clearview-notifications.md]]"
+  - "[[production-systems/clearview-vra-handoff.md]]"
   - "[[work-log/2026-07-30-four-week-lookback.md]]"
+  - "[[work-log/2026-08-09-clearview-shop-rmf-sprint.md]]"
   - "[[production-systems/sofascope.md]]"
   - "[[work-log/2026-05-period-summary.md]]"
 created: 2026-05-20
-updated: 2026-07-30
+updated: 2026-09-02
 confidence: high
-tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-south, production, crm, aws, entra, rds]
+tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-south, production, crm, aws, entra, rds, shop, rmf]
 ---
 
 # Inventory Lookup (ClearView) — Hosted NetSuite Inventory Intelligence
 
-**ClearView** is Furnitureland South's modern Inventory Lookup product for Sales, Merchandising, and Operations: barcode scan, inventory browse, orders lookup, item history/timeline, and Approach-style export — replacing and extending the NetSuite **Review All Barcodes** suitelet.
+**ClearView** is Furnitureland South's modern Inventory Lookup product for Sales, Merchandising, and Operations: barcode scan, inventory browse, orders lookup, item history/timeline, Approach-style export — plus **Shop/RMF request ops** (PIE replacement) and VRA handoff. Extends the NetSuite **Review All Barcodes** suitelet.
 
-**Strategic framing:** ClearView is the base groundwork for a serial-level CRM layer tracked through FLS's NetSuite ERP — every serial number's full lifecycle (receipt, sale, transfer, return, service activity) is a customer/product touchpoint, not just an inventory record.
+**Strategic framing:** ClearView is the base groundwork for a serial-level CRM layer tracked through FLS's NetSuite ERP — every serial number's full lifecycle (receipt, sale, transfer, return, service activity) is a customer/product touchpoint, not just an inventory record. Shop/RMF extends that into warehouse/shop workflow without a second inventory product.
+
+**Shop/RMF initiative:** [[initiatives/pie-shop-replacement.md]] · [[production-systems/clearview-shop-rmf-requests.md]]
 
 ## Scale & infrastructure
 
@@ -54,6 +61,7 @@ tags: [netsuite, next.js, suiteql, barcode, inventory, clearview, furnitureland-
 - **Sync:** NetSuite → AWS RDS (Postgres) multi-lane delta sync (prod ~15 min cadence) — reads at volume hit RDS rather than SuiteQL; see [[production-systems/clearview-rds-delta-sync.md]]
 - **Hosting:** ECS/Fargate + **internal and public** ALBs (staging + prod); public path WAF-protected — [[production-systems/clearview-aws-hosting.md]] · [[production-systems/clearview-public-alb-waf.md]]
 - **Auth:** Microsoft Entra ID (Azure AD) SSO — see [[integrations/clearview-entra-sso.md]]
+- **Adoption (prod Admin Users, 2026-09-02):** **76** signed-in users on the list; **14** seen that day; **~46** in last 7 days; **9** with explicit `shop` role; **30** active overrides — [[production-systems/clearview-admin-users.md]]
 
 **Repo:** `CleanDevEnvironment/NetSuite/Inventory-Lookup/`
 
@@ -102,10 +110,11 @@ FLSP-159 is the early suitelet / pricing groundwork; the hosted product lives un
 | Route | Purpose |
 |-------|---------|
 | `/` | ClearView home — camera/manual barcode entry, recent searches |
-| `/detail/[barcode]` | Product detail — activity feed, timeline, case notes, role-gated pricing |
+| `/detail/[barcode]` | Product detail — activity feed, timeline, case notes, role-gated pricing; VRA handoff action |
 | `/items` | All Items — inventory search grid (flat or grouped-by-VMPN); export CSV/XLSX |
+| `/shop` · `/shop/rmf` | Shop Request queue/detail + RMF filter/nav — **live NetSuite**, not RDS — [[production-systems/clearview-shop-rmf-requests.md]] |
 | `/classic` | Legacy UI — previous gradient lookup + drawers |
-| Orders routes | Orders lookup (FLSP-389 Done) — separate from inventory search |
+| Orders routes | Orders lookup + UX cleanup (status tiles, mobile cards, abort-race hardening) — Done Aug 2026 |
 
 Images: three-tier Akeneo → SofaScope CDN → NetSuite File Cabinet (see [[production-systems/sofascope.md]] for the CDN path).
 
@@ -126,14 +135,16 @@ Deep subsystem pages: [[production-systems/clearview-aws-hosting.md]], [[product
 
 ## Ops
 
-| Area | Status (2026-07-30) |
+| Area | Status (2026-09-02) |
 |------|---------------------|
 | CI quality gate | `verify:ci` (PGlite-safe) on PRs + main — Done |
 | AWS hosting | **Post Prod Validation** — internal + public ALBs; Cloudflare CNAMEs live — [[production-systems/clearview-aws-hosting.md]] · [[production-systems/clearview-public-alb-waf.md]] |
 | Sync runner | Task-server multi-target delta; ops health parity PASS — [[production-systems/clearview-rds-delta-sync.md]] · [[production-systems/clearview-ops-health.md]] |
 | Cost posture | Ops health ~**$159/mo** steady-state (under prior ~$201–216 expectation) |
 | UAT telemetry | Microsoft Clarity on prod — [[production-systems/clearview-clarity-telemetry.md]] |
-| Admin / RBAC | Users override page shipped — [[production-systems/clearview-admin-users.md]] |
+| Admin / RBAC | Users override page + Shop view/create department tiers — [[production-systems/clearview-admin-users.md]] · [[production-systems/clearview-shop-rmf-requests.md]] |
+| Shop / RMF | UI + NetSuite record shipped; epic In Progress — [[initiatives/pie-shop-replacement.md]] |
+| Notifications | Subscribe + sync-change notify live — [[production-systems/clearview-notifications.md]] |
 
 ## Approach reporting
 
@@ -141,11 +152,15 @@ Deep subsystem pages: [[production-systems/clearview-aws-hosting.md]], [[product
 
 **Explicitly deferred:** PDF export; multi-pivot Approach report templates (grand totals, DC-stock-by-manufacturer, location exception reports). Revisit from that deferred list — do not re-scope from scratch.
 
-## Open work (2026-07-30)
+## Open work (2026-09-02)
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Mobile/iPad | Post Prod Validation | [[production-systems/clearview-mobile-ipad.md]]; camera scan still In Progress |
+| PIE & Shop Replacement epic | In Progress | [[initiatives/pie-shop-replacement.md]] — UI Done; BY/WMS create + closeout open |
+| RMF tab | Testing | Same Shop Request record + nav |
+| Shop notifications (sync/legacy) | Done (live) | ClearView + sync-originated email — [[production-systems/clearview-notifications.md]] |
+| Post-demo roles / resolution / access testing | In Progress | Permissions Done; stakeholder remap blocked |
+| VRA handoff prod URL | Post Prod Validation | SB1 Suitelet until promote — [[production-systems/clearview-vra-handoff.md]] |
 | Data Sync and Performance | Post Prod Validation | |
 | AWS Hosting | Post Prod Validation | Public ALB live |
 | Ops health | Testing | Parent open; sub-tasks Done — [[production-systems/clearview-ops-health.md]] |
@@ -153,9 +168,8 @@ Deep subsystem pages: [[production-systems/clearview-aws-hosting.md]], [[product
 | Akeneo images 503 + missing sign-in video | In Progress | Bug (SSM) |
 | ECS Auto Scaling | In Progress | |
 | Post-launch hardening | In Progress | |
-| Optimize order-list query | In Progress | |
 
-Late-July lookback: [[work-log/2026-07-30-four-week-lookback.md]]. Ticket keys live in private tracker / local `raw/fls-work/` (not this public vault).
+Mobile/iPad story **Done** — [[production-systems/clearview-mobile-ipad.md]]. Period logs: [[work-log/2026-07-30-four-week-lookback.md]] · [[work-log/2026-08-09-clearview-shop-rmf-sprint.md]]. Ticket keys in `raw/fls-work/` only.
 
 ## Interview angles
 
@@ -163,7 +177,8 @@ Late-July lookback: [[work-log/2026-07-30-four-week-lookback.md]]. Ticket keys l
 - **Hybrid NetSuite + RDS** — live SuiteTalk for some paths; full-history Postgres read plane kept fresh by multi-lane delta sync.
 - **RBAC export gating** — pricing columns stripped for restricted roles on both flat and grouped Excel/CSV (Approach successor).
 - **Public + Entra** — internet-reachable inventory app with WAF + SSO, not VPN-only.
-- **Stakeholder loop** — discovery → design → Build Phase demos → Jira feedback → ship; FLSP-384 closed Done in Jira after umbrella period.
+- **Shop/RMF ops** — NetSuite custom record + ClearView queue; RMF as filter/nav on the same record; department view vs create RBAC.
+- **Stakeholder loop** — discovery → design → Build Phase demos → Shop/RMF demos → ship.
 
 ## Deep pages
 
@@ -176,6 +191,9 @@ Late-July lookback: [[work-log/2026-07-30-four-week-lookback.md]]. Ticket keys l
 - [[production-systems/clearview-ops-health.md]]
 - [[production-systems/clearview-admin-users.md]]
 - [[production-systems/clearview-mobile-ipad.md]]
+- [[production-systems/clearview-shop-rmf-requests.md]]
+- [[production-systems/clearview-notifications.md]]
+- [[production-systems/clearview-vra-handoff.md]]
 
 ### Integrations
 - [[integrations/clearview-entra-sso.md]]
@@ -191,3 +209,7 @@ Late-July lookback: [[work-log/2026-07-30-four-week-lookback.md]]. Ticket keys l
 - [[decisions/clearview-location-movement-deferred.md]]
 - [[decisions/clearview-flsp384-umbrella.md]]
 - [[decisions/authjs-v5-authorized-callback.md]]
+- [[decisions/clearview-shop-live-netsuite-read.md]]
+- [[decisions/clearview-shop-duplicate-guard.md]]
+- [[decisions/clearview-rmf-attachment-rendering.md]]
+- [[decisions/clearview-dev-role-admin-restrict.md]]

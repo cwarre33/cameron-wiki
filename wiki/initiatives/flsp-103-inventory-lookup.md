@@ -12,6 +12,10 @@ sources:
   - raw/fls-work/jira/2026-07-21/AUDIT_REPORT.md
 related:
   - "[[production-systems/inventory-lookup-clearview.md]]"
+  - "[[initiatives/pie-shop-replacement.md]]"
+  - "[[production-systems/clearview-shop-rmf-requests.md]]"
+  - "[[production-systems/clearview-notifications.md]]"
+  - "[[production-systems/clearview-vra-handoff.md]]"
   - "[[production-systems/pilot-database-migration.md]]"
   - "[[production-systems/clearview-aws-hosting.md]]"
   - "[[production-systems/clearview-rds-delta-sync.md]]"
@@ -25,9 +29,11 @@ related:
   - "[[decisions/clearview-location-movement-deferred.md]]"
   - "[[decisions/clearview-flsp384-umbrella.md]]"
   - "[[decisions/authjs-v5-authorized-callback.md]]"
+  - "[[decisions/clearview-shop-live-netsuite-read.md]]"
   - "[[work-log/2026-05-period-summary.md]]"
+  - "[[work-log/2026-08-09-clearview-shop-rmf-sprint.md]]"
 created: 2026-07-21
-updated: 2026-07-30
+updated: 2026-09-02
 confidence: high
 tags: [initiative, jira-index, clearview, inventory-lookup, furnitureland-south, fls-internal]
 ---
@@ -36,8 +42,9 @@ tags: [initiative, jira-index, clearview, inventory-lookup, furnitureland-south,
 
 [FLSP-103](https://furniturelandsouth.atlassian.net/browse/FLSP-103) is the top-level **Initiative** (hierarchy above Epic) for Furnitureland South's internal Inventory Lookup Tool (ClearView). Goal: faster, more accurate inventory access for Sales, Merchandising, and Operations — covering discovery, design, build, validation, and rollout.
 
-**Status:** In Progress (as of 2026-07-21).
+**Status:** In Progress (as of 2026-09-02).
 
+**Major new epic (standalone wiki page):** [[initiatives/pie-shop-replacement.md]] — PIE & Shop Replacement (Shop/RMF). Original four epics remain indexed below on this fat page.
 Deep product synthesis lives at [[production-systems/inventory-lookup-clearview.md]] (Tier A hub; rewrite in Task 2). This page is Tier B navigation only.
 
 ## Gotcha — Initiative Name rollup
@@ -158,13 +165,18 @@ Active production-build epic. Almost everything Done; open remainder listed belo
 - **FLSP-781** Bug, Done (Cameron) — clearview-staging crash-loop (RDS password / SSM drift)
 - **FLSP-784** Bug, In Progress (Cameron) — Hosted ClearView: Akeneo images 503 + missing sign-in video
 
-## Open items as of 2026-07-30
+## Open items as of 2026-09-02
 
 Ticket keys omitted from this public vault (join in private tracker / local `raw/fls-work/`).
 
 | Item | Status | Notes |
 |------|--------|-------|
-| Mobile/iPad | Post Prod Validation | [[production-systems/clearview-mobile-ipad.md]]; camera scan In Progress |
+| PIE & Shop Replacement | In Progress | Standalone — [[initiatives/pie-shop-replacement.md]] |
+| Shop create/close automation | In Progress | BY/WMS trigger + closeout |
+| RMF tab | Testing | [[production-systems/clearview-shop-rmf-requests.md]] |
+| Shop notifications expansion | In Progress | [[production-systems/clearview-notifications.md]] |
+| Post-demo roles / access testing | In Progress | View/create permissions Done |
+| VRA handoff | Post Prod Validation | [[production-systems/clearview-vra-handoff.md]] |
 | Data Sync and Performance | Post Prod Validation | |
 | AWS Hosting | Post Prod Validation | Public ALB live |
 | Ops health | Testing | Parent — [[production-systems/clearview-ops-health.md]] |
@@ -172,18 +184,23 @@ Ticket keys omitted from this public vault (join in private tracker / local `raw
 | Akeneo 503 + sign-in video | In Progress | Bug (Cameron) |
 | ECS Auto Scaling | In Progress | Sub-task |
 | Post-launch hardening | In Progress | Sub-task |
-| Optimize order-list query | In Progress | Sub-task |
+
+Mobile/iPad: **Done** — [[production-systems/clearview-mobile-ipad.md]].
 
 ## Cameron footprint
 
-Assignee ClearView / FLSP-103 cluster: **~79 issues** (22 stories+/non-subtasks, 57 sub-tasks per 2026-07-21 audit). Full initiative tree also includes Jaylon Norris and other assignees — this page indexes the whole Parent-Link tree, not Cameron-only.
+Assignee ClearView / FLSP-103 cluster: **~79 issues** at 2026-07-21 audit; Aug–Sep Shop/RMF added substantial volume (~564 commits on inventory-lookup). Full initiative tree also includes Jaylon Norris and other assignees — this page indexes the whole Parent-Link tree, not Cameron-only.
 
 ## Wiki topology
 
 | Tier | Role | Page |
 |------|------|------|
 | **B** | Initiative navigation (this page) | `wiki/initiatives/flsp-103-inventory-lookup.md` |
+| **B** | PIE & Shop Replacement | [[initiatives/pie-shop-replacement.md]] |
 | **A** | Product hub | [[production-systems/inventory-lookup-clearview.md]] |
+| **A** | Shop / RMF | [[production-systems/clearview-shop-rmf-requests.md]] |
+| **A** | Notifications | [[production-systems/clearview-notifications.md]] |
+| **A** | VRA handoff | [[production-systems/clearview-vra-handoff.md]] |
 | **A** | AWS hosting | [[production-systems/clearview-aws-hosting.md]] |
 | **A** | Public ALB + WAF | [[production-systems/clearview-public-alb-waf.md]] |
 | **A** | RDS delta sync | [[production-systems/clearview-rds-delta-sync.md]] |

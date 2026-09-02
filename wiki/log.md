@@ -65895,3 +65895,55 @@ Suggested Links (Unlinked Mentions):
   comparisons/llm-wiki-vs-rag.md: mention of 'llm-wiki-pattern'
   comparisons/llm-wiki-vs-rag.md: mention of 'sofascope'
   comparisons/llm-wiki-vs-rag.md: mention of 'system-design-visual-search'
+## [2026-09-02] ingest | ClearView Shop/RMF catch-up (Aug–early Sep)
+
+Source: raw/fls-work/git|bitbucket|jira|clearview-memory|inventory-lookup-docs/2026-09-02/* (git+Jira+Claude memories+design specs). Ticket keys scrubbed from committed wiki pages.
+Pages created:
+  - wiki/initiatives/pie-shop-replacement.md
+  - wiki/production-systems/clearview-shop-rmf-requests.md
+  - wiki/production-systems/clearview-notifications.md
+  - wiki/production-systems/clearview-vra-handoff.md
+  - wiki/decisions/clearview-shop-duplicate-guard.md
+  - wiki/decisions/clearview-rmf-attachment-rendering.md
+  - wiki/decisions/clearview-dev-role-admin-restrict.md
+  - wiki/work-log/2026-08-09-clearview-shop-rmf-sprint.md
+Pages updated:
+  - wiki/production-systems/inventory-lookup-clearview.md
+  - wiki/production-systems/clearview-mobile-ipad.md
+  - wiki/initiatives/flsp-103-inventory-lookup.md
+  - wiki/overview.md
+Contradictions: ClearView scope expanded to Shop/RMF ops; mobile camera-scan In Progress -> Done; July open-work list superseded for Shop epic items
+Still needed from Cameron: PIE dual-run; Shop/RMF request volume (Admin Users adoption later filed same day)
+
+## [2026-09-02] enrich | Shop/RMF full-context freeze deepen
+
+Source: completed missing freeze — raw/fls-work/clearview-memory/2026-09-02/ (130 Claude memory files) + raw/fls-work/inventory-lookup-docs/2026-09-02/ (13 plans + 12 specs). Cross-checked live Jira statuses for FLSP-856 tree.
+Pages created:
+  - wiki/decisions/clearview-shop-live-netsuite-read.md
+Pages deepened/updated:
+  - wiki/production-systems/clearview-shop-rmf-requests.md (live-NS, NSAW scale, WMS sub-location close, role flag, REST/date traps)
+  - wiki/initiatives/pie-shop-replacement.md (timeline, post-demo backlog states)
+  - wiki/production-systems/clearview-notifications.md (SMTP PLACEHOLDER root cause + sync-notify state)
+  - wiki/decisions/clearview-rmf-attachment-rendering.md (HEIC/MIME/S3/XSS detail)
+  - wiki/decisions/clearview-dev-role-admin-restrict.md (rollout flag + role 1042)
+  - wiki/decisions/clearview-shop-duplicate-guard.md
+  - wiki/production-systems/inventory-lookup-clearview.md (surfaces /shop)
+  - wiki/initiatives/flsp-103-inventory-lookup.md
+  - wiki/work-log/2026-08-09-clearview-shop-rmf-sprint.md
+  - wiki/interview-prep/system-design-clearview.md
+  - wiki/overview.md
+Contradictions: none new vs prior Sep 2 ingest; notifications page corrects earlier 'sync-notify still open' framing to code-live / SMTP-fixed / E2E-unconfirmed
+Still needed from Cameron: PIE dual-run status; Shop/RMF request volume (adoption roster filed; sync-notify email confirmed)
+
+## [2026-09-02] enrich | ClearView Admin Users adoption snapshot
+
+Source: Cameron paste of prod Admin Users table (2026-09-02). Aggregates only in wiki; no email roster committed.
+Pages updated:
+  - wiki/production-systems/clearview-admin-users.md
+  - wiki/production-systems/inventory-lookup-clearview.md
+  - wiki/initiatives/pie-shop-replacement.md
+  - wiki/production-systems/clearview-shop-rmf-requests.md
+  - wiki/work-log/2026-08-09-clearview-shop-rmf-sprint.md
+  - wiki/overview.md
+Highlights: 76 users; 14 seen same day; ~46 in 7d; 9 shop role; 30 active overrides
+Still open: PIE dual-run vs replaced; Shop/RMF request volume
